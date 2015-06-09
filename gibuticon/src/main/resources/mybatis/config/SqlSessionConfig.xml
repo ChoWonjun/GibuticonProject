@@ -7,11 +7,18 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>	
 	<!-- 사용할 클래스에 대한 별칭을 명시한다.  -->
 	<typeAliases>
-		<typeAlias type="org.kosta.springmvc26.model.MemberVO" alias="mvo"/>		
+		<typeAlias type="org.kosta.gibuticon.model.member.MemberVO" alias="memberVO"/>		
+		<typeAlias type="org.kosta.gibuticon.model.member.MessageVO" alias="messageVO"/>		
+		<typeAlias type="org.kosta.gibuticon.model.point.GibuticonVO" alias="gibuticonVO"/>		
+		<typeAlias type="org.kosta.gibuticon.model.board.FreeBoardVO" alias="freeBoardVO"/>		
+		<typeAlias type="org.kosta.gibuticon.model.board.NoticeVO" alias="noticeVO"/>		
 	</typeAliases>	
     <!-- sql mapping config xml 을 연결 -->
 	<mappers>
 		<mapper resource="mybatis/config/member.xml"/>		
+		<mapper resource="mybatis/config/board.xml"/>		
+		<mapper resource="mybatis/config/fund.xml"/>		
+		<mapper resource="mybatis/config/point.xml"/>		
 	</mappers>
 </configuration>
 
