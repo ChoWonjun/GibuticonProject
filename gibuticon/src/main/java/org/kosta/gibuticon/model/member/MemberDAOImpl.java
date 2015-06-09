@@ -3,12 +3,10 @@ package org.kosta.gibuticon.model.member;
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Repository;
 @Repository
 public class MemberDAOImpl {
-	@Resource
+	@Resource(name="sqlSessionTemplate")
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public void registerMember(MemberVO memberVO) {
@@ -18,7 +16,6 @@ public class MemberDAOImpl {
 	public MemberVO findMemberById(String id) {
 		MemberVO memberVO = sqlSessionTemplate.selectOne(
 				"member.findMemberById", id);
-		System.out.println(memberVO);
 		return memberVO;
 	}
 

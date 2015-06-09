@@ -2,9 +2,14 @@ package org.kosta.gibuticon.model.fund;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import javax.annotation.Resource;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class FundDAOImpl {
+	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public void writeFund(FundVO fundVO) {

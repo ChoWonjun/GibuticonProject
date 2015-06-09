@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class FreeBoardDAOImpl {
-	@Resource(name="sqlSessionTemplate")
+	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public FreeBoardVO getFreeBoardByNo(String no){

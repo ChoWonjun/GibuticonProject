@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class NoticeDAOImpl {
-	@Resource(name = "sqlSessionTemplate")
+	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
 
 	public NoticeVO getNoticeByNo(String no) {

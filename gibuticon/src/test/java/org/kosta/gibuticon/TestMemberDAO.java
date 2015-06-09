@@ -1,8 +1,6 @@
 package org.kosta.gibuticon;
 
 import org.kosta.gibuticon.model.member.MemberDAOImpl;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TestMemberDAO {
 	public static void main(String[] args) {

@@ -20,6 +20,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="giveAdminRight">
 		update member set admin='yes' where id=#{value}
 	</update>
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select * from member where id=#{id} and password={password}
+	</select>
 </mapper>
  
  
