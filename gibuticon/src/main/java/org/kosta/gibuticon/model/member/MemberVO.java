@@ -9,7 +9,6 @@ public class MemberVO {
 	private String address;
 	private String tel;
 	private Date birth;
-	private String gender;
 	private String type;
 	private String email;
 	private int point;
@@ -67,14 +66,6 @@ public class MemberVO {
 		this.birth = birth;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
 	public String getType() {
 		return type;
 	}
@@ -103,8 +94,8 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name="
 				+ name + ", address=" + address + ", tel=" + tel + ", birth="
-				+ birth + ", gender=" + gender + ", type=" + type + ", email="
-				+ email + ", point=" + point + "]";
+				+ birth + ", type=" + type + ", email=" + email + ", point="
+				+ point + "]";
 	}
 
 }
