@@ -22,7 +22,7 @@ public class HomeController {
 	 * @PathVariable : url 정보를 변수로 할당 요청받은 매핑정보와 일치하는 메서드가 별도로 있으면 그 메서드가 실행되고
 	 * 없으면 @PathVariable 적용 메서드가 동작된다.
 	 */
-	@RequestMapping("{viewId}.do")
+	@RequestMapping("{viewId}.gibu")
 	public String showView(@PathVariable String viewId) {
 		return viewId;
 	}

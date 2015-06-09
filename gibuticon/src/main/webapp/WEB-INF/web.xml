@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
 	<welcome-file-list>
-		<welcome-file>home.do</welcome-file>
+		<welcome-file>home.gibu</welcome-file>
 	</welcome-file-list>
 	<context-param>
 		<param-name>root</param-name>
@@ -35,7 +35,7 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<url-pattern>*.gibu</url-pattern>
 	</servlet-mapping>
 
 	<filter>
