@@ -3,7 +3,9 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fund">
-	
+	<update id="increaseParticipant">
+		update board_inst set hits=hits+1 where no=#{value}
+	</update>
 </mapper>
  
  
