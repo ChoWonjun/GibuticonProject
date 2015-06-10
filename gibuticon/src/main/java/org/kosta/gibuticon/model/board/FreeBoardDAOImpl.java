@@ -13,23 +13,23 @@ public class FreeBoardDAOImpl {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public FreeBoardVO getFreeBoardByNo(String no){
-		return sqlSessionTemplate.selectOne("board.getPostingByNo",no);
+		return sqlSessionTemplate.selectOne("freeboard.getFreeBoardByNo",no);
 	}
 
 	public List<FreeBoardVO> getFreeBoardList(){
-		return sqlSessionTemplate.selectList("board.getFreeBoardList");
+		return sqlSessionTemplate.selectList("freeboard.getFreeBoardList");
 	}
 	
 	public void writeFreeBoard(FreeBoardVO freeBoardVO){
-		sqlSessionTemplate.insert("board.writeFreeBoard",freeBoardVO);
+		sqlSessionTemplate.insert("freeboard.writeFreeBoard",freeBoardVO);
 	}
 	
 	public void deleteFreeBoard(String no){
-		sqlSessionTemplate.delete("board.deleteFreeBoard",no);
+		sqlSessionTemplate.delete("freeboard.deleteFreeBoard",no);
 	}
 	
 	public void updateFreeBoard(FreeBoardVO freeBoardVO){
-		sqlSessionTemplate.update("board.updateFreeBoard",freeBoardVO);
+		sqlSessionTemplate.update("freeboard.updateFreeBoard",freeBoardVO);
 	}
 	
 }

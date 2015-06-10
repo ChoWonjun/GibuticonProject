@@ -42,4 +42,5 @@
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 	<bean id="memberDao" class="org.kosta.gibuticon.model.member.MemberDAOImpl"></bean>
+	<bean id="freeBoardDao" class="org.kosta.gibuticon.model.board.FreeBoardDAOImpl"></bean>
 </beans>
