@@ -1,8 +1,6 @@
-package org.kosta.gibuticon.service;
+package org.kosta.gibuticon.model.member;
 
-import org.kosta.gibuticon.model.member.MemberVO;
-
-public interface MemberService {
+public interface MemberDAO {
 
 	public abstract void registerMember(MemberVO memberVO);
 

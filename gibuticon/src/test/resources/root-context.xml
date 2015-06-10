@@ -41,4 +41,5 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	<bean id="memberDao" class="org.kosta.gibuticon.model.member.MemberDAOImpl"></bean>
 </beans>
