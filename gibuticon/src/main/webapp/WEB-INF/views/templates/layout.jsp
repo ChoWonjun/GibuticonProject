@@ -13,7 +13,7 @@
 <div id="container">
 	<div id="header"><tiles:insertAttribute name="header" /></div>
 	<div id="main"><tiles:insertAttribute name="main" /></div>
-	<div id="right"><tiles:insertAttribute name="right" /></div>
+	<%-- <div id="right"><tiles:insertAttribute name="right" /></div> --%>
 	<div id="footer"><tiles:insertAttribute name="footer" /></div>
 </div>
 <%-- table layout 방식을 css 로 변경  --%>
