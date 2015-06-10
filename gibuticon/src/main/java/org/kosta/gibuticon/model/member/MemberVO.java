@@ -1,6 +1,5 @@
 package org.kosta.gibuticon.model.member;
 
-import java.sql.Date;
 
 public class MemberVO {
 	private String id;
@@ -8,14 +7,32 @@ public class MemberVO {
 	private String name;
 	private String address;
 	private String tel;
-	private Date birth;
-	private String type;
+	private String birth;
+	private String admin;
 	private String email;
 	private int point;
 
 	public MemberVO() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	public MemberVO(String id, String password, String name, String address,
+			String tel, String birth, String email) {
+		super();
+		this.id = id;
+		this.password = password;
+		this.name = name;
+		this.address = address;
+		this.tel = tel;
+		this.birth = birth;
+		this.email = email;
+	}
+
+	public MemberVO(String id, String password) {
+		super();
+		this.id = id;
+		this.password = password;
 	}
 
 	public String getId() {
@@ -58,20 +75,20 @@ public class MemberVO {
 		this.tel = tel;
 	}
 
-	public Date getBirth() {
+	public String getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(String birth) {
 		this.birth = birth;
 	}
 
-	public String getType() {
-		return type;
+	public String getAdmin() {
+		return admin;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setAdmin(String admin) {
+		this.admin = admin;
 	}
 
 	public String getEmail() {
@@ -94,7 +111,7 @@ public class MemberVO {
 	public String toString() {
 		return "MemberVO [id=" + id + ", password=" + password + ", name="
 				+ name + ", address=" + address + ", tel=" + tel + ", birth="
-				+ birth + ", type=" + type + ", email=" + email + ", point="
+				+ birth + ", admin=" + admin + ", email=" + email + ", point="
 				+ point + "]";
 	}
 
