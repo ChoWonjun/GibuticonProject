@@ -1,8 +1,9 @@
 package org.kosta.gibuticon.model.board;
 
 public class NoticeVO {
-	private String noticeNo;
+	private int noticeNo;
 	private String title;
+	private String writeDate;
 	private String content;
 	private int hits;
 
@@ -11,11 +12,34 @@ public class NoticeVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getNoticeNo() {
+	public NoticeVO(int noticeNo, String title, String writeDate, String content,
+			int hits) {
+		super();
+		this.noticeNo = noticeNo;
+		this.title = title;
+		this.writeDate = writeDate;
+		this.content = content;
+		this.hits = hits;
+	}
+
+	public NoticeVO(String title, String content) {
+		super();
+		this.title = title;
+		this.content = content;
+	}
+
+	public NoticeVO(int noticeNo, String title, String content) {
+		super();
+		this.noticeNo = noticeNo;
+		this.title = title;
+		this.content = content;
+	}
+
+	public int getnoticeNo() {
 		return noticeNo;
 	}
 
-	public void setNoticeNo(String noticeNo) {
+	public void setnoticeNo(int noticeNo) {
 		this.noticeNo = noticeNo;
 	}
 
@@ -25,6 +49,14 @@ public class NoticeVO {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getWriteDate() {
+		return writeDate;
+	}
+
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
 	}
 
 	public String getContent() {
@@ -45,8 +77,8 @@ public class NoticeVO {
 
 	@Override
 	public String toString() {
-		return "NoticeVO [noticeNo=" + noticeNo + ", title=" + title
-				+ ", content=" + content + ", hits=" + hits + "]";
+		return "noticeNoticeVO [noticeNo=" + noticeNo + ", title=" + title + ", writeDate="
+				+ writeDate + ", content=" + content + ", hits=" + hits + "]";
 	}
 
 }
