@@ -9,7 +9,7 @@ public class FundVO {
 	private String homepage;
 	private String curSum;
 	private String goalSum;
-	private String participantCount;
+	private String participant;
 	private Date dueDate;
 	private String content;
 	private int hits;
@@ -67,12 +67,12 @@ public class FundVO {
 		this.goalSum = goalSum;
 	}
 
-	public String getParticipantCount() {
-		return participantCount;
+	public String getParticipant() {
+		return participant;
 	}
 
-	public void setParticipantCount(String participantCount) {
-		this.participantCount = participantCount;
+	public void setParticipant(String participant) {
+		this.participant = participant;
 	}
 
 	public Date getDueDate() {
@@ -104,7 +104,7 @@ public class FundVO {
 		return "FundVO [fundNo=" + fundNo + ", fundName=" + fundName
 				+ ", proposal=" + proposal + ", homepage=" + homepage
 				+ ", curSum=" + curSum + ", goalSum=" + goalSum
-				+ ", participantCount=" + participantCount + ", dueDate="
+				+ ", participant=" + participant+ ", dueDate="
 				+ dueDate + ", content=" + content + ", hits=" + hits + "]";
 	}
 }
