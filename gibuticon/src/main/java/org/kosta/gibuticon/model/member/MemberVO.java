@@ -1,14 +1,26 @@
 package org.kosta.gibuticon.model.member;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 
 public class MemberVO {
+	@Size(min=4,max=10) // 4자 이상 ~ 10자 이하
 	private String id;
+	@Size(min=4,max=10)
 	private String password;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String address;
+	@NotEmpty
 	private String tel;
 	private String birth;
 	private String admin;
+	@Email
+	@NotEmpty
 	private String email;
 	private int point;
 

@@ -15,6 +15,7 @@
 		<property name="suffix" value=".jsp" />
 		<property name="order" value="1"></property>
 	</bean>
+	
 	<!-- Tile Framework 연동 설정 -->
 	<bean id="tilesConfig"
 		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
@@ -24,11 +25,19 @@
 			</list>
 		</property>
 	</bean>
+	
 	<!-- Tiles ViewResolver 설정: order를 0으로 setting -->
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 		<property name="order" value="0" />
+	</bean>
+	
+	<!-- validation -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages_ko" />
+		<property name="defaultEncoding" value="utf-8"></property>
 	</bean>
 </beans>
