@@ -6,6 +6,35 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="increaseParticipant">
 		update board_inst set hits=hits+1 where no=#{value}
 	</update>
+	
+	<select id="getFundList" resultType="fundVO">
+		  select fund_no fundno, fund_name fundname, proposal, homepage,
+  			cur_sum cursum, goal_sum goalsum, participant, due_date duedate,
+  			content, hits from gibu_fund
+	</select>
+	
+	<select id="getFundByNo" resultType="fundVO">
+		  select fund_no fundno, fund_name fundname, proposal, homepage,
+  			cur_sum cursum, goal_sum goalsum, participant, due_date duedate,
+  			content, hits from gibu_fund where fund_no=#{value}
+	</select>
+	
+	<insert id="writeFund" parameterType="fundVO">
+		  insert into gibu_fund(fund_no,fund_name,proposal,
+  									homepage,goal_sum,due_date,content)
+  			values(gibu_fund_seq.nextval,#{fundName},#{proposal},
+  			#{homepage},#{goalSum},#{dueDate},#{content})
+	</insert>
+	
+	<delete id="deleteFundByNo">
+		 delete from gibu_fund where fund_no=#{value}
+	</delete>
+	
+	<update id="updateFund" parameterType="fundVO">
+		update gibu_fund set fund_name=#{fundName},proposal=#{proposal},
+  									homepage=#{homepage},goal_sum=#{goalSum},due_date=#{dueDate},content=#{content}
+  		where fund_no=#{fundNo}
+	</update>
 </mapper>
  
  

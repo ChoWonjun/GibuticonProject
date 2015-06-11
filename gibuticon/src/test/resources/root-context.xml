@@ -43,4 +43,5 @@
 	<bean id="memberDao" class="org.kosta.gibuticon.model.member.MemberDAOImpl"></bean>
 	<bean id="freeBoardDao" class="org.kosta.gibuticon.model.board.FreeBoardDAOImpl"></bean>
 	<bean id="noticeDao" class="org.kosta.gibuticon.model.board.NoticeDAOImpl"></bean>
+	<bean id="fundDao" class="org.kosta.gibuticon.model.fund.FundDAOImpl"></bean>
 </beans>

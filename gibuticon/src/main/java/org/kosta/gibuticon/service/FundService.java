@@ -1,5 +1,13 @@
 package org.kosta.gibuticon.service;
 
-public class FundService {
+import java.util.List;
 
+import org.kosta.gibuticon.model.fund.FundVO;
+
+public interface FundService {
+	public List<FundVO> getFundList();
+	public abstract FundVO getFundByNo(String no);
+	public void writeFund(FundVO fundVO);
+	public void deleteFundByNo(String no);
+	public void updateFund(FundVO fundVO);
 }

@@ -10,7 +10,7 @@
 					<a href="#">사이트 소개</a>
 				</li>
 				<li>
-					<a href="#">모금</a>
+					<a href="${initParam.root}getFundList.gibu">모금</a>
 				</li>
 				<li>
 					<a href="#">모금현황</a>
