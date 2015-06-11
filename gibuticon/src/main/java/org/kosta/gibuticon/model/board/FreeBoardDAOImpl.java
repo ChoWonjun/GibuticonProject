@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class FreeBoardDAOImpl implements FreeBoardDAO {
-	@Resource
+	@Resource(name="sqlSessionTemplate")
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	/* (non-Javadoc)

@@ -13,7 +13,7 @@
 			<li><a href="${initParam.root}getFundList.gibu">모금</a></li>
 			<li><a href="#">모금현황</a></li>
 			<li><a href="#">공지사항</a></li>
-			<li><a href="#">자유게시판</a></li>
+			<li><a href="${initParam.root}getFreeBoardList.gibu">자유게시판</a></li>
 		</ul>
 	</div>
 	<div class="col-md-3">
