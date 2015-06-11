@@ -47,6 +47,7 @@ public class FundController {
 	@RequestMapping("updateFund.gibu")
 	public ModelAndView updateFund(FundVO vo){
 		fundService.updateFund(vo);
+		//
 		return new ModelAndView("redirect:getFundList.gibu");
 	}
 	
