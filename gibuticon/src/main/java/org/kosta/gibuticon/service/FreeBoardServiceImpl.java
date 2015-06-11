@@ -1,5 +1,5 @@
 package org.kosta.gibuticon.service;
 
-public class BoardService {
+public class FreeBoardServiceImpl {
 
 }
