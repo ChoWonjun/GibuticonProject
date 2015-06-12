@@ -24,7 +24,7 @@
 				<span class="divider"><a href="registerView.gibu">회원가입</a></span>
 				</c:when>
 				<c:otherwise>
-					<span class="divider"><a href="member_mypage.gibu">${sessionScope.mvo.name}</a></span>&nbsp;&nbsp;
+					<span class="divider"><a href="logout.gibu">${sessionScope.mvo.name}</a></span>&nbsp;&nbsp;
 				<span class="divider"><a href="logout.gibu">로그아웃</a></span>
 				</c:otherwise>
 			</c:choose>

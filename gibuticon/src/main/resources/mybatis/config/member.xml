@@ -4,14 +4,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<insert id="registerMember" parameterType="memberVO">
-		insert into member(id,password,name,address,tel,birth,admin,email,point) values (#{id},#{password},#{name},#{address},#{tel},to_date(#{birth},'yyyy-mm-dd'),'no',#{email}, 0)
+		insert into member values (#{id},#{password},#{name},#{address},#{tel},#{birth},'no',#{email}, 0)
 	</insert>
 	<select id="findMemberById" resultType="memberVO">
-		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where id=#{value}
+		select * from member where id=#{value}
 	</select>
 	<update id="updateMember" parameterType="memberVO">
-		update member set password=#{password},address=#{address},tel=#{tel},birth=#{birth},
-		email=#{email} where id=#{id}
+		update member set password=#{password},address=#{address},tel=#{tel},
+	email=#{email} where id=#{id}
 	</update>
 	<delete id="deleteMemberById">
 		delete from member where id=#{id}
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update member set admin='yes' where id=#{value}
 	</update>
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where id=#{id} and password=#{password}
+		select * from member where id=#{id} and password=#{password}
 	</select>
 </mapper>
  

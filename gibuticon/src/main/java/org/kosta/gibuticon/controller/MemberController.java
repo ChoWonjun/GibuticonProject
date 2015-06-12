@@ -92,7 +92,6 @@ public class MemberController {
 			return "registerView";
 			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다. 
 		}
-		System.out.println(memberVO.getBirth());
 		memberService.registerMember(memberVO);
 		return "redirect:registerResult.gibu?id="+memberVO.getId();
 	}
@@ -111,54 +110,5 @@ public class MemberController {
 		MemberVO mvo = memberService.findMemberById(id);
 		model.addAttribute("mvo",mvo);
 		return "register_result";
-	}
-	
-	/**
-	 * updateMemberView에서 
-	 * spring el 로 validation을 실행하기 위해서 
-	 * memberVO라는 이름으로 빈 MemberVO객체를 전달.
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value="updateMemberView",method=RequestMethod.GET)
-	public ModelAndView updateMemberView(HttpServletRequest request) {
-		return new ModelAndView("member_updateMemberView", "memberVO", new MemberVO());
-	}
-	
-	/**
-	 * 회원정보 수정 기능. 
-	 * 먼저 validation 결과에 문제가 있으면 다시 회원가입창으로 돌려보낸다.
-	 * updateMemberView.jsp에서 password, address, tel, birth, email정보를 
-	 * MemberVO객체로 받아와서 updateMember()로 DB(member table)에 등록.
-	 * 새로고침시 에러를 피하기 위해 redirect로 MemberController의 
-	 * updateResult 메서드에 id 전달.
-	 * @param vo
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping(value="updateMember",method=RequestMethod.POST)
-	public String updateMember(@Valid MemberVO memberVO, BindingResult result, HttpServletRequest request) {
-		if(result.hasErrors()){			
-			return "member_updateMemberView";
-			// 유효성 검사에 에러가 있으면 회원정보수정화면으로 다시 보낸다. 
-		}
-		memberService.updateMember(memberVO);
-		return "redirect:updateMemberResult.gibu?id="+memberVO.getId();
-	}
-	
-	/**
-	 * updateMember 메서드에서 보내준 id로 
-	 * findMemberById 를 실행해서 등록한 회원정보를 반환받은 뒤
-	 * updateMember_result.jsp 로 회원정보 전달.
-	 * @param request
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping("updateMemberResult")
-	public String updateMemberResult(HttpServletRequest request, Model model) {
-		String id = request.getParameter("id");
-		MemberVO mvo = memberService.findMemberById(id);
-		model.addAttribute("mvo",mvo);
-		return "member_updateMember_result";
 	}
 }
