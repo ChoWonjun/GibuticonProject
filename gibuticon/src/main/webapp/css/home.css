@@ -1,5 +1,5 @@
 	#container{
-		width: 822px; /* container 경계선 1 , left  200 padding 5+5 ,
+		width: device-width; /* 822px; container 경계선 1 , left  200 padding 5+5 ,
 		                           main 600 padding 5+5 ,  border-left: 1   */
 		border: 1px solid black;
 		margin-left: auto;
@@ -12,20 +12,20 @@
 	}
 	#main{
 		padding: 5px;
-		height:500px;
-		width:600px;
+		/* height:500px; */
+		/* width:600px; */
 		float: left; /* left로 부유위치를 지정해 left와 main이 수평 배치하도록 한다    */
 	}
-	#right{
+/* 	#right{
 		padding: 5px;
 		width:200px;
 		height: 500px;		
-		float: left; /* left로 부유위치를 지정해 left와 main이 수평 배치하도록 한다    */
+		float: left; left로 부유위치를 지정해 left와 main이 수평 배치하도록 한다   
 		border-left: 1px solid black;
-	}
+	} */
 	#footer{
 		padding: 5px;
-		height: 70px;
+		/* height: 70px; */
 		border-top: 1px solid black;
 		clear:both; /* float 속성 요소 아래에 배치하기 위해 float 속성 초기화(clear)   */
 	}
