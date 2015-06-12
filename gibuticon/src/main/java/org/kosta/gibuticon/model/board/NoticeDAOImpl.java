@@ -13,11 +13,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public NoticeVO getNoticeByNo(int noticeNo) {
-		return sqlSessionTemplate.selectOne("notice.getNoticeByNo", noticeNo);
-	}
-
-
 	public List<NoticeVO> getNoticeList(String pageNo) {
 		return sqlSessionTemplate.selectList("notice.getNoticeList", pageNo);
 	}
@@ -48,7 +43,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 		return sqlSessionTemplate.selectOne("notice.totalContent");
 	}
 
-	public NoticeVO showContent(int no){
-		return (NoticeVO)sqlSessionTemplate.selectOne("notice.showContent",no);
+	public NoticeVO showContent(int noticeNo){
+		return (NoticeVO)sqlSessionTemplate.selectOne("notice.showContent",noticeNo);
 	}
+
 }
