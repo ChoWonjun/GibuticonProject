@@ -31,4 +31,15 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		return freeBoardDAO.getFreeBoardByNo(no);
 	}
 
+	@Override
+	public void updateFreeBoard(FreeBoardVO freeBoardVO) {
+		freeBoardDAO.updateFreeBoard(freeBoardVO);
+	}
+
+	@Override
+	public void deleteFreeBoard(String no) {
+		freeBoardDAO.deleteFreeBoard(no);
+		
+	}
+
 }

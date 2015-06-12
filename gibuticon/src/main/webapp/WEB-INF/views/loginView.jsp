@@ -25,6 +25,7 @@
 				Gibuticon.
 			</h3>
 			<form class="form-horizontal" action="${initParam.root }login.gibu">
+			<input type="hidden" name="type" value="${requestScope.type }">
 				<div class="form-group">
 					 <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-10">

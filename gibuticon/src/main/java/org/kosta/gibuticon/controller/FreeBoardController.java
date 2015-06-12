@@ -19,34 +19,50 @@ public class FreeBoardController {
 	private FreeBoardService freeBoardService;
 	
 	@RequestMapping("writeFreeBoard")
-	public ModelAndView writeFreeBoard(FreeBoardVO fvo, HttpServletRequest request){
+	public ModelAndView writeFreeBoard(FreeBoardVO freeBoardVO, HttpServletRequest request){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
-		fvo.setId(mvo.getId());
-		System.out.println(fvo+"전");
-		freeBoardService.writeFreeBoard(fvo);
-		System.out.println(fvo+"후");
+		freeBoardVO.setId(mvo.getId());
+		System.out.println(freeBoardVO+"전");
+		freeBoardService.writeFreeBoard(freeBoardVO);
+		System.out.println(freeBoardVO+"후");
 		return new ModelAndView("redirect:getFreeBoardList.gibu");
 	}
 	@RequestMapping("getFreeBoardList")
-	public ModelAndView getFreeBoardList(HttpServletRequest request){
+	public ModelAndView getFreeBoardList(){
+			List<FreeBoardVO> list=freeBoardService.getFreeBoardList();
+			return new ModelAndView("freeBoard_list","list",list);
+	}
+	@RequestMapping("write")
+	public ModelAndView write(HttpServletRequest request){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
 		if(mvo!=null){
-			List<FreeBoardVO> list=freeBoardService.getFreeBoardList();
-			return new ModelAndView("freeBoard_freeBoardList","list",list);
+			return new ModelAndView("freeBoard_write");
 		}
-		return new ModelAndView("loginView");
-		
-	}
-	@RequestMapping("write")
-	public String write(){
-		return "freeBoard_write";
+			return new ModelAndView("loginView","type","freeBoard");
 	}
 	@RequestMapping("getFreeBoardByNo")
 	public ModelAndView getFreeBoardByNo(String no){
 		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
-		return new ModelAndView("","fvo",fvo);
+		return new ModelAndView("freeBoard_show_content","fvo",fvo);
+	}
+	@RequestMapping("update")
+	public ModelAndView update(String no){
+		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
+		return new ModelAndView("freeBoard_update","fvo",fvo);
+	}
+	@RequestMapping("updateFreeBoard")
+	public String updateFreeBoard(FreeBoardVO freeBoardVO){
+		System.out.println(freeBoardVO+"바아온거");
+		freeBoardService.updateFreeBoard(freeBoardVO);
+		System.out.println(freeBoardVO);
+		return "redirect:getFreeBoardByNo.gibu?no="+freeBoardVO.getBoardNo(); 
+	}
+	@RequestMapping("deleteFreeBoard")
+	public String deleteFreeBoard(String no){
+		freeBoardService.deleteFreeBoard(no);
+		return "redirect:getFreeBoardList.gibu";
 	}
 
 }

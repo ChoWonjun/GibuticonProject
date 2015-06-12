@@ -21,7 +21,7 @@
 		</thead>	
 		<tbody>
 			<c:forEach items="${requestScope.list}" var="board">
-				<tr><td>${board.boardNo}</td><td><a href="board/findbyno.do?no=${board.boardNo}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.content}</td></tr>
+				<tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.content}</td></tr>
 			</c:forEach>
 		</tbody>
 	</table>

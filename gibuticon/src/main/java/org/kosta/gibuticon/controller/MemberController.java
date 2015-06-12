@@ -31,7 +31,7 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("login")
-	public String login(MemberVO vo, HttpServletRequest request) {
+	public String login(MemberVO vo, HttpServletRequest request, String type) {
 		MemberVO mvo = memberService.login(vo);
 		String url = null;
 		if (mvo == null) {
@@ -39,7 +39,13 @@ public class MemberController {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", mvo);
-			url = "home";
+			System.out.println(type);
+			if(type.equals("freeBoard")){
+				System.out.println(type+"if");
+				url="freeBoard_write";
+			}else{
+				url = "home";
+			}
 		}
 		return url;
 	}

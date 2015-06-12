@@ -50,6 +50,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	@Override
 	public void updateFreeBoard(FreeBoardVO freeBoardVO){
 		sqlSessionTemplate.update("freeboard.updateFreeBoard",freeBoardVO);
+		System.out.println(freeBoardVO+"DAO");
 	}
 	
 }

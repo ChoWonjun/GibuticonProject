@@ -10,19 +10,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result property="boardNo" column="board_no" />
    </resultMap>
 	<insert id="writeFreeBoard" parameterType="freeBoardVO">
-		<selectKey keyProperty="board_no" resultType="int" order="BEFORE">
-			select free_board_seq.nextval from dual
+		<selectKey keyProperty="boardNo" resultType="String" order="BEFORE">
+			select free_board_sequence.nextval from dual
 		</selectKey>
 		insert into free_board(
 		board_no, title, write_date, content, hits, id
 		)
-		values(free_board_sequence.nextval,#{title},sysdate,#{content},0,#{id})
+		values(#{boardNo},#{title},sysdate,#{content},0,#{id})
 	</insert>
 	<delete id="deleteFreeBoard">
 		delete from free_board where board_no=#{value}
 	</delete>
 	<update id="updateFreeBoard" parameterType="freeBoardVO">
-		update free_board set title=#{title},content=#{content},id=#{id}
+		update free_board set title=#{title},content=#{content}
 		where board_no=#{boardNo}
 	</update>
 	<select id="getFreeBoardByNo" resultMap="freeBoardRM">
