@@ -15,26 +15,29 @@ import org.springframework.web.servlet.ModelAndView;
 public class NoticeController {
 	@Resource
 	private NoticeService noticeService;
-	private Logger log=LoggerFactory.getLogger(getClass());
+	private Logger log = LoggerFactory.getLogger(getClass());
 
-	@RequestMapping("writeNoticeView.gibu")	
-	public ModelAndView writeNoticeView() {	
+	@RequestMapping("writeNoticeView.gibu")
+	public ModelAndView writeNoticeView() {
 		return new ModelAndView("notice_write");
-	}	
-	@RequestMapping("getNoticeList.gibu")	
-	public ModelAndView getNoticeList(String PageNO) {	
-    return new ModelAndView("notice_list","list",noticeService.getNoticeList("1").getList());
 	}
+
+	@RequestMapping("getNoticeList.gibu")
+	public ModelAndView getNoticeList(String PageNO) {
+		return new ModelAndView("notice_list", "list", noticeService.getNoticeList("1").getList());
+	}
+
 	@RequestMapping("showNoticeContent.gibu")
-	public ModelAndView showNoticeContent(int noticeNo){
-		NoticeVO nvo=noticeService.showContent(noticeNo);
-	    return new ModelAndView("notice_show_content","posting",nvo);
+	public ModelAndView showNoticeContent(int noticeNo) {
+		NoticeVO nvo = noticeService.showContent(noticeNo);
+		return new ModelAndView("notice_show_content", "posting", nvo);
 	}
+
 	@RequestMapping("writeNotice.gibu")
-	public ModelAndView writeNotice(NoticeVO noticeVO){
-		//no로 게시글 찾아서 그 vo 전체를 넘겨주는
+	public ModelAndView writeNotice(NoticeVO noticeVO) {
+		// no로 게시글 찾아서 그 vo 전체를 넘겨주는
 		noticeService.writeNotice(noticeVO);
 		return new ModelAndView("getNoticeList.gibu");
-		
+
 	}
 }
