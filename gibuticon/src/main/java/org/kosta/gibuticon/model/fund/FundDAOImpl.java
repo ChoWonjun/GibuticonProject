@@ -40,8 +40,8 @@ values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',
 	 * @see org.kosta.gibuticon.model.fund.FundDAO#getFundList()
 	 */
 	@Override
-	public List<FundVO> getFundList() {
-		return sqlSessionTemplate.selectList("fund.getFundList");
+	public List<FundVO> getFundList(String pageNo) {
+		return sqlSessionTemplate.selectList("fund.getFundList",pageNo);
 	}
 	
 // select * from gibu_fund
@@ -89,5 +89,23 @@ values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',
 	@Override
 	public void gibuMoney(FundVO fundVO) {
 		sqlSessionTemplate.update("fund.gibuMoney", fundVO);
+	}
+
+	@Override
+	public String getPageNo(String no) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getPageNo", no);
+	}
+
+	@Override
+	public int getTotalPostingCount() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalPostingCount");
+	}
+
+	@Override
+	public void updateHit(String no) {
+		// TODO Auto-generated method stub
+		sqlSessionTemplate.update("fund.updateHit",no);
 	}
 }

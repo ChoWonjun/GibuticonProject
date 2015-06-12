@@ -33,6 +33,23 @@
   
   delete from gibu_fund where fund_no=25
   
+ select * from(
+  select fundno, fundname, proposal, homepage, cursum, goalsum, participant, duedate, content, hits, ceil(rownum/5) as page from
+(select fund_no fundno, fund_name fundname, proposal, homepage,
+  	cur_sum cursum, goal_sum goalsutm, participant, due_date duedate,
+  	content, hits from gibu_fund order by fund_no desc))where page=1
+  	
+		select page from(
+			select fund_no fundno, ceil(rownum/5) as page from(
+				select fund_no from gibu_fund order by fund_no desc
+			)
+		) where fundno=22
+  			
+--  select no,writer,title,time_posted,hits from(
+--	select no,writer,title,time_posted,hits,ceil(rownum/5) as page from(
+--		select no,writer,title,to_char(time_posted,'YYYY.MM.DD') as time_posted,hits from board_inst order by no desc
+--		)
+--	) where page=?
   
   
 --  

@@ -17,8 +17,7 @@
 			</tr>
 		</thead>
 		<tbody>			
-	<c:forEach var="i" begin="1" end="${fn:length(requestScope.list)}">
-	<c:set var="posting" value="${requestScope.list[i-1] }" ></c:set>				
+	<c:forEach var="posting" items="${requestScope.vo.list}">	
 			<tr>
 			    <td>${posting.fundNo }</td>				
 				<td><a href="${initParam.root }showFundContent.gibu?no=${posting.fundNo }">
@@ -27,7 +26,21 @@
 				<td>${posting.dueDate }</td>
 				<td>${posting.hits }</td>
 			</tr>
-	</c:forEach>					
+	</c:forEach>
+			<tr>
+				<td colspan=5 align="center">
+					<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+					<c:if test="${pb.previousPageGroup}">
+						<a href="${initParam.root }getFundList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+						<a href="${initParam.root }getFundList.gibu?pageNo=${i }">${i }</a>
+					</c:forEach>
+					<c:if test="${pb.nextPageGroup}">
+						<a href="${initParam.root }getFundList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+					</c:if>
+				</td>
+			</tr>					
 		</tbody>					
 	</table><br></br>	
 	<a href="fundWriteForm.gibu"><img  src="${initParam.root }img/write_btn.jpg" border="0"></a>

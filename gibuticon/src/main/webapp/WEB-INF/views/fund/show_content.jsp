@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
 <script type="text/javascript">
 	function sendList(){
-		location.href="getFundList.gibu";
+		location.href="getFundList.gibu?no=${requestScope.posting.fundNo}";
 	}
 </script>
 </head>
