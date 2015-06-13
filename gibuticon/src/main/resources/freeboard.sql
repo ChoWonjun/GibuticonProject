@@ -23,7 +23,7 @@ select * from free_board where id='chocamp';
 
 delete from free_board where id='chocamp';
 
-delete from free_board where board_no='2';
+delete from free_board where board_no='28';
 
 create table driving_license(
    license_no varchar2(50) primary key,

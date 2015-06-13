@@ -92,6 +92,7 @@ public class MemberController {
 			return "registerView";
 			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다. 
 		}
+		System.out.println(memberVO.getBirth());
 		memberService.registerMember(memberVO);
 		return "redirect:registerResult.gibu?id="+memberVO.getId();
 	}

@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.gibuticon.model.board.FreeBoardVO;
+import org.kosta.gibuticon.model.board.ListVO;
+import org.kosta.gibuticon.model.board.PagingBean;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.service.FreeBoardService;
 import org.springframework.stereotype.Controller;
@@ -29,9 +31,16 @@ public class FreeBoardController {
 		return new ModelAndView("redirect:getFreeBoardList.gibu");
 	}
 	@RequestMapping("getFreeBoardList")
-	public ModelAndView getFreeBoardList(){
-			List<FreeBoardVO> list=freeBoardService.getFreeBoardList();
-			return new ModelAndView("freeBoard_list","list",list);
+	public ModelAndView getFreeBoardList(String pageNo, String no){
+		if(no!=null)
+			pageNo=freeBoardService.getPageNo(no);
+		if(pageNo==null)
+			pageNo="1";
+			//System.out.println(pageNo);
+			List<FreeBoardVO> list=freeBoardService.getFreeBoardList(pageNo);
+			System.out.println(list);
+			ListVO lvo=new ListVO(list, new PagingBean(freeBoardService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+			return new ModelAndView("freeBoard_list","lvo", lvo);
 	}
 	@RequestMapping("write")
 	public ModelAndView write(HttpServletRequest request){
