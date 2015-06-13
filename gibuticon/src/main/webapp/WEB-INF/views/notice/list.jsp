@@ -16,13 +16,13 @@
 			</tr>
 		</thead>
 		<tbody>			
-			<c:forEach var="posting" items="${requestScope.vo.list}">	
+			<c:forEach var="noticeboard" items="${requestScope.lvo.list}">	
 			<tr>
-			    <td>${posting.noticeNo }</td>				
-				<td><a href="${initParam.root }showNoticeContent.gibu?no=${posting.noticeNo }">
-				${posting.title }</a></td>
-				<td>${posting.writeDate }</td>
-				<td>${posting.hits }</td>
+			    <td>${noticeboard.noticeNo }</td>				
+				<td><a href="${initParam.root}showNoticeContent.gibu?no=${noticeboard.noticeNo }">
+				${noticeboard.title }</a></td>
+				<td>${noticeboard.writeDate }</td>
+				<td>${noticeboard.hits }</td>
 			</tr>
 	</c:forEach>
 <%-- 	<c:forEach var="i" begin="1" end="${fn:length(requestScope.list)}">
