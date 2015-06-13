@@ -5,31 +5,34 @@ import java.sql.Date;
 public class FreeBoardVO {
 	private String boardNo;
 	private String title;
-	private Date writeDate;
+	private String writeDate;
 	private String content;
 	private int hits;
 	private String id;
+	public int ref;
+	public int restep;
+	public int relevel;
 
 	public FreeBoardVO() {
 		super();
 	}
 
-	public FreeBoardVO(String title, String content, String id) {
+	/*public FreeBoardVO(String title, String content, String id) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.id = id;
-	}
+	}*/
 
-	public FreeBoardVO(String boardNo, String title, String content, String id) {
+	/*public FreeBoardVO(String boardNo, String title, String content, String id) {
 		super();
 		this.boardNo = boardNo;
 		this.title = title;
 		this.content = content;
 		this.id = id;
-	}
+	}*/
 
-	public FreeBoardVO(String boardNo, String title, Date writeDate,
+	/*public FreeBoardVO(String boardNo, String title, Date writeDate,
 			String content, int hits, String id) {
 		super();
 		this.boardNo = boardNo;
@@ -38,17 +41,20 @@ public class FreeBoardVO {
 		this.content = content;
 		this.hits = hits;
 		this.id = id;
+	}*/
+
+	
+
+	public String getBoardNo() {
+		return boardNo;
 	}
 
 	@Override
 	public String toString() {
 		return "FreeBoardVO [boardNo=" + boardNo + ", title=" + title
 				+ ", writeDate=" + writeDate + ", content=" + content
-				+ ", hits=" + hits + ", id=" + id + "]";
-	}
-
-	public String getBoardNo() {
-		return boardNo;
+				+ ", hits=" + hits + ", id=" + id + ", ref=" + ref
+				+ ", restep=" + restep + ", relevel=" + relevel + "]";
 	}
 
 	public void setBoardNo(String boardNo) {
@@ -63,11 +69,11 @@ public class FreeBoardVO {
 		this.title = title;
 	}
 
-	public Date getWriteDate() {
+	public String getWriteDate() {
 		return writeDate;
 	}
 
-	public void setWriteDate(Date writeDate) {
+	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
 	}
 
@@ -93,6 +99,30 @@ public class FreeBoardVO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public int getRef() {
+		return ref;
+	}
+
+	public void setRef(int ref) {
+		this.ref = ref;
+	}
+
+	public int getRestep() {
+		return restep;
+	}
+
+	public void setRestep(int restep) {
+		this.restep = restep;
+	}
+
+	public int getRelevel() {
+		return relevel;
+	}
+
+	public void setRelevel(int relevel) {
+		this.relevel = relevel;
 	}
 
 }

@@ -19,5 +19,9 @@ public interface FreeBoardDAO {
 	public abstract int getTotalPostingCount();
 
 	public abstract void updateHit(String no);
+	
+	public abstract FreeBoardVO replyView(String no);
+	
+	public abstract void reply(FreeBoardVO freeBoardVO);
 
 }

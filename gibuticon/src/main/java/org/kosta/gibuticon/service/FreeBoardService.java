@@ -15,4 +15,6 @@ public interface FreeBoardService {
 	public abstract String getPageNo(String no);
 	public abstract int getTotalPostingCount();
 	public abstract FreeBoardVO getFundByNoNotHit(String no);
+	public abstract FreeBoardVO replyView(String no);
+	public abstract void reply(FreeBoardVO freeBoardVO);
 }

@@ -43,11 +43,20 @@
 								readonly="readonly">${requestScope.fvo.content }</textarea></td>
 					</tr>
 					<tr>
-						<td valign="middle"><a
-							href="${initParam.root}getFreeBoardList.gibu?no=${requestScope.fvo.boardNo}"><img
-								src="${initParam.root}/layoutit/src/img/list_btn.jpg"></a> <img
-							id="updateImg" src="${initParam.root}/layoutit/src/img/modify_btn.jpg">
-							<img id="delImg" src="${initParam.root}/layoutit/src/img/delete_btn.jpg"></td>
+						<td><form action="">
+						댓글<input type="text" name="comment">
+						<input type="submit" value="댓글등록">
+						<input type="hidden" name="id" value="${requestScope.fvo.id}">
+						</form></td>
+					</tr>
+					<tr>
+						<td valign="middle">
+						<a href="replyView.gibu?no=${requestScope.fvo.boardNo }"><img
+								src="${initParam.root}layoutit/src/img/answer_btn.jpg"></a>
+						<a href="${initParam.root}getFreeBoardList.gibu?no=${requestScope.fvo.boardNo}"><img
+								src="${initParam.root}layoutit/src/img/list_btn.jpg"></a> <img
+							id="updateImg" src="${initParam.root}layoutit/src/img/modify_btn.jpg">
+							<img id="delImg" src="${initParam.root}layoutit/src/img/delete_btn.jpg"></td>
 					</tr>
 					<tr>
 						<td><span id="inputPass"></span></td>

@@ -59,4 +59,17 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		return freeBoardDAO.getFreeBoardByNo(no);
 	}
 
+	@Override
+	public FreeBoardVO replyView(String no) {
+		return freeBoardDAO.replyView(no);
+	}
+
+	@Override
+	public void reply(FreeBoardVO freeBoardVO) {
+		freeBoardVO.setRestep(freeBoardVO.getRestep()+1);
+		freeBoardVO.setRelevel(freeBoardVO.getRelevel()+1);
+		freeBoardDAO.reply(freeBoardVO);
+		
+	}
+
 }
