@@ -33,9 +33,9 @@
 			<td valign="middle" align="center" colspan="3"><img
 				class="action" src="${initParam.root }img/list_btn.jpg"
 				onclick="sendList()"> <a
-				href="deleteNotice.gibu?no=${requestScope.posting.noticeNo}"><img
+				href="deleteNotice.gibu?noticeNo=${requestScope.posting.noticeNo}"><img
 					class="action" src="${initParam.root }img/delete_btn.jpg"></a> <a
-				href="NoticwUpdateForm.gibu?no=${requestScope.posting.noticeNo}"><img
+				href="update.gibu?noticeNo=${requestScope.posting.noticeNo}"><img
 					class="action" src="${initParam.root }img/modify_btn.jpg"></a>
 		</tr>
 	</table>

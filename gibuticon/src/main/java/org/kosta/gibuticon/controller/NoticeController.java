@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.kosta.gibuticon.model.notice.PagingBean;
@@ -41,11 +42,12 @@ public class NoticeController {
 	}
 
 	@RequestMapping("showNoticeContent.gibu")
-	public ModelAndView showNoticeContent(int noticeNo) {
+	public ModelAndView showNoticeContent(String noticeNo) {
 		NoticeVO nvo = noticeService.showContent(noticeNo);
+		System.out.println(nvo);
 		return new ModelAndView("notice_show_content", "posting", nvo);
 	}
-
+	
 	@RequestMapping("writeNotice.gibu")
 	public ModelAndView writeNotice(NoticeVO noticeVO) {
 		// no로 게시글 찾아서 그 vo 전체를 넘겨주는
@@ -53,4 +55,37 @@ public class NoticeController {
 		return new ModelAndView("getNoticeList.gibu");
 
 	}
+	
+	
+	@RequestMapping("deleteNotice.gibu")
+	public String deleteNotice(String noticeNo){
+		noticeService.deleteNotice(noticeNo);
+		return "redirect:getNoticeList.gibu";
+	}
+	
+	
+
+	@RequestMapping("update.gibu")
+	public ModelAndView update(String noticeNo) {
+		System.out.println("여기에 들어왔습니당");
+		NoticeVO nvo = noticeService.getNoticeByNo(noticeNo);
+		return new ModelAndView("notice_update", "nvo", nvo);
+	}
+	
+	@RequestMapping("updateNotice.gibu")
+	public String updateNotice(NoticeVO noticeVO){
+		System.out.println(noticeVO + "받아온거");
+		noticeService.updateNotice(noticeVO);
+		System.out.println(noticeVO);
+		return "redirect:showNoticeContent.gibu?noticeNo=" + noticeVO.getnoticeNo();
+	}
+	
 }
+
+
+
+
+
+
+
+
