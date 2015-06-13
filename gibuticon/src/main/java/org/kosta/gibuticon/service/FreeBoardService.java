@@ -2,7 +2,7 @@ package org.kosta.gibuticon.service;
 
 import java.util.List;
 
-import org.kosta.gibuticon.model.board.FreeBoardVO;
+import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 
 public interface FreeBoardService {
@@ -12,7 +12,7 @@ public interface FreeBoardService {
 	public abstract FreeBoardVO getFreeBoardByNo(String no);
 	public abstract void updateFreeBoard(FreeBoardVO freeBoardVO);
 	public abstract void deleteFreeBoard(String no);
-	public String getPageNo(String no);
-	public int getTotalPostingCount();
-	public FreeBoardVO getFundByNoNotHit(String no);
+	public abstract String getPageNo(String no);
+	public abstract int getTotalPostingCount();
+	public abstract FreeBoardVO getFundByNoNotHit(String no);
 }

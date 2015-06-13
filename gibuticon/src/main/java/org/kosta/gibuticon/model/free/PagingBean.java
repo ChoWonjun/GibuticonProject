@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.board;
+package org.kosta.gibuticon.model.free;
 /**
  * 페이징 처리를 위한 비즈니스 클래스
  * @author KOSTA-00-KANGSA
