@@ -19,11 +19,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from notice where notice_no=#{value}
 	</delete>
 	<resultMap type="noticeVO" id="noticeListRM">
+		<result property="noticeNo" column="notice_no" />	
 		<result property="writeDate" column="write_date" />
 	</resultMap>
 	<select id="showContent" resultMap="noticeListRM">
-		select
-		notice_no,title,write_date,content,hits from notice where notice_no=#{value}
+		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
 	</select>
 	<select id="getNoticeList" resultMap="noticeListRM">
 		SELECT
@@ -59,35 +59,3 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 </mapper>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

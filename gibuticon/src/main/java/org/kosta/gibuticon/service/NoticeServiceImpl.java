@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeDAO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -25,30 +26,30 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public NoticeVO showContent(int noticeNo) {
+	public NoticeVO showContent(String noticeNo) {
 		noticeDAO.updateHit(noticeNo);
 		return noticeDAO.showContent(noticeNo);
 	}
 
 	@Override
-	public NoticeVO showContentNoHit(int noticeNo) {
+	public NoticeVO showContentNoHit(String noticeNo) {
 		return noticeDAO.showContent(noticeNo);
 	}
 
 	@Override
-	public void deleteBoard(int noticeNo) {
+	public void deleteNotice(String noticeNo) {
 		noticeDAO.deleteNotice(noticeNo);
 		
 	}
 
 	@Override
-	public void updateBoard(NoticeVO noticeVO) {
+	public void updateNotice(NoticeVO noticeVO) {
 		noticeDAO.updateNotice(noticeVO);
 		
 	}
 
 	@Override
-	public String getPageNo(String no) {
+	public String getPageNo(String noticeVO) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -57,6 +58,12 @@ public class NoticeServiceImpl implements NoticeService{
 	public int getTotalPostingCount() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public NoticeVO getNoticeByNo(String noticeVO) {
+		noticeDAO.updateHit(noticeVO);
+		return noticeDAO.getNoticeByNo(noticeVO);
 	}
 
 }
