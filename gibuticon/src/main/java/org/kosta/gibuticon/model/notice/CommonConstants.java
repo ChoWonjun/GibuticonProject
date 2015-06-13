@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.board;
+package org.kosta.gibuticon.model.notice;
 
 public interface CommonConstants {
 	/**

@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.board;
+package org.kosta.gibuticon.model.free;
 
 import java.sql.Date;
 

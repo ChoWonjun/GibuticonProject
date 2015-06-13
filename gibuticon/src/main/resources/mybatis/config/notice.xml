@@ -43,8 +43,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update notice set hits=hits+1 where notice_no=#{noticeNo}
 	</update>
 	
-	<select id="totalContent" resultType="int">
+	<select id="getPageNo" resultType="string">
+		select page from(
+			select notice_no, ceil(rownum/5) as page from(
+				select notice_no from notice order by notice_no desc
+			)
+		) where notice_no=#{noticeNo}
+	</select>
+	
+	<select id="getTotalPostingCount" resultType="int">
 		select count(*) from notice
+	</select>
+	<select id="getNoticeByNo" resultMap="noticeListRM">
+		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
 	</select>
 	
 </mapper>

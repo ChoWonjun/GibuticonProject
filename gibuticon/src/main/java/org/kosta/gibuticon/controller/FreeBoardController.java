@@ -6,9 +6,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.gibuticon.model.board.FreeBoardVO;
-import org.kosta.gibuticon.model.board.ListVO;
-import org.kosta.gibuticon.model.board.PagingBean;
+import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.free.ListVO;
+import org.kosta.gibuticon.model.free.PagingBean;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.service.FreeBoardService;
 import org.springframework.stereotype.Controller;
