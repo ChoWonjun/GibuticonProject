@@ -5,13 +5,12 @@ import java.util.List;
 
 public interface NoticeDAO {
 
-	public abstract NoticeVO getNoticeByNo(int noticeNo);
 
 	public abstract List<NoticeVO> getNoticeList(String pageNo);
 
 	public abstract void writeNotice(NoticeVO noticeVO);
 	
-	public abstract NoticeVO showContent(int no);
+	public abstract NoticeVO showContent(int noticeNo);
 
 	public abstract void deleteNotice(int noticeNo);
 
