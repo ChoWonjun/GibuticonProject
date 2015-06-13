@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.notice.ListVO;
-import org.kosta.gibuticon.notice.NoticeDAO;
-import org.kosta.gibuticon.notice.NoticeVO;
-import org.kosta.gibuticon.notice.PagingBean;
+import org.kosta.gibuticon.model.notice.ListVO;
+import org.kosta.gibuticon.model.notice.NoticeDAO;
+import org.kosta.gibuticon.model.notice.NoticeVO;
+import org.kosta.gibuticon.model.notice.PagingBean;
 import org.springframework.stereotype.Service;
 @Service
 public class NoticeServiceImpl implements NoticeService{

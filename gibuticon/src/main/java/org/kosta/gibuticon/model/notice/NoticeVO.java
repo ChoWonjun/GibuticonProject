@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.notice;
+package org.kosta.gibuticon.model.notice;
 
 public class NoticeVO {
 	private int noticeNo;

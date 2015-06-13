@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.notice.ListVO;
-import org.kosta.gibuticon.notice.NoticeVO;
-import org.kosta.gibuticon.notice.PagingBean;
+import org.kosta.gibuticon.model.notice.ListVO;
+import org.kosta.gibuticon.model.notice.NoticeVO;
+import org.kosta.gibuticon.model.notice.PagingBean;
 import org.kosta.gibuticon.service.NoticeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

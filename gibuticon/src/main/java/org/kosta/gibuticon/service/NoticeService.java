@@ -3,7 +3,7 @@ package org.kosta.gibuticon.service;
 import java.util.List;
 
 import org.kosta.gibuticon.model.free.FreeBoardVO;
-import org.kosta.gibuticon.notice.NoticeVO;
+import org.kosta.gibuticon.model.notice.NoticeVO;
 
 public interface NoticeService {
 	public void writeNotice(NoticeVO noticeVO);		
