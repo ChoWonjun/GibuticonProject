@@ -10,7 +10,9 @@ create table free_board(
 	id varchar2(50),
 	constraint fk_id foreign key(id) references member
 )
-
+alter table free_board add(ref number not null);
+alter table free_board add(restep number not null);
+alter table free_board add(relevel number not null);
 
 create sequence free_board_sequence;
 drop sequence free_board_sequence;
