@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
 <script type="text/javascript">
 	function sendList(){
-		location.href="getFundList.gibu?no=${requestScope.posting.fundNo}";
+		location.href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}";
 	}
 </script>
 </head>
@@ -31,7 +31,7 @@
 		<tr>
 			<td valign="middle" align="center" colspan="3">
 			 <img class="action" src="${initParam.root }img/list_btn.jpg" onclick="sendList()" >
-		     <a href="deleteFund.gibu?no=${requestScope.posting.fundNo}"><img class="action" src="${initParam.root }img/delete_btn.jpg" ></a>
-			 <a href="fundUpdateForm.gibu?no=${requestScope.posting.fundNo}"><img class="action" src="${initParam.root }img/modify_btn.jpg" ></a>
+		     <a href="${initParam.root }fund/delete.gibu?no=${requestScope.posting.fundNo}"><img class="action" src="${initParam.root }img/delete_btn.jpg" ></a>
+			 <a href="${initParam.root }fund/updateForm.gibu?no=${requestScope.posting.fundNo}"><img class="action" src="${initParam.root }img/modify_btn.jpg" ></a>
 		</tr>
 	</table>

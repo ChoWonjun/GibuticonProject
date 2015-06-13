@@ -17,7 +17,7 @@
 
 
  <br>
-  <form action="updateFund.gibu" method="post" name="write_form">  
+  <form action="${initParam.root }fund/update.gibu" method="post" name="write_form">  
   <input type="hidden" name="fundNo" value="${requestScope.posting.fundNo }">
    <table class="inputForm" >
     <caption>기부수정(${requestScope.posting.fundNo })</caption>

@@ -20,8 +20,8 @@ public class FundController {
 
 	@Resource
 	private FundService fundService;
-	@RequestMapping("getFundList.gibu")
-	public ModelAndView getFundList(String pageNo, String no) {
+	@RequestMapping("fund/getList.gibu")
+	public ModelAndView getList(String pageNo, String no) {
 		
 		if(no!=null)
 			pageNo=""+fundService.getPageNo(no);
@@ -30,11 +30,11 @@ public class FundController {
 		
 		List<FundVO> list=fundService.getFundList(pageNo);
 		ListVO vo=new ListVO(list, new PagingBean(fundService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-		return new ModelAndView("fund","vo",vo);
+		return new ModelAndView("fund_list","vo",vo);
 	}
 	
-	@RequestMapping("showFundContent.gibu")
-	public ModelAndView showFundContent(String no,HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping("fund/showContent.gibu")
+	public ModelAndView showContent(String no,HttpServletRequest request, HttpServletResponse response) {
 		Cookie cookies[]=request.getCookies();
 		String hitcookieVal="";
 		String noStr="|"+no+"|";
@@ -66,41 +66,41 @@ public class FundController {
 		else
 			vo =fundService.getFundByNoNotHit(no);
 		
-		return new ModelAndView("fundcontent","posting",vo);
+		return new ModelAndView("fund_show_content","posting",vo);
 	}
 	
-	@RequestMapping("showFundContentNotHit.gibu")
-	public ModelAndView showFundContentNoHit(String no) {
+	@RequestMapping("fund/showContentNotHit.gibu")
+	public ModelAndView showContentNoHit(String no) {
 		
 		FundVO vo=fundService.getFundByNoNotHit(no);
-		return new ModelAndView("fundcontent","posting",vo);
+		return new ModelAndView("fund_show_content","posting",vo);
 	}
 	
-	@RequestMapping("fundWriteForm.gibu")
+	@RequestMapping("fund/writeForm.gibu")
 	public ModelAndView fundWriteForm() {
-		return new ModelAndView("fundwrite");
+		return new ModelAndView("fund_write");
 	}
 	
-	@RequestMapping("fundUpdateForm.gibu")
-	public ModelAndView fundUpdateForm(String no) {
-		return new ModelAndView("fundupdate","posting",fundService.getFundByNoNotHit(no));
+	@RequestMapping("fund/updateForm.gibu")
+	public ModelAndView updateForm(String no) {
+		return new ModelAndView("fund_update","posting",fundService.getFundByNoNotHit(no));
 	}
 	
-	@RequestMapping("writeFund.gibu")
-	public ModelAndView writeFund(FundVO vo){
+	@RequestMapping("fund/write.gibu")
+	public ModelAndView write(FundVO vo){
 		fundService.writeFund(vo);
-		return new ModelAndView("redirect:showFundContentNotHit.gibu","no",vo.getFundNo());
+		return new ModelAndView("redirect:showContentNotHit.gibu","no",vo.getFundNo());
 	}
 	
-	@RequestMapping("updateFund.gibu")
+	@RequestMapping("fund/update.gibu")
 	public ModelAndView updateFund(FundVO vo){
 		fundService.updateFund(vo);
-		return new ModelAndView("redirect:showFundContentNotHit.gibu","no",vo.getFundNo());
+		return new ModelAndView("redirect:showContentNotHit.gibu","no",vo.getFundNo());
 	}
 	
-	@RequestMapping("deleteFund.gibu")
-	public ModelAndView deleteFund(String no){
+	@RequestMapping("fund/delete.gibu")
+	public ModelAndView delete(String no){
 		fundService.deleteFundByNo(no);
-		return new ModelAndView("redirect:getFundList.gibu");
+		return new ModelAndView("redirect:getList.gibu");
 	}
 }
