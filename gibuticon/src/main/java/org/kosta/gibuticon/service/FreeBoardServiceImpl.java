@@ -4,8 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.gibuticon.controller.BoardController;
 import org.kosta.gibuticon.model.board.FreeBoardDAO;
 import org.kosta.gibuticon.model.board.FreeBoardVO;
+import org.kosta.gibuticon.model.fund.FundVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,12 +24,14 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeBoardVO> getFreeBoardList() {
-		return freeBoardDAO.getFreeBoardList();
+	public List<FreeBoardVO> getFreeBoardList(String pageNo) {
+		return freeBoardDAO.getFreeBoardList(pageNo);
 	}
 
 	@Override
 	public FreeBoardVO getFreeBoardByNo(String no) {
+		//조회수 증가
+		freeBoardDAO.updateHit(no);
 		return freeBoardDAO.getFreeBoardByNo(no);
 	}
 
@@ -40,6 +44,21 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public void deleteFreeBoard(String no) {
 		freeBoardDAO.deleteFreeBoard(no);
 		
+	}
+
+	@Override
+	public String getPageNo(String no) {
+		return freeBoardDAO.getPageNo(no);
+	}
+
+	@Override
+	public int getTotalPostingCount() {
+		return freeBoardDAO.getTotalPostingCount();
+	}
+
+	@Override
+	public FreeBoardVO getFundByNoNotHit(String no) {
+		return freeBoardDAO.getFreeBoardByNo(no);
 	}
 
 }

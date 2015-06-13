@@ -44,7 +44,7 @@
 					</tr>
 					<tr>
 						<td valign="middle"><a
-							href="${initParam.root}getFreeBoardList.gibu"><img
+							href="${initParam.root}getFreeBoardList.gibu?no=${requestScope.fvo.boardNo}"><img
 								src="${initParam.root}/layoutit/src/img/list_btn.jpg"></a> <img
 							id="updateImg" src="${initParam.root}/layoutit/src/img/modify_btn.jpg">
 							<img id="delImg" src="${initParam.root}/layoutit/src/img/delete_btn.jpg"></td>

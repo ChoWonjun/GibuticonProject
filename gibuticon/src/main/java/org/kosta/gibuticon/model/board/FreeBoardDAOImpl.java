@@ -24,8 +24,8 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#getFreeBoardList()
 	 */
 	@Override
-	public List<FreeBoardVO> getFreeBoardList(){
-		return sqlSessionTemplate.selectList("freeboard.getFreeBoardList");
+	public List<FreeBoardVO> getFreeBoardList(String pageNo){
+		return sqlSessionTemplate.selectList("freeboard.getFreeBoardList", pageNo);
 	}
 	
 	/* (non-Javadoc)
@@ -51,6 +51,22 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public void updateFreeBoard(FreeBoardVO freeBoardVO){
 		sqlSessionTemplate.update("freeboard.updateFreeBoard",freeBoardVO);
 		System.out.println(freeBoardVO+"DAO");
+	}
+
+	@Override
+	public String getPageNo(String no) {
+		return sqlSessionTemplate.selectOne("freeboard.getPageNo", no);
+	}
+
+	@Override
+	public int getTotalPostingCount() {
+		return sqlSessionTemplate.selectOne("freeboard.getTotalPostingCount");
+	}
+
+	@Override
+	public void updateHit(String no) {
+		sqlSessionTemplate.update("freeboard.updateHit", no);
+		
 	}
 	
 }
