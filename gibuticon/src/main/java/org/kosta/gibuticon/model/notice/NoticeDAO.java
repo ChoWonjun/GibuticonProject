@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.notice;
+package org.kosta.gibuticon.model.notice;
 
 import java.util.List;
 
