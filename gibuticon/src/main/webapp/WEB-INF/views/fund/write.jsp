@@ -17,7 +17,7 @@
 
 
  <br>
-  <form action="writeFund.gibu" method="post" name="write_form">  
+  <form action="${initParam.root }fund/write.gibu" method="post" name="write_form">  
    <table class="inputForm" >
     <caption>기부등록</caption>
     <tbody>
