@@ -4,10 +4,10 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.board.ListVO;
-import org.kosta.gibuticon.model.board.NoticeDAO;
-import org.kosta.gibuticon.model.board.NoticeVO;
-import org.kosta.gibuticon.model.board.PagingBean;
+import org.kosta.gibuticon.notice.ListVO;
+import org.kosta.gibuticon.notice.NoticeDAO;
+import org.kosta.gibuticon.notice.NoticeVO;
+import org.kosta.gibuticon.notice.PagingBean;
 import org.springframework.stereotype.Service;
 @Service
 public class NoticeServiceImpl implements NoticeService{
@@ -20,19 +20,13 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public ListVO getNoticeList(String pageNo) {
-		if(pageNo==null||pageNo=="") 
-			pageNo="1";
-		List<NoticeVO> list=noticeDAO.getNoticeList(pageNo);
-		int total=noticeDAO.totalContent();
-		PagingBean paging=new PagingBean(total,Integer.parseInt(pageNo));
-		ListVO lvo=new ListVO(list,paging);
-		return lvo;
+	public List<NoticeVO> getNoticeList(String pageNo) {
+		return noticeDAO.getNoticeList(pageNo);
 	}
 
 	@Override
 	public NoticeVO showContent(int noticeNo) {
-		noticeDAO.updateCount(noticeNo);
+		noticeDAO.updateHit(noticeNo);
 		return noticeDAO.showContent(noticeNo);
 	}
 
@@ -51,6 +45,18 @@ public class NoticeServiceImpl implements NoticeService{
 	public void updateBoard(NoticeVO noticeVO) {
 		noticeDAO.updateNotice(noticeVO);
 		
+	}
+
+	@Override
+	public String getPageNo(String no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getTotalPostingCount() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -1,8 +1,12 @@
 package org.kosta.gibuticon.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.board.NoticeVO;
+import org.kosta.gibuticon.notice.ListVO;
+import org.kosta.gibuticon.notice.NoticeVO;
+import org.kosta.gibuticon.notice.PagingBean;
 import org.kosta.gibuticon.service.NoticeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +27,18 @@ public class NoticeController {
 	}
 
 	@RequestMapping("getNoticeList.gibu")
-	public ModelAndView getNoticeList(String PageNO) {
-		return new ModelAndView("notice_list", "list", noticeService.getNoticeList("1").getList());
+	public ModelAndView getNoticeList(String no,String pageNo) {
+		if(no!=null)
+			pageNo=noticeService.getPageNo(pageNo);
+		if(pageNo==null)
+			pageNo="1";
+			//System.out.println(pageNo);
+			List<NoticeVO> list=noticeService.getNoticeList(pageNo);
+			System.out.println(list);
+			ListVO lvo=new ListVO(list, new PagingBean(noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+			return new ModelAndView("notice_list","lvo", lvo);
 	}
+	
 
 	@RequestMapping("showNoticeContent.gibu")
 	public ModelAndView showNoticeContent(int noticeNo) {

@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.board;
+package org.kosta.gibuticon.notice;
 
 import java.util.List;
 
@@ -16,9 +16,13 @@ public interface NoticeDAO {
 
 	public abstract void updateNotice(NoticeVO noticeVO);
 	
-	public abstract void updateCount(int noticeNo);
+	public abstract void updateHit(int noticeNo);
 	
-	public  abstract int totalContent();
+	public abstract NoticeVO getNoticeByNo(String no);
+	
+	public abstract String getPageNo(String no);
+
+	public abstract int getTotalPostingCount();
 	
 	
 

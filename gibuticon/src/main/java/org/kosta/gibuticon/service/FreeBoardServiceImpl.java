@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.controller.BoardController;
-import org.kosta.gibuticon.model.board.FreeBoardDAO;
-import org.kosta.gibuticon.model.board.FreeBoardVO;
-import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.free.FreeBoardDAO;
+import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.springframework.stereotype.Service;
 
 @Service

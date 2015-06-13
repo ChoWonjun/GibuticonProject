@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.board;
+package org.kosta.gibuticon.notice;
 
 import java.util.List;
 /**
@@ -8,20 +8,20 @@ import java.util.List;
  *
  */
 public class ListVO {
-	private List<FreeBoardVO> list;
+	private List<NoticeVO> list;
 	private PagingBean pagingBean;
 	public ListVO() {
 		super();		
 	}
-	public ListVO(List<FreeBoardVO> list, PagingBean pagingBean) {
+	public ListVO(List<NoticeVO> list, PagingBean pagingBean) {
 		super();
 		this.list = list;
 		this.pagingBean = pagingBean;
 	}
-	public List<FreeBoardVO> getList() {
+	public List<NoticeVO> getList() {
 		return list;
 	}
-	public void setList(List<FreeBoardVO> list) {
+	public void setList(List<NoticeVO> list) {
 		this.list = list;
 	}
 	public PagingBean getPagingBean() {

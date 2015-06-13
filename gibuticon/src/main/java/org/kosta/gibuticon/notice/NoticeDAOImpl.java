@@ -1,8 +1,13 @@
-package org.kosta.gibuticon.model.board;
+package org.kosta.gibuticon.notice;
 
 import java.util.List;
 
 import javax.annotation.Resource;
+
+
+
+
+
 
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -32,19 +37,33 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public void updateNotice(NoticeVO noticeVO) {
 		sqlSessionTemplate.update("notice.updateNotice", noticeVO);
 	}
-	
-	
-	public void updateCount(int noticeNo) {
-		sqlSessionTemplate.update("notice.updateCount", noticeNo);
-	}
-	
-	
-	public int totalContent(){
-		return sqlSessionTemplate.selectOne("notice.totalContent");
-	}
 
 	public NoticeVO showContent(int noticeNo){
-		return (NoticeVO)sqlSessionTemplate.selectOne("notice.showContent",noticeNo);
+		return sqlSessionTemplate.selectOne("notice.showContent",noticeNo);
+	}
+
+
+	@Override
+	public void updateHit(int noticeNo) {
+		sqlSessionTemplate.update("notice.updateNotice",noticeNo);
+		
+	}
+
+	@Override
+	public String getPageNo(String no) {
+		return sqlSessionTemplate.selectOne("notice.getPageNo",no);
+	}
+
+
+	@Override
+	public int getTotalPostingCount() {
+		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount");
+	}
+
+
+	@Override
+	public NoticeVO getNoticeByNo(String no) {
+		return sqlSessionTemplate.selectOne("notice.getNoticeByNo",no);
 	}
 
 }

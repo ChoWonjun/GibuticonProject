@@ -1,7 +1,7 @@
 package org.kosta.gibuticon;
 
-import org.kosta.gibuticon.model.board.NoticeDAO;
-import org.kosta.gibuticon.model.board.NoticeVO;
+import org.kosta.gibuticon.notice.NoticeDAO;
+import org.kosta.gibuticon.notice.NoticeVO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
