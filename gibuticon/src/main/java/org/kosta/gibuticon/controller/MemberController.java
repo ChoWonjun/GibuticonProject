@@ -10,6 +10,7 @@ import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberController {
 	@Resource
 	private MemberService memberService;
+	
+	@RequestMapping(value="loginView",method=RequestMethod.GET)
+	public String loginView(@ModelAttribute LoginForm loginForm, HttpServletRequest request) {
+		return "member_loginView";
+	}
 	
 	/**
 	 * login 기능.
