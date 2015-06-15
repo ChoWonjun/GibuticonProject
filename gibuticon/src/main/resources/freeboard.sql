@@ -10,7 +10,19 @@ create table free_board(
 	id varchar2(50),
 	constraint fk_id foreign key(id) references member
 )
-
+create table freeBoard_comment(
+	id varchar2(50),
+	board_no number,
+	write_date date not null,
+	comment varchar2(100) not null,
+	hits number not null,
+	constraint fk_id foreign key(id) references member,
+	constraint fk_board_no foreign key(board_no) references free_board,
+	constraint pk_freeBoard_comment primary key(id, board_no)
+)
+alter table free_board add(ref number not null);
+alter table free_board add(restep number not null);
+alter table free_board add(relevel number not null);
 
 create sequence free_board_sequence;
 drop sequence free_board_sequence;

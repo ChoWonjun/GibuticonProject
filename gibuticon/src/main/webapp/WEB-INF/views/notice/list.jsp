@@ -16,26 +16,33 @@
 			</tr>
 		</thead>
 		<tbody>			
-			<c:forEach var="posting" items="${requestScope.vo.list}">	
+			<c:forEach items="${requestScope.lvo.list}" var="noticeboard" >	
 			<tr>
-			    <td>${posting.noticeNo }</td>				
-				<td><a href="${initParam.root }showNoticeContent.gibu?no=${posting.noticeNo }">
-				${posting.title }</a></td>
-				<td>${posting.writeDate }</td>
-				<td>${posting.hits }</td>
+			    <td>${noticeboard.noticeNo }</td>				
+				<td><a href="${initParam.root}showNoticeContent.gibu?noticeNo=${noticeboard.noticeNo }">
+				${noticeboard.title }</a></td>
+				<td>${noticeboard.writeDate }</td>
+				<td>${noticeboard.hits }</td>
 			</tr>
 	</c:forEach>
-<%-- 	<c:forEach var="i" begin="1" end="${fn:length(requestScope.list)}">
-	<c:set var="posting" value="${requestScope.list[i-1] }" ></c:set>	 --%>			
-<%--			<tr>
-			    <td>${posting.noticeNo }</td>				
-				<td><a href="${initParam.root }showNoticeContent.gibu?no=${posting.noticeNo }">
-				${posting.title }</a></td>
-				<td>${posting.writeDate }</td>
-				<td>${posting.hits }</td>
-			</tr>
- 	</c:forEach>	 --%>				
-		</tbody>					
-	</table><br></br>	
-	<a href="writeNoticeView.gibu"><img  src="${initParam.root }img/write_btn.jpg" border="0"></a>
-	<br><br>	
+			<tr>
+				<td colspan=5 align="center">
+					<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
+					<c:if test="${pb.previousPageGroup}">
+						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
+					</c:forEach>
+					<c:if test="${pb.nextPageGroup}">
+						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+					</c:if>
+				</td>
+			</tr>				
+		</tbody>
+	</table>
+<br>
+<a href="write.gibu">글쓰기</a>
+</body>
+</html>
+

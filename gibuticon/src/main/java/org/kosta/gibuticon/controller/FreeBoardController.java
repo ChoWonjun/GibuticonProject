@@ -73,5 +73,15 @@ public class FreeBoardController {
 		freeBoardService.deleteFreeBoard(no);
 		return "redirect:getFreeBoardList.gibu";
 	}
+	@RequestMapping("replyView")
+	public ModelAndView replyView(String no){
+		FreeBoardVO fvo=freeBoardService.replyView(no);
+		return new ModelAndView("freeBoard_reply_form","fvo",fvo);
+	}
+	@RequestMapping("reply")
+	public ModelAndView reply(FreeBoardVO freeBoardVO){
+		freeBoardService.reply(freeBoardVO);
+		return new ModelAndView("freeBoard_show_content","fvo",freeBoardVO);
+	}
 
 }

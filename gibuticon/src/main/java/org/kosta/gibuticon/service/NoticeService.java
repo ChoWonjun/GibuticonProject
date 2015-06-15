@@ -6,12 +6,14 @@ import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 
 public interface NoticeService {
-	public void writeNotice(NoticeVO noticeVO);		
-	public List<NoticeVO> getNoticeList(String pageNo);
-	public NoticeVO showContent(int noticeNo);	
-	public NoticeVO showContentNoHit(int noticeNo);
-	public void deleteBoard(int noticeNo);
-	public void updateBoard(NoticeVO noticeVO);
-	public String getPageNo(String no);
-	public int getTotalPostingCount();
+	public abstract void writeNotice(NoticeVO noticeVO);		
+	public abstract List<NoticeVO> getNoticeList(String pageNo);
+	public abstract NoticeVO showContent(String noticeNo);	
+	public abstract NoticeVO showContentNoHit(String noticeNo);
+	public abstract void deleteNotice(String noticeNo);
+	public abstract void updateNotice(NoticeVO noticeVO);
+	public abstract String getPageNo(String noticeVO);
+	public abstract int getTotalPostingCount();
+	public abstract NoticeVO getNoticeByNo(String noticeVO);
+	
 }

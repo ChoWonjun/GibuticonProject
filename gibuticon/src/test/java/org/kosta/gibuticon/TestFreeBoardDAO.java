@@ -14,7 +14,7 @@ public class TestFreeBoardDAO {
 		//System.out.println(dao.getFreeBoardList(pageNo));
 		System.out.println(dao.getFreeBoardByNo("2"));
 //		dao.writeFreeBoard(new FreeBoardVO("hagisiro","sirosjro","chocamp"));
-		dao.updateFreeBoard(new FreeBoardVO("2","hagisiro","siroaaasjro","chocamp"));
+		//dao.updateFreeBoard(new FreeBoardVO("2","hagisiro","siroaaasjro","chocamp"));
 		
 /*		private String freeBoardNo;
 		private String title;

@@ -10,17 +10,17 @@ public interface NoticeDAO {
 
 	public abstract void writeNotice(NoticeVO noticeVO);
 	
-	public abstract NoticeVO showContent(int noticeNo);
+	public abstract NoticeVO showContent(String noticeNo);
 
-	public abstract void deleteNotice(int noticeNo);
+	public abstract void deleteNotice(String noticeNo);
 
 	public abstract void updateNotice(NoticeVO noticeVO);
 	
-	public abstract void updateHit(int noticeNo);
+	public abstract void updateHit(String noticeNo);
 	
-	public abstract NoticeVO getNoticeByNo(String no);
+	public abstract NoticeVO getNoticeByNo(String noticeNo);
 	
-	public abstract String getPageNo(String no);
+	public abstract String getPageNo(String noticeNo);
 
 	public abstract int getTotalPostingCount();
 	

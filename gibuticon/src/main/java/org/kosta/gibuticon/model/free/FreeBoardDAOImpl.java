@@ -68,5 +68,17 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		sqlSessionTemplate.update("freeboard.updateHit", no);
 		
 	}
+
+	@Override
+	public FreeBoardVO replyView(String no) {
+		return sqlSessionTemplate.selectOne("freeboard.replyView",no);
+	}
+
+	@Override
+	public void reply(FreeBoardVO freeBoardVO) {
+		sqlSessionTemplate.update("freeboard.replyUpdate",freeBoardVO);
+		sqlSessionTemplate.insert("freeboard.replyWrite",freeBoardVO);
+		
+	}
 	
 }

@@ -20,7 +20,7 @@
 	<c:forEach var="posting" items="${requestScope.vo.list}">	
 			<tr>
 			    <td>${posting.fundNo }</td>				
-				<td><a href="${initParam.root }showFundContent.gibu?no=${posting.fundNo }">
+				<td><a href="${initParam.root }fund/showContent.gibu?no=${posting.fundNo }">
 				${posting.fundName }</a></td>
 				<td>${posting.proposal }</td>
 				<td>${posting.dueDate }</td>
@@ -31,17 +31,17 @@
 				<td colspan=5 align="center">
 					<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
 					<c:if test="${pb.previousPageGroup}">
-						<a href="${initParam.root }getFundList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
+						<a href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-						<a href="${initParam.root }getFundList.gibu?pageNo=${i }">${i }</a>
+						<a href="${initParam.root }fund/getList.gibu?pageNo=${i }">${i }</a>
 					</c:forEach>
 					<c:if test="${pb.nextPageGroup}">
-						<a href="${initParam.root }getFundList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+						<a href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
 					</c:if>
 				</td>
 			</tr>					
 		</tbody>					
 	</table><br></br>	
-	<a href="fundWriteForm.gibu"><img  src="${initParam.root }img/write_btn.jpg" border="0"></a>
+	<a href="${initParam.root }fund/writeForm.gibu"><img  src="${initParam.root }img/write_btn.jpg" border="0"></a>
 	<br><br>	

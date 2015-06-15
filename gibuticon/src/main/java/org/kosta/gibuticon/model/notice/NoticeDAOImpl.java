@@ -10,6 +10,7 @@ import javax.annotation.Resource;
 
 
 
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -29,7 +30,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 	}
 
 
-	public void deleteNotice(int noticeNo) {
+	public void deleteNotice(String noticeNo) {
 		sqlSessionTemplate.delete("notice.deleteNotice", noticeNo);
 	}
 
@@ -38,20 +39,20 @@ public class NoticeDAOImpl implements NoticeDAO {
 		sqlSessionTemplate.update("notice.updateNotice", noticeVO);
 	}
 
-	public NoticeVO showContent(int noticeNo){
+	public NoticeVO showContent(String noticeNo){
 		return sqlSessionTemplate.selectOne("notice.showContent",noticeNo);
 	}
 
 
 	@Override
-	public void updateHit(int noticeNo) {
-		sqlSessionTemplate.update("notice.updateNotice",noticeNo);
+	public void updateHit(String noticeNo) {
+		sqlSessionTemplate.update("notice.updateCount",noticeNo);
 		
 	}
 
 	@Override
-	public String getPageNo(String no) {
-		return sqlSessionTemplate.selectOne("notice.getPageNo",no);
+	public String getPageNo(String noticeNo) {
+		return sqlSessionTemplate.selectOne("notice.getPageNo",noticeNo);
 	}
 
 
@@ -62,8 +63,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 
 	@Override
-	public NoticeVO getNoticeByNo(String no) {
-		return sqlSessionTemplate.selectOne("notice.getNoticeByNo",no);
+	public NoticeVO getNoticeByNo(String noticeNo) {
+		return sqlSessionTemplate.selectOne("notice.getNoticeByNo",noticeNo);
 	}
 
 }
