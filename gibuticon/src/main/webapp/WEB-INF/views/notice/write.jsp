@@ -6,40 +6,35 @@
 
 <link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
 <script type="text/javascript">
-	function content_submit(){
-		write_form.submit();
-	}
-	function cancel(){
-		history.back(-1);
-	}
+$(document).ready(function(){
+	$("#writeImg").click(function(){
+		$("#write_form").submit();
+	});
+});
 </script>
-
-
-
  <br>
-  <form action="writeNotice.gibu" method="post" name="write_form">  
-   <table class="inputForm" >
-    <caption>기부등록</caption>
+ 
+ <form action="writeNotice.gibu" method="post" id="write_form">
+ <table>
+    <caption>글쓰기</caption>
     <tbody>
-    <tr>
-     <td>제목</td>
-     <td colspan="3">
-     <input type="text" name="fundName" size="48">
-     </td>
-    </tr>
-    
-    <tr>
-     <td colspan="4" align="left">
-     &nbsp;&nbsp;
-     <textarea cols="53" rows="5" name="content"></textarea>
-     </td>
-    </tr> 
-    <tr>
-     <td colspan="4" align="center" >
-      <img class="action" src="${initParam.root }img/write_btn.jpg" alt="글입력"  onclick="content_submit()">
-      <img class="action" src="${initParam.root }img/cancel.gif" onclick="cancel()">      
-     </td>  
-    </tr>
-    </tbody>
-   </table>
-  </form>
+	 <tr>
+		<td>제목</td>
+		<td><input type="text" name="title" id="title"></td>
+	 </tr>
+	 <tr>
+		<td>이름</td>
+		<td>관리자</td>
+	 </tr>
+	 <tr>
+		<td colspan=2><textarea cols="32" rows="10" name="content" id="content"></textarea></td>
+	 </tr>
+	 <tr>
+	 	<td  colspan=2 >
+	 		<input type="button" id="writeImg" value="글쓰기">
+	 	</td>
+	 </tr>
+	 </tbody>
+ </table> 
+ </form>
+ 
