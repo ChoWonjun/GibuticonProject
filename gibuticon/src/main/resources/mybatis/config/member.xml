@@ -22,6 +22,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" parameterType="memberVO" resultType="memberVO">
 		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where id=#{id} and password=#{password}
 	</select>
+	
+	<update id="increasePoint" parameterType="memberVO">
+		update member set point=point+#{point} where id=#{id}
+	</update>
+	
+	<update id="decreasePoint" parameterType="memberVO">
+		update member set point=point-#{point} where id=#{id}
+	</update>
 </mapper>
  
  

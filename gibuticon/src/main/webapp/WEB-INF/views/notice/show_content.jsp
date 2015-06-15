@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<link rel="stylesheet" href="${initParam.root }css/board.css"
-	type="text/css">
-<script type="text/javascript">
+<%-- <link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">--%>
+ <script type="text/javascript">
 	function sendList() {
 		location.href = "getNoticeList.gibu?no=${requestScope.posting.noticeNo}";
 	}

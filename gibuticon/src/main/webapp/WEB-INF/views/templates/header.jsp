@@ -4,7 +4,7 @@
 
 <script type="text/javascript">
 	function chargePopup(){
-		var url="${initParam.root }cone/charge.gibu";
+		var url="${initParam.root }cone/chargeView.gibu";
 		window.open(url,"notice",
 	   				"width=520,height=280,teop=150,left=200");
 	}
@@ -34,7 +34,7 @@
 				<span class="divider"><a href="${initParam.root }registerView.gibu">회원가입</a></span>
 				</c:when>
 				<c:otherwise>
-					<span class="divider"><a href="${initParam.root }logout.gibu">${sessionScope.mvo.name}</a></span>&nbsp;&nbsp;
+					<span class="divider"><a href="${initParam.root }member_mypage.gibu">${sessionScope.mvo.name}</a></span>&nbsp;&nbsp;
 					<span class="divider"><a href="${initParam.root }logout.gibu">로그아웃</a></span><br>
 					<span class="divider">보유콘 : <a href="${initParam.root }cone/mycone.gibu">${sessionScope.mvo.point }개</a>
 					<input type="button" value="충전" onclick="chargePopup()"></span>

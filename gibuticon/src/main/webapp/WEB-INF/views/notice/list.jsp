@@ -3,8 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
-	
+	<body>
 	<table class="list">
 		<caption>공지사항</caption>
 		<thead>
@@ -29,20 +28,20 @@
 				<td colspan=5 align="center">
 					<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 					<c:if test="${pb.previousPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
+						<a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
+						<a href="${initParam.root }getNoticeList.gibu?pageNo=${i }">${i }</a>
 					</c:forEach>
 					<c:if test="${pb.nextPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+						<a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
 					</c:if>
 				</td>
 			</tr>				
 		</tbody>
 	</table>
 <br>
-<a href="write.gibu">글쓰기</a>
+<a href="writeNoticeView.gibu">글쓰기</a>
 </body>
-</html>
+
 
