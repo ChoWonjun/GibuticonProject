@@ -5,7 +5,7 @@
 <script type="text/javascript">
 	function chargePopup(){
 		var url="${initParam.root }cone/chargeView.gibu";
-		window.open(url,"notice",
+		window.open(url,"chargePopup",
 	   				"width=520,height=280,teop=150,left=200");
 	}
 </script>
