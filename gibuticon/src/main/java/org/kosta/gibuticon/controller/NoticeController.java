@@ -3,8 +3,10 @@ package org.kosta.gibuticon.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.kosta.gibuticon.model.notice.PagingBean;
@@ -13,7 +15,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -23,14 +24,20 @@ public class NoticeController {
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@RequestMapping("writeNoticeView.gibu")
-	public ModelAndView writeNoticeView() {
-		return new ModelAndView("notice_write");
+	public ModelAndView writeNoticeView(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		MemberVO mvo =(MemberVO) session.getAttribute("mvo");
+		if (session==null || mvo==null || !(mvo.getAdmin().equals("yes"))) {
+			return new ModelAndView("redirect:getNoticeList.gibu");
+		}else{
+			return new ModelAndView("notice_write");
+		}
 	}
-
+	
 	@RequestMapping("getNoticeList.gibu")
-	public ModelAndView getNoticeList(String no, String pageNo) {
+	public ModelAndView getNoticeList(String pageNo, String no) {
 		if (no != null)
-			pageNo = noticeService.getPageNo(pageNo);
+			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
 		// System.out.println(pageNo);
@@ -52,7 +59,8 @@ public class NoticeController {
 	public ModelAndView writeNotice(NoticeVO noticeVO) {
 		// no로 게시글 찾아서 그 vo 전체를 넘겨주는
 		noticeService.writeNotice(noticeVO);
-		return new ModelAndView("getNoticeList.gibu");
+		return new ModelAndView("redirect:getNoticeList.gibu");
+		//return new ModelAndView("getNoticeList.gibu");
 
 	}
 	
