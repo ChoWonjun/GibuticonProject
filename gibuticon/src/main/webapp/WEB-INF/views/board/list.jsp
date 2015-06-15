@@ -20,7 +20,7 @@
 		</thead>	
 		<tbody>
 			<c:forEach items="${requestScope.lvo.list}" var="board">
-				<tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
+				<tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
 			</c:forEach>
 			<tr>
 				<td colspan=5 align="center">

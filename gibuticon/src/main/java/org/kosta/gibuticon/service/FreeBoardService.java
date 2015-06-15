@@ -3,6 +3,7 @@ package org.kosta.gibuticon.service;
 import java.util.List;
 
 import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 
 public interface FreeBoardService {
@@ -17,4 +18,5 @@ public interface FreeBoardService {
 	public abstract FreeBoardVO getFundByNoNotHit(String no);
 	public abstract FreeBoardVO replyView(String no);
 	public abstract void reply(FreeBoardVO freeBoardVO);
+	public abstract List<FreeBoardCommentVO> getFreeBoardCommentList(FreeBoardVO freeBoardVO);
 }

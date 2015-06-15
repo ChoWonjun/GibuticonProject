@@ -42,7 +42,7 @@
 	 </tr>
 	 <tr>
 		<td>아이디</td>
-		<td><input  readonly type="text" name="id" id="writer" value="${requestScope.fvo.id}"></td>
+		<td><input  readonly type="text" name="id" id="writer" value="${sessionScope.mvo.id}"></td>
 	 </tr>
 	 <tr>
 		<td colspan=2><textarea cols="32" rows="10" name="content" id="content"></textarea></td>

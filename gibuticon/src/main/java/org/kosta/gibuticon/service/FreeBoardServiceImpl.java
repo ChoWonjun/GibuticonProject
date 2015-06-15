@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.free.FreeBoardDAO;
 import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -70,6 +71,12 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 		freeBoardVO.setRelevel(freeBoardVO.getRelevel()+1);
 		freeBoardDAO.reply(freeBoardVO);
 		
+	}
+
+	@Override
+	public List<FreeBoardCommentVO> getFreeBoardCommentList(
+			FreeBoardVO freeBoardVO) {
+		return freeBoardDAO.getFreeBoardCommentList(freeBoardVO);
 	}
 
 }

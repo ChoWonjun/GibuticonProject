@@ -2,6 +2,8 @@ package org.kosta.gibuticon.model.free;
 
 import java.util.List;
 
+import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+
 public interface FreeBoardDAO {
 
 	public abstract FreeBoardVO getFreeBoardByNo(String no);
@@ -21,6 +23,8 @@ public interface FreeBoardDAO {
 	public abstract void updateHit(String no);
 	
 	public abstract FreeBoardVO replyView(String no);
+	
+	public abstract List<FreeBoardCommentVO> getFreeBoardCommentList(FreeBoardVO freeBoardVO);
 	
 	public abstract void reply(FreeBoardVO freeBoardVO);
 

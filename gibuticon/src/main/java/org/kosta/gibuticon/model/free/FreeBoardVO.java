@@ -1,6 +1,7 @@
 package org.kosta.gibuticon.model.free;
 
-import java.sql.Date;
+
+import org.kosta.gibuticon.model.member.MemberVO;
 
 public class FreeBoardVO {
 	private String boardNo;
@@ -9,6 +10,7 @@ public class FreeBoardVO {
 	private String content;
 	private int hits;
 	private String id;
+	private MemberVO memberVO;
 	public int ref;
 	public int restep;
 	public int relevel;
@@ -99,6 +101,14 @@ public class FreeBoardVO {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public MemberVO getMemberVO() {
+		return memberVO;
+	}
+
+	public void setMemberVO(MemberVO memberVO) {
+		this.memberVO = memberVO;
 	}
 
 	public int getRef() {

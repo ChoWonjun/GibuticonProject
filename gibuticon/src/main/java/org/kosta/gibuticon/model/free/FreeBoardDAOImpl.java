@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+import org.kosta.gibuticon.model.member.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +27,13 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 */
 	@Override
 	public List<FreeBoardVO> getFreeBoardList(String pageNo){
+		List<FreeBoardVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardList", pageNo);
+		System.out.println(list);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
+			System.out.println(sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
+		}
+
 		return sqlSessionTemplate.selectList("freeboard.getFreeBoardList", pageNo);
 	}
 	
@@ -79,6 +88,12 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		sqlSessionTemplate.update("freeboard.replyUpdate",freeBoardVO);
 		sqlSessionTemplate.insert("freeboard.replyWrite",freeBoardVO);
 		
+	}
+
+	@Override
+	public List<FreeBoardCommentVO> getFreeBoardCommentList(
+			FreeBoardVO freeBoardVO) {
+		return sqlSessionTemplate.selectList("freeboard.getFreeBoardCommentList", freeBoardVO);
 	}
 	
 }

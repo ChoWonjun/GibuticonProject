@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.free.ListVO;
 import org.kosta.gibuticon.model.free.PagingBean;
+import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.service.FreeBoardService;
+import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,15 +21,17 @@ import org.springframework.web.servlet.ModelAndView;
 public class FreeBoardController {
 	@Resource(name="freeBoardServiceImpl")
 	private FreeBoardService freeBoardService;
+	@Resource(name="memberServiceImpl")
+	private MemberService memberService;
 	
 	@RequestMapping("writeFreeBoard")
 	public ModelAndView writeFreeBoard(FreeBoardVO freeBoardVO, HttpServletRequest request){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
 		freeBoardVO.setId(mvo.getId());
-		System.out.println(freeBoardVO+"전");
+		//System.out.println(freeBoardVO+"전");
 		freeBoardService.writeFreeBoard(freeBoardVO);
-		System.out.println(freeBoardVO+"후");
+		//System.out.println(freeBoardVO+"후");
 		return new ModelAndView("redirect:getFreeBoardList.gibu");
 	}
 	@RequestMapping("getFreeBoardList")
@@ -38,7 +42,7 @@ public class FreeBoardController {
 			pageNo="1";
 			//System.out.println(pageNo);
 			List<FreeBoardVO> list=freeBoardService.getFreeBoardList(pageNo);
-			System.out.println(list);
+			//System.out.println(list);
 			ListVO lvo=new ListVO(list, new PagingBean(freeBoardService.getTotalPostingCount(), Integer.parseInt(pageNo)));
 			return new ModelAndView("freeBoard_list","lvo", lvo);
 	}
@@ -53,8 +57,16 @@ public class FreeBoardController {
 	}
 	@RequestMapping("getFreeBoardByNo")
 	public ModelAndView getFreeBoardByNo(String no){
+		ModelAndView mv=new ModelAndView();
 		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
-		return new ModelAndView("freeBoard_show_content","fvo",fvo);
+		MemberVO mvo=memberService.findMemberById(fvo.getId());
+		System.out.println(mvo);
+		List<FreeBoardCommentVO> clist=freeBoardService.getFreeBoardCommentList(fvo);
+		System.out.println(clist+"memberVO 나오냥");
+		mv.addObject("clist", clist);
+		mv.addObject("fvo", fvo);
+		mv.setViewName("freeBoard_show_content");
+		return mv;
 	}
 	@RequestMapping("update")
 	public ModelAndView update(String no){
@@ -63,9 +75,9 @@ public class FreeBoardController {
 	}
 	@RequestMapping("updateFreeBoard")
 	public String updateFreeBoard(FreeBoardVO freeBoardVO){
-		System.out.println(freeBoardVO+"바아온거");
+		//System.out.println(freeBoardVO+"바아온거");
 		freeBoardService.updateFreeBoard(freeBoardVO);
-		System.out.println(freeBoardVO);
+		//System.out.println(freeBoardVO);
 		return "redirect:getFreeBoardByNo.gibu?no="+freeBoardVO.getBoardNo(); 
 	}
 	@RequestMapping("deleteFreeBoard")
@@ -76,6 +88,7 @@ public class FreeBoardController {
 	@RequestMapping("replyView")
 	public ModelAndView replyView(String no){
 		FreeBoardVO fvo=freeBoardService.replyView(no);
+		//System.out.println(fvo+"ccc");
 		return new ModelAndView("freeBoard_reply_form","fvo",fvo);
 	}
 	@RequestMapping("reply")
