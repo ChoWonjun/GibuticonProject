@@ -14,8 +14,7 @@ public interface MemberDAO {
 
 	public abstract MemberVO login(MemberVO memberVO);
 
-	public abstract void increasePoint(MemberVO memberVO);
+	public void increasePoint(MemberVO memberVO);
 
-	public abstract void decreasePoint(MemberVO memberVO);
-
+	public void decreasePoint(MemberVO memberVO);
 }

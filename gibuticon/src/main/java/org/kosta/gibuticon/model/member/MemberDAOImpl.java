@@ -80,7 +80,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO login(MemberVO memberVO){
 		return sqlSessionTemplate.selectOne("member.login",memberVO);
 	}
-
+	
 	@Override
 	public void increasePoint(MemberVO memberVO) {
 		sqlSessionTemplate.update("member.increasePoint",memberVO);
@@ -90,5 +90,4 @@ public class MemberDAOImpl implements MemberDAO {
 	public void decreasePoint(MemberVO memberVO) {
 		sqlSessionTemplate.update("member.decreasePoint",memberVO);
 	}
-	
 }

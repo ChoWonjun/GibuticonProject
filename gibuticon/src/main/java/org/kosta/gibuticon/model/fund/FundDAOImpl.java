@@ -108,7 +108,7 @@ values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',
 		// TODO Auto-generated method stub
 		sqlSessionTemplate.update("fund.updateHit",no);
 	}
-
+	
 	@Override
 	public void increaseCurSum(FundVO fundVO) {
 		sqlSessionTemplate.update("fund.increaseCurSum",fundVO);
