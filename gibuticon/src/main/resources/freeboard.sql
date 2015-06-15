@@ -8,7 +8,7 @@ create table free_board(
 	content varchar2(200) not null,
 	hits number not null,
 	id varchar2(50),
-	constraint fk_id foreign key(id) references member
+	constraint fk_free_id foreign key(id) references member
 )
 create table freeBoard_comment(
 	id varchar2(50),
