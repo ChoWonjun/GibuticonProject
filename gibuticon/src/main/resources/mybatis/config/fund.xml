@@ -56,10 +56,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateHit">
 		update gibu_fund set hits=hits+1 where fund_no=#{value}
 	</update>
-	
-	<update id="increaseCurSum" parameterType="fundVO">
-		update gibu_fund set cur_sum=cur_sum+#{curSum} where fund_no=#{fundNo}
-	</update>
 </mapper>
  
  

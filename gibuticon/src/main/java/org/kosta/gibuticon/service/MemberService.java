@@ -15,4 +15,5 @@ public interface MemberService {
 	public abstract void giveAdminRight(String id);
 
 	public abstract MemberVO login(MemberVO memberVO);
+
 }

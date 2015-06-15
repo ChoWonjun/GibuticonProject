@@ -30,6 +30,4 @@ public interface FundDAO {
 
 	public abstract void updateHit(String no);
 
-	public abstract void increaseCurSum(FundVO fundVO);
-
 }
