@@ -5,26 +5,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.kosta.gibuticon.model.member.LoginForm;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
 	@Resource
 	private MemberService memberService;
-	
-	
-	@RequestMapping(value="loginView",method=RequestMethod.GET)
-	public String loginView(@ModelAttribute LoginForm loginForm, HttpServletRequest request) {
-		return "member_loginView";
-	}
 	
 	/**
 	 * login 기능.
@@ -38,19 +31,21 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("login")
-	public String login(@Valid LoginForm loginForm, BindingResult result, MemberVO memberVO, HttpServletRequest request) {
-		if(result.hasErrors()){			
-			return "member_loginView";
-			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다. 
-		}
-		MemberVO mvo = memberService.login(memberVO);
+	public String login(MemberVO vo, HttpServletRequest request, String type) {
+		MemberVO mvo = memberService.login(vo);
 		String url = null;
 		if (mvo == null) {
 			url = "member_login_fail";
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", mvo);
-			url = "home";
+			System.out.println(type);
+			if(type.equals("freeBoard")){
+				System.out.println(type+"if");
+				url="freeBoard_write";
+			}else{
+				url = "home";
+			}
 		}
 		return url;
 	}
@@ -75,9 +70,9 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value="registerMemberView",method=RequestMethod.GET)
-	public String registerView(@ModelAttribute MemberVO memberVO, HttpServletRequest request) {
-		return "member_registerMemberView";
+	@RequestMapping(value="registerView",method=RequestMethod.GET)
+	public ModelAndView registerView(HttpServletRequest request) {
+		return new ModelAndView("registerView", "memberVO", new MemberVO());
 	}
 	
 	/**
@@ -94,9 +89,10 @@ public class MemberController {
 	@RequestMapping(value="registerMember",method=RequestMethod.POST)
 	public String registerMember(@Valid MemberVO memberVO, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()){			
-			return "member_registerMemberView";
+			return "registerView";
 			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다. 
 		}
+		System.out.println(memberVO.getBirth());
 		memberService.registerMember(memberVO);
 		return "redirect:registerResult.gibu?id="+memberVO.getId();
 	}
@@ -114,7 +110,7 @@ public class MemberController {
 		String id = request.getParameter("id");
 		MemberVO mvo = memberService.findMemberById(id);
 		model.addAttribute("mvo",mvo);
-		return "member_registerMember_result";
+		return "register_result";
 	}
 	
 	/**
@@ -125,8 +121,8 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value="updateMemberView",method=RequestMethod.GET)
-	public String updateMemberView(@ModelAttribute MemberVO memberVO, HttpServletRequest request) {
-		return "member_updateMemberView";
+	public ModelAndView updateMemberView(HttpServletRequest request) {
+		return new ModelAndView("member_updateMemberView", "memberVO", new MemberVO());
 	}
 	
 	/**
