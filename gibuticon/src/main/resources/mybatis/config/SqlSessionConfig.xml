@@ -13,13 +13,15 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		alias="messageVO" />
 	<typeAlias type="org.kosta.gibuticon.model.point.GibuticonVO"
 		alias="gibuticonVO" />
-	<typeAlias type="org.kosta.gibuticon.model.board.FreeBoardVO"
+	<typeAlias type="org.kosta.gibuticon.model.free.FreeBoardVO"
 		alias="freeBoardVO" />
-	<typeAlias type="org.kosta.gibuticon.model.board.NoticeVO"
+	<typeAlias type="org.kosta.gibuticon.model.notice.NoticeVO"
 		alias="noticeVO" />
 	<typeAlias type="org.kosta.gibuticon.model.fund.FundVO"
 		alias="fundVO" />		
+	<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO" alias="FreeBoardCommentVO" />
 	</typeAliases>	
+	
     <!-- sql mapping config xml 을 연결 -->
 	<mappers>
 		<mapper resource="mybatis/config/member.xml"/>		

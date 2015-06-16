@@ -8,8 +8,6 @@ public interface FundDAO {
 
 	public abstract FundVO getFundByNo(String no);
 
-	public abstract List<FundVO> getFundList();
-
 	public abstract void updateFund(FundVO fundVO);
 
 	public abstract void deleteFundByNo(String no);
@@ -24,4 +22,13 @@ public interface FundDAO {
 	// sql문에서 curSum 만큼 증가시켜 기부액 반영
 	public abstract void gibuMoney(FundVO fundVO);
 
+	List<FundVO> getFundList(String pageNo);
+
+	public abstract String getPageNo(String no);
+
+	public abstract int getTotalPostingCount();
+
+	public abstract void updateHit(String no);
+
+	public void increaseCurSum(FundVO fundVO);
 }

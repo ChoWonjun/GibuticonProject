@@ -8,6 +8,6 @@ public class TestFundDAO {
 	public static void main(String[] args) {
 	    ApplicationContext ctx = new ClassPathXmlApplicationContext("root-context.xml");
 		FundDAOImpl dao = (FundDAOImpl) ctx.getBean("fundDao");
-		System.out.println(dao.getFundList());
+		//System.out.println(dao.getFundList());
 	}
 }

@@ -18,11 +18,19 @@ public class FundServiceImpl implements FundService {
 	}
 
 	public FundVO getFundByNo(String no) {
+		//조회수 증가
+		fundDAO.updateHit(no);
+		return fundDAO.getFundByNo(no);
+	}
+	
+	@Override
+	public FundVO getFundByNoNotHit(String no) {
+		// TODO Auto-generated method stub
 		return fundDAO.getFundByNo(no);
 	}
 
-	public List<FundVO> getFundList() {
-		return fundDAO.getFundList();
+	public List<FundVO> getFundList(String pageNo) {
+		return fundDAO.getFundList(pageNo);
 	}
 	
 	public void updateFund(FundVO fundVO) {
@@ -40,4 +48,17 @@ public class FundServiceImpl implements FundService {
 	public void gibuMoney(FundVO fundVO) {
 		fundDAO.gibuMoney(fundVO);
 	}
+
+	@Override
+	public String getPageNo(String no) {
+		return fundDAO.getPageNo(no);
+	}
+
+	@Override
+	public int getTotalPostingCount() {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalPostingCount();
+	}
+
+
 }

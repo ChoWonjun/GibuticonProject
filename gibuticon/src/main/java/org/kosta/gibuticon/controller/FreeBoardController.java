@@ -6,9 +6,13 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.gibuticon.model.board.FreeBoardVO;
+import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.free.ListVO;
+import org.kosta.gibuticon.model.free.PagingBean;
+import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.service.FreeBoardService;
+import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,36 +21,80 @@ import org.springframework.web.servlet.ModelAndView;
 public class FreeBoardController {
 	@Resource(name="freeBoardServiceImpl")
 	private FreeBoardService freeBoardService;
+	@Resource(name="memberServiceImpl")
+	private MemberService memberService;
 	
 	@RequestMapping("writeFreeBoard")
-	public ModelAndView writeFreeBoard(FreeBoardVO fvo, HttpServletRequest request){
+	public ModelAndView writeFreeBoard(FreeBoardVO freeBoardVO, HttpServletRequest request){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
-		fvo.setId(mvo.getId());
-		System.out.println(fvo+"전");
-		freeBoardService.writeFreeBoard(fvo);
-		System.out.println(fvo+"후");
+		freeBoardVO.setId(mvo.getId());
+		//System.out.println(freeBoardVO+"전");
+		freeBoardService.writeFreeBoard(freeBoardVO);
+		//System.out.println(freeBoardVO+"후");
 		return new ModelAndView("redirect:getFreeBoardList.gibu");
 	}
 	@RequestMapping("getFreeBoardList")
-	public ModelAndView getFreeBoardList(HttpServletRequest request){
+	public ModelAndView getFreeBoardList(String pageNo, String no){
+		if(no!=null)
+			pageNo=freeBoardService.getPageNo(no);
+		if(pageNo==null)
+			pageNo="1";
+			//System.out.println(pageNo);
+			List<FreeBoardVO> list=freeBoardService.getFreeBoardList(pageNo);
+			//System.out.println(list);
+			ListVO lvo=new ListVO(list, new PagingBean(freeBoardService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+			return new ModelAndView("freeBoard_list","lvo", lvo);
+	}
+	@RequestMapping("write")
+	public ModelAndView write(HttpServletRequest request){
 		HttpSession session=request.getSession(false);
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
 		if(mvo!=null){
-			List<FreeBoardVO> list=freeBoardService.getFreeBoardList();
-			return new ModelAndView("freeBoard_freeBoardList","list",list);
+			return new ModelAndView("freeBoard_write");
 		}
-		return new ModelAndView("loginView");
-		
-	}
-	@RequestMapping("write")
-	public String write(){
-		return "freeBoard_write";
+			return new ModelAndView("loginView","type","freeBoard");
 	}
 	@RequestMapping("getFreeBoardByNo")
 	public ModelAndView getFreeBoardByNo(String no){
+		ModelAndView mv=new ModelAndView();
 		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
-		return new ModelAndView("","fvo",fvo);
+		MemberVO mvo=memberService.findMemberById(fvo.getId());
+		System.out.println(mvo);
+		List<FreeBoardCommentVO> clist=freeBoardService.getFreeBoardCommentList(fvo);
+		System.out.println(clist+"memberVO 나오냥");
+		mv.addObject("clist", clist);
+		mv.addObject("fvo", fvo);
+		mv.setViewName("freeBoard_show_content");
+		return mv;
+	}
+	@RequestMapping("update")
+	public ModelAndView update(String no){
+		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
+		return new ModelAndView("freeBoard_update","fvo",fvo);
+	}
+	@RequestMapping("updateFreeBoard")
+	public String updateFreeBoard(FreeBoardVO freeBoardVO){
+		//System.out.println(freeBoardVO+"바아온거");
+		freeBoardService.updateFreeBoard(freeBoardVO);
+		//System.out.println(freeBoardVO);
+		return "redirect:getFreeBoardByNo.gibu?no="+freeBoardVO.getBoardNo(); 
+	}
+	@RequestMapping("deleteFreeBoard")
+	public String deleteFreeBoard(String no){
+		freeBoardService.deleteFreeBoard(no);
+		return "redirect:getFreeBoardList.gibu";
+	}
+	@RequestMapping("replyView")
+	public ModelAndView replyView(String no){
+		FreeBoardVO fvo=freeBoardService.replyView(no);
+		//System.out.println(fvo+"ccc");
+		return new ModelAndView("freeBoard_reply_form","fvo",fvo);
+	}
+	@RequestMapping("reply")
+	public ModelAndView reply(FreeBoardVO freeBoardVO){
+		freeBoardService.reply(freeBoardVO);
+		return new ModelAndView("freeBoard_show_content","fvo",freeBoardVO);
 	}
 
 }
