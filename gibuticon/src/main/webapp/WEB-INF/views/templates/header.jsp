@@ -47,7 +47,7 @@
 									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;친구목록
 												보기</strong></a></li>
 									<li class="divider"></li>
-									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;MY
+									<li><a tabindex="-1" href="{initParam.root}mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;MY
 												기부티콘</strong></a></li>
 								</ul></li>
 							<li><a href="#">충전하기</a></li>
