@@ -165,4 +165,8 @@ public class MemberController {
 		model.addAttribute("mvo",mvo);
 		return "member_updateMember_result";
 	}
+	@RequestMapping(value="mypage",method=RequestMethod.GET)
+	public String mypageView() {
+		return "member_mypage";
+	}
 }

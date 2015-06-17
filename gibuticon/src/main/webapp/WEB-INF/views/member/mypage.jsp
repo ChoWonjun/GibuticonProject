@@ -107,7 +107,7 @@
               <tbody>
                 <tr class="info">
                   <td width="280">
-                    <div class="col-md-11">
+                    <div class="col-md-11"> 
                       <div id="content_w">
                         <div class="sectioin_mymain_bean2">
                           <div class="bx_inner"></div>
