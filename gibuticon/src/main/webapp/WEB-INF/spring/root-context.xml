@@ -41,4 +41,11 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
+	
+	<!-- upload path -->
+	<bean id="uploadPath" class="java.lang.String">
+		<constructor-arg>
+			<value>C:\Users\원준\git\GibuticonProject\gibuticon\\src\\main\\webapp\\upload\\</value>
+		</constructor-arg>
+	</bean>
 </beans>

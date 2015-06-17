@@ -13,4 +13,5 @@ public interface FundService {
 	public String getPageNo(String no);
 	public int getTotalPostingCount();
 	public FundVO getFundByNoNotHit(String no);
+	public void uploadPhoto(FundVO vo);
 }
