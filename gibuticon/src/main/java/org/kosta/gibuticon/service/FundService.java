@@ -3,6 +3,9 @@ package org.kosta.gibuticon.service;
 import java.util.List;
 
 import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
+import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
+import org.kosta.gibuticon.model.history.ChargeHistoryVO;
 
 public interface FundService {
 	public List<FundVO> getFundList(String pageNo);
@@ -13,5 +16,8 @@ public interface FundService {
 	public String getPageNo(String no);
 	public int getTotalPostingCount();
 	public FundVO getFundByNoNotHit(String no);
-	public void uploadPhoto(FundVO vo);
+	public void writeComment(FundCommentVO fundCommentVO);
+	public List<FundCommentVO> getCommentList(CommentPageVO commentPageVO);
+	public int getTotalCommentCount(String fundNo);
+	public List<ChargeHistoryVO> getChargeHistory(String memberId);
 }

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.gibuticon.model.fund.FundVO;
-import org.kosta.gibuticon.model.fund.ListVO;
+import org.kosta.gibuticon.model.fund.ListVO;  
 import org.kosta.gibuticon.model.fund.PagingBean;
 import org.kosta.gibuticon.model.fund.comment.CommentListVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
@@ -84,7 +84,7 @@ public class FundController {
 		ModelAndView mv=new ModelAndView("fund_show_content");
 		mv.addObject("posting",vo);
 		mv.addObject("comment",listVO);
-		System.out.println(listVO);
+		System.out.println(listVO);  
 		
 		return mv;
 	}
