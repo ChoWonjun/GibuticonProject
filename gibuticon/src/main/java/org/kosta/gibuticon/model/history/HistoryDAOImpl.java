@@ -17,6 +17,7 @@ public class HistoryDAOImpl implements HistoryDAO {
 	 */
 	@Override
 	public void writeChargeHistory(ChargeHistoryVO chargeHistoryVO) {
+		System.out.println(chargeHistoryVO);
 		sqlSessionTemplate.insert("history.writeChargeHistory", chargeHistoryVO);
 	}
 	

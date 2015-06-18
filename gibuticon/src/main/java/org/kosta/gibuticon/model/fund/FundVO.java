@@ -10,6 +10,7 @@ public class FundVO {
 	private String curSum;
 	private String goalSum;
 	private String participant;
+	private Date startDate;
 	private Date dueDate;
 	private String content;
 	private int hits;
@@ -19,6 +20,14 @@ public class FundVO {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
 	public String getFundNo() {
 		return fundNo;
 	}
@@ -104,7 +113,10 @@ public class FundVO {
 		return "FundVO [fundNo=" + fundNo + ", fundName=" + fundName
 				+ ", proposal=" + proposal + ", homepage=" + homepage
 				+ ", curSum=" + curSum + ", goalSum=" + goalSum
-				+ ", participant=" + participant + ", dueDate=" + dueDate
-				+ ", content=" + content + ", hits=" + hits + "]";
+				+ ", participant=" + participant + ", startDate=" + startDate
+				+ ", dueDate=" + dueDate + ", content=" + content + ", hits="
+				+ hits + "]";
 	}
+
+
 }
