@@ -1,4 +1,7 @@
+  drop sequence gibu_fund_seq;
   create sequence gibu_fund_seq;
+  
+  drop table gibu_fund;
   create table gibu_fund(
   	fund_no number primary key,
   	fund_name varchar2(200) not null,
@@ -7,12 +10,11 @@
   	cur_sum number default 0,
   	goal_sum number not null,
   	participant number default 0,
+  	start_date date not null,
   	due_date date not null,
   	content clob not null,
   	hits number default 0
   )
-  
-  drop table gibu_fund;
   
   insert into gibu_fund(fund_no,fund_name,proposal,
   									homepage,goal_sum,due_date,content)
@@ -44,7 +46,25 @@
 				select fund_no from gibu_fund order by fund_no desc
 			)
 		) where fundno=22
-  			
+
+
+drop sequence fund_photo_seq;
+create sequence fund_photo_seq;
+drop table fund_photo;
+create table fund_photo(
+	photo_no number primary key,
+	org_name varchar2(200) not null,
+	real_name varchar2(200) not null,
+	fund_no number,
+	constraint fk_fund_no foreign key(fund_no) references gibu_fund
+)
+
+insert into fund_photo values (fund_photo_seq.nextval,'','',1);
+
+select * from fund_photo where fund_no = 1 order by photo_order asc;
+
+update fund_photo set org_name='' , real_name='' where photo_no = 1;
+
 --  select no,writer,title,time_posted,hits from(
 --	select no,writer,title,time_posted,hits,ceil(rownum/5) as page from(
 --		select no,writer,title,to_char(time_posted,'YYYY.MM.DD') as time_posted,hits from board_inst order by no desc

@@ -12,7 +12,9 @@ import org.kosta.gibuticon.model.fund.ListVO;
 import org.kosta.gibuticon.model.fund.PagingBean;
 import org.kosta.gibuticon.service.FundService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -86,9 +88,11 @@ public class FundController {
 		return new ModelAndView("fund_update","posting",fundService.getFundByNoNotHit(no));
 	}
 	
-	@RequestMapping("fund/write.gibu")
+	@Transactional
+	@RequestMapping(value="fund/write.gibu",method=RequestMethod.POST)
 	public ModelAndView write(FundVO vo){
 		fundService.writeFund(vo);
+		fundService.uploadPhoto(vo);
 		return new ModelAndView("redirect:showContentNotHit.gibu","no",vo.getFundNo());
 	}
 	

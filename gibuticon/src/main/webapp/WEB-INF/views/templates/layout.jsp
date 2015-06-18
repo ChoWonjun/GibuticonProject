@@ -3,20 +3,17 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html>
 <html>
-
-<%-- <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Tiles Layout</title>
-<script type="text/javascript" src="${initParam.root}js/jquery-1.11.3.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${initParam.root}/css/home.css" />
-</head> --%>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- jQuery 일반 -->
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap 일반 -->
 <script type="text/javascript"
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -38,27 +35,6 @@
 			<tiles:insertAttribute name="footer" />
 		</div>
 	</div>
-	<%-- table layout 방식을 css 로 변경  --%>
-	<%-- <table width="100%" border="1" cellpadding="5">
-<tr height="100">
- <td colspan="2">
- 	<tiles:insertAttribute name="header"></tiles:insertAttribute>
- </td> 
-</tr>
-<tr height="400">
- <td width="200" valign="top">
- <tiles:insertAttribute name="left"></tiles:insertAttribute>
- </td>
- <td valign="top">
- <tiles:insertAttribute name="main"></tiles:insertAttribute>
- </td>
-</tr>
-<tr height="70">
- <td colspan="2">
- <tiles:insertAttribute name="footer"></tiles:insertAttribute>
- </td>
-</tr>
-</table> --%>
 </body>
 </html>
 

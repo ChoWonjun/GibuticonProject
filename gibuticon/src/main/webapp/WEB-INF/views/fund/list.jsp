@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" href="${initParam.root }css/board.css"
 	type="text/css">
+	
 <div class="section">
 	<div class="container">
 		<div class="row">

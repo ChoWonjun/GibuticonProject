@@ -31,4 +31,6 @@ public interface FundDAO {
 	public abstract void updateHit(String no);
 
 	public void increaseCurSum(FundVO fundVO);
+	
+	public abstract void savePhoto(FundPhotoVO fpvo);
 }
