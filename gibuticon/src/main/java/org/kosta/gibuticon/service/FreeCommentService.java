@@ -9,7 +9,7 @@ public interface FreeCommentService {
 
 	public abstract void writeFreeComment(FreeBoardCommentVO freeBoardCommentVO);
 	
-	public abstract List<FreeBoardCommentVO> getFreeBoardCommentList(String pageNo);
+	public abstract void deleteFreeComment(String no);
 	
 	public abstract String getPageNo(String no);
 

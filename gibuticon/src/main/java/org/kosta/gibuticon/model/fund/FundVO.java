@@ -1,9 +1,6 @@
 package org.kosta.gibuticon.model.fund;
 
 import java.sql.Date;
-import java.util.List;
-
-import org.springframework.web.multipart.MultipartFile;
 
 public class FundVO {
 	private String fundNo;
@@ -13,17 +10,15 @@ public class FundVO {
 	private String curSum;
 	private String goalSum;
 	private String participant;
-	private Date startDate;
 	private Date dueDate;
 	private String content;
 	private int hits;
-	private List<MultipartFile> file;
 
 	public FundVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public String getFundNo() {
 		return fundNo;
 	}
@@ -80,14 +75,6 @@ public class FundVO {
 		this.participant = participant;
 	}
 
-	public Date getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
-
 	public Date getDueDate() {
 		return dueDate;
 	}
@@ -112,22 +99,12 @@ public class FundVO {
 		this.hits = hits;
 	}
 
-	public List<MultipartFile> getFile() {
-		return file;
-	}
-
-	public void setFile(List<MultipartFile> file) {
-		this.file = file;
-	}
-
 	@Override
 	public String toString() {
 		return "FundVO [fundNo=" + fundNo + ", fundName=" + fundName
 				+ ", proposal=" + proposal + ", homepage=" + homepage
 				+ ", curSum=" + curSum + ", goalSum=" + goalSum
-				+ ", participant=" + participant + ", startDate=" + startDate
-				+ ", dueDate=" + dueDate + ", content=" + content + ", hits="
-				+ hits + ", file=" + file + "]";
+				+ ", participant=" + participant + ", dueDate=" + dueDate
+				+ ", content=" + content + ", hits=" + hits + "]";
 	}
-
 }

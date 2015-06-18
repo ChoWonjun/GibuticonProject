@@ -23,16 +23,17 @@ public class FreeCommentDAOImpl implements FreeCommentDAO {
 		sqlSessionTemplate.insert("freecomment.writeFreeComment",freeBoardCommentVO);
 	}
 	@Override
-	public List<FreeBoardCommentVO> getFreeBoardCommentList(String pageNo) {
-		return sqlSessionTemplate.selectList("freecomment.getFreeBoardCommentList", pageNo);
-	}
-	@Override
 	public String getPageNo(String no) {
 		return sqlSessionTemplate.selectOne("freecomment.getPageNo", no);
 	}
 	@Override
 	public int getTotalPostingCount() {
 		return sqlSessionTemplate.selectOne("freecomment.getTotalPostingCount");
+	}
+	@Override
+	public void deleteFreeComment(String no) {
+		sqlSessionTemplate.delete("freecomment.deleteFreeComment", no);
+		
 	}
 
 }

@@ -2,9 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-<link rel="stylesheet" href="${initParam.root }css/board.css"
-	type="text/css">
 	
 <div class="section">
 	<div class="container">
@@ -80,7 +77,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${requestScope.vo.list}">
+						<c:forEach items="${requestScope.vo.list}" var="posting">
 							<tr>
 								<td>${posting.fundNo }</td>
 								<td><a

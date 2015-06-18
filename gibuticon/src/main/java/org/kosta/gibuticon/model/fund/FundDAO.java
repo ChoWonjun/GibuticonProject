@@ -2,6 +2,9 @@ package org.kosta.gibuticon.model.fund;
 
 import java.util.List;
 
+import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
+import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
+
 public interface FundDAO {
 
 	public abstract void writeFund(FundVO fundVO);
@@ -32,5 +35,9 @@ public interface FundDAO {
 
 	public void increaseCurSum(FundVO fundVO);
 	
-	public abstract void savePhoto(FundPhotoVO fpvo);
+	public void writeComment(FundCommentVO fundCommentVO);
+
+	public abstract List<FundCommentVO> getCommentList(CommentPageVO commentPageVO);
+
+	public abstract int getTotalCommentCount(String fundNo);
 }
