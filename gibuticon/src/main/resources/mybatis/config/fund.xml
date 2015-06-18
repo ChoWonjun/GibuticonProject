@@ -3,101 +3,87 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fund">
-	<select id="getFundList" resultType="fundVO">
-		select * from(
-		select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
-		startdate, duedate, content, hits, ceil(rownum/5) as page from
-		(select fund_no fundno, fund_name fundname, proposal, homepage,
-		cur_sum cursum, goal_sum goalsum, participant, start_date startdate, due_date
-		duedate,
-		content, hits from gibu_fund order by fund_no desc))where page=#{value}
-	</select>
+   <select id="getFundList" resultType="fundVO">
+      select * from(
+      select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
+      startdate, duedate, content, hits, ceil(rownum/5) as page from
+      (select fund_no fundno, fund_name fundname, proposal, homepage,
+      cur_sum cursum, goal_sum goalsum, participant, start_date startdate, due_date
+      duedate,
+      content, hits from gibu_fund order by fund_no desc))where page=#{value}
+   </select>
 
-	<select id="getFundByNo" resultType="fundVO">
-		select fund_no fundno, fund_name fundname, proposal, homepage,
-		cur_sum cursum, goal_sum goalsum, participant, start_date startdate, due_date
-		duedate,
-		content, hits from gibu_fund where fund_no=#{value}
-	</select>
+   <select id="getFundByNo" resultType="fundVO">
+      select fund_no fundno, fund_name fundname, proposal, homepage,
+      cur_sum cursum, goal_sum goalsum, participant, start_date startdate, due_date
+      duedate,
+      content, hits from gibu_fund where fund_no=#{value}
+   </select>
 
-	<insert id="writeFund" parameterType="fundVO">
-		<selectKey keyProperty="fundNo" resultType="string" order="BEFORE">
-			select gibu_fund_seq.nextval from dual
-		</selectKey>
-		insert into gibu_fund (fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content)
-		values(#{fundNo},#{fundName},#{proposal},
-		#{homepage},#{goalSum},#{startDate},#{dueDate},#{content})
+   <insert id="writeFund" parameterType="fundVO">
+      <selectKey keyProperty="fundNo" resultType="string" order="BEFORE">
+         select gibu_fund_seq.nextval from dual
+      </selectKey>
+      insert into gibu_fund (fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content)
+      values(#{fundNo},#{fundName},#{proposal},
+      #{homepage},#{goalSum},#{startDate},#{dueDate},#{content})
+   </insert>
+
+   <delete id="deleteFundByNo">
+      delete from gibu_fund where fund_no=#{value}
+   </delete>
+
+   <update id="updateFund" parameterType="fundVO">
+      update gibu_fund set
+      fund_name=#{fundName},proposal=#{proposal},
+      homepage=#{homepage},goal_sum=#{goalSum}, start_date=#{startDate},
+      due_date=#{dueDate},content=#{content}
+      where fund_no=#{fundNo}
+   </update>
+
+   <select id="getPageNo" resultType="string">
+      select page from(
+      select fund_no fundno, ceil(rownum/5) as page from(
+      select fund_no from gibu_fund order by fund_no desc
+      )
+      ) where fundno=#{value}
+   </select>
+
+   <select id="getTotalPostingCount" resultType="int">
+      select count(*)
+      from gibu_fund
+   </select>
+
+   <update id="updateHit">
+      update gibu_fund set hits=hits+1 where
+      fund_no=#{value}
+   </update>
+
+   <update id="increaseCurSum" parameterType="fundVO">
+      update gibu_fund set
+      cur_sum=cur_sum+#{curSum} where fund_no=#{fundNo}
+   </update>
+   
+   <insert id="savePhoto" parameterType="fundPhotoVO">
+      insert into fund_photo
+      values (fund_photo_seq.nextval,#{orgName},#{realName},#{fundNo})
+   </insert>
+   
+	<insert id="writeComment" parameterType="fundCommentVO">
+		insert into gibu_fund_comment(comment_no,fund_no,member_id,text,comment_time)
+		values(gibu_fund_comment_seq.nextval,#{fundNo},#{memberVO.id},#{text},sysdate)
 	</insert>
-
-	<delete id="deleteFundByNo">
-		delete from gibu_fund where fund_no=#{value}
-	</delete>
-
-	<update id="updateFund" parameterType="fundVO">
-		update gibu_fund set
-		fund_name=#{fundName},proposal=#{proposal},
-		homepage=#{homepage},goal_sum=#{goalSum}, start_date=#{startDate},
-		due_date=#{dueDate},content=#{content}
-		where fund_no=#{fundNo}
-	</update>
-
-	<select id="getPageNo" resultType="string">
-		select page from(
-		select fund_no fundno, ceil(rownum/5) as page from(
-		select fund_no from gibu_fund order by fund_no desc
-		)
-		) where fundno=#{value}
-	</select>
-
-	<select id="getTotalPostingCount" resultType="int">
-		select count(*)
-		from gibu_fund
-	</select>
-
-	<update id="updateHit">
-		update gibu_fund set hits=hits+1 where
-		fund_no=#{value}
-	</update>
-
-	<update id="increaseCurSum" parameterType="fundVO">
-		update gibu_fund set
-		cur_sum=cur_sum+#{curSum} where fund_no=#{fundNo}
-	</update>
 	
-	<insert id="savePhoto" parameterType="fundPhotoVO">
-		insert into fund_photo
-		values (fund_photo_seq.nextval,#{orgName},#{realName},#{fundNo})
-	</insert>
+	<select id="getCommentList" resultType="fundCommentVO" parameterType="commentPageVO">
+ select * from(
+  select commentno, fundno, text, commenttime, id, name, ceil(rownum/5) as page from
+(select co.comment_no commentno, co.fund_no fundno, co.text, co.comment_time commenttime,
+  	co.member_id id, mem.name name from gibu_fund_comment co, member mem where co.member_id=mem.id order by comment_no desc
+  	))
+  	where page=${commentPage} and fundno=${fundNo}
+	</select>
+	
+	<select id="getTotalCommentCount" resultType="int">
+		select count(*) from gibu_fund_comment where fund_no=#{fundNo}
+	</select>
 </mapper>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
