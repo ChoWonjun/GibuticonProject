@@ -25,8 +25,6 @@ public class ConeServiceImpl implements ConeService {
 		int chargeAmount=memberVO.getPoint();
 		memberDAO.increasePoint(memberVO);
 		
-		System.out.println(paymentType + "페이먼트타입");
-		
 		//충전내역 table에 삽입
 /*		insert into charge_history(history_no, member_id, charge_time, payment_type, amount)
 		values(charge_history_seq.nextval, 'java', sysdate, 'credit', 200)
