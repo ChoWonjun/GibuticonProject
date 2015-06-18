@@ -10,11 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.ListVO;
 import org.kosta.gibuticon.model.fund.PagingBean;
+import org.kosta.gibuticon.model.fund.comment.CommentListVO;
+import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
+import org.kosta.gibuticon.model.fund.comment.CommentPagingBean;
+import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
+import org.kosta.gibuticon.model.history.ChargeHistoryVO;
 import org.kosta.gibuticon.service.FundService;
+import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,6 +27,8 @@ public class FundController {
 
 	@Resource
 	private FundService fundService;
+	@Resource
+	private MemberService memberService;
 	@RequestMapping("fund/getList.gibu")
 	public ModelAndView getList(String pageNo, String no) {
 		
@@ -36,7 +43,7 @@ public class FundController {
 	}
 	
 	@RequestMapping("fund/showContent.gibu")
-	public ModelAndView showContent(String no,HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView showContent(String no,String commentPage, HttpServletRequest request, HttpServletResponse response) {
 		Cookie cookies[]=request.getCookies();
 		String hitcookieVal="";
 		String noStr="|"+no+"|";
@@ -68,12 +75,22 @@ public class FundController {
 		else
 			vo =fundService.getFundByNoNotHit(no);
 		
-		return new ModelAndView("fund_show_content","posting",vo);
+		if(commentPage==null)
+			commentPage="1";
+		
+		List<FundCommentVO> list=fundService.getCommentList(new CommentPageVO(no,commentPage));
+		CommentListVO listVO=new CommentListVO(list, new CommentPagingBean(fundService.getTotalCommentCount(no), Integer.parseInt(commentPage)));
+		
+		ModelAndView mv=new ModelAndView("fund_show_content");
+		mv.addObject("posting",vo);
+		mv.addObject("comment",listVO);
+		System.out.println(listVO);
+		
+		return mv;
 	}
 	
 	@RequestMapping("fund/showContentNotHit.gibu")
 	public ModelAndView showContentNoHit(String no) {
-		
 		FundVO vo=fundService.getFundByNoNotHit(no);
 		return new ModelAndView("fund_show_content","posting",vo);
 	}
@@ -88,11 +105,9 @@ public class FundController {
 		return new ModelAndView("fund_update","posting",fundService.getFundByNoNotHit(no));
 	}
 	
-	@Transactional
-	@RequestMapping(value="fund/write.gibu",method=RequestMethod.POST)
+	@RequestMapping("fund/write.gibu")
 	public ModelAndView write(FundVO vo){
 		fundService.writeFund(vo);
-		fundService.uploadPhoto(vo);
 		return new ModelAndView("redirect:showContentNotHit.gibu","no",vo.getFundNo());
 	}
 	
@@ -106,5 +121,20 @@ public class FundController {
 	public ModelAndView delete(String no){
 		fundService.deleteFundByNo(no);
 		return new ModelAndView("redirect:getList.gibu");
+	}
+	
+	@RequestMapping("fund/writeComment.gibu")
+	public ModelAndView writeComment(FundCommentVO fundCommentVO, String memberId){
+		fundCommentVO.setMemberVO(memberService.findMemberById(memberId));
+		fundService.writeComment(fundCommentVO);
+		return new ModelAndView("fund/writeComment_result");
+	}
+	
+	@RequestMapping("history/getChargeHistory.gibu")
+	@ResponseBody
+	public List<ChargeHistoryVO> getChargeHistory(String memberId){
+		List<ChargeHistoryVO> list=fundService.getChargeHistory(memberId);
+		System.out.println(list);
+		return list;
 	}
 }
