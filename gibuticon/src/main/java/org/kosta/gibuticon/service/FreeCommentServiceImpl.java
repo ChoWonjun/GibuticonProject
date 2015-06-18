@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 
 
+
 import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentDAO;
@@ -24,12 +25,6 @@ public class FreeCommentServiceImpl implements FreeCommentService {
 	public void writeFreeComment(FreeBoardCommentVO freeBoardCommentVO){
 		freeCommentDAO.writeFreeComment(freeBoardCommentVO);
 	}
-
-	@Override
-	public List<FreeBoardCommentVO> getFreeBoardCommentList(String pageNo) {
-		return freeCommentDAO.getFreeBoardCommentList(pageNo);
-	}
-
 	@Override
 	public String getPageNo(String no) {
 		return freeCommentDAO.getPageNo(no);
@@ -38,6 +33,10 @@ public class FreeCommentServiceImpl implements FreeCommentService {
 	@Override
 	public int getTotalPostingCount() {
 		return freeCommentDAO.getTotalPostingCount();
+	}
+	@Override
+	public void deleteFreeComment(String no) {
+		freeCommentDAO.deleteFreeComment(no);
 	}
 
 }

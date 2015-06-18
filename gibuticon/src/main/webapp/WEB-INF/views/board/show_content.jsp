@@ -23,8 +23,7 @@
 					return false;
 				} 
 			});
-		});
-
+	});
 </script>
 </head>
 <body>
@@ -52,6 +51,7 @@
 							id="updateImg" src="${initParam.root}layoutit/src/img/modify_btn.jpg">
 							<img id="delImg" src="${initParam.root}layoutit/src/img/delete_btn.jpg"></td>
 					</tr>
+				<c:if test="${sessionScope.mvo!=null }">
 					<tr>
 						<td><form action="writeFreeComment.gibu">
 						댓글<input type="text" name="comment">
@@ -61,6 +61,7 @@
 						<input type="hidden" name="boardNo" value="${requestScope.fvo.boardNo}">
 						</form></td>
 					</tr>
+				</c:if>
 				</table>
 				
 				<table align="center">
@@ -76,7 +77,16 @@
 		</thead>	
 		<tbody>
 			<c:forEach items="${requestScope.flist.list}" var="comment">
-				<tr><td>${comment.commentNo}</td><td>${comment.comment}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</<td><td>${comment.hits}</td></tr>
+				<tr><td align="left">${comment.commentNo}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</<td><td>${comment.hits}</td></tr>
+					<c:choose>
+						<c:when test="${comment.memberVO.id==sessionScope.mvo.id}">
+							<tr><td>${comment.comment}</td></tr>
+							<tr><td><a href="">삭제하기</a></td></tr>
+						</c:when>
+							<c:otherwise>
+								<tr><td>${comment.comment}</td></tr>
+							</c:otherwise>
+					</c:choose>
 			</c:forEach>
 			<tr>
 				<td colspan=5 align="center">

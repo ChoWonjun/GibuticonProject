@@ -31,10 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			)
 		) where freeboard_comment_no=#{commentNo}
 	</select>
-	
 	<select id="getTotalPostingCount" resultType="int">
 		select count(*) from freeBoard_comment
 	</select>
+	<delete id="deleteFreeComment">
+		delete from freeBoard_comment where freeboard_comment_no=#{value}
+	</delete>
 </mapper>
  
  

@@ -32,7 +32,6 @@ public class FreeBoardController {
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
 		freeBoardVO.setId(mvo.getId());	
 		freeBoardService.writeFreeBoard(freeBoardVO);
-		//System.out.println(freeBoardVO+"후");
 		return new ModelAndView("redirect:getFreeBoardList.gibu");
 	}
 	@RequestMapping("getFreeBoardList")
@@ -52,7 +51,7 @@ public class FreeBoardController {
 		if(mvo!=null){
 			return new ModelAndView("freeBoard_write");
 		}
-			return new ModelAndView("loginView","type","freeBoard");
+			return new ModelAndView("member/loginView");
 	}
 	@RequestMapping("getFreeBoardByNo")
 	public ModelAndView getFreeBoardByNo(String no, String pageNo){
@@ -79,9 +78,7 @@ public class FreeBoardController {
 	}
 	@RequestMapping("updateFreeBoard")
 	public String updateFreeBoard(FreeBoardVO freeBoardVO){
-		//System.out.println(freeBoardVO+"바아온거");
 		freeBoardService.updateFreeBoard(freeBoardVO);
-		//System.out.println(freeBoardVO);
 		return "redirect:getFreeBoardByNo.gibu?no="+freeBoardVO.getBoardNo(); 
 	}
 	@RequestMapping("deleteFreeBoard")
@@ -92,7 +89,6 @@ public class FreeBoardController {
 	@RequestMapping("replyView")
 	public ModelAndView replyView(String no){
 		FreeBoardVO fvo=freeBoardService.replyView(no);
-		//System.out.println(fvo+"ccc");
 		return new ModelAndView("freeBoard_reply_form","fvo",fvo);
 	}
 	@RequestMapping("reply")
