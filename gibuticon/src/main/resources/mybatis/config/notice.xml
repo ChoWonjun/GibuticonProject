@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="showContent" resultMap="noticeListRM">
 		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
 	</select>
-	<select id="getNoticeList" resultMap="noticeListRM">
+	<select id="getNoticeList"  parameterType="string" resultMap="noticeListRM">
 		SELECT
 		notice_no,title,write_date,content,hits
 		FROM(
@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
 		FROM notice order by notice_no desc
 		)
-		) WHERE PAGE=#{value}
+		) WHERE page=#{value}
 	</select>
 	
 		<update id="updateCount" parameterType="int">

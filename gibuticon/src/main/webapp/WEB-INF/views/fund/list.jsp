@@ -104,8 +104,11 @@
 						</tr>
 					</tbody>
 				</table>
-				<br></br> <a href="${initParam.root }fund/writeForm.gibu"><img
+				<br></br>
+				 <c:if test="${sessionScope.mvo.admin=='yes'}">
+				 <a href="${initParam.root }fund/writeForm.gibu"><img
 					src="${initParam.root }img/write_btn.jpg" border="0"></a> <br>
+					</c:if>
 				<br>
 			</div>
 		</div>

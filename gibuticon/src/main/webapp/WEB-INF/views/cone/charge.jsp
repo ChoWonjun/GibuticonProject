@@ -35,11 +35,14 @@
 		$("#chargeButton").click(function(){
 			if(chargeCone.payVal.value=="")
 				alert("충전단위를 선택하세요!");
+			else if(chargeCone.coneVal.value<10)
+				alert("충전단위를 10개 이상 입력해주세요!");
 			else if($("#chargeCone :radio[name=payment]:checked").length==0){
 				alert("결제방식을 선택하세요!");
 			}
 			else
-				location.href="${initParam.root}cone/charge.gibu?id=${sessionScope.mvo.id }&point="+chargeCone.coneVal.value;
+				location.href="${initParam.root}cone/charge.gibu?id=${sessionScope.mvo.id }&point="
+						+chargeCone.coneVal.value+"&paymentType="+$("#chargeCone :radio[name=payment]:checked").val();
 		});
 	});
 </script>

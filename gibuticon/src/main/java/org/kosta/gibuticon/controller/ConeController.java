@@ -32,9 +32,9 @@ public class ConeController {
 	}
 	
 	@RequestMapping("cone/charge.gibu")
-	public ModelAndView charge(MemberVO memberVO, int point, HttpServletRequest request){
+	public ModelAndView charge(MemberVO memberVO, int point, String paymentType, HttpServletRequest request){
 		memberVO.setPoint(point);
-		coneService.charge(memberVO);
+		coneService.charge(memberVO,paymentType);
 		
 		HttpSession session=request.getSession();
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
@@ -49,11 +49,11 @@ public class ConeController {
 	public ModelAndView gibu(FundVO fundVO, int point, HttpServletRequest request){
 		HttpSession session=request.getSession();
 		MemberVO memberVO=(MemberVO)session.getAttribute("mvo");
-
+		
 		coneService.gibu(memberVO, fundVO, point);
 		
 		session.setAttribute("mvo",memberVO);
 		
-		return new ModelAndView("cone/gibu_result");
+		return new ModelAndView("cone/gibu_result","fundNo",fundVO.getFundNo());
 	}
 }

@@ -2,7 +2,7 @@ package org.kosta.gibuticon.model.free;
 
 import java.util.List;
 
-import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
 
 public interface FreeBoardDAO {
 
@@ -20,7 +20,7 @@ public interface FreeBoardDAO {
 	
 	public abstract FreeBoardVO replyView(String no);
 	
-	public abstract List<FreeBoardCommentVO> getFreeBoardCommentList(FreeBoardCommentVO freeBoardCommentVO);
+	public abstract List<FreeCommentVO> getFreeBoardCommentList(FreeCommentVO freeBoardCommentVO);
 	
 	public abstract void reply(FreeBoardVO freeBoardVO);
 
@@ -28,7 +28,7 @@ public interface FreeBoardDAO {
 
 	public abstract String getPageNo(String no);
 	
-	public abstract List<FreeBoardCommentVO> getCommentList(String no, String pageNo);
+	public abstract List<FreeCommentVO> getCommentList(String no, String pageNo);
 	
 
 }

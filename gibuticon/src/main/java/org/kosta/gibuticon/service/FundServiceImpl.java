@@ -9,6 +9,7 @@ import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
+import org.kosta.gibuticon.model.history.GibuHistoryVO;
 import org.kosta.gibuticon.model.history.HistoryDAO;
 import org.springframework.stereotype.Service;
 
@@ -84,5 +85,11 @@ public class FundServiceImpl implements FundService {
 	@Override
 	public List<ChargeHistoryVO> getChargeHistory(String memberId) {
 		return historyDAO.getChargeHistory(memberId);
+	}
+
+	@Override
+	public List<GibuHistoryVO> getGibuHistory(String memberId) {
+		// TODO Auto-generated method stub
+		return historyDAO.getGibuHistory(memberId);
 	}
 }

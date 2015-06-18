@@ -8,20 +8,20 @@ import java.util.List;
  *
  */
 public class FreeCommentListVO {
-	private List<FreeBoardCommentVO> list;
+	private List<FreeCommentVO> list;
 	private FreeCommentPagingBean pagingBean;
 	public FreeCommentListVO() {
 		super();		
 	}
-	public FreeCommentListVO(List<FreeBoardCommentVO> list, FreeCommentPagingBean pagingBean) {
+	public FreeCommentListVO(List<FreeCommentVO> list, FreeCommentPagingBean pagingBean) {
 		super();
 		this.list = list;
 		this.pagingBean = pagingBean;
 	}
-	public List<FreeBoardCommentVO> getList() {
+	public List<FreeCommentVO> getList() {
 		return list;
 	}
-	public void setList(List<FreeBoardCommentVO> list) {
+	public void setList(List<FreeCommentVO> list) {
 		this.list = list;
 	}
 	public FreeCommentPagingBean getPagingBean() {

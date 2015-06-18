@@ -1,6 +1,6 @@
 package org.kosta.gibuticon.service;
 
-import java.util.List;
+
 
 import javax.annotation.Resource;
 
@@ -8,8 +8,8 @@ import javax.annotation.Resource;
 
 
 
-import org.kosta.gibuticon.model.free.FreeBoardVO;
-import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+
+import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentDAO;
 import org.springframework.stereotype.Service;
 
@@ -22,7 +22,7 @@ public class FreeCommentServiceImpl implements FreeCommentService {
 	 * @see org.kosta.gibuticon.service.FreeCommentService#writeFreeComment(org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO)
 	 */
 	@Override
-	public void writeFreeComment(FreeBoardCommentVO freeBoardCommentVO){
+	public void writeFreeComment(FreeCommentVO freeBoardCommentVO){
 		freeCommentDAO.writeFreeComment(freeBoardCommentVO);
 	}
 	@Override

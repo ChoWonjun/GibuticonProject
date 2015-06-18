@@ -18,7 +18,7 @@ public class FreeCommentDAOImpl implements FreeCommentDAO {
 	 * @see org.kosta.gibuticon.model.freeComment.FreeCommentDAO#writeFreeComment(org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO)
 	 */
 	@Override
-	public void writeFreeComment(FreeBoardCommentVO freeBoardCommentVO){
+	public void writeFreeComment(FreeCommentVO freeBoardCommentVO){
 		System.out.println(freeBoardCommentVO+"writeFreeCommentDAO");
 		sqlSessionTemplate.insert("freecomment.writeFreeComment",freeBoardCommentVO);
 	}

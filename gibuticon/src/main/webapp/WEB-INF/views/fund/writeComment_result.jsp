@@ -14,15 +14,8 @@
 </script>
 </head>
 <body>
-기부해주셔서 감사합니다.<hr>
+댓글을 등록했습니다.<hr>
 
-<form name="writeCommentForm" action="${initParam.root }fund/writeComment.gibu">
-응원댓글 남기기<br>
-${sessionScope.mvo.name }
-<input type="text" name="text"><br>
-<input type="hidden" name="fundNo" value="${param.fundNo }">
-<input type="hidden" name="memberId" value="${sessionScope.mvo.id }">
-<input type="submit" value="댓글달기">
-<input type="button" value="닫기" onclick="closeWindow()"></form>
+<input type="button" value="닫기" onclick="closeWindow()">
 </body>
 </html>

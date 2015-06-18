@@ -6,6 +6,7 @@ import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
+import org.kosta.gibuticon.model.history.GibuHistoryVO;
 
 public interface FundService {
 	public List<FundVO> getFundList(String pageNo);
@@ -20,4 +21,5 @@ public interface FundService {
 	public List<FundCommentVO> getCommentList(CommentPageVO commentPageVO);
 	public int getTotalCommentCount(String fundNo);
 	public List<ChargeHistoryVO> getChargeHistory(String memberId);
+	public List<GibuHistoryVO> getGibuHistory(String memberId);
 }

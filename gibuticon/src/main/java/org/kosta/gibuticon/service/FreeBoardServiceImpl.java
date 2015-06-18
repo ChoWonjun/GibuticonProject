@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.free.FreeBoardDAO;
 import org.kosta.gibuticon.model.free.FreeBoardVO;
-import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -74,13 +74,13 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeBoardCommentVO> getFreeBoardCommentList(
-			FreeBoardCommentVO freeBoardCommentVO) {
+	public List<FreeCommentVO> getFreeBoardCommentList(
+			FreeCommentVO freeBoardCommentVO) {
 		return freeBoardDAO.getFreeBoardCommentList(freeBoardCommentVO);
 	}
 
 	@Override
-	public List<FreeBoardCommentVO> getCommentList(String no, String pageNo) {
+	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
 		return freeBoardDAO.getCommentList(no, pageNo);
 	}
 

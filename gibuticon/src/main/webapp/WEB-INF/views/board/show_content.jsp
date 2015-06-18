@@ -11,7 +11,7 @@
 	$(document).ready(function(){
 		$("#updateImg").click(function(){
 				if(confirm("수정하시겠습니까?")){
-					location.href="${initParam.root}update.gibu?no=${requestScope.fvo.boardNo}";
+					location.href="${initParam.root}updateFreeView.gibu?no=${requestScope.fvo.boardNo}";
 				}else{
 					return false;
 				} 

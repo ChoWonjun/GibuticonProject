@@ -9,7 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.kosta.gibuticon.model.free.FreeBoardVO;
 import org.kosta.gibuticon.model.free.ListVO;
 import org.kosta.gibuticon.model.free.PagingBean;
-import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentListVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentPagingBean;
 import org.kosta.gibuticon.model.member.MemberVO;
@@ -51,7 +51,7 @@ public class FreeBoardController {
 		if(mvo!=null){
 			return new ModelAndView("freeBoard_write");
 		}
-			return new ModelAndView("member/loginView");
+			return new ModelAndView("redirect:loginView.gibu");
 	}
 	@RequestMapping("getFreeBoardByNo")
 	public ModelAndView getFreeBoardByNo(String no, String pageNo){
@@ -62,7 +62,7 @@ public class FreeBoardController {
 			pageNo="1";
 		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
 		System.out.println(fvo+"getFreeBoardByNo");
-		List<FreeBoardCommentVO> list=freeBoardService.getCommentList(no, pageNo);
+		List<FreeCommentVO> list=freeBoardService.getCommentList(no, pageNo);
 		FreeCommentListVO flist=new FreeCommentListVO(list, new FreeCommentPagingBean(freeCommentService.getTotalPostingCount(), Integer.parseInt(pageNo)));
 		System.out.println("잘나오냥"+flist);
 		mv.addObject("fvo", fvo);
@@ -71,7 +71,7 @@ public class FreeBoardController {
 		return mv;
 	}
 	
-	@RequestMapping("update")
+	@RequestMapping("updateFreeView")
 	public ModelAndView update(String no){
 		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
 		return new ModelAndView("freeBoard_update","fvo",fvo);
@@ -93,8 +93,9 @@ public class FreeBoardController {
 	}
 	@RequestMapping("reply")
 	public ModelAndView reply(FreeBoardVO freeBoardVO){
+		System.out.println("reply"+freeBoardVO);
 		freeBoardService.reply(freeBoardVO);
-		return new ModelAndView("freeBoard_show_content","fvo",freeBoardVO);
+		return new ModelAndView("redirect:getFreeBoardList.gibu");
 	}
 
 }
