@@ -24,7 +24,7 @@
          </div>
          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-               <li class="active"><a href="#">사이트소개</a></li>
+               <li><a href="#">사이트소개</a></li>
                <li><a href="${initParam.root}getNoticeList.gibu">공지사항</a></li>
                <li><a href="${initParam.root}fund/getList.gibu">모금</a></li>
                <li><a href="#">모금현황</a></li>

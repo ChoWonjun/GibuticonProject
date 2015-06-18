@@ -17,20 +17,21 @@
 								<td><a href="#">&nbsp;</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">아동</a></td>
+								<td><a href="#">&nbsp;</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">&nbsp;</a></td>
+								<td><a href="#">아동</a></td>
 							</tr>
 							<tr>
 								<td><a href="#">어르신</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">&nbsp;</a></td>
+								<td><a href="#">장애인</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">환경</a></td>
+								<td><a href="#">기타</a></td>
 							</tr>
+						
 						</table>
 					</div>
 					<!--//menu-->
