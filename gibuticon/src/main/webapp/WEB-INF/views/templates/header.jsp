@@ -20,11 +20,11 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="${initParam.root}home.gibu"><span>Gibuticon</span></a>
+				<a class="navbar-brand" href="${initParam.root}home.gibu"><span><strong>Gibuticon</strong></span></a>
 			</div>
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">사이트소개</a></li>
+					<li><a href="#">사이트소개</a></li>
 					<li><a href="${initParam.root}getNoticeList.gibu">공지사항</a></li>
 					<li><a href="${initParam.root}fund/getList.gibu">모금</a></li>
 					<li><a href="#">모금현황</a></li>
@@ -43,7 +43,8 @@
 									<li class="divider"></li>
 									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;총
 												기부액</strong> 0원</a></li>
-									<li><a tabindex="-1" href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한
+									<li><a tabindex="-1"
+										href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한
 												콘</strong> ${sessionScope.mvo.point }개 </a></li>
 									<li class="divider"></li>
 									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;친구목록
