@@ -10,12 +10,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <result property="boardNo" column="board_no" />
       <result property="writeDate" column="write_date"/>
    </resultMap>
-   <resultMap type="FreeBoardCommentVO" id="FreeBoardCommentRM">
-   	<result property="commentNo" column="freeboard_comment_no"/>
-   	<result property="writeDate" column="write_date"/>
-   	<result property="comment" column="freeboard_comment"/>
-   	<result property="boardNo" column="board_no"/>
-   </resultMap>
 	<insert id="writeFreeBoard" parameterType="freeBoardVO">
 		<selectKey keyProperty="boardNo" resultType="string" order="BEFORE">
 			select free_board_sequence.nextval from dual
@@ -35,10 +29,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getFreeBoardByNo" resultMap="freeBoardRM">
 		<include refid="selectFreeBoard" />
 		where board_no=#{value}
-	</select>
-	<select id="getFreeBoardCommentList" parameterType="freeBoardVO" resultMap="FreeBoardCommentRM">
-		select fc.freeboard_comment_no, fc.write_date, fc.freeboard_comment, fc.hits, m.id, m.password, m.name, m.address, m.tel, m.birth, m.admin, m.email, m.point, fb.board_no
-		from freeBoard_comment fc, free_board fb, member m where fb.id=m.id and fb.id=#{id} and fb.board_no=${boardNo}
 	</select>
 	<select id="getFreeBoardList" parameterType="string" resultMap="freeBoardRM">
 		   select board_no, title, write_date, content, hits, id from(

@@ -3,8 +3,12 @@ package org.kosta.gibuticon.model.free;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentListVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentPageVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentPagingBean;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -33,8 +37,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 			System.out.println(sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 		}
+		System.out.println(list+"후");
 
-		return sqlSessionTemplate.selectList("freeboard.getFreeBoardList", pageNo);
+		return list;
 	}
 	
 	/* (non-Javadoc)
@@ -92,8 +97,24 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Override
 	public List<FreeBoardCommentVO> getFreeBoardCommentList(
-			FreeBoardVO freeBoardVO) {
-		return sqlSessionTemplate.selectList("freeboard.getFreeBoardCommentList", freeBoardVO);
+			FreeBoardCommentVO freeBoardCommentVO) {
+		List<FreeBoardCommentVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardCommentList", freeBoardCommentVO);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",freeBoardCommentVO.getId()));
+		}
+		System.out.println(list);
+		return list;
 	}
+	@Override
+	public List<FreeBoardCommentVO> getCommentList(String no, String pageNo) {
+		System.out.println(pageNo+"  "+no+"코멘트 페이지");
+		List<FreeBoardCommentVO> list=sqlSessionTemplate.selectList("freecomment.getFreeBoardCommentList", new FreeCommentPageVO(Integer.parseInt(no), pageNo));
+		for(int i=0;i<list.size();i++){
+			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
+		}
+		return list;
+	}
+
+
 	
 }

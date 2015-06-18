@@ -28,22 +28,20 @@
 </script>
 </head>
 <body>
-<table class="content">
+<table align="center">
 					<tr>
 						<td><b>${requestScope.fvo.title}</b>
 						</td>
 					</tr>
 					<tr>
 						<td><font size="2">
-							|	조회수: ${requestScope.fvo.hits } 
-							|	${requestScope.fvo.writeDate}</font></td>
+								조회수: ${requestScope.fvo.hits } 
+							|	작성일: ${requestScope.fvo.writeDate}</font>
+							|   작성자: ${requestScope.fvo.memberVO.name}</td>
 					</tr>
 					<tr>
 						<td><textarea cols="40" rows="10" name="content"
 								readonly="readonly">${requestScope.fvo.content }</textarea></td>
-					</tr>
-					<tr>
-						<td>${sessionScope.mvo.id}</td>
 					</tr>
 					<tr>
 						<td valign="middle">
@@ -55,16 +53,18 @@
 							<img id="delImg" src="${initParam.root}layoutit/src/img/delete_btn.jpg"></td>
 					</tr>
 					<tr>
-						<td><form action="">
+						<td><form action="writeFreeComment.gibu">
 						댓글<input type="text" name="comment">
+						작성자<input  readonly type="text" name="name" value="${sessionScope.mvo.name}">
 						<input type="submit" value="댓글등록">
-						<input type="hidden" name="id" value="${requestScope.fvo.id}">
+						<input type="hidden" name="id" value="${sessionScope.mvo.id}">
+						<input type="hidden" name="boardNo" value="${requestScope.fvo.boardNo}">
 						</form></td>
 					</tr>
 				</table>
 				
-				<table  border="1" cellpadding="1">
-		<caption>목록</caption>
+				<table align="center">
+		<caption>댓글 목록</caption>
 		<thead>
 		<tr>
 			<th class="no">NO</th>
@@ -75,20 +75,20 @@
 			</tr>		
 		</thead>	
 		<tbody>
-			<c:forEach items="${requestScope.clist}" var="comment">
-				<tr><td>${comment.commentNo}</td><td>${comment.comment}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name }</<td>${comment.hits}</td></tr>
+			<c:forEach items="${requestScope.flist.list}" var="comment">
+				<tr><td>${comment.commentNo}</td><td>${comment.comment}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</<td><td>${comment.hits}</td></tr>
 			</c:forEach>
 			<tr>
 				<td colspan=5 align="center">
-					<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
+					<c:set var="pb" value="${requestScope.flist.pagingBean}"></c:set>
 					<c:if test="${pb.previousPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
+						<a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
+						<a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${i}">${i}</a>
 					</c:forEach>
 					<c:if test="${pb.nextPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
+						<a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.endPageOfPageGroup+1}">▶</a>
 					</c:if>
 				</td>
 			</tr>				

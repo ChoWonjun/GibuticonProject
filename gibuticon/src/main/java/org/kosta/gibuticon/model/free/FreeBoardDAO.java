@@ -6,8 +6,6 @@ import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
 
 public interface FreeBoardDAO {
 
-	public abstract FreeBoardVO getFreeBoardByNo(String no);
-
 	public abstract List<FreeBoardVO> getFreeBoardList(String pageNo);
 
 	public abstract void writeFreeBoard(FreeBoardVO freeBoardVO);
@@ -15,8 +13,6 @@ public interface FreeBoardDAO {
 	public abstract void deleteFreeBoard(String no);
 
 	public abstract void updateFreeBoard(FreeBoardVO freeBoardVO);
-	
-	public abstract String getPageNo(String no);
 
 	public abstract int getTotalPostingCount();
 
@@ -24,8 +20,15 @@ public interface FreeBoardDAO {
 	
 	public abstract FreeBoardVO replyView(String no);
 	
-	public abstract List<FreeBoardCommentVO> getFreeBoardCommentList(FreeBoardVO freeBoardVO);
+	public abstract List<FreeBoardCommentVO> getFreeBoardCommentList(FreeBoardCommentVO freeBoardCommentVO);
 	
 	public abstract void reply(FreeBoardVO freeBoardVO);
+
+	public abstract FreeBoardVO getFreeBoardByNo(String no);
+
+	public abstract String getPageNo(String no);
+	
+	public abstract List<FreeBoardCommentVO> getCommentList(String no, String pageNo);
+	
 
 }

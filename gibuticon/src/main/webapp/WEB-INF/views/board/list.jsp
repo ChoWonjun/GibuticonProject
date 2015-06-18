@@ -19,9 +19,18 @@
 			</tr>		
 		</thead>	
 		<tbody>
-			<c:forEach items="${requestScope.lvo.list}" var="board">
-				<tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
-			</c:forEach>
+			<c:choose>
+				<c:when test="${sessionScope.mvo!=null}">
+					<c:forEach items="${requestScope.lvo.list}" var="board">
+						<tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${requestScope.lvo.list}" var="board">
+						<tr><td>${board.boardNo}</td><td>${board.title}</td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
+					</c:forEach>
+				</c:otherwise>
+			</c:choose>
 			<tr>
 				<td colspan=5 align="center">
 					<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>

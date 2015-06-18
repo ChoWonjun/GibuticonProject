@@ -7,8 +7,9 @@ public class FreeBoardCommentVO {
 	private String writeDate;
 	private String comment;
 	private int hits;
-	private MemberVO memberVO;
+	private String id;
 	private int boardNo;
+	private MemberVO memberVO;
 	public String getCommentNo() {
 		return commentNo;
 	}
@@ -45,12 +46,20 @@ public class FreeBoardCommentVO {
 	public void setBoardNo(int boardNo) {
 		this.boardNo = boardNo;
 	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	@Override
 	public String toString() {
 		return "FreeBoardCommentVO [commentNo=" + commentNo + ", writeDate="
 				+ writeDate + ", comment=" + comment + ", hits=" + hits
-				+ ", memberVO=" + memberVO + ", boardNo=" + boardNo + "]";
+				+ ", id=" + id + ", boardNo=" + boardNo + ", memberVO="
+				+ memberVO + "]";
 	}
+	
 	
 
 }
