@@ -62,7 +62,7 @@
                         <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘 안내</span></a>
                       </li>
                       <li>
-                        <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘받기 안내</span></a>
+                        <a href="${initParam.root}getFreeBoardList.gibu">자유게시판</a> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘받기 안내</span></a>
                       </li>
                       <li>
                         <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">기부방법 안내</span></a>

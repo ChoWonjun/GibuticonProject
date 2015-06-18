@@ -38,22 +38,19 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4">
-								<img
-									src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+								<img src="img/whatsgibuticon.png" 
 									class="img-responsive">
 								<h2>기부티콘이란</h2>
 								<p>사랑하는 이에게 기부를 선물하세요</p>
 							</div>
 							<div class="col-md-4">
-								<img
-									src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+								<img src="img/mainreviews.png" 
 									class="img-responsive">
 								<h2>후원 후기</h2>
 								<p>함께 만들어가는 세상</p>
 							</div>
 							<div class="col-md-4">
-								<img
-									src="http://pingendo.github.io/pingendo-bootstrap/assets/placeholder.png"
+								<img src="img/ranking.jpg" 
 									class="img-responsive">
 								<h2>회원랭킹</h2>
 								<p>회원 기부 랭킹</p>

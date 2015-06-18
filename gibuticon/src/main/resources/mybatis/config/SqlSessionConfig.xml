@@ -3,7 +3,6 @@
 PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
-<!-- MyBatis DataSource에 대한 설정 및 SQL 정의 xml 에 대한 매핑 -->
 <configuration>
    <!-- 사용할 클래스에 대한 별칭을 명시한다. -->
    <typeAliases>
@@ -19,6 +18,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
          alias="noticeVO" />
       <typeAlias type="org.kosta.gibuticon.model.fund.FundVO"
          alias="fundVO" />
+	<typeAlias type="org.kosta.gibuticon.model.fund.FundPhotoVO"
+		alias="fundPhotoVO" />
 	<typeAlias type="org.kosta.gibuticon.model.fund.comment.FundCommentVO"
 		alias="fundCommentVO" />		
 	<typeAlias type="org.kosta.gibuticon.model.fund.comment.CommentPageVO"
@@ -46,5 +47,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
       <mapper resource="mybatis/config/point.xml" />
       <mapper resource="mybatis/config/freeboard.xml" />
       <mapper resource="mybatis/config/freecomment.xml"/>
+      <mapper resource="mybatis/config/history.xml"/>
    </mappers>
 </configuration>
