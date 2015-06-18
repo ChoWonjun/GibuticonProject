@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
   <body data-spy="scroll">
   <div class="section">
       <div class="container">
@@ -108,29 +107,15 @@
                      </tr>
                   </thead>
                   <tbody>
-                     <c:forEach items="${requestScope.lvo.list}" var="noticeboard">
+                     <c:forEach items="${requestScope.nlvo.list}" var="noticeboard">
                         <tr>
-                           <td>${noticeboard.noticeNo }</td>
+                           <td>${noticeboard.noticeNo}</td>
                            <td><a
-                              href="${initParam.root}showNoticeContent.gibu?noticeNo=${noticeboard.noticeNo }">
+                              href="${initParam.root}showNoticeContent.gibu?noticeNo=${noticeboard.noticeNo}">
                                  ${noticeboard.title }</a></td>
                            <td>${noticeboard.writeDate }</td>
                            <td>${noticeboard.hits }</td>
                         </tr>
-<%--                         <tr>
-            <td colspan=5 align="center">
-               <c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
-               <c:if test="${pb.previousPageGroup}">
-                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
-               </c:if>
-               <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${i }">${i }</a>
-               </c:forEach>
-               <c:if test="${pb.nextPageGroup}">
-                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
-               </c:if>
-            </td>
-         </tr> --%>
                      </c:forEach>
                   </tbody>
                </table>
@@ -156,27 +141,22 @@
             </div>
             <div class="col-md-6">
               <ul class="pagination">
+              <c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
+              <c:if test="${pb.previousPageGroup}">
+	                <li>
+	                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+	                </li>
+                </c:if>
                 <li>
-                  <a href="#">Prev</a>
+                 <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+						<a href="${initParam.root }getNoticeList.gibu?pageNo=${i }">${i }</a>
+					</c:forEach>
                 </li>
-                <li>
-                  <a href="#">1</a>
-                </li>
-                <li>
-                  <a href="#">2</a>
-                </li>
-                <li>
-                  <a href="#">3</a>
-                </li>
-                <li>
-                  <a href="#">4</a>
-                </li>
-                <li>
-                  <a href="#">5</a>
-                </li>
-                <li>
-                  <a href="#">Next</a>
-                </li>
+                <c:if test="${pb.nextPageGroup}">
+	                <li>
+	                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+	                </li>
+                </c:if>
               </ul>
             </div>
             <div class="col-md-offset-3 col-md-6">
@@ -186,6 +166,11 @@
                     <input type="text" class="form-control" placeholder="검색어입력">
                     <span class="input-group-btn">
                       <a class="btn btn-primary" type="submit">검색</a>
+                    </span>
+                     <span>
+                     <c:if test="${sessionScope.mvo.admin=='yes'}">
+                    	<a href="writeNoticeView.gibu">글쓰기</a>
+                    	</c:if>
                     </span>
                   </div>
                 </div>

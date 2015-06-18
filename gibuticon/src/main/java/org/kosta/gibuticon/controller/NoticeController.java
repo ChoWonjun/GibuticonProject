@@ -28,7 +28,7 @@ public class NoticeController {
 		HttpSession session = request.getSession(false);
 		MemberVO mvo =(MemberVO) session.getAttribute("mvo");
 		if (session==null || mvo==null || !(mvo.getAdmin().equals("yes"))) {
-			return new ModelAndView("redirect:getNoticeList.gibu");
+			return new ModelAndView("redirect:loginView.gibu");
 		}else{
 			return new ModelAndView("notice_write");
 		}
@@ -36,6 +36,7 @@ public class NoticeController {
 	
 	@RequestMapping("getNoticeList.gibu")
 	public ModelAndView getNoticeList(String pageNo, String no) {
+		System.out.println(no+"   "+pageNo);
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
@@ -45,7 +46,8 @@ public class NoticeController {
 		System.out.println(list);
 		ListVO lvo = new ListVO(list, new PagingBean(
 				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-		return new ModelAndView("notice_list", "lvo", lvo);
+		System.out.println(lvo+"lvo");
+		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 
 	@RequestMapping("showNoticeContent.gibu")

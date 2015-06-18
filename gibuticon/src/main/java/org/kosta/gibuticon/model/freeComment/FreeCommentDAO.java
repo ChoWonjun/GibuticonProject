@@ -2,7 +2,7 @@ package org.kosta.gibuticon.model.freeComment;
 
 public interface FreeCommentDAO {
 
-	public abstract void writeFreeComment(FreeBoardCommentVO freeBoardCommentVO);
+	public abstract void writeFreeComment(FreeCommentVO freeBoardCommentVO);
 	
 	public abstract void deleteFreeComment(String no);
 	

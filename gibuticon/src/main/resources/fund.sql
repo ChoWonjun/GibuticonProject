@@ -85,6 +85,7 @@ update fund_photo set org_name='' , real_name='' where photo_no = 1;
 --	private int hits;
 --  
 
+
 drop table donation_history;
 create table donation_history(
 	history_no number primary key,
@@ -164,3 +165,4 @@ group by DONATION_HISTORY.MEMBER_ID
 select member_id, count(fund_no)
 from DONATION_HISTORY
 group by DONATION_HISTORY.MEMBER_ID
+

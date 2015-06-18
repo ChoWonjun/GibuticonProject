@@ -5,7 +5,7 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
-import org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO;
+import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentListVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentPageVO;
 import org.kosta.gibuticon.model.freeComment.FreeCommentPagingBean;
@@ -32,12 +32,13 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	@Override
 	public List<FreeBoardVO> getFreeBoardList(String pageNo){
 		List<FreeBoardVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardList", pageNo);
-		System.out.println(list);
+		System.out.println(list+"getFreeBoardList");
 		for(int i=0;i<list.size();i++){
+			System.out.println(list.get(i).getId());
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
-			System.out.println(sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
+			//System.out.println(sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 		}
-		System.out.println(list+"후");
+		//System.out.println(list+"후");
 
 		return list;
 	}
@@ -96,9 +97,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	}
 
 	@Override
-	public List<FreeBoardCommentVO> getFreeBoardCommentList(
-			FreeBoardCommentVO freeBoardCommentVO) {
-		List<FreeBoardCommentVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardCommentList", freeBoardCommentVO);
+	public List<FreeCommentVO> getFreeBoardCommentList(
+			FreeCommentVO freeBoardCommentVO) {
+		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardCommentList", freeBoardCommentVO);
 		for(int i=0;i<list.size();i++){
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",freeBoardCommentVO.getId()));
 		}
@@ -106,9 +107,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		return list;
 	}
 	@Override
-	public List<FreeBoardCommentVO> getCommentList(String no, String pageNo) {
+	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
 		System.out.println(pageNo+"  "+no+"코멘트 페이지");
-		List<FreeBoardCommentVO> list=sqlSessionTemplate.selectList("freecomment.getFreeBoardCommentList", new FreeCommentPageVO(Integer.parseInt(no), pageNo));
+		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freecomment.getFreeBoardCommentList", new FreeCommentPageVO(Integer.parseInt(no), pageNo));
 		for(int i=0;i<list.size();i++){
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 		}
