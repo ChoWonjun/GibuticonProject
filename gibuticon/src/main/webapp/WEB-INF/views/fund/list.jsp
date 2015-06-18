@@ -2,54 +2,22 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-	
+
+<link rel="stylesheet" href="${initParam.root }css/board.css"
+	type="text/css">
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-2">
-				<div class="row">
-					<div id="menu_example">
-						<table border="1" pedding="5">
-							<tr>
-								<td><a href="#">기부사이트 보기</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">&nbsp;</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">&nbsp;</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">아동</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">어르신</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">장애인</a></td>
-							</tr>
-							<tr>
-								<td><a href="#">기타</a></td>
-							</tr>
-						
-						</table>
-					</div>
-					<!--//menu-->
-				</div>
-			</div>
-			<div class="col-md-10">
-				<div id="carousel-example" data-interval="false"
-					class="carousel slide" data-ride="carousel">
-					<div class="carousel-inner">
-						<div class="item active">
-							<img src="${initParam.root }img\모금함리스트_배너.jpg">
-						</div>
-					</div>
-					<a class="left carousel-control" href="#carousel-example"
-						data-slide="prev"><i class="icon-prev  fa fa-angle-left"></i></a>
-					<a class="right carousel-control" href="#carousel-example"
-						data-slide="next"><i class="icon-next fa fa-angle-right"></i></a>
-				</div>
+			<div class="col-md-12"></div>
+		</div>
+	</div>
+</div>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<img src="${initParam.root }img\모금함리스트_사이트배너.jpg"
+					class="img-responsive">
 			</div>
 		</div>
 	</div>
@@ -58,7 +26,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<img src="${initParam.root }img\추천모금함.jpg" class="img-responsive">
+				<img src="${initParam.root }img\기부사이트 전체모금함.jpg">
 			</div>
 		</div>
 	</div>
@@ -78,7 +46,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${requestScope.vo.list}" var="posting">
+						<c:forEach items="${requestScope.vo.list}">
 							<tr>
 								<td>${posting.fundNo }</td>
 								<td><a
@@ -105,19 +73,16 @@
 						</tr>
 					</tbody>
 				</table>
-				<br></br>
-				 <c:if test="${sessionScope.mvo.admin=='yes'}">
-				 <a href="${initParam.root }fund/writeForm.gibu"><img
-					src="${initParam.root }img/write_btn.jpg" border="0"></a> <br>
-					</c:if>
-				<br>
+				<br></br> <a href="${initParam.root }fund/writeForm.gibu"> <input
+					class="btn_charity btn_record" type="submit" name="" value="글쓰기"></a>
+				<br> <br>
 			</div>
 		</div>
 	</div>
-	
-	
-	   <div class="section">
-        <div class="container">
-          <div class="row"></div>
-        </div>
-      </div>
+</div>
+
+<div class="section">
+	<div class="container">
+		<div class="row"></div>
+	</div>
+</div>

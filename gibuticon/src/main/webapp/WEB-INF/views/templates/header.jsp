@@ -32,21 +32,21 @@
     					</a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a tabindex="-1" href="${initParam.root}fund/getList.gibu">기부사이트보기</a>
+                                    <a tabindex="-1" href="${initParam.root}fund/getList.gibu"><strong>기부사이트보기</strong></a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a tabindex="-1" href="#">아동</a>
+                                    <a tabindex="-1" href="#"><strong>아동</strong></a>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="#">어르신</a>
+                                    <a tabindex="-1" href="#"><strong>어르신</strong></a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a tabindex="-1" href="#">장애인</a>
+                                    <a tabindex="-1" href="#"><strong>장애인</strong></a>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="#">기타</a> 
+                                    <a tabindex="-1" href="#"><strong>기타</strong></a> 
                                 </li>
                             </ul>
                         </li>			
