@@ -84,4 +84,5 @@ update fund_photo set org_name='' , real_name='' where photo_no = 1;
 --	private String content;
 --	private int hits;
 --  
-  
+ 
+
