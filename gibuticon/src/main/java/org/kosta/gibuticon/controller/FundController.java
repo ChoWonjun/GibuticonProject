@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.kosta.gibuticon.model.fund.FundVO;
-import org.kosta.gibuticon.model.fund.ListVO;  
+import org.kosta.gibuticon.model.fund.ListVO;
 import org.kosta.gibuticon.model.fund.PagingBean;
 import org.kosta.gibuticon.model.fund.comment.CommentListVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPagingBean;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
+import org.kosta.gibuticon.model.history.GibuHistoryVO;
 import org.kosta.gibuticon.service.FundService;
 import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
@@ -134,6 +135,14 @@ public class FundController {
 	@ResponseBody
 	public List<ChargeHistoryVO> getChargeHistory(String memberId){
 		List<ChargeHistoryVO> list=fundService.getChargeHistory(memberId);
+		System.out.println(list);
+		return list;
+	}
+	
+	@RequestMapping("history/getGibuHistory.gibu")
+	@ResponseBody
+	public List<GibuHistoryVO> getGibuHistory(String memberId){
+		List<GibuHistoryVO> list=fundService.getGibuHistory(memberId);
 		System.out.println(list);
 		return list;
 	}

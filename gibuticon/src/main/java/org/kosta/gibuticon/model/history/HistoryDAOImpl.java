@@ -33,4 +33,10 @@ public class HistoryDAOImpl implements HistoryDAO {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("history.getChargeHistory", memberId);
 	}
+
+	@Override
+	public List<GibuHistoryVO> getGibuHistory(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("history.getGibuHistory", memberId);
+	}
 }

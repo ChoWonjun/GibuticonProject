@@ -17,20 +17,21 @@
 								<td><a href="#">&nbsp;</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">아동</a></td>
+								<td><a href="#">&nbsp;</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">&nbsp;</a></td>
+								<td><a href="#">아동</a></td>
 							</tr>
 							<tr>
 								<td><a href="#">어르신</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">&nbsp;</a></td>
+								<td><a href="#">장애인</a></td>
 							</tr>
 							<tr>
-								<td><a href="#">환경</a></td>
+								<td><a href="#">기타</a></td>
 							</tr>
+						
 						</table>
 					</div>
 					<!--//menu-->
@@ -104,8 +105,11 @@
 						</tr>
 					</tbody>
 				</table>
-				<br></br> <a href="${initParam.root }fund/writeForm.gibu"><img
+				<br></br>
+				 <c:if test="${sessionScope.mvo.admin=='yes'}">
+				 <a href="${initParam.root }fund/writeForm.gibu"><img
 					src="${initParam.root }img/write_btn.jpg" border="0"></a> <br>
+					</c:if>
 				<br>
 			</div>
 		</div>
