@@ -46,11 +46,11 @@
 					url:"${initParam.root}history/getGibuHistory.gibu",
 					data:"memberId=${sessionScope.mvo.id}",
 					success:function(history){	
-						var table="<table border=1><tr><td>충전일자</td><td>충전방식</td><td>충전포인트</td>";
+						var table="<table border=1><tr><td>기부일자</td><td>기부함번호</td><td>기부포인트</td>";
 						for(var i=0;i<history.length;i++) {
 							table+="<tr>";
-							table+="<td>"+history[i].chargeTime+"</td>";
-							table+="<td>"+history[i].paymentType+"</td>";
+							table+="<td>"+history[i].donationTime+"</td>";
+							table+="<td>"+history[i].fundNo+"</td>";
 							table+="<td>"+history[i].amount+"</td></tr>";
 						}
 						table+="</table>";

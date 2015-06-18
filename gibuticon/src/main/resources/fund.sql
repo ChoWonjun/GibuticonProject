@@ -84,4 +84,83 @@ update fund_photo set org_name='' , real_name='' where photo_no = 1;
 --	private String content;
 --	private int hits;
 --  
-  
+
+drop table donation_history;
+create table donation_history(
+	history_no number primary key,
+	fund_no number not null,
+	member_id varchar2(200),
+	donation_time date not null,
+	amount number not null,
+	constraint fk_don_his_member foreign key(member_id) references member(id),
+	constraint fk_don_his_fund foreign key(fund_no) references gibu_fund(fund_no)
+)
+
+create sequence donation_history_seq nocache;
+
+insert into donation_history(history_no, fund_no, member_id, donation_time, amount)
+values (donation_history_seq.nextval, 22, 'java', sysdate, 100);
+-- 'java' 아이디의 사용자가 22번 기부함에 100 포인트를 기부
+
+drop table charge_history;
+
+create table charge_history(
+	history_no number primary key,
+	member_id varchar2(200),
+	charge_time date not null,
+	payment_type varchar2(200) not null,
+	amount number not null,
+	constraint fk_charge_his_member foreign key(member_id) references member(id)
+)
+
+create sequence charge_history_seq nocache;
+
+insert into charge_history(history_no, member_id, charge_time, payment_type, amount)
+values(charge_history_seq.nextval, 'java', sysdate, 'credit', 200)
+--'java'아이디의 사용자가 신용카드로 200 포인트를 충전
+
+drop table gibu_fund_comment
+
+create table gibu_fund_comment(
+	comment_no number primary key,
+	fund_no number not null,
+	member_id varchar2(200) not null,
+	text varchar2(200) not null,
+	comment_time date not null,
+	constraint fk_fund_comment_member foreign key(member_id) references member(id),
+	constraint fk_fund_comment_fund foreign key(fund_no) references gibu_fund(fund_no)
+)
+
+create sequence gibu_fund_comment_seq nocache;
+
+insert into gibu_fund_comment(comment_no,fund_no,member_id,text,comment_time)
+values(gibu_fund_comment_seq.nextval,81,'java','기부를 합시다',sysdate)
+-- 'java' 사용자가 81번 기부함에 '기부를 합시다' 라는 내용의 댓글을 입력
+
+
+ select * from(
+  select commentno, fundno, text, commenttime, id, name, ceil(rownum/5) as page from
+(select co.comment_no commentno, co.fund_no fundno, co.text, co.comment_time commenttime,
+  	co.member_id id, mem.name name from gibu_fund_comment co, member mem where co.member_id=mem.id order by comment_no desc
+  	))
+  	where page=1 and fundno=81
+
+
+
+select * from(
+	select commentno, fundno, text, commenttime, member_id, id, name, ceil(rownum/5) as page from(
+		select co.comment_no commentno, co.fund_no fundno, co.text, co.comment_time commenttime,
+  					co.member_id, mem.id, mem.name name
+  		from gibu_fund_comment co, member mem
+  		order by comment_no desc
+  	) where member_id=id
+)where page=2 and fundno=81
+
+
+select member_id, sum(AMOUNT)
+from DONATION_HISTORY
+group by DONATION_HISTORY.MEMBER_ID
+
+select member_id, count(fund_no)
+from DONATION_HISTORY
+group by DONATION_HISTORY.MEMBER_ID
