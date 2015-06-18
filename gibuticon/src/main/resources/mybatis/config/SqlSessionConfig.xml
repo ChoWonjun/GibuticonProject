@@ -19,12 +19,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="noticeVO" />
 		<typeAlias type="org.kosta.gibuticon.model.fund.FundVO"
 			alias="fundVO" />
-		<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO"
-			alias="FreeBoardCommentVO" />
+		<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeCommentVO"
+			alias="FreeCommentVO" />
 		<typeAlias type="org.kosta.gibuticon.model.fund.FundPhotoVO"
 			alias="fundPhotoVO" />
-		<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeBoardCommentVO" 
-		alias="freeBoardCommentVO" />
 		<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeCommentPageVO" 
 		alias="freeCommentPageVO"/>
 	</typeAliases>

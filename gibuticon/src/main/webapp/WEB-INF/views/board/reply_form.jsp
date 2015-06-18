@@ -28,11 +28,11 @@
 	});
 </script>
 </head>
-
 <form action="reply.gibu" method="post" id="writeForm">
 <input type="hidden" name="ref" value="${requestScope.fvo.ref}">
 <input type="hidden" name="restep" value="${requestScope.fvo.restep}">
 <input type="hidden" name="relevel" value="${requestScope.fvo.relevel}">
+<input type="hidden" name="boardNo" value="${ requestScope.fvo.boardNo}">
  <table class="inputForm" >
     <caption>답변글쓰기</caption>
     <tbody>

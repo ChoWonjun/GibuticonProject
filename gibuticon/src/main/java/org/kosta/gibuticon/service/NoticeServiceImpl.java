@@ -4,11 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.free.FreeBoardVO;
-import org.kosta.gibuticon.model.notice.ListVO;
+
 import org.kosta.gibuticon.model.notice.NoticeDAO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
-import org.kosta.gibuticon.model.notice.PagingBean;
 import org.springframework.stereotype.Service;
 @Service
 public class NoticeServiceImpl implements NoticeService{
@@ -49,15 +47,14 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public String getPageNo(String noticeVO) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getPageNo(String noticeNo) {
+		return noticeDAO.getPageNo(noticeNo);
 	}
 
 	@Override
 	public int getTotalPostingCount() {
 		// TODO Auto-generated method stub
-		return 0;
+		return noticeDAO.getTotalPostingCount();
 	}
 
 	@Override

@@ -64,8 +64,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select free_board_sequence.nextval from dual
 	</selectKey>  
   insert into free_board(
-	  board_no,title,write_date, content, hits,ref,restep,relevel	  
-  )  values(#{boardNo},#{title},sysdate,#{content},0,#{ref},#{restep},#{relevel})
+	  board_no,title,write_date, content, hits,id,ref,restep,relevel	  
+  )  values(#{boardNo},#{title},sysdate,#{content},0,#{id},#{ref},#{restep},#{relevel})
 	</insert>
 </mapper>
 

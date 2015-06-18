@@ -2,7 +2,7 @@ package org.kosta.gibuticon.model.freeComment;
 
 import org.kosta.gibuticon.model.member.MemberVO;
 
-public class FreeBoardCommentVO {
+public class FreeCommentVO {
 	private String commentNo;
 	private String writeDate;
 	private String comment;
