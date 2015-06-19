@@ -22,4 +22,9 @@ public interface FundService {
 	public int getTotalCommentCount(String fundNo);
 	public List<ChargeHistoryVO> getChargeHistory(String memberId);
 	public List<GibuHistoryVO> getGibuHistory(String memberId);
+	
+	public int getTotalGibuParticipants(String year);
+	public int getTotalGibuAmount(String year);
+	public int getTotalGibuParticipants();
+	public int getTotalGibuAmount();
 }

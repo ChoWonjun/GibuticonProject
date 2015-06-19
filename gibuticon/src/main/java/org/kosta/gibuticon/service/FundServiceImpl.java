@@ -92,4 +92,28 @@ public class FundServiceImpl implements FundService {
 		// TODO Auto-generated method stub
 		return historyDAO.getGibuHistory(memberId);
 	}
+
+	@Override
+	public int getTotalGibuParticipants(String year) {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuParticipants(year);
+	}
+
+	@Override
+	public int getTotalGibuAmount(String year) {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuAmount(year);
+	}
+
+	@Override
+	public int getTotalGibuParticipants() {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuParticipants();
+	}
+
+	@Override
+	public int getTotalGibuAmount() {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuAmount();
+	}
 }

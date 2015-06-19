@@ -172,3 +172,14 @@ from DONATION_HISTORY
 group by DONATION_HISTORY.MEMBER_ID
 order by fundcount desc)
 
+--전체 기부자수
+select count(distinct(member_id)) from donation_history
+
+--전체 기부액
+select sum(amount) from donation_history
+
+--연도별 기부자수
+select count(distinct(member_id)) from donation_history where to_char(donation_time,'yyyy')=2015
+
+--연도별 기부액
+select sum(amount) from donation_history where to_char(donation_time,'yyyy')=2015

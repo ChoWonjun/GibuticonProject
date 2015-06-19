@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -99,6 +100,24 @@ public class FundController {
 	@RequestMapping("fund/writeForm.gibu")
 	public ModelAndView fundWriteForm() {
 		return new ModelAndView("fund_write");
+	}
+	
+	@RequestMapping("fund/currentState.gibu")
+	public ModelAndView currentState(){
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("fund_fund_state");
+		mv.addObject("totalParticipants",fundService.getTotalGibuParticipants());
+		mv.addObject("totalAmount",fundService.getTotalGibuAmount());
+		return mv;
+	}
+	
+	@RequestMapping("fund/currentStateYear.gibu")
+	@ResponseBody
+	public HashMap<String,Object> currentStateYear(String year){
+		HashMap<String,Object> map=new HashMap<String,Object>();
+		map.put("totalParticipants", fundService.getTotalGibuParticipants(year));
+		map.put("totalAmount", fundService.getTotalGibuAmount(year));
+		return map;
 	}
 	
 	@RequestMapping("fund/updateForm.gibu")

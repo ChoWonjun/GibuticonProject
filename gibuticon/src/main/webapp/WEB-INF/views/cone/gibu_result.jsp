@@ -5,13 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript">
-	function closeWindow(){
+	$(document).ready(function(){
 		window.opener.location.reload();
+	});
+	
+	function closeWindow(){
 		window.close();
 	}
 </script>
+
 </head>
 <body>
 기부해주셔서 감사합니다.<hr>

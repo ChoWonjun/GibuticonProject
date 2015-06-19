@@ -50,7 +50,7 @@
                                 </li>
                             </ul>
                         </li>			
-               <li><a href="#">모금현황</a></li>
+               <li><a href="${initParam.root }fund/currentState.gibu">모금현황</a></li>
                <li><a href="${initParam.root}getFreeBoardList.gibu">자유게시판</a></li>
                <c:choose>
                   <c:when test="${sessionScope.mvo==null}">

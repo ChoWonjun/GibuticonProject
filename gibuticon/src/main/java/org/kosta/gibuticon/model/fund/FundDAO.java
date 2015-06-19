@@ -40,4 +40,12 @@ public interface FundDAO {
 	public abstract List<FundCommentVO> getCommentList(CommentPageVO commentPageVO);
 
 	public abstract int getTotalCommentCount(String fundNo);
+	
+	public int getTotalGibuAmount();
+	
+	public int getTotalGibuParticipants();
+	
+	public int getTotalGibuAmount(String year);
+	
+	public int getTotalGibuParticipants(String year);
 }

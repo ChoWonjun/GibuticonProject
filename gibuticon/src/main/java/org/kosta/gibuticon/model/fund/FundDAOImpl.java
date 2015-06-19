@@ -130,4 +130,28 @@ values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',
 	public int getTotalCommentCount(String fundNo) {
 		return sqlSessionTemplate.selectOne("fund.getTotalCommentCount",fundNo);
 	}
+
+	@Override
+	public int getTotalGibuAmount() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuAmount");
+	}
+
+	@Override
+	public int getTotalGibuParticipants() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuParticipants");
+	}
+
+	@Override
+	public int getTotalGibuAmount(String year) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuAmountYear",year);
+	}
+
+	@Override
+	public int getTotalGibuParticipants(String year) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuParticipantsYear",year);
+	}
 }
