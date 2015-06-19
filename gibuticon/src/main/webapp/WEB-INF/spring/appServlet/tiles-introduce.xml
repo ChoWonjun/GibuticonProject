@@ -7,8 +7,8 @@
  	   명시하면 아래의 페이지들이 조합된(include) 결과화면을 제공한다
   -->
 <tiles-definitions>
-	<definition name="fund_*" extends="home">
-		<put-attribute name="main" value="/WEB-INF/views/introduce/{1}.jsp" />
+	<definition name="introduce_*" extends="home">
+		<put-attribute name="main" value="/WEB-INF/views/introduce/introduce_{1}.jsp" />
 	</definition>	
 </tiles-definitions>
 
