@@ -11,25 +11,21 @@
     <div class="section" align="center">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-15">
             <h1>
               <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 공지사항</span>
+              
+             	 공지사항</span>
             </h1>
           </div>
         </div>
       </div>
     </div>
-    <div class="section">
-      <div class="container">
-        <div class="row"></div>
-      </div>
-    </div>
+   
     <div class="section">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-2">
             <div class="navi_ca_is"></div>
             <div id="container">
               <div class="snb_v1">
@@ -61,7 +57,7 @@
                         <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘 안내</span></a>
                       </li>
                       <li>
-                        <a href="${initParam.root}getFreeBoardList.gibu">자유게시판</a> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘받기 안내</span></a>
+                        <a href="#"><span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘받기 안내</span></a>
                       </li>
                       <li>
                         <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">기부방법 안내</span></a>
@@ -92,11 +88,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-8">
+         
+          <div class="col-md-9">
             <div class="section">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-7">
+                  <div class="col-md-9">
                               <table class="table" style="font-family: &amp; quot;">
                   <thead>
                      <tr>
@@ -128,12 +125,17 @@
                 <div class="col-md-7"></div>
               </div>
             </div>
-            <div class="col-md-5 text-center">
+            <div class="col-md-4 text-right">
               <div class="btn-group btn-group-sm">
                 <br>
+
                 <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
+
+                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown"> 제목<span class="fa fa-caret-down"></span></a>
+
                 <ul class="dropdown-menu" role="menu">
                   <li>
+
                     <a href="#">제목+내용</a>
                   </li>
                   <li>
@@ -141,6 +143,9 @@
                   </li>
                   <li>
                     <a href="#">내용만</a>
+
+                    <a href="#">작성자</a>
+
                   </li>
                 </ul>
               </div>

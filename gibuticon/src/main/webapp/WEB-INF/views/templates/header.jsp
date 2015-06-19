@@ -26,9 +26,32 @@
          </div>
          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-               <li class="active"><a href="#">사이트소개</a></li>
+               <li><a href="#">사이트소개</a></li>
                <li><a href="${initParam.root}getNoticeList.gibu">공지사항</a></li>
-               <li><a href="${initParam.root}fund/getList.gibu">모금</a></li>
+               <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false" data-toggle="dropdown">
+        				모금<b class="caret"></b>
+    					</a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="${initParam.root}fund/getList.gibu"><strong>기부사이트보기</strong></a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="#"><strong>아동</strong></a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#"><strong>어르신</strong></a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="#"><strong>장애인</strong></a>
+                                </li>
+                                <li>
+                                    <a tabindex="-1" href="#"><strong>기타</strong></a> 
+                                </li>
+                            </ul>
+                        </li>			
                <li><a href="#">모금현황</a></li>
                <li><a href="${initParam.root}getFreeBoardList.gibu">자유게시판</a></li>
                <c:choose>

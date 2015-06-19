@@ -50,7 +50,7 @@
 						for(var i=0;i<history.length;i++) {
 							table+="<tr>";
 							table+="<td>"+history[i].donationTime+"</td>";
-							table+="<td>"+history[i].fundNo+"</td>";
+							table+="<td><a href=${initParam.root}fund/showContent.gibu?no="+history[i].fundNo+">"+history[i].fundNo+"</a></td>";
 							table+="<td>"+history[i].amount+"</td></tr>";
 						}
 						table+="</table>";
