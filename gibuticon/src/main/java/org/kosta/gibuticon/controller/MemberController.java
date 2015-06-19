@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class MemberController {
@@ -168,5 +169,14 @@ public class MemberController {
 	@RequestMapping(value="mypage",method=RequestMethod.GET)
 	public String mypageView() {
 		return "member_mypage";
+	}
+	
+	@RequestMapping("memberRanksView")
+	public ModelAndView memberRanksView() {
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("member_memberRanksView");
+		mv.addObject("rank1",memberService.getAmountRanks());
+		mv.addObject("rank2",memberService.getFundCountRanks());
+		return mv;
 	}
 }

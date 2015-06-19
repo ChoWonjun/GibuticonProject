@@ -1,8 +1,11 @@
 package org.kosta.gibuticon.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.member.MemberDAO;
+import org.kosta.gibuticon.model.member.MemberRankVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.springframework.stereotype.Service;
 
@@ -81,5 +84,17 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public MemberVO login(MemberVO memberVO) {
 		return memberDAO.login(memberVO);
+	}
+
+	@Override
+	public List<MemberRankVO> getAmountRanks() {
+		// TODO Auto-generated method stub
+		return memberDAO.getAmountRanks();
+	}
+
+	@Override
+	public List<MemberRankVO> getFundCountRanks() {
+		// TODO Auto-generated method stub
+		return memberDAO.getFundCountRanks();
 	}
 }

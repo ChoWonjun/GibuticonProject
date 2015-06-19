@@ -116,7 +116,7 @@
 								<a href="#"><img src="img/ranking.jpg"
 									class="img-responsive"></a>
 								<h2>회원랭킹</h2>
-								<p>회원 기부 랭킹</p>
+								<p><a href="${initParam.root }memberRanksView.gibu">회원 기부 랭킹</a></p>
 							</div>
 						</div>
 					</div>
