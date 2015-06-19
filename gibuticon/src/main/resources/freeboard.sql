@@ -29,6 +29,7 @@ create table freeBoard_comment(
 	constraint fk_freeBoard_id foreign key(id) references member,
 	constraint fk_board_no foreign key(board_no) references free_board
 )
+select * from freeBoard_comment where board_no='113'
 select fc.freeboard_comment_no, fc.write_date, fc.freeboard_comment, fc.hits, fb.id, fb.board_no from freeBoard_comment fc, free_board fb where fb.id='chocamp' and fb.board_no=61;
 
 insert into freeBoard_comment(freeboard_comment_no, write_date, freeboard_comment, hits, id, board_no) values(freeboard_comment_sequence.nextval,sysdate,'왕왕',0,'chocamp',61);

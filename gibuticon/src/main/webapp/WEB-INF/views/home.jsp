@@ -81,9 +81,17 @@
 	<!-- empty element for pager links -->
 	<div class="cycle-pager"></div>
 
-	<img src="img/기부.jpg"> 
-	<img src="img/제목 없음.jpg">
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
+	<img class="cycle-slideshow img" src="img/메인배너1.jpg"> <img
+		class="cycle-slideshow img" src="img/메인배너2.jpg">
 </div>
+
 <div class="section">
 	<div class="container">
 		<div class="row">
@@ -92,8 +100,8 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="img/whatsgibuticon.png"
-									class="img-responsive"></a>
+								<a href="${initParam.root }introduce_gibuticon.gibu"><img
+									src="img/whatsgibuticon.png" class="img-responsive"></a>
 								<h2>기부티콘이란</h2>
 								<p>사랑하는 이에게 기부를 선물하세요</p>
 							</div>
@@ -107,7 +115,9 @@
 								<a href="#"><img src="img/ranking.jpg"
 									class="img-responsive"></a>
 								<h2>회원랭킹</h2>
-								<p>회원 기부 랭킹</p>
+								<p>
+									<a href="${initParam.root }memberRanksView.gibu">회원 기부 랭킹</a>
+								</p>
 							</div>
 						</div>
 					</div>

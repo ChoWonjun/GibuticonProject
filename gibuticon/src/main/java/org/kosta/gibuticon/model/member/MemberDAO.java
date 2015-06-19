@@ -1,5 +1,7 @@
 package org.kosta.gibuticon.model.member;
 
+import java.util.List;
+
 public interface MemberDAO {
 
 	public abstract void registerMember(MemberVO memberVO);
@@ -17,4 +19,8 @@ public interface MemberDAO {
 	public void increasePoint(MemberVO memberVO);
 
 	public void decreasePoint(MemberVO memberVO);
+	
+	public List<MemberRankVO> getAmountRanks();
+	
+	public List<MemberRankVO> getFundCountRanks();
 }

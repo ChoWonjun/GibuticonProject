@@ -56,6 +56,11 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 */
 	@Override
 	public void deleteFreeBoard(String no){
+		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freecomment.deleteFreeCommentList", no);
+		System.out.println("deletecomment"+list);
+		for(int i=0;i<list.size();i++){
+			sqlSessionTemplate.delete("freecomment.deleteFreeComment",list.get(i).getCommentNo());
+		}
 		sqlSessionTemplate.delete("freeboard.deleteFreeBoard",no);
 	}
 	
