@@ -13,15 +13,13 @@
         <div class="row">
           <div class="col-md-15">
             <h1>
-              <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              
-             	 공지사항</span>
+              <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;공지사항</span>
             </h1>
           </div>
         </div>
       </div>
     </div>
-   
     <div class="section">
       <div class="container">
         <div class="row">
@@ -93,14 +91,14 @@
             <div class="section">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-9">
+                  <div class="col-md-offset-2 col-md-6">
                               <table class="table" style="font-family: &amp; quot;">
                   <thead>
                      <tr>
                         <th width="100">NO</th>
                         <th width="800">제목</th>
                         <th width="300">작성일</th>
-                        <th width="100">조회수</th>
+                        <th width="300">조회수</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -177,7 +175,8 @@
                     </span>
                      <span>
                      <c:if test="${sessionScope.mvo.admin=='yes'}">
-                    	<a href="writeNoticeView.gibu">글쓰기</a>
+                     <a href="writeNoticeView.gibu"> <input
+					class="btn btn-default" type="button" value="글쓰기"></a>
                     	</c:if>
                     </span>
                   </div>

@@ -76,7 +76,7 @@
 				<br></br> 
 				<c:if test="${sessionScope.mvo.admin=='yes'}">
 				<a href="${initParam.root }fund/writeForm.gibu"> <input
-					class="btn btn-default" type="submit" name="" value="글쓰기"></a>
+					class="btn btn-default" type="submit" value="글쓰기"></a>
 					</c:if>
 				<br> <br>
 			</div>
