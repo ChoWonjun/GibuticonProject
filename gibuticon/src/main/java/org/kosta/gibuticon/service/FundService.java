@@ -22,4 +22,5 @@ public interface FundService {
 	public int getTotalCommentCount(String fundNo);
 	public List<ChargeHistoryVO> getChargeHistory(String memberId);
 	public List<GibuHistoryVO> getGibuHistory(String memberId);
+	public void uploadPhoto(FundVO vo);
 }

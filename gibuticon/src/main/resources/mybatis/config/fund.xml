@@ -86,4 +86,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getTotalCommentCount" resultType="int">
 		select count(*) from gibu_fund_comment where fund_no=#{fundNo}
 	</select>
+	
+	<select id="getPhotoByNo" resultType="fundPhotoVO">
+		select photo_no photono, org_name orgname, real_name realname, fund_no fundno from fund_photo where fund_no = #{value}
+	</select>
 </mapper>
