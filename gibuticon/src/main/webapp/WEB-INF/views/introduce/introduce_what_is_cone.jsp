@@ -80,7 +80,7 @@
 						</div>
 					</div>
 				</div>
-				<img src="img/gibuticonintro.jpg" class="img-introduce" width="70%" height="70%">
+				<img src="img/coneIntro.jpg" class="img-introduce" width="75%" height="75%">
 
 			</div>
 		</div>

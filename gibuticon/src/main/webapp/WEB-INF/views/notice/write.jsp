@@ -6,12 +6,12 @@
 
 <%-- <link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
 <script type="text/javascript"> --%>
-$(document).ready(function(){
+<!-- $(document).ready(function(){
 	$("#writeImg").click(function(){
 		$("#write_form").submit();
 	});
 });
-</script>
+</script> -->
  <br>
  
  <form action="writeNotice.gibu" method="post" id="write_form">
