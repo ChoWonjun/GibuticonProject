@@ -130,10 +130,7 @@
                 <br>
 
                 <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
-
-                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown"> 제목<span class="fa fa-caret-down"></span></a>
-
-                <ul class="dropdown-menu" role="menu">
+            <ul class="dropdown-menu" role="menu">
                   <li>
 
                     <a href="#">제목+내용</a>
