@@ -131,38 +131,47 @@
                 <div class="col-md-7"></div>
               </div>
             </div>
-            <div class="col-md-5 text-center">
+             <div class="col-md-offset-6 col-md-6">
+              <ul class="pagination">
+              <c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
+              <c:if test="${pb.previousPageGroup}">
+	                <li>
+	                  <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+	                </li>
+                </c:if>
+                <li>
+                 <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
+					</c:forEach>
+                </li>
+                <c:if test="${pb.nextPageGroup}">
+	                <li>
+	                  <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+	                </li>
+                </c:if>
+              </ul>
+            </div>
+            <div class="col-md-3 text-right">
               <div class="btn-group btn-group-sm">
-                <br>
-                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown"> Dropdown <span class="fa fa-caret-down"></span></a>
-                <ul class="dropdown-menu" role="menu">
+               <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
+            <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="#">Action</a>
+                    <a href="#">제목+내용</a>
+                  </li>
+                  <li>
+                    <a href="#">제목만</a>
+                  </li>
+                  <li>
+                    <a href="#">내용만</a>
+				  </li>
+				  <li>
+                    <a href="#">작성자</a>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="col-md-6">
-              <ul class="pagination">
-              <c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
-              <c:if test="${pb.previousPageGroup}">
-                   <li>
-                     <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
-                   </li>
-                </c:if>
-                <li>
-                 <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-                  <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
-               </c:forEach>
-                </li>
-                <c:if test="${pb.nextPageGroup}">
-                   <li>
-                     <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
-                   </li>
-                </c:if>
-              </ul>
-            </div>
-            <div class="col-md-offset-3 col-md-6">
+           
+            <div class="col-md-6 text-left">
               <form role="form">
                 <div class="form-group">
                   <div class="input-group">
@@ -170,24 +179,14 @@
                     <span class="input-group-btn">
                       <a class="btn btn-primary" type="submit">검색</a>
                     </span>
-                    <span>
-                       <a href="write.gibu">글쓰기</a>
+                    <span class="input-group-btn">
+                      <a href="write.gibu" class="btn btn-primary" type="submit">글쓰기</a>
                     </span>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="row"></div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="row"></div>
         </div>
       </div>
       </div>

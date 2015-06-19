@@ -30,26 +30,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="decreasePoint" parameterType="memberVO">
 		update member set point=point-#{point} where id=#{id}
 	</update>
-	
 	<select id="getAmountRanks" resultType="memberRankVO">
-		select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
-			select member_id memberid, totalamount rankval from(
-				select member_id, sum(AMOUNT) as totalamount
-				from DONATION_HISTORY
-				group by DONATION_HISTORY.MEMBER_ID
-			)
-		)
-	</select>
-	
-	<select id="getFundCountRanks" resultType="memberRankVO">
-		select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
-			select member_id memberid, fundcount rankval from(
-				select member_id, count(distinct(fund_no)) fundcount
-				from DONATION_HISTORY
-				group by DONATION_HISTORY.MEMBER_ID
-			)
-		)
-	</select>
+      select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+         select member_id memberid, totalamount rankval from(
+            select member_id, sum(AMOUNT) as totalamount
+            from DONATION_HISTORY
+            group by DONATION_HISTORY.MEMBER_ID
+         )
+      )
+   </select>
+   
+   <select id="getFundCountRanks" resultType="memberRankVO">
+      select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+         select member_id memberid, fundcount rankval from(
+            select member_id, count(distinct(fund_no)) fundcount
+            from DONATION_HISTORY
+            group by DONATION_HISTORY.MEMBER_ID
+         )
+      )
+   </select>
 </mapper>
  
  

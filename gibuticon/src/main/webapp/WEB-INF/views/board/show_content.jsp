@@ -4,6 +4,13 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <script type="text/javascript" src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+	function deleteComment(commentNo, no){
+		if(confirm("삭제하시겠습니까?")){
+			location.href="deleteFreeComment.gibu?commentNo="+commentNo+"&no="+no;
+		}else{
+				return false;
+		} 
+	}
 	$(document).ready(function(){
 		$("#updateImg").click(function(){
 				if(confirm("수정하시겠습니까?")){
@@ -19,9 +26,15 @@
 					return false;
 				} 
 			});
+		$("#commentRegister").click(function(){
+			if(confirm("댓글을 등록하시겠습니까?")){
+				$("#commentForm").submit();
+	}else{
+		return false;
+	} 
+		});
 	});
 </script>
-<body>
 <body>
  <div class="section">
       <div class="container">
@@ -37,17 +50,17 @@
    <table class="content" width="1200" height="200" style="word-break:break-all;word-wrap:break-word">
               <tbody>
                 <tr>
-                  <td>NO : ${requestScope.fvo.boardNo}</td>
-                  <td colspan="2">title : ${requestScope.fvo.title}</td>
+                  <td>글번호 : ${requestScope.fvo.boardNo}</td>
+                  <td colspan="2">제목 : ${requestScope.fvo.title}</td>
                 </tr>
                 <tr>
                   <td>작성자 : ${requestScope.fvo.memberVO.name}</td>
-                  <td>${requestScope.fvo.writeDate}</td>
-                  <td>조회수 :${requestScope.fvo.hits}</td>
+                  <td>작성일 : ${requestScope.fvo.writeDate}</td>
+                  <td>조회수 : ${requestScope.fvo.hits}</td>
                 </tr>
                 <tr>
                   <td colspan="3">
-                    <pre >${requestScope.fvo.content} </pre>
+                    <pre>${requestScope.fvo.content}</pre>
                   </td>
                 </tr>        
                 <tr>
@@ -57,21 +70,10 @@
                     <a href="${initParam.root}getFreeBoardList.gibu?no=${requestScope.fvo.boardNo}"> 
                     <input class="btn btn-default" type="submit" value="목록"></a>
                    <input class="btn btn-default " type="submit" value="삭제" id="delImg">
-                  <input class="btn btn-default" type="submit"value="수정" id="delImg">
+                  <input class="btn btn-default" type="submit"value="수정" id="updateImg">
                   </td>
                 </tr>
-                <c:if test="${sessionScope.mvo!=null }">
-					<tr>
-						<td><form action="writeFreeComment.gibu">
-						댓글<input type="text" name="comment">
-						작성자<input  readonly type="text" name="name" value="${sessionScope.mvo.name}">
-						<input type="submit" value="댓글등록">
-						<input type="hidden" name="id" value="${sessionScope.mvo.id}">
-						<input type="hidden" name="boardNo" value="${requestScope.fvo.boardNo}">
-						</form></td>
-					</tr>
-					</c:if>
-              </tbody>
+                  </tbody>
             </table>
             </div>
             </div>
@@ -81,20 +83,43 @@
             <div class="section">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-6" align="center">
+                 <c:if test="${sessionScope.mvo!=null }">
+					  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+              			<form role="form" id="commentForm" action="${initParam.root }writeFreeComment.gibu">
+			                <div class="form-group">
+			                  <div class="input-group">
+			                  <input type="hidden" name="id" value="${sessionScope.mvo.id}">
+								<input type="hidden" name="boardNo" value="${requestScope.fvo.boardNo}">
+								<input type="hidden" name="name" value="${sessionScope.mvo.name}">
+			                    <input type="text" name="comment" class="form-control" placeholder="댓글입력">
+			                    <span class="input-group-btn">
+			                      <input class="btn btn-primary" type="button" id="commentRegister"value="댓글등록">
+			                    </span>
+			                     </div>
+			                </div>
+			              </form>
+			              </div>
+					</c:if>
+					<div class="section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
                <table class="table" style="font-family: &amp; quot;">
                   <thead>
                      <tr>
                         <th width="100">NO</th>
-                        <th width="800">comment</th>
-                         <th width="300">작성일</th>
-                        <th width="300">작성자</th>
-                        <th width="300">조회수</th>
+                        <th width="1000">comment</th>
+                         <th width="200">작성일</th>
+                        <th width="200">작성자</th>
+                        <th width="200">추천수</th>
                      </tr>
                   </thead>
                   <tbody>
                      <c:forEach items="${requestScope.flist.list}" var="comment">
-                        <tr><td>${comment.commentNo}</td><td>${comment.comment}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</td><td>${comment.hits}</td></tr>
+                        <tr><td>${comment.commentNo}</td><td>${comment.comment}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</td><td>${comment.hits}</td>
+                        <td><c:if test="${comment.id==sessionScope.mvo.id }">
+                        	<input class="btn btn-default" value="삭제하기" type="button" onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )"> 
+                        </c:if></td></tr>
                      </c:forEach>
                   </tbody>
                </table>
@@ -102,10 +127,13 @@
                 </div>
               </div>
             </div>
+            </div>
+            </div>
+            </div>
   			<div class="section">
               <div class="container">
                 <div class="row">
-             <div class="col-md-6">
+             <div class="col-md-offset-6 col-md-2 col-md-offset-4">
               <ul class="pagination">
               <c:set var="pb" value="${requestScope.flist.pagingBean}"></c:set>
               <c:if test="${pb.previousPageGroup}">

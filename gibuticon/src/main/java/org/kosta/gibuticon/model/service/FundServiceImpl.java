@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.service;
+package org.kosta.gibuticon.model.service;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -104,7 +104,6 @@ public class FundServiceImpl implements FundService {
 	}
 
 	@Override
-
 	public int getTotalGibuParticipants(String year) {
 		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuParticipants(year);
@@ -128,6 +127,7 @@ public class FundServiceImpl implements FundService {
 		return fundDAO.getTotalGibuAmount();
 	}
 
+	@Override
 	public void uploadPhoto(FundVO vo) {
 		List<MultipartFile> list = vo.getFile();
 		ArrayList<String> nameList = new ArrayList<String>();

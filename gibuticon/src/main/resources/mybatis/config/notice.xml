@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		title=#{title},content=#{content}
 		where notice_no=#{noticeNo}
 	</update>
-	<delete id="deleteNotice">
+	<delete id="deleteNotice" parameterType="string">
 		delete from notice where notice_no=#{value}
 	</delete>
 	<resultMap type="noticeVO" id="noticeListRM">
@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		) WHERE page=#{value}
 	</select>
 	
-		<update id="updateCount" parameterType="int">
+		<update id="updateCount" parameterType="string">
 		update notice set hits=hits+1 where notice_no=#{noticeNo}
 	</update>
 	
@@ -57,5 +57,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getNoticeByNo" resultMap="noticeListRM">
 		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
 	</select>
-	
 </mapper>

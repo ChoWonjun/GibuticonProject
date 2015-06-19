@@ -3,13 +3,18 @@ package org.kosta.gibuticon.model.fund;
 import java.sql.Date;
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FundVO {
 	private String fundNo;
+	@NotEmpty
 	private String fundName;
+	@NotEmpty
 	private String proposal;
+	@NotEmpty
 	private String homepage;
+	@NotEmpty
 	private String curSum;
 	private String goalSum;
 	private String participant;

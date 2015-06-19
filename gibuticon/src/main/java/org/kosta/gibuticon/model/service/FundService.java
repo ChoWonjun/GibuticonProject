@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.service;
+package org.kosta.gibuticon.model.service;
 
 import java.util.List;
 
@@ -22,13 +22,9 @@ public interface FundService {
 	public int getTotalCommentCount(String fundNo);
 	public List<ChargeHistoryVO> getChargeHistory(String memberId);
 	public List<GibuHistoryVO> getGibuHistory(String memberId);
-
-	
 	public int getTotalGibuParticipants(String year);
 	public int getTotalGibuAmount(String year);
 	public int getTotalGibuParticipants();
 	public int getTotalGibuAmount();
-
 	public void uploadPhoto(FundVO vo);
-
 }

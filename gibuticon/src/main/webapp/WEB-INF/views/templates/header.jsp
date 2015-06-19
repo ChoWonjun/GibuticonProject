@@ -27,7 +27,7 @@
          </div>
          <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-               <li><a href="#">사이트소개</a></li>
+               <li><a href="${initParam.root}introduce_gibuticon.gibu">사이트소개</a></li>
                <li><a href="${initParam.root}getNoticeList.gibu">공지사항</a></li>
                <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-hover="dropdown" data-delay="1000" data-close-others="false" data-toggle="dropdown">
@@ -75,8 +75,8 @@
                            <li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;친구목록
                                     보기</strong></a></li>
                            <li class="divider"></li>
-                           <li><a tabindex="-1" href="${initParam.root }mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;MY
-                                    기부티콘</strong></a></li>
+                           <li><a tabindex="-1" href="${initParam.root }mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
+                                    마이페이지</strong></a></li>
                         </ul></li>
                      <li><a href="javascript:chargePopup()">충전하기</a></li>
                   </c:otherwise>

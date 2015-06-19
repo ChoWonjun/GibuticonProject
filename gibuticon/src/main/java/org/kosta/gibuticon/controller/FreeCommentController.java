@@ -5,7 +5,7 @@ package org.kosta.gibuticon.controller;
 import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
-import org.kosta.gibuticon.service.FreeCommentService;
+import org.kosta.gibuticon.model.service.FreeCommentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,9 +24,9 @@ public class FreeCommentController {
 		return new ModelAndView("redirect:getFreeBoardByNo.gibu?no="+freeBoardCommentVO.getBoardNo()+"&pageNo="+pageNo);
 	}
 	@RequestMapping("deleteFreeComment")
-	public String deleteFreeComment(String no){
-		freeCommentService.deleteFreeComment(no);
-		return null;
+	public String deleteFreeComment(String commentNo, String no){
+		freeCommentService.deleteFreeComment(commentNo);
+		return "redirect:getFreeBoardByNo.gibu?no="+no;
 	}
 
 }

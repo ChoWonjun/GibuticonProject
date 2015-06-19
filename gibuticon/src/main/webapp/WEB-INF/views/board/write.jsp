@@ -130,10 +130,9 @@
 												</tr>
 											</tbody>
 										</table>
-										<br> <img class="action" id="writeImg"
-											src="${initParam.root }img/write_btn.jpg" alt="글입력"
-											onclick="content_submit()"> <img class="action"
-											src="${initParam.root }img/cancel.gif" onclick="cancel()">
+										<br><input class="btn btn-default" id="writeImg"
+											 value="글쓰기" type="button" onclick="content_submit()"> 
+											 <input class="btn btn-default"value="취소" type="button" onclick="cancel()">
 									</fieldset>
 								</form>
 							</div>

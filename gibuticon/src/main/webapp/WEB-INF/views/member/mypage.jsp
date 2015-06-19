@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script type="text/javascript"
-	src="${initParam.root }layoutit/src/js/jquery-1.11.3.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,8 +13,12 @@
 <link
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
-
-
+<script type="text/javascript">
+	function chargePopup() {
+		var url = "${initParam.root }cone/chargeView.gibu";
+		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
+	}
+</script>
 
 <div class="section" align="center">
 	<div class="container">
@@ -38,7 +42,7 @@
 							</dt>
 							<dd>
 								<ul>
-									<li><a href="#" class="u_txt1"> <span
+									<li><a href="${initParam.root }memberRanksView.gibu" class="u_txt1"> <span
 											style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
 									<li><a href="#" class="u_txt2"><span
 											style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
@@ -59,12 +63,14 @@
 							</dt>
 							<dd>
 								<ul>
-									<li><a href="#" class="sr_txt5"> <span
+									<li><a href="javascript:chargePopup()" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">충전하기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">선물하기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">선물함 내역</span></a></li>
+									<li><a href="#" class="sr_txt5"> <span
+											style="font-family: &amp; amp;">사용 내역</span></a></li>
 									<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
 								</ul>
 							</dd>
