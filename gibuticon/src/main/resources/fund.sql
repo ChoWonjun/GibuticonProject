@@ -158,11 +158,17 @@ select * from(
 )where page=2 and fundno=81
 
 
-select member_id, sum(AMOUNT)
+select rownum rank, member_id memberid, totalamount rankval
+from(
+select member_id, sum(AMOUNT) as totalamount
 from DONATION_HISTORY
 group by DONATION_HISTORY.MEMBER_ID
+order by totalamount desc)
 
-select member_id, count(fund_no)
+select rownum rank, member_id memberid, fundcount rankval
+from(
+select member_id, count(distinct(fund_no)) fundcount
 from DONATION_HISTORY
 group by DONATION_HISTORY.MEMBER_ID
+order by fundcount desc)
 
