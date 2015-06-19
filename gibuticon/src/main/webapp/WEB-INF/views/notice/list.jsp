@@ -131,10 +131,16 @@
             <div class="col-md-5 text-center">
               <div class="btn-group btn-group-sm">
                 <br>
-                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown"> Dropdown <span class="fa fa-caret-down"></span></a>
+                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="#">Action</a>
+                    <a href="#">제목+내용</a>
+                  </li>
+                  <li>
+                    <a href="#">제목만</a>
+                  </li>
+                  <li>
+                    <a href="#">내용만</a>
                   </li>
                 </ul>
               </div>

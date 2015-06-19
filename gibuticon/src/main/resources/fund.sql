@@ -73,7 +73,7 @@ update fund_photo set org_name='' , real_name='' where photo_no = 1;
   
   
 --  
--- private String fundNo;
+-- private String fundNo;	
 --	private String fundName;
 --	private String proposal;
 --	private String homepage;
