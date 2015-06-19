@@ -1,6 +1,9 @@
 package org.kosta.gibuticon.model.fund;
 
 import java.sql.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class FundVO {
 	private String fundNo;
@@ -14,6 +17,8 @@ public class FundVO {
 	private Date dueDate;
 	private String content;
 	private int hits;
+	private List<MultipartFile> file;
+	private List<FundPhotoVO> photoList;
 
 	public FundVO() {
 		super();
@@ -106,6 +111,22 @@ public class FundVO {
 
 	public void setHits(int hits) {
 		this.hits = hits;
+	}
+
+	public List<MultipartFile> getFile() {
+		return file;
+	}
+
+	public void setFile(List<MultipartFile> file) {
+		this.file = file;
+	}
+
+	public List<FundPhotoVO> getPhotoList() {
+		return photoList;
+	}
+
+	public void setPhotoList(List<FundPhotoVO> photoList) {
+		this.photoList = photoList;
 	}
 
 	@Override

@@ -9,32 +9,83 @@
 </script>
 </head>
 <body>
-
-	<p>
-		&nbsp;&nbsp;<a href="${initParam.root }index.jsp">홈</a> | <a
-			href="${initParam.root }notice/write.jsp">글쓰기</a> | <a
-			href="${initParam.root }index.jsp">목록</a>
-	</p>
-	<table class="content">
-		<tr>
-			<td>NO : ${requestScope.posting.noticeNo}</td>
-			<td colspan="2">${requestScope.posting.title}</td>
-		</tr>
-		<tr>
-			<td>작성자 : 관리자</td>
-			<td>${requestScope.posting.writeDate}</td>
-			<td>조회수 : ${requestScope.posting.hits}</td>
-		</tr>
-		<tr>
-			<td colspan="3"><pre>${requestScope.posting.content}</pre></td>
-		</tr>
-		<tr>
-			<td valign="middle" align="center" colspan="3"><img
-				class="action" src="${initParam.root }img/list_btn.jpg"
-				onclick="sendList()"> <a
-				href="deleteNotice.gibu?noticeNo=${requestScope.posting.noticeNo}"><img
-					class="action" src="${initParam.root }img/delete_btn.jpg"></a> <a
-				href="update.gibu?noticeNo=${requestScope.posting.noticeNo}"><img
-					class="action" src="${initParam.root }img/modify_btn.jpg"></a>
-		</tr>
-	</table>
+ <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+   <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+	<table class="content" width="1200" height="200" style="word-break:break-all;word-wrap:break-word">
+              <tbody>
+                <tr>
+                  <td>NO : 11</td>
+                  <td colspan="2">섭섭섭</td>
+                </tr>
+                <tr>
+                  <td>작성자 : 관리자</td>
+                  <td>2015-06-11 17:08:24.0</td>
+                  <td>조회수 : 9</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <pre >안늉 </pre>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="middle " align="center " colspan="3 ">
+                    <a href="${initParam.root}getNoticeList.gibu"> <input class="btn btn-default
+                    " type="submit "value="목록 "></a>
+                    <input class="btn btn-default " type="submit
+                    " value="삭제 ">
+                    <a href="# "> <input class="btn btn-default
+                    " type="submit " name=" " value="수정 "></a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+             <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+     <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+     <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+     <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+     <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+            </body>
+            

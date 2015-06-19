@@ -3,12 +3,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link
+<!-- <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-	rel="stylesheet" type="text/css">
+	rel="stylesheet" type="text/css"> -->
 
 <!-- bootstrap -->
 <script type="text/javascript"
@@ -120,8 +120,8 @@
 														title="카테고리 선택">
 															<option value="0">카테고리를 선택하세요.</option>
 															<option value="1">아동</option>
-															<option value="2">우리이웃</option>
-															<option value="3">공익/사회</option>
+															<option value="2">어르신</option>
+															<option value="3">장애인</option>
 															<option value="4">기타</option>
 													</select> <br> <br class="cl_b"></td>
 												</tr>
@@ -180,10 +180,10 @@
 												</tr>
 											</tbody>
 										</table>
-										<br> <img class="action" id="writeImg"
-											src="${initParam.root }img/write_btn.jpg" alt="글입력"
-											onclick="content_submit()"> <img class="action"
-											src="${initParam.root }img/cancel.gif" onclick="cancel()">
+										<br> <br> <br> 
+										 <input class="btn btn-default" style="font-family: &quot;나눔고딕&quot;,NanumGothic,Sans-serif;" type="submit" value="글쓰기"  onclick="content_submit()">
+										 <input class="btn btn-default" style="font-family: &quot;나눔고딕&quot;,NanumGothic,Sans-serif;" type="submit" value="취소"  onclick="cancel()">
+										
 									</fieldset>
 								</form>
 							</div>

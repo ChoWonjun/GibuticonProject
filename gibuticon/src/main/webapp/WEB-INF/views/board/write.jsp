@@ -3,12 +3,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link
+<!-- <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-	rel="stylesheet" type="text/css">
+	rel="stylesheet" type="text/css"> -->
 
 <!-- bootstrap -->
 <script type="text/javascript"

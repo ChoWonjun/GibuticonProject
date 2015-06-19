@@ -4,8 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
-<link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
-<script type="text/javascript">
+<%-- <link rel="stylesheet" href="${initParam.root }css/board.css" type="text/css">
+<script type="text/javascript"> --%>
 $(document).ready(function(){
 	$("#writeImg").click(function(){
 		$("#write_form").submit();
