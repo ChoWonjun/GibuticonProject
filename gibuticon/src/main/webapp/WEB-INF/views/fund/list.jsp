@@ -3,8 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link rel="stylesheet" href="${initParam.root }css/board.css"
-	type="text/css">
+<%-- <link rel="stylesheet" href="${initParam.root }css/board.css"
+	type="text/css"> --%>
 <div class="section">
 	<div class="container">
 		<div class="row">
