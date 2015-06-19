@@ -40,7 +40,7 @@
                   <dd>
                     <ul>
                       <li>
-                        <a href="#" class="u_txt1">  <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">기부티콘이란</span></a>
+                        <a href="${initParam.root }introduce_gibuticon.gibu" class="u_txt1">  <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">기부티콘이란</span></a>
                       </li>
                     </ul>
                   </dd>
@@ -128,10 +128,24 @@
             <div class="col-md-4 text-right">
               <div class="btn-group btn-group-sm">
                 <br>
+
+                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
+
                 <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown"> 제목<span class="fa fa-caret-down"></span></a>
+
                 <ul class="dropdown-menu" role="menu">
                   <li>
+
+                    <a href="#">제목+내용</a>
+                  </li>
+                  <li>
+                    <a href="#">제목만</a>
+                  </li>
+                  <li>
+                    <a href="#">내용만</a>
+
                     <a href="#">작성자</a>
+
                   </li>
                 </ul>
               </div>

@@ -12,8 +12,8 @@
 			} else {
 				$("#registForm").submit();
 			}
+		});
 	});
-});
 </script>
 <div class="section">
 	<div class="container">
@@ -26,7 +26,9 @@
 								<div class="contentwrap">
 									<article class="container">
 										<div class="page-header">
-											<h1>회원가입</h1>
+											<h1>
+												<span style="font-family: &amp; quot;">회원가입</span>
+											</h1>
 										</div>
 										<br> <br>
 										<form:form class="form-horizontal" name="registerForm"
@@ -123,8 +125,9 @@
 											<br>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<button type="button" id="registerBtn"
-														class="btn btn-primary">회원가입</button>
+													<a href="${initParam.root}registerResult.gibu"> <input
+														class="btn btn-default"
+														type="submit" value="회원가입 "></a>
 												</div>
 											</div>
 										</form:form>

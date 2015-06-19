@@ -24,7 +24,7 @@
       </div>
       </div>
             <a href="${initParam.root}home.gibu">
-              <img src="${initParam.root }img\conelogin.png" class="center-block img-responsive img-thumbnail" height="100" width="100"></a>
+              <img src="${initParam.root }img\이모티콘.jpg" class="center-block img-responsive img-thumbnail" height="100" width="100"></a>
           </div>
         </div>
       </div>

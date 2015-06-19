@@ -46,7 +46,7 @@
 											style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
-									<li><a href="#" class="u_txt5"> <span
+									<li><a href="${initParam.root}updateMemberView.gibu"> <span
 											style="font-family: &amp; amp;">회원정보 수정</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">회원탈퇴</span></a></li>

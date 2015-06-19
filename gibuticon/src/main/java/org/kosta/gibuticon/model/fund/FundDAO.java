@@ -34,12 +34,14 @@ public interface FundDAO {
 	public abstract void updateHit(String no);
 
 	public void increaseCurSum(FundVO fundVO);
-	
+
 	public void writeComment(FundCommentVO fundCommentVO);
 
-	public abstract List<FundCommentVO> getCommentList(CommentPageVO commentPageVO);
+	public abstract List<FundCommentVO> getCommentList(
+			CommentPageVO commentPageVO);
 
 	public abstract int getTotalCommentCount(String fundNo);
+
 	
 	public int getTotalGibuAmount();
 	
@@ -48,4 +50,10 @@ public interface FundDAO {
 	public int getTotalGibuAmount(String year);
 	
 	public int getTotalGibuParticipants(String year);
+
+
+	public abstract void savePhoto(FundPhotoVO fpvo);
+
+	public abstract List<FundPhotoVO> getPhotoByNo(String no);
+
 }

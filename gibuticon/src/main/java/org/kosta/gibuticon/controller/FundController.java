@@ -20,7 +20,9 @@ import org.kosta.gibuticon.model.history.GibuHistoryVO;
 import org.kosta.gibuticon.service.FundService;
 import org.kosta.gibuticon.service.MemberService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -83,6 +85,8 @@ public class FundController {
 		List<FundCommentVO> list=fundService.getCommentList(new CommentPageVO(no,commentPage));
 		CommentListVO listVO=new CommentListVO(list, new CommentPagingBean(fundService.getTotalCommentCount(no), Integer.parseInt(commentPage)));
 		
+		System.out.println(vo.getPhotoList());
+		
 		ModelAndView mv=new ModelAndView("fund_show_content");
 		mv.addObject("posting",vo);
 		mv.addObject("comment",listVO);
@@ -125,9 +129,11 @@ public class FundController {
 		return new ModelAndView("fund_update","posting",fundService.getFundByNoNotHit(no));
 	}
 	
-	@RequestMapping("fund/write.gibu")
+	@Transactional
+	@RequestMapping(value="fund/write.gibu",method=RequestMethod.POST)
 	public ModelAndView write(FundVO vo){
 		fundService.writeFund(vo);
+		fundService.uploadPhoto(vo);
 		return new ModelAndView("redirect:showContentNotHit.gibu","no",vo.getFundNo());
 	}
 	
