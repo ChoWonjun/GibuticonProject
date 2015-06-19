@@ -46,7 +46,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${requestScope.vo.list}">
+						<c:forEach items="${requestScope.vo.list}"  var="posting">
 							<tr>
 								<td>${posting.fundNo }</td>
 								<td><a
@@ -74,7 +74,7 @@
 					</tbody>
 				</table>
 				<br></br> <a href="${initParam.root }fund/writeForm.gibu"> <input
-					class="btn_charity btn_record" type="submit" name="" value="글쓰기"></a>
+					class="btn btn-default" type="submit" name="" value="글쓰기"></a>
 				<br> <br>
 			</div>
 		</div>
