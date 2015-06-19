@@ -23,7 +23,9 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 */
 	@Override
 	public FreeBoardVO getFreeBoardByNo(String no){
-		return sqlSessionTemplate.selectOne("freeboard.getFreeBoardByNo",no);
+		FreeBoardVO fvo=sqlSessionTemplate.selectOne("freeboard.getFreeBoardByNo",no);
+		fvo.setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",fvo.getId()));
+		return fvo;
 	}
 
 	/* (non-Javadoc)

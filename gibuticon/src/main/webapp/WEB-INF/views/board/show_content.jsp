@@ -1,12 +1,8 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript" src="${initParam.root}layoutit/src/js/jquery-1.11.3.min.js"></script>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script type="text/javascript" src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$("#updateImg").click(function(){
@@ -25,33 +21,46 @@
 			});
 	});
 </script>
-</head>
 <body>
-<table align="center">
-					<tr>
-						<td><b>${requestScope.fvo.title}</b>
-						</td>
-					</tr>
-					<tr>
-						<td><font size="2">
-								조회수: ${requestScope.fvo.hits } 
-							|	작성일: ${requestScope.fvo.writeDate}</font>
-							|   작성자: ${requestScope.fvo.memberVO.name}</td>
-					</tr>
-					<tr>
-						<td><textarea cols="40" rows="10" name="content"
-								readonly="readonly">${requestScope.fvo.content }</textarea></td>
-					</tr>
-					<tr>
-						<td valign="middle">
-						<a href="replyView.gibu?no=${requestScope.fvo.boardNo }"><img
-								src="${initParam.root}layoutit/src/img/answer_btn.jpg"></a>
-						<a href="${initParam.root}getFreeBoardList.gibu?no=${requestScope.fvo.boardNo}"><img
-								src="${initParam.root}layoutit/src/img/list_btn.jpg"></a> <img
-							id="updateImg" src="${initParam.root}layoutit/src/img/modify_btn.jpg">
-							<img id="delImg" src="${initParam.root}layoutit/src/img/delete_btn.jpg"></td>
-					</tr>
-				<c:if test="${sessionScope.mvo!=null }">
+<body>
+ <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+   <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+   <table class="content" width="1200" height="200" style="word-break:break-all;word-wrap:break-word">
+              <tbody>
+                <tr>
+                  <td>NO : ${requestScope.fvo.boardNo}</td>
+                  <td colspan="2">title : ${requestScope.fvo.title}</td>
+                </tr>
+                <tr>
+                  <td>작성자 : ${requestScope.fvo.memberVO.name}</td>
+                  <td>${requestScope.fvo.writeDate}</td>
+                  <td>조회수 :${requestScope.fvo.hits}</td>
+                </tr>
+                <tr>
+                  <td colspan="3">
+                    <pre >${requestScope.fvo.content} </pre>
+                  </td>
+                </tr>        
+                <tr>
+                  <td valign="middle" align="center" colspan="3 ">
+                  <a href="${initParam.root}replyView.gibu?no=${requestScope.fvo.boardNo }">
+                  <input class="btn btn-default" type="submit" value="답글"></a>
+                    <a href="${initParam.root}getFreeBoardList.gibu?no=${requestScope.fvo.boardNo}"> 
+                    <input class="btn btn-default" type="submit" value="목록"></a>
+                   <input class="btn btn-default " type="submit" value="삭제" id="delImg">
+                  <input class="btn btn-default" type="submit"value="수정" id="delImg">
+                  </td>
+                </tr>
+                <c:if test="${sessionScope.mvo!=null }">
 					<tr>
 						<td><form action="writeFreeComment.gibu">
 						댓글<input type="text" name="comment">
@@ -61,50 +70,62 @@
 						<input type="hidden" name="boardNo" value="${requestScope.fvo.boardNo}">
 						</form></td>
 					</tr>
-				</c:if>
-				</table>
-				
-				<table align="center">
-		<caption>댓글 목록</caption>
-		<thead>
-		<tr>
-			<th class="no">NO</th>
-			<th class="title">comment</th>
-			<th class="date">작성일</th>
-			<th class="writer">작성자</th>
-			<th class="hit">HIT</th>
-			</tr>		
-		</thead>	
-		<tbody>
-			<c:forEach items="${requestScope.flist.list}" var="comment">
-				<tr><td align="left">${comment.commentNo}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</<td><td>${comment.hits}</td></tr>
-					<c:choose>
-						<c:when test="${comment.memberVO.id==sessionScope.mvo.id}">
-							<tr><td>${comment.comment}</td></tr>
-							<tr><td><a href="">삭제하기</a></td></tr>
-						</c:when>
-							<c:otherwise>
-								<tr><td>${comment.comment}</td></tr>
-							</c:otherwise>
-					</c:choose>
-			</c:forEach>
-			<tr>
-				<td colspan=5 align="center">
-					<c:set var="pb" value="${requestScope.flist.pagingBean}"></c:set>
-					<c:if test="${pb.previousPageGroup}">
-						<a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.startPageOfPageGroup-1}">◀</a> 
 					</c:if>
-					<c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-						<a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${i}">${i}</a>
-					</c:forEach>
-					<c:if test="${pb.nextPageGroup}">
-						<a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.endPageOfPageGroup+1}">▶</a>
-					</c:if>
-				</td>
-			</tr>				
-		</tbody>
-	</table>
-
-
+              </tbody>
+            </table>
+            </div>
+            </div>
+            </div>
+            </div>
+            <br><br>
+            <div class="section">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-6" align="center">
+               <table class="table" style="font-family: &amp; quot;">
+                  <thead>
+                     <tr>
+                        <th width="100">NO</th>
+                        <th width="800">comment</th>
+                         <th width="300">작성일</th>
+                        <th width="300">작성자</th>
+                        <th width="300">조회수</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                     <c:forEach items="${requestScope.flist.list}" var="comment">
+                        <tr><td>${comment.commentNo}</td><td>${comment.comment}</td><td>${comment.writeDate}</td><td>${comment.memberVO.name}</td><td>${comment.hits}</td></tr>
+                     </c:forEach>
+                  </tbody>
+               </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+  			<div class="section">
+              <div class="container">
+                <div class="row">
+             <div class="col-md-6">
+              <ul class="pagination">
+              <c:set var="pb" value="${requestScope.flist.pagingBean}"></c:set>
+              <c:if test="${pb.previousPageGroup}">
+                   <li>
+                     <a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+                   </li>
+                </c:if>
+                <li>
+                 <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+                  <a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${i}">${i }</a>
+               </c:forEach>
+                </li>
+                <c:if test="${pb.nextPageGroup}">
+                   <li>
+                     <a href="${initParam.root }getFreeBoardByNo.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+                   </li>
+                </c:if>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
 </body>
-</html>
