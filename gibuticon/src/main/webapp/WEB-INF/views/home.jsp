@@ -82,10 +82,17 @@
 	data-cycle-timeout="5000" data-cycle-loader="true">
 	<!-- empty element for pager links -->
 	<div class="cycle-pager"><span class="cycle-pager span"></span>	</div>
-
-	<img class="cycle-slideshow img" src="img/기부.jpg">
-	<img class="cycle-slideshow img" src="img/제목 없음.jpg">
+<div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12"></div>
+        </div>
+      </div>
+    </div>
+	<img class="cycle-slideshow img" src="img/메인배너1.jpg">
+	<img class="cycle-slideshow img" src="img/메인배너2.jpg">
 </div>
+
 <div class="section">
 	<div class="container">
 		<div class="row">
