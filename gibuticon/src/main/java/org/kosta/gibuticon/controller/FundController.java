@@ -113,29 +113,26 @@ public class FundController {
 	public ModelAndView fundWriteForm(@ModelAttribute FundVO fundVO) {
 		return new ModelAndView("fund_write");
 	}
-<<<<<<< HEAD
 
-=======
-	
 	@RequestMapping("fund/currentState.gibu")
-	public ModelAndView currentState(){
-		ModelAndView mv=new ModelAndView();
+	public ModelAndView currentState() {
+		ModelAndView mv = new ModelAndView();
 		mv.setViewName("fund_fund_state");
-		mv.addObject("totalParticipants",fundService.getTotalGibuParticipants());
-		mv.addObject("totalAmount",fundService.getTotalGibuAmount());
+		mv.addObject("totalParticipants",
+				fundService.getTotalGibuParticipants());
+		mv.addObject("totalAmount", fundService.getTotalGibuAmount());
 		return mv;
 	}
-	
+
 	@RequestMapping("fund/currentStateYear.gibu")
 	@ResponseBody
-	public HashMap<String,Object> currentStateYear(String year){
-		HashMap<String,Object> map=new HashMap<String,Object>();
+	public HashMap<String, Object> currentStateYear(String year) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("totalParticipants", fundService.getTotalGibuParticipants(year));
 		map.put("totalAmount", fundService.getTotalGibuAmount(year));
 		return map;
 	}
-	
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+
 	@RequestMapping("fund/updateForm.gibu")
 	public ModelAndView updateForm(String no) {
 		return new ModelAndView("fund_update", "posting",
@@ -144,7 +141,7 @@ public class FundController {
 
 	@Transactional
 	@RequestMapping(value = "fund/write.gibu", method = RequestMethod.POST)
-	public ModelAndView write(@Valid FundVO vo,  BindingResult result) {
+	public ModelAndView write(@Valid FundVO vo, BindingResult result) {
 		if (result.hasErrors()) {
 			return new ModelAndView("fund_write");
 			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다.

@@ -104,6 +104,30 @@ public class FundServiceImpl implements FundService {
 	}
 
 	@Override
+	public int getTotalGibuParticipants(String year) {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuParticipants(year);
+	}
+
+	@Override
+	public int getTotalGibuAmount(String year) {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuAmount(year);
+	}
+
+	@Override
+	public int getTotalGibuParticipants() {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuParticipants();
+	}
+
+	@Override
+	public int getTotalGibuAmount() {
+		// TODO Auto-generated method stub
+		return fundDAO.getTotalGibuAmount();
+	}
+
+	@Override
 	public void uploadPhoto(FundVO vo) {
 		List<MultipartFile> list = vo.getFile();
 		ArrayList<String> nameList = new ArrayList<String>();
