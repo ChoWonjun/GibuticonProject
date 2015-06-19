@@ -52,7 +52,7 @@
 								</dt>
 								<dd>
 									<ul>
-										<li><a href="#" class="sr_txt5"> <span
+										<li><a href="${initParam.root }introduce_what_is_cone.gibu" class="sr_txt5"> <span
 												style="font-family: &amp; quot;">콘 안내</span></a></li>
 										<li><a href="#"><span
 												style="font-family: &amp; quot;">콘받기 안내</span></a></li>

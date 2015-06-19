@@ -65,6 +65,8 @@
 											style="font-family: &amp; amp;">선물하기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">선물함 내역</span></a></li>
+									<li><a href="#" class="sr_txt5"> <span
+											style="font-family: &amp; amp;">사용 내역</span></a></li>
 									<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
 								</ul>
 							</dd>
