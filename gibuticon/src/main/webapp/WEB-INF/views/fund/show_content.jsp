@@ -3,6 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+
 <!-- Cycle2 (슬라이드쇼) -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -85,6 +86,7 @@
 }
 </style>
 </head>
+<<<<<<< HEAD
 
 <c:set value="${requestScope.posting }" var="fund"></c:set>
 <c:set value="${requestScope.posting.photoList }" var="photoList"></c:set>
