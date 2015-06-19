@@ -86,8 +86,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getTotalCommentCount" resultType="int">
 		select count(*) from gibu_fund_comment where fund_no=#{fundNo}
 	</select>
+
+	<select id="getTotalGibuAmount" resultType="int">
+		select sum(amount) from donation_history
+	</select>
 	
+	<select id="getTotalGibuParticipants" resultType="int">
+		select count(distinct(member_id)) from donation_history
+	</select>
+	
+	<select id="getTotalGibuAmountYear" resultType="int">
+		select sum(amount) from donation_history where to_char(donation_time,'yyyy')=#{value}
+	</select>
+	
+	<select id="getTotalGibuParticipantsYear" resultType="int">
+		select count(distinct(member_id)) from donation_history where to_char(donation_time,'yyyy')=#{value}
+</select>
 	<select id="getPhotoByNo" resultType="fundPhotoVO">
 		select photo_no photono, org_name orgname, real_name realname, fund_no fundno from fund_photo where fund_no = #{value}
+
 	</select>
-</mapper>
+	</mapper>

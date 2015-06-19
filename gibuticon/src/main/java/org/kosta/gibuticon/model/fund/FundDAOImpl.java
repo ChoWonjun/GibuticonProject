@@ -167,4 +167,28 @@ public class FundDAOImpl implements FundDAO {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("fund.getPhotoByNo", no);
 	}
+
+	@Override
+	public int getTotalGibuAmount() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuAmount");
+	}
+
+	@Override
+	public int getTotalGibuParticipants() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuParticipants");
+	}
+
+	@Override
+	public int getTotalGibuAmount(String year) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuAmountYear",year);
+	}
+
+	@Override
+	public int getTotalGibuParticipants(String year) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalGibuParticipantsYear",year);
+	}
 }

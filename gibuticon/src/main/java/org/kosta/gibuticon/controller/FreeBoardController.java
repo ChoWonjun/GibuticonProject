@@ -61,7 +61,7 @@ public class FreeBoardController {
 		if(pageNo==null)
 			pageNo="1";
 		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
-		System.out.println(fvo+"getFreeBoardByNo");
+		System.out.println("getFreeBoardByNo"+fvo);
 		List<FreeCommentVO> list=freeBoardService.getCommentList(no, pageNo);
 		FreeCommentListVO flist=new FreeCommentListVO(list, new FreeCommentPagingBean(freeCommentService.getTotalPostingCount(), Integer.parseInt(pageNo)));
 		System.out.println("잘나오냥"+flist);

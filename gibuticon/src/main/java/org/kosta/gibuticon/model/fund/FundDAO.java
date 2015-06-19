@@ -42,6 +42,16 @@ public interface FundDAO {
 
 	public abstract int getTotalCommentCount(String fundNo);
 
+	
+	public int getTotalGibuAmount();
+	
+	public int getTotalGibuParticipants();
+	
+	public int getTotalGibuAmount(String year);
+	
+	public int getTotalGibuParticipants(String year);
+
+
 	public abstract void savePhoto(FundPhotoVO fpvo);
 
 	public abstract List<FundPhotoVO> getPhotoByNo(String no);

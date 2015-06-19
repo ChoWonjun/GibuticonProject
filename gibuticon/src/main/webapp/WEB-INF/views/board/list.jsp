@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -108,18 +108,18 @@
                      </tr>
                   </thead>
                   <tbody>
-		                     <c:choose>
-						<c:when test="${sessionScope.mvo!=null}">
-							<c:forEach items="${requestScope.lvo.list}" var="board">
-								<tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${requestScope.lvo.list}" var="board">
-								<tr><td>${board.boardNo}</td><td>${board.title}</td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
+                           <c:choose>
+                  <c:when test="${sessionScope.mvo!=null}">
+                     <c:forEach items="${requestScope.lvo.list}" var="board">
+                        <tr><td>${board.boardNo}</td><td><a href="${initParam.root }getFreeBoardByNo.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
+                     </c:forEach>
+                  </c:when>
+                  <c:otherwise>
+                     <c:forEach items="${requestScope.lvo.list}" var="board">
+                        <tr><td>${board.boardNo}</td><td>${board.title}</td><td>${board.writeDate}</td><td>${board.hits}</td></tr>
+                     </c:forEach>
+                  </c:otherwise>
+               </c:choose>
                   </tbody>
                </table>
                   </div>
@@ -134,37 +134,31 @@
             <div class="col-md-5 text-center">
               <div class="btn-group btn-group-sm">
                 <br>
-                 <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
+                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown"> Dropdown <span class="fa fa-caret-down"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li>
-                    <a href="#">제목+내용</a>
+                    <a href="#">Action</a>
                   </li>
-                  <li>
-                    <a href="#">제목만</a>
-                  </li>
-                  <li>
-                    <a href="#">내용만</a>
-                  </li>
-                  </ul>
+                </ul>
               </div>
             </div>
             <div class="col-md-6">
               <ul class="pagination">
               <c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
               <c:if test="${pb.previousPageGroup}">
-	                <li>
-	                  <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
-	                </li>
+                   <li>
+                     <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+                   </li>
                 </c:if>
                 <li>
                  <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-						<a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
-					</c:forEach>
+                  <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${i }">${i }</a>
+               </c:forEach>
                 </li>
                 <c:if test="${pb.nextPageGroup}">
-	                <li>
-	                  <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
-	                </li>
+                   <li>
+                     <a href="${initParam.root }getFreeBoardList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+                   </li>
                 </c:if>
               </ul>
             </div>
@@ -177,7 +171,7 @@
                       <a class="btn btn-primary" type="submit">검색</a>
                     </span>
                     <span>
-                    	<a href="write.gibu">글쓰기</a>
+                       <a href="write.gibu">글쓰기</a>
                     </span>
                   </div>
                 </div>
