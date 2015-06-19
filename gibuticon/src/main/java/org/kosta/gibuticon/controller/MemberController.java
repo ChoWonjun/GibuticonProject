@@ -7,7 +7,7 @@ import javax.validation.Valid;
 
 import org.kosta.gibuticon.model.member.LoginForm;
 import org.kosta.gibuticon.model.member.MemberVO;
-import org.kosta.gibuticon.service.MemberService;
+import org.kosta.gibuticon.model.service.MemberService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;

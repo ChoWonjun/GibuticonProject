@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.service;
+package org.kosta.gibuticon.model.service;
 
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;

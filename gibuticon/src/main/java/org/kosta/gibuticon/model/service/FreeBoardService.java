@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.service;
+package org.kosta.gibuticon.model.service;
 
 import java.util.List;
 

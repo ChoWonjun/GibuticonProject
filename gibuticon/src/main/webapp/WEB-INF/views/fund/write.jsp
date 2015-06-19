@@ -2,13 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-<!-- <link
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-	rel="stylesheet" type="text/css"> -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- bootstrap -->
 <script type="text/javascript"
@@ -87,8 +81,9 @@
 						<div class="row">
 							<div class="col-md-11">
 								<!-- form 시작 -->
-								<form name="multiform" id="multiform"
-									enctype="multipart/form-data" method="post" action="${initParam.root }fund/write.gibu">
+								<form:form name="multiform" id="multiform"
+									enctype="multipart/form-data" method="post"
+									action="${initParam.root }fund/write.gibu" commandName="fundVO">
 									<fieldset style="font-family: &amp; amp;">
 										<legend>모금 사연 등록</legend>
 										<table class="col-md-12">
@@ -114,8 +109,8 @@
 												</tr>
 												<tr>
 													<th class="title"><label for="formTitle">모금명</label></th>
-													<td colspan="2" class="title"><br> <input
-														type="text" name="fundName" id="fundName" maxlength="25">
+													<td colspan="2" class="title"><br> <form:input  path="fundName"
+														type="text" name="fundName" id="fundName" maxlength="25"/>
 														<select name="fundCategory" id="fundCategory" size="1"
 														title="카테고리 선택">
 															<option value="0">카테고리를 선택하세요.</option>
@@ -123,44 +118,36 @@
 															<option value="2">어르신</option>
 															<option value="3">장애인</option>
 															<option value="4">기타</option>
-													</select> <br> <br class="cl_b"></td>
+													</select> <br> <br class="cl_b"> <form:errors path="fundName" /></td>
 												</tr>
 												<tr>
 													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
-													<td colspan="2" class="hope_sum"><br> <input
+													<td colspan="2" class="hope_sum"><br> <form:input path="goalSum"
 														class="shot" type="number" name="goalSum" id="goalSum"
-														style="text-align: right" maxlength="12"></td>
+														style="text-align: right" maxlength="12"/> <form:errors path="goalSum" /></td>
 												</tr>
 												<tr>
 													<th class="organ"><br> <label for="formOrgan">주관
 															기관</label></th>
-													<td colspan="2" class="organ"><br> <input
-														class="shot" type="text" name="proposal" id="proposal">본
-														모금을 함께 하고 싶은 기관이나 단체를 추천할 수 있습니다</td>
+													<td colspan="2" class="organ"><br> <form:input path="proposal"
+														class="shot" type="text" name="proposal" id="proposal"/>모금을 주관하는
+														단체는 모금 진행 사이트와 다를 수 있습니다. <form:errors path="proposal" /></td>
 												</tr>
 												<tr>
 													<th class="link"><br> <label for="url1">관련
 															링크</label></th>
-													<td colspan="2" class="link"><br> <input
-														class="shot" type="url" id="homepage" name="homepage"></td>
+													<td colspan="2" class="link"><br> <form:input path="homepage"
+														class="shot" type="url" id="homepage" name="homepage"/><form:errors path="homepage" /></td>
 												</tr>
 												<tr>
 													<th class="execution_time"><br> <label
 														for="formExecutionTime">집행시기</label></th>
 													<td colspan="2" class="execution_time"><br> <input
 														class="inp_cal" type="date" name="startDate"
-														id="startDate"> <span class="hyphen">-</span> <input
-														type="date" class="inp_cal" id="dueDate" name="dueDate">6개월
+														id="startDate"/> <span class="hyphen">-</span> <input
+														type="date" class="inp_cal" id="dueDate" name="dueDate"/> 6개월
 														안에 시작해야 하며, 최대 1년안에 사용을 완료하셔야 합니다.</td>
 												</tr>
-												<!-- <tr>
-													<th class="hope_sum"><br> <label for="formSum">현재
-															모금액</label></th>
-													<td colspan="2" class="hope_sum"><br> <input
-														class="shot" type="number" name="curSum" id="curSum"
-														style="text-align: right" maxlength="12"></td>
-												</tr> -->
-												<!-- 본문 text area -->
 												<tr>
 													<th class="cont"><label for="formCont">본문</label></th>
 													<td colspan="2" class="cont"><br> <textarea
@@ -180,12 +167,14 @@
 												</tr>
 											</tbody>
 										</table>
-										<br> <br> <br> 
-										 <input class="btn btn-default" style="font-family: &quot;나눔고딕&quot;,NanumGothic,Sans-serif;" type="submit" value="글쓰기"  onclick="content_submit()">
-										 <input class="btn btn-default" style="font-family: &quot;나눔고딕&quot;,NanumGothic,Sans-serif;" type="submit" value="취소"  onclick="cancel()">
-										
+										<br> <br> <br> <input class="btn btn-default"
+											style="font-family: &amp; amp;" type="submit" value="글쓰기"
+											onclick="content_submit()"> <input
+											class="btn btn-default" style="font-family: &amp; amp;"
+											type="submit" value="취소" onclick="cancel()">
+
 									</fieldset>
-								</form>
+								</form:form>
 							</div>
 						</div>
 					</div>

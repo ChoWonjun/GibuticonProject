@@ -5,7 +5,7 @@ package org.kosta.gibuticon.controller;
 import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
-import org.kosta.gibuticon.service.FreeCommentService;
+import org.kosta.gibuticon.model.service.FreeCommentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

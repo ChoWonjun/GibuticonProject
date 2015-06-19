@@ -10,7 +10,7 @@ import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.kosta.gibuticon.model.notice.PagingBean;
-import org.kosta.gibuticon.service.NoticeService;
+import org.kosta.gibuticon.model.service.NoticeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
