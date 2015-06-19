@@ -101,23 +101,18 @@
 						<div class="row">
 							<div class="col-md-4" align="center">
 								<a href="${initParam.root }introduce_gibuticon.gibu"><img
-									src="img/whatsgibuticon.png" class="img-responsive"></a>
-								<h2>기부티콘이란</h2>
-								<p>사랑하는 이에게 기부를 선물하세요</p>
+									src="img/기부티콘이란.jpg" width="350"></a>
+								
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="img/mainreviews.png"
-									class="img-responsive"></a>
-								<h2>후원 후기</h2>
-								<p>함께 만들어가는 세상</p>
+								<a href="#"><img src="img/후원후기.jpg"
+									class="img-responsive" width="1200"></a>
+							
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="img/ranking.jpg"
+								<a href="${initParam.root }memberRanksView.gibu"><img src="img/회원랭킹.jpg"
 									class="img-responsive"></a>
-								<h2>회원랭킹</h2>
-								<p>
-									<a href="${initParam.root }memberRanksView.gibu">회원 기부 랭킹</a>
-								</p>
+								
 							</div>
 						</div>
 					</div>
