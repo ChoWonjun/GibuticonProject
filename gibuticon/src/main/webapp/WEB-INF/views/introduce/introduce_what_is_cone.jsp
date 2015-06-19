@@ -23,11 +23,6 @@
 	</div> -->
 	<div class="section">
 		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
 					<div class="navi_ca_is"></div>
@@ -83,16 +78,6 @@
 				<img src="img/coneIntro.jpg" class="img-introduce" width="75%" height="75%">
 
 			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row"></div>
 		</div>
 	</div>
 </body>

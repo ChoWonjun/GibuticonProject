@@ -18,7 +18,7 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 	@Override
 	public void writeNotice(NoticeVO noticeVO) {
-		System.out.println("dao : " + noticeVO);
+		//System.out.println("dao : " + noticeVO);
 		sqlSessionTemplate.insert("notice.writeNotice", noticeVO);
 	}
 
@@ -29,12 +29,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 
 	@Override
 	public void updateNotice(NoticeVO noticeVO) {
+		System.out.println("update"+noticeVO);
 		sqlSessionTemplate.update("notice.updateNotice", noticeVO);
-	}
-
-	@Override
-	public NoticeVO showContent(String noticeNo) {
-		return sqlSessionTemplate.selectOne("notice.showContent", noticeNo);
 	}
 
 	@Override

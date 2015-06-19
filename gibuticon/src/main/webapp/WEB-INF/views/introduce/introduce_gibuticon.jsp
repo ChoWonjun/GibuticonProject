@@ -23,11 +23,6 @@
 	</div> -->
 	<div class="section">
 		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
 			<div class="row">
 				<div class="col-md-2">
 					<div class="navi_ca_is"></div>
@@ -81,18 +76,7 @@
 					</div>
 				</div>
 				<img src="img/gibuticonintro.jpg" class="img-introduce" width="70%" height="70%">
-
 			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row"></div>
 		</div>
 	</div>
 </body>

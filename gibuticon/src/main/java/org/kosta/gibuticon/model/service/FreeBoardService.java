@@ -15,7 +15,7 @@ public interface FreeBoardService {
 	public abstract void deleteFreeBoard(String no);
 	public abstract String getPageNo(String no);
 	public abstract int getTotalPostingCount();
-	public abstract FreeBoardVO getFundByNoNotHit(String no);
+	public abstract FreeBoardVO getFreeByNoNotHit(String no);
 	public abstract FreeBoardVO replyView(String no);
 	public abstract void reply(FreeBoardVO freeBoardVO);
 	public abstract List<FreeCommentVO> getFreeBoardCommentList(FreeCommentVO freeBoardCommentVO);

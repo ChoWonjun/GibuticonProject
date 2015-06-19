@@ -3,9 +3,12 @@ package org.kosta.gibuticon.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -43,18 +46,46 @@ public class NoticeController {
 			pageNo = "1";
 		// System.out.println(pageNo);
 		List<NoticeVO> list = noticeService.getNoticeList(pageNo);
-		System.out.println(list);
+		//System.out.println(list);
 		ListVO lvo = new ListVO(list, new PagingBean(
 				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-		System.out.println(lvo+"lvo");
+		//System.out.println(lvo+"lvo");
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 
 	@RequestMapping("showNoticeContent.gibu")
-	public ModelAndView showNoticeContent(String noticeNo) {
-		NoticeVO nvo = noticeService.showContent(noticeNo);
-		System.out.println(nvo);
-		return new ModelAndView("notice_show_content", "posting", nvo);
+	public ModelAndView showNoticeContent(String noticeNo, HttpServletRequest request, HttpServletResponse response) {
+		Cookie cookies[] = request.getCookies();
+		String hitcookieVal = "";
+		String noStr = "|" + noticeNo + "|";
+
+		boolean flag = true;
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				if (cookies[i].getName().equals("noticehitcookie")) {
+					hitcookieVal = cookies[i].getValue();
+
+					if (hitcookieVal.indexOf(noStr) != -1) {
+						flag = false;
+						break;
+					}
+				}
+			}
+		}
+
+		NoticeVO vo = null;
+		if (flag) {
+			vo = noticeService.getNoticeByNo(noticeNo);
+			// 개별 게시물 조회 ( 조회수 증가 )
+			Cookie cookie = new Cookie("noticehitcookie", hitcookieVal + noStr);
+			// 쿠키 유효시간 설정
+			// cookie.setMaxAge(60);// 60초간 쿠키가 유효하다.
+			// 응답객체에 쿠키를 저장해 전송한다.
+			response.addCookie(cookie);
+		} else
+			vo = noticeService.showContentNoHit(noticeNo);
+		//System.out.println(vo);
+		return new ModelAndView("notice_show_content", "posting", vo);
 	}
 	
 	@RequestMapping("writeNotice.gibu")
@@ -77,7 +108,7 @@ public class NoticeController {
 
 	@RequestMapping("update.gibu")
 	public ModelAndView update(String noticeNo) {
-		System.out.println("여기에 들어왔습니당");
+		System.out.println("여기에 들어왔습니당"+noticeNo);
 		NoticeVO nvo = noticeService.getNoticeByNo(noticeNo);
 		return new ModelAndView("notice_update", "nvo", nvo);
 	}
@@ -87,7 +118,7 @@ public class NoticeController {
 		System.out.println(noticeVO + "받아온거");
 		noticeService.updateNotice(noticeVO);
 		System.out.println(noticeVO);
-		return "redirect:showNoticeContent.gibu?noticeNo=" + noticeVO.getnoticeNo();
+		return "redirect:showNoticeContent.gibu?noticeNo="+noticeVO.getnoticeNo();
 	}
 	
 }

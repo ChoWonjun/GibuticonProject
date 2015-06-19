@@ -38,7 +38,7 @@
     <tbody>
 	 <tr>
 		<td>제목</td>
-		<td><input type="text" name="title" id="title" value="RE:${requestScope.fvo.title}"></td>
+		<td><input type="text" name="title" id="title" value="&nbsp;&nbsp;&nbsp;RE:${requestScope.fvo.title}"></td>
 	 </tr>
 	 <tr>
 		<td>아이디</td>

@@ -24,9 +24,9 @@ public class FreeCommentController {
 		return new ModelAndView("redirect:getFreeBoardByNo.gibu?no="+freeBoardCommentVO.getBoardNo()+"&pageNo="+pageNo);
 	}
 	@RequestMapping("deleteFreeComment")
-	public String deleteFreeComment(String no){
-		freeCommentService.deleteFreeComment(no);
-		return null;
+	public String deleteFreeComment(String commentNo, String no){
+		freeCommentService.deleteFreeComment(commentNo);
+		return "redirect:getFreeBoardByNo.gibu?no="+no;
 	}
 
 }

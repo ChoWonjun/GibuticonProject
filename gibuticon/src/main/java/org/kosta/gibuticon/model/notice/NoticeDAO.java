@@ -10,8 +10,6 @@ public interface NoticeDAO {
 
 	public abstract void writeNotice(NoticeVO noticeVO);
 	
-	public abstract NoticeVO showContent(String noticeNo);
-
 	public abstract void deleteNotice(String noticeNo);
 
 	public abstract void updateNotice(NoticeVO noticeVO);

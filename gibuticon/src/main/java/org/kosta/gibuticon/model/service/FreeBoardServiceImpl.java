@@ -56,7 +56,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public FreeBoardVO getFundByNoNotHit(String no) {
+	public FreeBoardVO getFreeByNoNotHit(String no) {
 		return freeBoardDAO.getFreeBoardByNo(no);
 	}
 
@@ -83,7 +83,4 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
 		return freeBoardDAO.getCommentList(no, pageNo);
 	}
-
-	
-
 }

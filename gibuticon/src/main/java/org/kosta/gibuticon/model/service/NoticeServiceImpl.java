@@ -24,14 +24,8 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public NoticeVO showContent(String noticeNo) {
-		noticeDAO.updateHit(noticeNo);
-		return noticeDAO.showContent(noticeNo);
-	}
-
-	@Override
 	public NoticeVO showContentNoHit(String noticeNo) {
-		return noticeDAO.showContent(noticeNo);
+		return noticeDAO.getNoticeByNo(noticeNo);
 	}
 
 	@Override
@@ -58,9 +52,9 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public NoticeVO getNoticeByNo(String noticeVO) {
-		noticeDAO.updateHit(noticeVO);
-		return noticeDAO.getNoticeByNo(noticeVO);
+	public NoticeVO getNoticeByNo(String noticeNo) {
+		noticeDAO.updateHit(noticeNo);
+		return noticeDAO.getNoticeByNo(noticeNo);
 	}
 
 }

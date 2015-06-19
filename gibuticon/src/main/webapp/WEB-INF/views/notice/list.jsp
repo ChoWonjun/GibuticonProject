@@ -123,29 +123,7 @@
                 <div class="col-md-7"></div>
               </div>
             </div>
-            <div class="col-md-4 text-right">
-              <div class="btn-group btn-group-sm">
-                <br>
-
-                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu" role="menu">
-                  <li>
-
-                    <a href="#">제목+내용</a>
-                  </li>
-                  <li>
-                    <a href="#">제목만</a>
-                  </li>
-                  <li>
-                    <a href="#">내용만</a>
-
-                    <a href="#">작성자</a>
-
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6">
+            <div class="col-md-offset-6 col-md-6">
               <ul class="pagination">
               <c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
               <c:if test="${pb.previousPageGroup}">
@@ -165,7 +143,26 @@
                 </c:if>
               </ul>
             </div>
-            <div class="col-md-offset-3 col-md-6">
+            <div class="col-md-3 text-right">
+              <div class="btn-group btn-group-sm">
+                <a class="active btn btn-default dropdown-toggle" data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                  <li>
+                    <a href="#">제목+내용</a>
+                  </li>
+                  <li>
+                    <a href="#">제목만</a>
+                  </li>
+                  <li>
+                    <a href="#">내용만</a>
+				  </li>
+				  <li>
+                    <a href="#">작성자</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-6 text-left">
               <form role="form">
                 <div class="form-group">
                   <div class="input-group">
@@ -173,27 +170,16 @@
                     <span class="input-group-btn">
                       <a class="btn btn-primary" type="submit">검색</a>
                     </span>
-                     <span>
                      <c:if test="${sessionScope.mvo.admin=='yes'}">
-                     <a href="writeNoticeView.gibu"> <input
-					class="btn btn-default" type="button" value="글쓰기"></a>
-                    	</c:if>
+                    <span class="input-group-btn">
+                      <a href="writeNoticeView.gibu" class="btn btn-primary" type="submit">글쓰기</a>
                     </span>
+                    </c:if>
                   </div>
                 </div>
               </form>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="row"></div>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <div class="row"></div>
         </div>
       </div>
       </div>
