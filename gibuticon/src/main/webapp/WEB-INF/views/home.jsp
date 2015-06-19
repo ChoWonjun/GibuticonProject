@@ -2,13 +2,10 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+<!-- Cycle2 (슬라이드쇼) -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script src="js/jquery.cycle2.js"></script>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script src="http://malsup.github.com/jquery.cycle2.js"></script>
 
 <style type="text/css">
 /* set border-box so that percents can be used for width, padding, etc (personal preference) */
@@ -21,8 +18,7 @@
 .cycle-slideshow {
 	width: 100%;
 	min-width: 200px;
-	/* max-width: 500px; */
-	margin: 10px auto;
+	/* margin: 10px auto; */
 	padding: 0;
 	position: relative;
 	background: url(http://malsup.github.com/images/spinner.gif) 50% 50%
@@ -45,7 +41,8 @@
 
 /* in case script does not load */
 .cycle-slideshow img:first-child {
-    position: static; z-index: 100;
+	position: static;
+	z-index: 100;
 }
 
 /* pager */
@@ -69,7 +66,7 @@
 }
 
 .cycle-pager span.cycle-pager-active {
-	color: #8282FF;
+	color: #337cbb;
 }
 
 .cycle-pager>* {
@@ -79,12 +76,13 @@
 
 <div class="cycle-slideshow" data-cycle-fx="scrollHorz"
 	data-cycle-pause-on-hover="true" data-cycle-speed="500"
-	data-cycle-timeout="5000" data-cycle-loader="true">
+	data-cycle-loader="wait" data-cycle-timeout="5000"
+	data-cycle-easing="linear">
 	<!-- empty element for pager links -->
-	<div class="cycle-pager"><span class="cycle-pager span"></span>	</div>
+	<div class="cycle-pager"></div>
 
-	<img class="cycle-slideshow img" src="img/기부.jpg">
-	<img class="cycle-slideshow img" src="img/제목 없음.jpg">
+	<img src="img/기부.jpg"> 
+	<img src="img/제목 없음.jpg">
 </div>
 <div class="section">
 	<div class="container">
