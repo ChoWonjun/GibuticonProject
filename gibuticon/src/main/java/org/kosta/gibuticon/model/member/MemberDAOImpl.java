@@ -1,5 +1,7 @@
 package org.kosta.gibuticon.model.member;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -89,5 +91,17 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void decreasePoint(MemberVO memberVO) {
 		sqlSessionTemplate.update("member.decreasePoint",memberVO);
+	}
+
+	@Override
+	public List<MemberRankVO> getAmountRanks() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("member.getAmountRanks");
+	}
+
+	@Override
+	public List<MemberRankVO> getFundCountRanks() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("member.getFundCountRanks");
 	}
 }

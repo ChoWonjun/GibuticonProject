@@ -37,6 +37,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteFreeComment">
 		delete from freeBoard_comment where freeboard_comment_no=#{value}
 	</delete>
+	<select id="deleteFreeCommentList" parameterType="string" resultMap="freeCommentRM">
+		select * from freeBoard_comment where board_no=#{value}
+	</select>
 </mapper>
  
  

@@ -2,12 +2,14 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="${initParam.root }js/jquery.bpopup.min.js"></script>
+<script src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script type="text/javascript">
-   function chargePopup() {
+    function chargePopup() {
       var url = "${initParam.root }cone/chargeView.gibu";
       window.open(url, "notice", "width=520,height=280,teop=150,left=200");
-   }
+   } 
 </script>
 
 <body data-spy="scroll">
