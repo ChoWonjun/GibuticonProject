@@ -38,10 +38,10 @@
                 </tr>
                 <tr>
                   <td valign="middle " align="center " colspan="3 ">
-                    <a href="# "> <input class="btn btn-default
-                    " type="submit " name=" " value="목록 "></a>
+                    <a href="${initParam.root}getNoticeList.gibu"> <input class="btn btn-default
+                    " type="submit "value="목록 "></a>
                     <input class="btn btn-default " type="submit
-                    " name=" " value="삭제 ">
+                    " value="삭제 ">
                     <a href="# "> <input class="btn btn-default
                     " type="submit " name=" " value="수정 "></a>
                   </td>
