@@ -60,6 +60,8 @@
 							<dd>
 								<ul>
 									<li><a href="#" class="sr_txt5"> <span
+											style="font-family: &amp; amp;">충전내역</span></a></li>
+									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">충전하기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">선물하기</span></a></li>
