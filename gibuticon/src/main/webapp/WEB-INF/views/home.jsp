@@ -105,7 +105,7 @@
 								
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="img/후원후기.png"
+								<a href="#"><img src="img/후원후기.jpg"
 									class="img-responsive" width="1200"></a>
 							
 							</div>
