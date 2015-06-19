@@ -101,7 +101,7 @@
 					<div class="container">
 						<div class="row">
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="img/whatsgibuticon.png"
+								<a href="${initParam.root }introduce_gibuticon.gibu"><img src="img/whatsgibuticon.png"
 									class="img-responsive"></a>
 								<h2>기부티콘이란</h2>
 								<p>사랑하는 이에게 기부를 선물하세요</p>
