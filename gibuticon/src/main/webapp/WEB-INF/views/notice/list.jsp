@@ -54,7 +54,7 @@
                   <dd>
                     <ul>
                       <li>
-                        <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘 안내</span></a>
+                        <a href="${initParam.root }introduce_what_is_cone.gibu" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘 안내</span></a>
                       </li>
                       <li>
                         <a href="#"><span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘받기 안내</span></a>
