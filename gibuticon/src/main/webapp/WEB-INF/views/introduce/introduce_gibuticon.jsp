@@ -41,7 +41,7 @@
 								</dt>
 								<dd>
 									<ul>
-										<li><a href="#" class="u_txt1"> <span
+										<li><a href="${initParam.root }introduce_gibuticon.gibu" class="u_txt1"> <span
 												style="font-family: &amp; quot;">기부티콘이란</span></a></li>
 									</ul>
 								</dd>
