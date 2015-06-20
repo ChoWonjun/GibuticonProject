@@ -57,18 +57,8 @@
 	<div class="col-sm-offset-3 col-sm-5 col-md-8">
 		<a href="#" class="btn btn-default" id="0000">전체</a>
 		<!--[D] 해당 년도의 마지막에 대체텍스트를 넣어주세요 -->
-		<span class="year"> <a href="javascript:getYearInfo('2015')"
-			id="2015" class="btn btn-default"> 2015년 </a> <a href="#" id="2014"
-			class="btn btn-default"> 2014년 </a> <a href="#" id="2013"
-			class="btn btn-default"> 2013년 </a> <a href="#" id="2012"
-			class="btn btn-default"> 2012년 </a> <a href="#" id="2011"
-			class="btn btn-default"> 2011년 </a> <a href="#" id="2010"
-			class="btn btn-default"> 2010년 </a> <a href="#" id="2009"
-			class="btn btn-default"> 2009년 </a> <a href="#" id="2008"
-			class="btn btn-default"> 2008년 </a> <a href="#" id="2007"
-			class="btn btn-default"> 2007년 </a> <a href="#" id="2006"
-			class="btn btn-default"> 2006년 </a> <a href="#" id="2005"
-			class="btn btn-default"> 2005년 </a>
+		<span class="year"> 
+		<a href="javascript:getYearInfo('2015')" id="2015" class="btn btn-default"> 2015년 </a> 
 		</span>
 	</div>
 </div>

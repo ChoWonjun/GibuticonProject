@@ -11,13 +11,6 @@
 				return false;
 		} 
 	}
-	function commentRegister(){
-		if(confirm("댓글을 등록하시겠습니까?")){
-			$(".input-group").submit();
-	}else{
-		return false;
-	} 
-	}
 	$(document).ready(function(){
 		$("#updateImg").click(function(){
 				if(confirm("수정하시겠습니까?")){
