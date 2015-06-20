@@ -58,7 +58,7 @@
                         <a href="#"><span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘받기 안내</span></a>
                       </li>
                       <li>
-                        <a href="#" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">기부방법 안내</span></a>
+                        <a href="${initParam.root }introduce_howtogibu.gibu" class="sr_txt5"> <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">기부방법 안내</span></a>
                       </li>
                       <!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
                     </ul>

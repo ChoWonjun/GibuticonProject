@@ -85,8 +85,6 @@
 	cursor: pointer;
 }
 </style>
-</head>
-
 <c:set value="${requestScope.posting }" var="fund"></c:set>
 <c:set value="${requestScope.posting.photoList }" var="photoList"></c:set>
 <caption>
@@ -177,34 +175,68 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<font style="font-family: &amp; amp;" size="3">응원댓글</font>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<form role="form">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" class="form-control"
-									placeholder="응원댓글을 적어주세요"> <span
-									class="input-group-btn"> <a class="btn btn-info"
-									type="submit">댓글등록</a>
-								</span>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-offset-3 col-md-9"></div>
+	 <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+               <table class="table" style="font-family: &amp; quot;">
+                  <thead>
+                     <tr>
+                        <th width="100">NO</th>
+                        <th width="1000">comment</th>
+                         <th width="200">작성일</th>
+                        <th width="200">작성자</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach var="comment" items="${requestScope.comment.list}">   
+			         <tr>
+			             <td>${comment.commentNo }</td>        
+			            <td>${comment.text }</td>
+			            <td>${comment.commentTime }</td>
+			             <td>${comment.memberVO.id }</td> 
+			            <td><c:if test="${comment.memberVO.id==sessionScope.mvo.id }">
+                        	<input class="btn btn-default" value="삭제하기" type="button" onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )"> 
+                        </c:if></td>
+			         </tr>
+   					</c:forEach>
+                  </tbody>
+               </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+  			<div class="section">
+              <div class="container">
+                <div class="row">
+             <div class="col-md-offset-6 col-md-2 col-md-offset-4">
+              <ul class="pagination">
+             <c:set var="pb" value="${requestScope.comment.pagingBean}"></c:set>
+               <c:if test="${pb.previousPageGroup}">
+               <li>
+                  <a href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.startPageOfPageGroup-1}">◀</a> 
+               </li>
+               </c:if>
+               <li>
+               <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+                  <a href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${i }">${i }</a>
+               </c:forEach>
+               </li>
+               <c:if test="${pb.nextPageGroup}">
+               <li>
+                  <a href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.endPageOfPageGroup+1}">▶</a>
+               </li>
+               </c:if>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
 			</div>
 		</div>
-	</div>
-</div>
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12"></div>
 		</div>
 	</div>
+<<<<<<< HEAD
 </div> -->
+
