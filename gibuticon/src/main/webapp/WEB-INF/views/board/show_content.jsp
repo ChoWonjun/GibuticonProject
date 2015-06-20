@@ -93,7 +93,7 @@
 								<input type="hidden" name="name" value="${sessionScope.mvo.name}">
 			                    <input type="text" name="comment" class="form-control" placeholder="댓글입력">
 			                    <span class="input-group-btn">
-			                      <input class="btn btn-primary" type="button" id="commentRegister"value="댓글등록">
+			                      <input \class="btn btn-primary"  id="commentRegister" value="댓글등록">
 			                    </span>
 			                     </div>
 			                </div>
