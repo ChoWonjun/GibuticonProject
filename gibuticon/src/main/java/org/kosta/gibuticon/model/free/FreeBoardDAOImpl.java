@@ -117,6 +117,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
 		System.out.println(pageNo+"  "+no+"코멘트 페이지");
 		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freecomment.getFreeBoardCommentList", new FreeCommentPageVO(Integer.parseInt(no), pageNo));
+		System.out.println("dao getCommentList"+list);
 		for(int i=0;i<list.size();i++){
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 		}
