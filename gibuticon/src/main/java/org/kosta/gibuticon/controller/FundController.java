@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.validation.Valid;
 
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.ListVO;
@@ -21,9 +20,6 @@ import org.kosta.gibuticon.model.history.GibuHistoryVO;
 import org.kosta.gibuticon.model.service.FundService;
 import org.kosta.gibuticon.model.service.MemberService;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -109,8 +105,8 @@ public class FundController {
 		return new ModelAndView("fund_show_content", "posting", vo);
 	}
 
-	@RequestMapping("fund/writeForm.gibu")
-	public ModelAndView fundWriteForm(@ModelAttribute FundVO fundVO) {
+	@RequestMapping(value="fund/writeForm.gibu",method=RequestMethod.GET)
+	public ModelAndView fundWriteForm(HttpServletRequest request) {
 		return new ModelAndView("fund_write");
 	}
 
@@ -139,17 +135,13 @@ public class FundController {
 				fundService.getFundByNoNotHit(no));
 	}
 
-	@Transactional
 	@RequestMapping(value = "fund/write.gibu", method = RequestMethod.POST)
-	public ModelAndView write(@Valid FundVO vo, BindingResult result) {
-		if (result.hasErrors()) {
-			return new ModelAndView("fund_write");
-			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다.
-		}
-		fundService.writeFund(vo);
-		fundService.uploadPhoto(vo);
+	public ModelAndView write(FundVO fundVO, HttpServletRequest request) {
+		System.out.println(fundVO.getContent());
+		fundService.writeFund(fundVO);
+		fundService.uploadPhoto(fundVO);
 		return new ModelAndView("redirect:showContentNotHit.gibu", "no",
-				vo.getFundNo());
+				fundVO.getFundNo());
 	}
 
 	@RequestMapping("fund/update.gibu")

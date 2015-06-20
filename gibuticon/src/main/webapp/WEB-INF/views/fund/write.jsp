@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!-- bootstrap -->
 <script type="text/javascript"
@@ -22,10 +21,8 @@
 		history.back(-1);
 	}
 
-	$(document)
-			.ready(
-					function() {
-
+	$(document).ready(function() {
+		
 						//Naver Smart Editor
 						var obj = []; //전역변수
 						nhn.husky.EZCreator
@@ -40,17 +37,26 @@
 										bUseVerticalResizer : true,
 										// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 										bUseModeChanger : false,
+										fOnBeforeUnload : function(){
+											//alert("완료!");
+										}
 									}
 								});
+						/* function checkContent(){
+							obj.getById["content"].exec(
+									"UPDATE_CONTENTS_FIELD", []);
+							return true;
+						} */
 						$("#writeImg").click(
 								function() {
 									//id가 smarteditor인 textarea에 에디터에서 대입
 									obj.getById["content"].exec(
 											"UPDATE_CONTENTS_FIELD", []);
 									//폼 submit
-									$("#multiform").submit();
+									/* $("#multiform").submit(); */
+									return true;
 								});
-
+						
 						//MultiFile Plugin 
 						$('#multiform input[name=file]').MultiFile({
 							max : 3, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
@@ -81,9 +87,9 @@
 						<div class="row">
 							<div class="col-md-11">
 								<!-- form 시작 -->
-								<form:form name="multiform" id="multiform"
+								<form name="multiform" id="multiform"
 									enctype="multipart/form-data" method="post"
-									action="${initParam.root }fund/write.gibu" commandName="fundVO">
+									action="${initParam.root }fund/write.gibu">
 									<fieldset style="font-family: &amp; amp;">
 										<legend>모금 사연 등록</legend>
 										<table class="col-md-12">
@@ -109,8 +115,8 @@
 												</tr>
 												<tr>
 													<th class="title"><label for="formTitle">모금명</label></th>
-													<td colspan="2" class="title"><br> <form:input  path="fundName"
-														type="text" name="fundName" id="fundName" maxlength="25"/>
+													<td colspan="2" class="title"><br> <input required="required"
+														type="text" name="fundName" id="fundName" >
 														<select name="fundCategory" id="fundCategory" size="1"
 														title="카테고리 선택">
 															<option value="0">카테고리를 선택하세요.</option>
@@ -118,34 +124,33 @@
 															<option value="2">어르신</option>
 															<option value="3">장애인</option>
 															<option value="4">기타</option>
-													</select> <br> <br class="cl_b"> <form:errors path="fundName" /></td>
+													</select> <br> <br class="cl_b"></td>
 												</tr>
 												<tr>
 													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
-													<td colspan="2" class="hope_sum"><br> <form:input path="goalSum"
+													<td colspan="2" class="hope_sum"><br> <input required="required"
 														class="shot" type="number" name="goalSum" id="goalSum"
-														style="text-align: right" maxlength="12"/> <form:errors path="goalSum" /></td>
+														style="text-align: right" maxlength="12"></td>
 												</tr>
 												<tr>
 													<th class="organ"><br> <label for="formOrgan">주관
 															기관</label></th>
-													<td colspan="2" class="organ"><br> <form:input path="proposal"
-														class="shot" type="text" name="proposal" id="proposal"/>모금을 주관하는
-														단체는 모금 진행 사이트와 다를 수 있습니다. <form:errors path="proposal" /></td>
+													<td colspan="2" class="organ"><br> <input required="required"
+														class="shot" type="text" name="proposal" id="proposal"></td>
 												</tr>
 												<tr>
 													<th class="link"><br> <label for="url1">관련
 															링크</label></th>
-													<td colspan="2" class="link"><br> <form:input path="homepage"
-														class="shot" type="url" id="homepage" name="homepage"/><form:errors path="homepage" /></td>
+													<td colspan="2" class="link"><br> <input required="required"
+														class="shot" type="text" id="homepage" name="homepage"></td>
 												</tr>
 												<tr>
 													<th class="execution_time"><br> <label
 														for="formExecutionTime">집행시기</label></th>
-													<td colspan="2" class="execution_time"><br> <input
+													<td colspan="2" class="execution_time"><br> <input required="required"
 														class="inp_cal" type="date" name="startDate"
-														id="startDate"/> <span class="hyphen">-</span> <input
-														type="date" class="inp_cal" id="dueDate" name="dueDate"/> 6개월
+														id="startDate"> <span class="hyphen">-</span> <input required="required"
+														type="date" class="inp_cal" id="dueDate" name="dueDate"> 6개월
 														안에 시작해야 하며, 최대 1년안에 사용을 완료하셔야 합니다.</td>
 												</tr>
 												<tr>
@@ -168,13 +173,12 @@
 											</tbody>
 										</table>
 										<br> <br> <br> <input class="btn btn-default"
-											style="font-family: &amp; amp;" type="submit" value="글쓰기"
-											onclick="content_submit()"> <input
+											style="font-family: &amp; amp;" type="submit" value="글쓰기" onclick="return checkContent()"
+											id="writeImg"> <input
 											class="btn btn-default" style="font-family: &amp; amp;"
-											type="submit" value="취소" onclick="cancel()">
-
+											type="button" value="취소" onclick="cancel()">
 									</fieldset>
-								</form:form>
+								</form>
 							</div>
 						</div>
 					</div>

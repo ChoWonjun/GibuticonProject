@@ -1,6 +1,5 @@
 package org.kosta.gibuticon.model.fund;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -14,12 +13,12 @@ public class FundVO {
 	private String proposal;
 	@NotEmpty
 	private String homepage;
-	@NotEmpty
 	private String curSum;
+	@NotEmpty
 	private String goalSum;
 	private String participant;
-	private Date startDate;
-	private Date dueDate;
+	private String startDate;
+	private String dueDate;
 	private String content;
 	private int hits;
 	private List<MultipartFile> file;
@@ -30,11 +29,11 @@ public class FundVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Date getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 
@@ -94,11 +93,11 @@ public class FundVO {
 		this.participant = participant;
 	}
 
-	public Date getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(Date dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 
