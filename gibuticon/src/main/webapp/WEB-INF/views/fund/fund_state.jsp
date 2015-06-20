@@ -47,38 +47,30 @@
 <br>
 <div class="col-sm-offset-5 col-sm-5 col-md-8">
 <hr>
-	<strong>현재까지 ${requestScope.totalParticipants }명의 코너들이
-	${requestScope.totalAmount }개의 콘을 기부하셨습니다. </strong><br> <br> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<strong><font size="3">현재까지 ${requestScope.totalParticipants }명의 코너들이
+	${requestScope.totalAmount }개의 콘을 기부하셨습니다. </font></strong><br> <br> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 연도별 현황조회 <br>
 	<br>
 </div>
 <div class="state_area">
-	<div class="col-sm-offset-3 col-sm-5 col-md-8">
+		<center>
 		<a href="#" class="btn btn-default" id="0000">전체</a>
 		<!--[D] 해당 년도의 마지막에 대체텍스트를 넣어주세요 -->
 		<span class="year"> <a href="javascript:getYearInfo('2015')"
-			id="2015" class="btn btn-default"> 2015년 </a> <a href="#" id="2014"
-			class="btn btn-default"> 2014년 </a> <a href="#" id="2013"
-			class="btn btn-default"> 2013년 </a> <a href="#" id="2012"
-			class="btn btn-default"> 2012년 </a> <a href="#" id="2011"
-			class="btn btn-default"> 2011년 </a> <a href="#" id="2010"
-			class="btn btn-default"> 2010년 </a> <a href="#" id="2009"
-			class="btn btn-default"> 2009년 </a> <a href="#" id="2008"
-			class="btn btn-default"> 2008년 </a> <a href="#" id="2007"
-			class="btn btn-default"> 2007년 </a> <a href="#" id="2006"
-			class="btn btn-default"> 2006년 </a> <a href="#" id="2005"
-			class="btn btn-default"> 2005년 </a>
+			id="2015" class="btn btn-default"> 2015년 </a> 
+			<a href="#" id="2014" class="btn btn-default"> 2014년 </a> 
+			<a href="#" id="2013" class="btn btn-default"> 2013년 </a> 
+		
 		</span>
 	</div>
-</div>
+</center>
 
 <br>
 
-
+<center>
 <div id="resultView"></div>
-
-
+</center>
 
 <div class="section">
 	<div class="container">
