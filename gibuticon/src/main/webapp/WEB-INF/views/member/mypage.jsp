@@ -41,30 +41,32 @@
 								<hr>
 							</dt>
 							<dd>
-								<ul>
-									<li><a href="${initParam.root }memberRanksView.gibu" class="u_txt1"> <span
-											style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
+								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+									<li><a href="${initParam.root }memberRanksView.gibu"
+										class="u_txt1"> <span style="font-family: &amp; quot;">기부랭킹보기</span></a></li>
 									<li><a href="#" class="u_txt2"><span
 											style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
 									<li><a href="#" class="u_txt3"><span
 											style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
-									<li><a href="${initParam.root}updateMemberView.gibu"> <span
-											style="font-family: &amp; amp;">회원정보 수정</span></a></li>
+									<li><a href="${initParam.root}updateMemberView.gibu">
+											<span style="font-family: &amp; amp;">회원정보 수정</span>
+									</a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">회원탈퇴</span></a></li>
 								</ul>
 							</dd>
 							<dt class="s_srch">
-								<br> <br> <span style="font-family: &amp; amp;">포인트
+								<br> <br> <span  style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">포인트
 									부분</span> <br>
 								<hr>
 							</dt>
 							<dd>
-								<ul>
-									<li><a href="javascript:chargePopup()" class="sr_txt5"> <span
-											style="font-family: &amp; amp;">충전하기</span></a></li>
+								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+									<li><a href="javascript:chargePopup()" class="sr_txt5">
+											<span style="font-family: &amp; amp;">충전하기</span>
+									</a></li>
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">선물하기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span
@@ -76,12 +78,12 @@
 							</dd>
 							<dd></dd>
 							<dt class="s_srch">
-								<br> <br> <span style="font-family: &amp; amp;">콘
+								<br> <br> <span  style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘
 									친구</span> <br>
 								<hr>
 							</dt>
 							<dd>
-								<ul>
+								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">친구 찾기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span
@@ -179,9 +181,7 @@
 													<tr>
 														<th><img src="${initParam.root }img/개인보유콘.jpg"
 															width="53" height="17" alt="개인보유콘"></th>
-														<td class="bd_l"><a
-															href="#"><strong
-																class="gibu">${sessionScope.mvo.point }</strong></a>개</td>
+														<td class="bd_l"><a href="#"><strong class="gibu">${sessionScope.mvo.point }</strong></a>개</td>
 													</tr>
 												</tbody>
 											</table>
