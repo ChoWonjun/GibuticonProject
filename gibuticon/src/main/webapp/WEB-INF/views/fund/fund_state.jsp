@@ -56,15 +56,12 @@
 <div class="state_area">
 		<center>
 		<a href="#" class="btn btn-default" id="0000">전체</a>
-		<!--[D] 해당 년도의 마지막에 대체텍스트를 넣어주세요 -->
-		<span class="year"> 
-		<a href="javascript:getYearInfo('2015')" id="2015" class="btn btn-default"> 2015년 </a> 
+		<!--[D] 해당 년도의 마지막에 대체텍스트를 넣어주세요 --> 
 		<span class="year"> <a href="javascript:getYearInfo('2015')"
 			id="2015" class="btn btn-default"> 2015년 </a> 
 			<a href="#" id="2014" class="btn btn-default"> 2014년 </a> 
 			<a href="#" id="2013" class="btn btn-default"> 2013년 </a> 
 		</span>
-	</span>
 </center>
 </div>
 <br>
