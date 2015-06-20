@@ -8,14 +8,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
       startdate, duedate, content, hits, ceil(rownum/5) as page from
       (select fund_no fundno, fund_name fundname, proposal, homepage,
-      cur_sum cursum, goal_sum goalsum, participant, start_date startdate, due_date
+      cur_sum cursum, goal_sum goalsum, participant, to_char(start_date,'yyyy-mm-dd') as startdate, to_char(due_date,'yyyy-mm-dd') as 
       duedate,
       content, hits from gibu_fund order by fund_no desc))where page=#{value}
    </select>
 
    <select id="getFundByNo" resultType="fundVO">
       select fund_no fundno, fund_name fundname, proposal, homepage,
-      cur_sum cursum, goal_sum goalsum, participant, start_date startdate, due_date
+      cur_sum cursum, goal_sum goalsum, participant, to_char(start_date,'yyyy-mm-dd') as startdate, to_char(due_date,'yyyy-mm-dd') as 
       duedate,
       content, hits from gibu_fund where fund_no=#{value}
    </select>
