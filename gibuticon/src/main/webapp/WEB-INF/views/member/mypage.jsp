@@ -180,8 +180,8 @@
 														<th><img src="${initParam.root }img/개인보유콘.jpg"
 															width="53" height="17" alt="개인보유콘"></th>
 														<td class="bd_l"><a
-															href="http://happybean.naver.com/my/CongAccount.nhn"><strong
-																class="gibu">1</strong></a>개</td>
+															href="#"><strong
+																class="gibu">${sessionScope.mvo.point }</strong></a>개</td>
 													</tr>
 												</tbody>
 											</table>
