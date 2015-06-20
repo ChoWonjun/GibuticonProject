@@ -85,18 +85,20 @@
 	cursor: pointer;
 }
 </style>
-</head>
 <c:set value="${requestScope.posting }" var="fund"></c:set>
 <c:set value="${requestScope.posting.photoList }" var="photoList"></c:set>
+<caption>
+	<br>
+	<div align="center" style="font-family: &amp; amp;">
+		<h1>${fund.fundName}</h1>
+	</div>
+</caption>
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<h3>
 				<div class="row">
-					<h3>
-						<span align="center" style="font-family: &amp; amp;">${fund.fundName}</span>
-					</h3>
-					<br> <br>
+					<br>
 					<div class="col-md-4">
 						<div class="cycle-slideshow" data-cycle-fx="scrollHorz"
 							data-cycle-pause-on-hover="true" data-cycle-speed="500"
@@ -112,56 +114,55 @@
 						<div class="row">
 							<h4>
 								<span style="font-family: &amp; amp;">&nbsp;&nbsp;&nbsp;
-									<br>&nbsp;&nbsp;모금액 이렇게 사용됩니다.
+									<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;모금 세부 정보
 								</span>
 							</h4>
 						</div>
-						<font size="2"></font> <font size="3"></font>
 						<table style="font-family: &amp; amp;" class="table">
 							<tbody>
 								<tr>
 									<th><font size="3">목표액</font></th>
-									<td><font size="3">${fund.goalSum }</font></td>
+									<td><font size="3">${fund.goalSum } 원</font></td>
 									<th><font size="3">현재 모금액</font></th>
-									<td><font size="3">${fund.curSum }</font></td>
+									<td><font size="3">${fund.curSum } 원</font></td>
 								</tr>
 							</tbody>
 							<tbody>
-								<tr height="2">
-									<th colspan="2"><font size="3">집행시기</font></th>
-									<td colspan="2"><font size="3">${fund.startDate } ~
+								<tr>
+									<th colspan="1"><font size="3">집행시기</font></th>
+									<td colspan="3"><font size="3">${fund.startDate } ~
 											${fund.dueDate }</font></td>
 								</tr>
 								<tr>
-									<th colspan="2"><font size="3">주관기관</font></th>
-									<td colspan="2"><font size="3">${fund.proposal }</font></td>
+									<th colspan="1"><font size="3">주관기관</font></th>
+									<td colspan="3"><font size="3">${fund.proposal }</font></td>
 								</tr>
 								<tr>
-									<th colspan="2"><font size="3">관련링크</font></th>
-									<td colspan="2"><a href="${fund.homepage }"><font
+									<th colspan="1"><font size="3">관련링크</font></th>
+									<td colspan="3"><a href="${fund.homepage }"><font
 											size="3">${fund.homepage }</font></a></td>
 								</tr>
 							</tbody>
+							<tfoot>
+								<tr>
+									<td><a class="btn btn-default" href="javascript:gibuPopup()">기부하기</a></td>
+									<td><a class="btn btn-default">즐겨찾기</a></td><td></td><td></td>
+								</tr>
+							</tfoot>
 						</table>
-						<font style="font-family: &amp; amp;" size="3"> <br>
+						<!-- <font style="font-family: &amp; amp;" size="3"> <br>
 							<h2>
 								<font style="font-family: &amp; amp;" size="5">기부금 사용계획</font>
 							</h2> <br>1. 건강-치료 캠페인 <br>&nbsp;&nbsp;(치료비, 이식비 평균
 							1,00만원×5명) | 5,000,000원 <br>2. 건강-치료 캠페인 (사회복지적치료비
 							200만원×10명) | 20,000,000원 <br> <br>*기부티콘은 신뢰성 있고 투명한 온라인
 							모금이 되고자 구체적인 모금 사용 계획과 수정사항을 네티즌에게 공개합니다.
-						</font>
+						</font> -->
 					</div>
 					<div class="col-md-1"></div>
 					<br> <br>
 					<div class="col-md-7">${fund.content }</div>
 				</div>
-				<br> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:gibuPopup()"
-
-					class="btn btn-default" >기부하기</a>&nbsp;&nbsp; &nbsp;&nbsp; <a 
-
-					class="btn btn-default">즐겨찾기</a>
 			</h3>
 			<div class="thumb_link">
 				<div class="thumb_select"></div>
@@ -169,7 +170,7 @@
 		</div>
 	</div>
 </div>
-<div class="col-md-12">
+<!-- <div class="col-md-12">
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -236,4 +237,6 @@
 			<div class="col-md-12"></div>
 		</div>
 	</div>
-</div>
+<<<<<<< HEAD
+</div> -->
+
