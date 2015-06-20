@@ -11,6 +11,13 @@
 				return false;
 		} 
 	}
+	function commentRegister(){
+		if(confirm("댓글을 등록하시겠습니까?")){
+			$(".input-group").submit();
+	}else{
+		return false;
+	} 
+	}
 	$(document).ready(function(){
 		$("#updateImg").click(function(){
 				if(confirm("수정하시겠습니까?")){
@@ -85,21 +92,26 @@
                 <div class="row">
                  <c:if test="${sessionScope.mvo!=null }">
 					  <div class="col-md-offset-2 col-md-8 col-md-offset-2">
-              			<form role="form" id="commentForm" action="${initParam.root }writeFreeComment.gibu">
+					     <div class="btn-group btn-group-sm">
+              			<form role="form" id="commentForm" action="${initParam.root }writeFreeComment.gibu" >
 			                <div class="form-group">
 			                  <div class="input-group">
 			                  <input type="hidden" name="id" value="${sessionScope.mvo.id}">
 								<input type="hidden" name="boardNo" value="${requestScope.fvo.boardNo}">
 								<input type="hidden" name="name" value="${sessionScope.mvo.name}">
 			                    <input type="text" name="comment" class="form-control" placeholder="댓글입력">
-			                    <span class="input-group-btn">
-			                      <input \class="btn btn-primary"  id="commentRegister" value="댓글등록">
-			                    </span>
+			                 	 <span class="input-group-btn">
+			                      <input id="commentRegister" class="btn btn-primary" type="submit" value="댓글등록">
+			             		</span>
 			                     </div>
 			                </div>
 			              </form>
-			              </div>
+			        </div>
+			        </div>
 					</c:if>
+					      </div>
+			              </div>
+			              </div>
 					<div class="section">
               <div class="container">
                 <div class="row">
@@ -126,9 +138,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-            </div>
-            </div>
             </div>
   			<div class="section">
               <div class="container">
