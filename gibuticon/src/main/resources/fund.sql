@@ -157,20 +157,21 @@ select * from(
   	) where member_id=id
 )where page=2 and fundno=81
 
+select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+	select member_id memberid, totalamount rankval from(
+		select member_id, sum(AMOUNT) as totalamount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+	)
+)
 
-select rownum rank, member_id memberid, totalamount rankval
-from(
-select member_id, sum(AMOUNT) as totalamount
-from DONATION_HISTORY
-group by DONATION_HISTORY.MEMBER_ID
-order by totalamount desc)
-
-select rownum rank, member_id memberid, fundcount rankval
-from(
-select member_id, count(distinct(fund_no)) fundcount
-from DONATION_HISTORY
-group by DONATION_HISTORY.MEMBER_ID
-order by fundcount desc)
+select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+	select member_id memberid, fundcount rankval from(
+		select member_id, count(distinct(fund_no)) fundcount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+	)
+)
 
 --전체 기부자수
 select count(distinct(member_id)) from donation_history
@@ -183,3 +184,4 @@ select count(distinct(member_id)) from donation_history where to_char(donation_t
 
 --연도별 기부액
 select sum(amount) from donation_history where to_char(donation_time,'yyyy')=2015
+
