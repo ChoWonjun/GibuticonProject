@@ -158,7 +158,9 @@
 				</div>
 				<br> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:gibuPopup()"
-					class="btn btn-default">기부하기</a>&nbsp;&nbsp; <a 
+
+					class="btn btn-default" >기부하기</a>&nbsp;&nbsp; &nbsp;&nbsp; <a 
+
 					class="btn btn-default">즐겨찾기</a>
 			</h3>
 			<div class="thumb_link">
