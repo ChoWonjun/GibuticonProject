@@ -101,16 +101,16 @@
 						<div class="row">
 							<div class="col-md-4" align="center">
 								<a href="${initParam.root }introduce_gibuticon.gibu"><img
-									src="img/기부티콘이란.jpg" width="350"></a>
+									src="${initParam.root }img/기부티콘이란.jpg" width="350"></a>
 								
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="img/후원후기.jpg"
+								<a href="#"><img src="${initParam.root }img/후원후기.jpg"
 									class="img-responsive" width="1200"></a>
 							
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="${initParam.root }memberRanksView.gibu"><img src="img/회원랭킹.jpg"
+								<a href="${initParam.root }memberRanksView.gibu"><img src="${initParam.root }img/회원랭킹.jpg"
 									class="img-responsive"></a>
 								
 							</div>
