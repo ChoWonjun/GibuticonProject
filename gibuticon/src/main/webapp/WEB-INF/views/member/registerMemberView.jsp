@@ -4,16 +4,34 @@
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#registerBtn").click(function() {
-			if ($("#password").val() != $("#passwordCheck").val()) {
-				$("#passCheckM").html("패스워드가 일치하지 않습니다.");
-				return false;
-			} else {
-				$("#registForm").submit();
-			}
-		});
-	});
+	$(document).ready(
+			function() {
+				$("#registerBtn").click(function() {
+					if ($("#password").val() != $("#passwordCheck").val()) {
+						$("#passCheckM").html("패스워드가 일치하지 않습니다.");
+						return false;
+					} else {
+						$("#registForm").submit();
+					}
+				});
+
+				$("#id").keyup(
+						function() {
+							var memberId = $("#id").val().trim();
+							//trim() : 공란제거
+							$("#idCheckForm").text("");
+							$.ajax({
+								type : "post",
+								url : "idCheck.gibu?id=" + memberId,
+								success : function(data) {
+									if (data == "fail")
+										$("#idCheckForm")
+												.text("이미 존재하는 id입니다.").css(
+														"color", "red");
+								}
+							});
+						});
+			});
 </script>
 <div class="section">
 	<div class="container">
@@ -27,7 +45,7 @@
 									<article class="container">
 										<div class="page-header">
 											<h1>
-												<span style="font-family: &amp; quot;">회원가입</span>
+												<span style="font-family: &amp; amp;">회원가입</span>
 											</h1>
 										</div>
 										<br> <br>
@@ -37,6 +55,7 @@
 											<div class="form-group">
 												<label for="inputId" class="col-sm-2 control-label">아이디</label>
 												<div class="col-sm-6">
+													<p id="idCheckForm"></p>
 													<form:input type="text" class="form-control" id="id"
 														name="id" placeholder="id" path="id" />
 													<p class="help-block">
@@ -126,8 +145,7 @@
 											<div class="form-group">
 												<div class="col-sm-6">
 													<a href="${initParam.root}registerResult.gibu"> <input
-														class="btn btn-default"
-														type="submit" value="회원가입 "></a>
+														class="btn btn-default" type="submit" value="회원가입 "></a>
 												</div>
 											</div>
 										</form:form>

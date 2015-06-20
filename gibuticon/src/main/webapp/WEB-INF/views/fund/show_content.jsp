@@ -13,6 +13,10 @@
 		location.href = "${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}";
 	}
 	function gibuPopup() {
+		if("${sessionScope.mvo}"==""){
+			location.href="${initParam.root }loginView.gibu";
+			return false;
+		}
 		var url = "${initParam.root }cone/gibuView.gibu?fundNo=${requestScope.posting.fundNo}";
 		window.open(url, "gibuPopup", "width=520,height=280,teop=150,left=200");
 	}
@@ -145,8 +149,12 @@
 							</tbody>
 							<tfoot>
 								<tr>
+
 							
-									<td><a class="btn btn-default" href="javascript:gibuPopup()">기부하기</a></td>
+								
+
+									<td><a class="btn btn-default" href="#" onclick="return gibuPopup()">기부하기</a></td>
+
 									<td><a class="btn btn-default">즐겨찾기</a></td><td></td><td></td>
 							
 								</tr>
