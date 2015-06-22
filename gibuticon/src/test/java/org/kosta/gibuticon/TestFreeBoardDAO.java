@@ -2,8 +2,8 @@ package org.kosta.gibuticon;
 
 import java.sql.Date;
 
-import org.kosta.gibuticon.model.free.FreeBoardDAO;
-import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.freeBoard.FreeBoardDAO;
+import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

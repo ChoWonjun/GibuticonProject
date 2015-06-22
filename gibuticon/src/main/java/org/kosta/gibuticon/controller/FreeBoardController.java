@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.gibuticon.model.free.FreeBoardVO;
-import org.kosta.gibuticon.model.free.ListVO;
-import org.kosta.gibuticon.model.free.PagingBean;
-import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
-import org.kosta.gibuticon.model.freeComment.FreeCommentListVO;
-import org.kosta.gibuticon.model.freeComment.FreeCommentPagingBean;
+import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
+import org.kosta.gibuticon.model.freeBoard.ListVO;
+import org.kosta.gibuticon.model.freeBoard.PagingBean;
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentListVO;
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPagingBean;
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.FreeBoardService;

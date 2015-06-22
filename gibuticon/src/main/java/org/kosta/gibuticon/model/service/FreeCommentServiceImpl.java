@@ -9,8 +9,10 @@ import javax.annotation.Resource;
 
 
 
-import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
-import org.kosta.gibuticon.model.freeComment.FreeCommentDAO;
+
+
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentDAO;
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.springframework.stereotype.Service;
 
 @Service

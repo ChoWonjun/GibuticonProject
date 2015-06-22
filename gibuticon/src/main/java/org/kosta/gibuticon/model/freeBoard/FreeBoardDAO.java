@@ -1,8 +1,8 @@
-package org.kosta.gibuticon.model.free;
+package org.kosta.gibuticon.model.freeBoard;
 
 import java.util.List;
 
-import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 
 public interface FreeBoardDAO {
 
