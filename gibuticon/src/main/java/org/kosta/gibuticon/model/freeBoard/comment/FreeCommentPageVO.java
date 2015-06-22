@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.freeComment;
+package org.kosta.gibuticon.model.freeBoard.comment;
 
 public class FreeCommentPageVO {
 	private int boardNo;

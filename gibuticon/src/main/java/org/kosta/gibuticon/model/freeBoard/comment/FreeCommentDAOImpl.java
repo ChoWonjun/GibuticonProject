@@ -1,10 +1,10 @@
-package org.kosta.gibuticon.model.freeComment;
+package org.kosta.gibuticon.model.freeBoard.comment;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.free.FreeBoardVO;
+import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 

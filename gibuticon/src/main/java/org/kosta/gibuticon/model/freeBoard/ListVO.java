@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.freeComment;
+package org.kosta.gibuticon.model.freeBoard;
 
 import java.util.List;
 /**
@@ -7,27 +7,27 @@ import java.util.List;
  * @author KOSTA-00-KANGSA
  *
  */
-public class FreeCommentListVO {
-	private List<FreeCommentVO> list;
-	private FreeCommentPagingBean pagingBean;
-	public FreeCommentListVO() {
+public class ListVO {
+	private List<FreeBoardVO> list;
+	private PagingBean pagingBean;
+	public ListVO() {
 		super();		
 	}
-	public FreeCommentListVO(List<FreeCommentVO> list, FreeCommentPagingBean pagingBean) {
+	public ListVO(List<FreeBoardVO> list, PagingBean pagingBean) {
 		super();
 		this.list = list;
 		this.pagingBean = pagingBean;
 	}
-	public List<FreeCommentVO> getList() {
+	public List<FreeBoardVO> getList() {
 		return list;
 	}
-	public void setList(List<FreeCommentVO> list) {
+	public void setList(List<FreeBoardVO> list) {
 		this.list = list;
 	}
-	public FreeCommentPagingBean getPagingBean() {
+	public PagingBean getPagingBean() {
 		return pagingBean;
 	}
-	public void setPagingBean(FreeCommentPagingBean pagingBean) {
+	public void setPagingBean(PagingBean pagingBean) {
 		this.pagingBean = pagingBean;
 	}
 	@Override

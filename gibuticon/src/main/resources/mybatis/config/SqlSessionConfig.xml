@@ -10,9 +10,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="memberVO" />
 		<typeAlias type="org.kosta.gibuticon.model.member.MessageVO"
 			alias="messageVO" />
-		<typeAlias type="org.kosta.gibuticon.model.point.GibuticonVO"
-			alias="gibuticonVO" />
-		<typeAlias type="org.kosta.gibuticon.model.free.FreeBoardVO"
+		<typeAlias type="org.kosta.gibuticon.model.freeBoard.FreeBoardVO"
 			alias="freeBoardVO" />
 		<typeAlias type="org.kosta.gibuticon.model.notice.NoticeVO"
 			alias="noticeVO" />
@@ -26,9 +24,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="commentPageVO" />
 		<typeAlias type="org.kosta.gibuticon.model.fund.FundPhotoVO"
 			alias="fundPhotoVO" />
-		<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeCommentVO"
+		<typeAlias type="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO"
 			alias="freeCommentVO" />
-		<typeAlias type="org.kosta.gibuticon.model.freeComment.FreeCommentPageVO"
+		<typeAlias type="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPageVO"
 			alias="freeCommentPageVO" />
 		<typeAlias type="org.kosta.gibuticon.model.history.ChargeHistoryVO"
 			alias="chargeHistoryVO" />
@@ -40,11 +38,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- sql mapping config xml 을 연결 -->
 	<mappers>
 		<mapper resource="mybatis/config/member.xml" />
-		<mapper resource="mybatis/config/board.xml" />
 		<mapper resource="mybatis/config/notice.xml" />
 		<mapper resource="mybatis/config/fund.xml" />
-		<mapper resource="mybatis/config/point.xml" />
-		<mapper resource="mybatis/config/freeboard.xml" />
+		<mapper resource="mybatis/config/freeBoard.xml" />
 		<mapper resource="mybatis/config/freecomment.xml" />
 		<mapper resource="mybatis/config/history.xml" />
 	</mappers>

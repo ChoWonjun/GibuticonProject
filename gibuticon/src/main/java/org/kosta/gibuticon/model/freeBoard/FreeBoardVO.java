@@ -1,4 +1,4 @@
-package org.kosta.gibuticon.model.free;
+package org.kosta.gibuticon.model.freeBoard;
 
 
 import org.kosta.gibuticon.model.member.MemberVO;
