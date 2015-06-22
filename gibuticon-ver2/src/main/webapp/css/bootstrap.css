@@ -5320,9 +5320,9 @@ a.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #f5f5f5;
+  background-color: #491461;
   border-top: 1px solid #dddddd;
-  border-bottom-right-radius: 3px;
+  border-bottom-right-radius: 3px;	
   border-bottom-left-radius: 3px;
 }
 .panel > .list-group,
@@ -6619,8 +6619,12 @@ body {
   background-attachment: fixed;
 }
 .section-primary {
-  background-color: #337cbb !important;
+  background-color: #222961 !important;
   color: #ffffff;
+}
+.section-myInfo {
+  background-color: #337cbb !important;
+  color: #000054;
 }
 .section-info {
   background-color: #5bc0de !important;

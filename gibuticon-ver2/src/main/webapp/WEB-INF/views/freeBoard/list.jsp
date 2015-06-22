@@ -2,7 +2,8 @@
    pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
+<link href="${initParam.root}css/table.css" rel="stylesheet"
+	type="text/css">
   <body data-spy="scroll">
   <div class="section">
       <div class="container">
@@ -32,12 +33,12 @@
           <div class="col-md-3">
             <div class="navi_ca_is"></div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-8">
             <div class="section">
               <div class="container">
                 <div class="row">
-                  <div class="col-md-6">
-                <table class="table" style="font-family: &amp; quot;">
+                  <div class="col-md-8">
+                <table class="type09" style="font-family: &amp; quot;">
                   <thead>
                      <tr>
                         <th width="100">NO</th>
