@@ -24,7 +24,7 @@
       </div>
       </div>
             <a href="${initParam.root}home.gibu">
-              <img src="${initParam.root }img/g_cone.png" class="center-block img-responsive img-thumbnail" height="100" width="100"></a>
+              <img src="${initParam.root }img\이모티콘.jpg" class="center-block img-responsive img-thumbnail" height="100" width="100"></a>
           </div>
         </div>
       </div>
@@ -37,7 +37,7 @@
       </div>
         <div class="row">
           <div class="col-md-12">
-            <form:form class="form-horizontal" role="form" action="login.gibu"
+            <form:form class="form-horizontal" role="form" action="${initParam.root}member/login.gibu"
             	commandName="loginForm" method="post">
               <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-5 col-md-8">
@@ -86,7 +86,7 @@
       
               <a href="#">아이디찾기 | </a>
               <a href="#">비밀번호찾기 | </a>
-              <a href="${initParam.root}registerMemberView.gibu">회원가입</a>
+              <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
             </div>
           </div>
         </div>

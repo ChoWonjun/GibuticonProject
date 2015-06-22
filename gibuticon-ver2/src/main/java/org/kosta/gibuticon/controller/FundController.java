@@ -19,6 +19,8 @@ import org.kosta.gibuticon.model.history.ChargeHistoryVO;
 import org.kosta.gibuticon.model.history.GibuHistoryVO;
 import org.kosta.gibuticon.model.service.FundService;
 import org.kosta.gibuticon.model.service.MemberService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +34,7 @@ public class FundController {
 	private FundService fundService;
 	@Resource
 	private MemberService memberService;
+	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@RequestMapping("fund/getList.gibu")
 	public ModelAndView getList(String pageNo, String no) {

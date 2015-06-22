@@ -1,8 +1,6 @@
 package org.kosta.gibuticon.model.service;
 
-import java.util.List;
 
-import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 
 public interface FreeCommentService {

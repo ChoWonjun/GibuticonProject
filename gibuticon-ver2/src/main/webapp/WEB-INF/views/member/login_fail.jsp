@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
 	alert("아이디와 비밀번호를 확인하세요.");
-	location.href="loginView.gibu";
+	location.href="${initParam.root}member/loginForm.gibu";
 </script>

@@ -4,23 +4,24 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-
 import org.kosta.gibuticon.model.notice.NoticeDAO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.springframework.stereotype.Service;
+
 @Service
-public class NoticeServiceImpl implements NoticeService{
+public class NoticeServiceImpl implements NoticeService {
 	@Resource
 	private NoticeDAO noticeDAO;
+
 	@Override
-	public void writeNotice(NoticeVO noticeVO) {
-		noticeDAO.writeNotice(noticeVO);
-		
+	public void write(NoticeVO noticeVO) {
+		noticeDAO.write(noticeVO);
+
 	}
 
 	@Override
-	public List<NoticeVO> getNoticeList(String pageNo) {
-		return noticeDAO.getNoticeList(pageNo);
+	public List<NoticeVO> getList(String pageNo) {
+		return noticeDAO.getList(pageNo);
 	}
 
 	@Override
@@ -29,15 +30,15 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public void deleteNotice(String noticeNo) {
-		noticeDAO.deleteNotice(noticeNo);
-		
+	public void delete(String noticeNo) {
+		noticeDAO.delete(noticeNo);
+
 	}
 
 	@Override
-	public void updateNotice(NoticeVO noticeVO) {
-		noticeDAO.updateNotice(noticeVO);
-		
+	public void update(NoticeVO noticeVO) {
+		noticeDAO.update(noticeVO);
+
 	}
 
 	@Override

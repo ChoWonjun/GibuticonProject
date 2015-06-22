@@ -31,10 +31,10 @@
                 </tr>
                 <tr>
                   <td valign="middle" align="center" colspan="3 ">
-                    <a href="${initParam.root}getNoticeList.gibu"> <input class="btn btn-default" type="submit"value="목록 "></a>
+                    <a href="${initParam.root}notice/getList.gibu"> <input class="btn btn-default" type="submit"value="목록 "></a>
                     <c:if test="${sessionScope.mvo.admin=='yes'}">
-	                    <a href="${initParam.root}deleteNotice.gibu?noticeNo=${requestScope.posting.noticeNo}"><input class="btn btn-default " type="submit" value="삭제 "></a>
-	                    <a href="${initParam.root}update.gibu?noticeNo=${requestScope.posting.noticeNo}"> <input class="btn btn-default" type="submit" value="수정 "></a>
+	                    <a href="${initParam.root}notice/delete.gibu?noticeNo=${requestScope.posting.noticeNo}"><input class="btn btn-default " type="submit" value="삭제 "></a>
+	                    <a href="${initParam.root}notice/updateForm.gibu?noticeNo=${requestScope.posting.noticeNo}"> <input class="btn btn-default" type="submit" value="수정 "></a>
                     </c:if>
                   </td>
                 </tr>

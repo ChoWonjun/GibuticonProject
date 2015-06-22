@@ -201,7 +201,7 @@
 			             <td>${comment.commentNo }</td>        
 			            <td>${comment.text }</td>
 			            <td>${comment.commentTime }</td>
-			             <td>${comment.memberVO.id }</td> 
+			             <td>${requestScope.posting.id}</td> <!-- comment.memberVO.id -->
 			            <td><c:if test="${comment.memberVO.id==sessionScope.mvo.id }">
                         	<input class="btn btn-default" value="삭제하기" type="button" onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )"> 
                         </c:if></td>

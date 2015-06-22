@@ -88,7 +88,7 @@
 							<div class="col-md-11">
 								<!-- form 시작 -->
 								<form name="multiform" id="multiform"
-									enctype="multipart/form-data" method="post" action="${initParam.root }updateNotice.gibu">
+									enctype="multipart/form-data" method="post" action="${initParam.root }notice/update.gibu">
 									<fieldset style="font-family: &amp; amp;">
 										<legend>공지사항 수정</legend>
 										<table class="col-md-12">

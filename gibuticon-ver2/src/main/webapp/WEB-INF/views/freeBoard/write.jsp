@@ -2,14 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-<!-- <link
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-	rel="stylesheet" type="text/css"> -->
-
 <!-- bootstrap -->
 <script type="text/javascript"
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -88,7 +80,8 @@
 							<div class="col-md-11">
 								<!-- form 시작 -->
 								<form name="multiform" id="multiform"
-									enctype="multipart/form-data" method="post" action="${initParam.root }writeFreeBoard.gibu">
+									enctype="multipart/form-data" method="post"
+									action="${initParam.root }freeBoard/write.gibu">
 									<fieldset style="font-family: &amp; amp;">
 										<legend>자유게시판 등록</legend>
 										<table class="col-md-12">
@@ -109,7 +102,7 @@
 													<th class="title"><label for="formTitle">제목</label></th>
 													<td colspan="2" class="title"><br> <input
 														type="text" name="title" id="title" maxlength="25">
-														 <br> <br class="cl_b"></td>
+														<br> <br class="cl_b"></td>
 												</tr>
 												<tr>
 													<th class="cont"><label for="formCont">본문</label></th>
@@ -130,9 +123,10 @@
 												</tr>
 											</tbody>
 										</table>
-										<br><input class="btn btn-default" id="writeImg"
-											 value="글쓰기" type="button" onclick="content_submit()"> 
-											 <input class="btn btn-default"value="취소" type="button" onclick="cancel()">
+										<br> <input class="btn btn-default" id="writeImg"
+											value="글쓰기" type="button" onclick="content_submit()">
+										<input class="btn btn-default" value="취소" type="button"
+											onclick="cancel()">
 									</fieldset>
 								</form>
 							</div>
