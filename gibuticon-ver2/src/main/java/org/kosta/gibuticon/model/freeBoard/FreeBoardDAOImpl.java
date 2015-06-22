@@ -93,6 +93,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 
 	@Override
 	public FreeBoardVO replyView(String no) {
+		System.out.println("replyview"+no);
 		return sqlSessionTemplate.selectOne("freeboard.replyView",no);
 	}
 
