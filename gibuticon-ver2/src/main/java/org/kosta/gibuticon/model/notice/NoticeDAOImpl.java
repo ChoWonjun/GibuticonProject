@@ -12,23 +12,23 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Resource
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public List<NoticeVO> getNoticeList(String pageNo) {
+	public List<NoticeVO> getList(String pageNo) {
 		return sqlSessionTemplate.selectList("notice.getNoticeList", pageNo);
 	}
 
 	@Override
-	public void writeNotice(NoticeVO noticeVO) {
+	public void write(NoticeVO noticeVO) {
 		//System.out.println("dao : " + noticeVO);
 		sqlSessionTemplate.insert("notice.writeNotice", noticeVO);
 	}
 
 	@Override
-	public void deleteNotice(String noticeNo) {
+	public void delete(String noticeNo) {
 		sqlSessionTemplate.delete("notice.deleteNotice", noticeNo);
 	}
 
 	@Override
-	public void updateNotice(NoticeVO noticeVO) {
+	public void update(NoticeVO noticeVO) {
 		System.out.println("update"+noticeVO);
 		sqlSessionTemplate.update("notice.updateNotice", noticeVO);
 	}

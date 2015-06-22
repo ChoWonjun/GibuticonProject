@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -17,16 +18,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class NoticeController {
 	@Resource
 	private NoticeService noticeService;
-	private Logger log = LoggerFactory.getLogger(getClass());
-
-	@RequestMapping("writeNoticeView.gibu")
-	public ModelAndView writeNoticeView(HttpServletRequest request) {
+	private Logger log = LoggerFactory.getLogger(getClass());	
+	
+	/**
+	 * 글쓰기 입력폼을 불러오는 컨트롤러
+	 * notice 폴더에 있는 write.jsp로 보낸다
+	 * @param request
+	 * @return
+	 */
+	
+	@RequestMapping("notice/writeForm.gibu")
+	public ModelAndView noticeWriteView(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		MemberVO mvo =(MemberVO) session.getAttribute("mvo");
 		if (session==null || mvo==null || !(mvo.getAdmin().equals("yes"))) {
@@ -36,24 +45,49 @@ public class NoticeController {
 		}
 	}
 	
-	@RequestMapping("getNoticeList.gibu")
-	public ModelAndView getNoticeList(String pageNo, String no) {
+	/**
+	 * 공지사항에 글을 쓴거를 데이터 베이스로 넘기는 컨트롤러
+	 * @param noticeVO
+	 * @return
+	 */
+	@RequestMapping("notice/write.gibu")
+	public ModelAndView write(NoticeVO noticeVO) {
+		// no로 게시글 찾아서 그 vo 전체를 넘겨주는
+		noticeService.write(noticeVO);
+		return new ModelAndView("redirect:getList.gibu");
+	}
+	/**
+	 * 공지사항 목록글들을 불러오는 컨트롤러 
+	 * @param pageNo
+	 * @param no
+	 * @return
+	 */
+	@RequestMapping("notice/getList.gibu")
+	public ModelAndView getList(String pageNo, String no) {
 		System.out.println(no+"   "+pageNo);
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
 		// System.out.println(pageNo);
-		List<NoticeVO> list = noticeService.getNoticeList(pageNo);
+		List<NoticeVO> list = noticeService.getList(pageNo);
 		//System.out.println(list);
 		ListVO lvo = new ListVO(list, new PagingBean(
 				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-		//System.out.println(lvo+"lvo");
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 
-	@RequestMapping("showNoticeContent.gibu")
-	public ModelAndView showNoticeContent(String noticeNo, HttpServletRequest request, HttpServletResponse response) {
+	
+	/**
+	 * 공지사항의 글을 클릭 할 시 글의 컨텐츠(내용)을 불러오는 컨트롤러
+	 * @param noticeNo
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("notice/showContent.gibu")
+	public ModelAndView showContent(String noticeNo,
+			HttpServletRequest request, HttpServletResponse response) {
 		Cookie cookies[] = request.getCookies();
 		String hitcookieVal = "";
 		String noStr = "|" + noticeNo + "|";
@@ -63,7 +97,6 @@ public class NoticeController {
 			for (int i = 0; i < cookies.length; i++) {
 				if (cookies[i].getName().equals("noticehitcookie")) {
 					hitcookieVal = cookies[i].getValue();
-
 					if (hitcookieVal.indexOf(noStr) != -1) {
 						flag = false;
 						break;
@@ -83,43 +116,48 @@ public class NoticeController {
 			response.addCookie(cookie);
 		} else
 			vo = noticeService.showContentNoHit(noticeNo);
-		//System.out.println(vo);
+		// System.out.println(vo);
 		return new ModelAndView("notice_show_content", "posting", vo);
 	}
 	
-	@RequestMapping("writeNotice.gibu")
-	public ModelAndView writeNotice(NoticeVO noticeVO) {
-		// no로 게시글 찾아서 그 vo 전체를 넘겨주는
-		noticeService.writeNotice(noticeVO);
-		return new ModelAndView("redirect:getNoticeList.gibu");
-		//return new ModelAndView("getNoticeList.gibu");
-
+	
+	/**
+	 *  공지사항의 글을 지우기위한 delete 컨트롤러
+	 * 
+	 * @param noticeNo
+	 * @return
+	 */
+	@RequestMapping("notice/delete.gibu")
+	public String delete(String noticeNo){
+		noticeService.delete(noticeNo);
+		return "redirect:getList.gibu";
 	}
 	
 	
-	@RequestMapping("deleteNotice.gibu")
-	public String deleteNotice(String noticeNo){
-		noticeService.deleteNotice(noticeNo);
-		return "redirect:getNoticeList.gibu";
-	}
-	
-	
-
-	@RequestMapping("update.gibu")
-	public ModelAndView update(String noticeNo) {
-		System.out.println("여기에 들어왔습니당"+noticeNo);
+	/**
+	 *  업데이트 폼을 불러오기 위한 컨트롤러
+	 * notice 폴더에 있는 update 폼을 불러온다
+	 * @param noticeNo
+	 * @return
+	 */
+	@RequestMapping("notice/updateForm.gibu")
+	public ModelAndView updateForm(String noticeNo) {
+		System.out.println("업데이트 폼 로딩" + noticeNo);
 		NoticeVO nvo = noticeService.getNoticeByNo(noticeNo);
 		return new ModelAndView("notice_update", "nvo", nvo);
 	}
 	
-	@RequestMapping("updateNotice.gibu")
-	public String updateNotice(NoticeVO noticeVO){
+	/**
+	 * 업데이트한 내용을 실제 데이터베이스로 보내는 컨트롤러
+	 * @param noticeVO
+	 * @return
+	 */
+	@RequestMapping("notice/update.gibu")
+	public String update(NoticeVO noticeVO) {
 		System.out.println(noticeVO + "받아온거");
-		noticeService.updateNotice(noticeVO);
+		noticeService.update(noticeVO);
 		System.out.println(noticeVO);
-		return "redirect:showNoticeContent.gibu?noticeNo="+noticeVO.getnoticeNo();
+		return "redirect:showContent.gibu?noticeNo=" + noticeVO.getnoticeNo();
 	}
-	
+
 }
-
-

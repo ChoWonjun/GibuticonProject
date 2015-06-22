@@ -28,7 +28,7 @@
 			<div class="collapse navbar-collapse" id="navbar-ex-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="${initParam.root}introduce_gibuticon.gibu">사이트소개</a></li>
-					<li><a href="${initParam.root}getNoticeList.gibu">공지사항</a></li>
+					<li><a href="${initParam.root}notice/getList.gibu">공지사항</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-hover="dropdown" data-delay="1000" data-close-others="false"
 						data-toggle="dropdown"> 모금<b class="caret"></b>

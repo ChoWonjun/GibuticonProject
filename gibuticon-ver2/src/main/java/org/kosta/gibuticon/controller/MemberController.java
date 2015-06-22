@@ -45,7 +45,7 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping("member/login")
+	@RequestMapping("member/login.gibu")
 	public String login(@Valid LoginForm loginForm, BindingResult result,
 			MemberVO memberVO, HttpServletRequest request) {
 		if (result.hasErrors()) {
