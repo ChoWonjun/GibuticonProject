@@ -1,11 +1,13 @@
-자유게시판글번호(프라이머리키),제목, 작성일, 글내용, 조회수, 작성자id(fk)
+-- 자유게시판글번호(프라이머리키),제목, 작성일, 글내용, 조회수, 작성자id(fk)
 
 drop table free_board;
 
 alter table free_board add(ref number not null);
+--2.
 alter table free_board add(restep number not null);
 alter table free_board add(relevel number not null);
 alter table free_board modify(hits number default 0);
+--1.
 create table free_board(
 	board_no number primary key,
 	title varchar2(50) not null,
@@ -17,10 +19,12 @@ create table free_board(
 )
 
 drop table freeBoard_comment;
+--4.
 alter table freeBoard_comment modify(hits number default 0);
 alter table freeBoard_comment add(ref number not null);
 alter table freeBoard_comment add(restep number not null);
 alter table freeBoard_comment add(relevel number not null);
+--3.
 create table freeBoard_comment(
 	freeboard_comment_no number primary key,
 	write_date date not null,
