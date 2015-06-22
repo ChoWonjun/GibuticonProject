@@ -28,7 +28,7 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			&nbsp;&nbsp;&nbsp; <img src="${initParam.root }img\MY기부티콘.jpg"
+			&nbsp;&nbsp;&nbsp; <img src="${initParam.root }img/MY기부티콘.jpg"
 				height="30" width="130"> <br> <br>
 			<div class="col-md-4">
 				<div class="navi_ca_is"></div>
@@ -42,7 +42,7 @@
 							</dt>
 							<dd>
 								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }memberRanksView.gibu"
+									<li><a href="${initParam.root }member/memberRanksView.gibu"
 										class="u_txt1"> <span style="font-family: &amp; quot;">기부랭킹보기</span></a></li>
 									<li><a href="#" class="u_txt2"><span
 											style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
@@ -50,7 +50,7 @@
 											style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
-									<li><a href="${initParam.root}updateMemberView.gibu">
+									<li><a href="${initParam.root}member/updateMemberForm.gibu">
 											<span style="font-family: &amp; amp;">회원정보 수정</span>
 									</a></li>
 									<li><a href="#" class="u_txt5"> <span

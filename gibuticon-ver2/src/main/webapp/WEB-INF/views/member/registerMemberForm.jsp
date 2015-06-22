@@ -50,7 +50,7 @@
 										</div>
 										<br> <br>
 										<form:form class="form-horizontal" name="registerForm"
-											action="registerMember.gibu" commandName="memberVO"
+											action="${initParam.root }member/registerMember.gibu" commandName="memberVO"
 											method="post" id="registForm">
 											<div class="form-group">
 												<label for="inputId" class="col-sm-2 control-label">아이디</label>
@@ -144,8 +144,8 @@
 											<br>
 											<div class="form-group">
 												<div class="col-sm-6">
-													<a href="${initParam.root}registerResult.gibu"> <input
-														class="btn btn-default" type="submit" value="회원가입 "></a>
+													<a href="#"> <input id="registerBtn"
+														class="btn btn-default" type="button" value="회원가입 "></a>
 												</div>
 											</div>
 										</form:form>

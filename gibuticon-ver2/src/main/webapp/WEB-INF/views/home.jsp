@@ -88,8 +88,8 @@
 			</div>
 		</div>
 	</div>
-	<img class="cycle-slideshow img" src="img/메인배너1.jpg"> <img
-		class="cycle-slideshow img" src="img/메인배너2.jpg">
+	<img class="cycle-slideshow img" src="${initParam.root }img/메인배너1.jpg"> <img
+		class="cycle-slideshow img" src="${initParam.root }img/메인배너2.jpg">
 </div>
 
 <div class="section">

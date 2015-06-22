@@ -66,7 +66,7 @@
 					</div>
 				</div>
 				<div class="col-md-12">
-					<a class="btn btn-default" href="home.gibu">홈으로</a>
+					<a class="btn btn-default" href="${initParam.root }home.gibu">홈으로</a>
 				</div>
 			</div>
 		</div>
