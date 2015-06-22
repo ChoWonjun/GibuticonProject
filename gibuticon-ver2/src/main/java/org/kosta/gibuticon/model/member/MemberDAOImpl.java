@@ -83,22 +83,38 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSessionTemplate.selectOne("member.login",memberVO);
 	}
 	
+	/**
+	 * 포인트 충전 기능.
+	 * MemberVO객체로 충전한 포인트 정보를 받아와 해당 회원의 포인트 정보를 수정.
+	 *
+	 */
 	@Override
 	public void increasePoint(MemberVO memberVO) {
 		sqlSessionTemplate.update("member.increasePoint",memberVO);
 	}
 
+	/**
+	 * 기부 혹은 선물로 포인트를 사용했을 때 사용한 포인트를 회원정보에서 감소시키는 기능.
+	 */
 	@Override
 	public void decreasePoint(MemberVO memberVO) {
 		sqlSessionTemplate.update("member.decreasePoint",memberVO);
 	}
 
+	/**
+	 * MemberTable 에서 회원의 총기부액 순위를 List로 반환받는다.
+	 * 회원정보를 총기부액 순으로 정렬해 반환받는다.
+	 */
 	@Override
 	public List<MemberRankVO> getAmountRanks() {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("member.getAmountRanks");
 	}
 
+	/**
+	 * MemberTable에서 기부 참여 횟수 순위를 List로 반환받는다.
+	 * 회원정보를 기부 참여 횟수 순으로 정렬해 반환받는다.
+	 */
 	@Override
 	public List<MemberRankVO> getFundCountRanks() {
 		// TODO Auto-generated method stub

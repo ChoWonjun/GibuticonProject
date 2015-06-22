@@ -106,7 +106,7 @@
                         <tr>
                            <td>${noticeboard.noticeNo}</td>
                            <td><a
-                              href="${initParam.root}showNoticeContent.gibu?noticeNo=${noticeboard.noticeNo}">
+                              href="${initParam.root}notice/showContent.gibu?noticeNo=${noticeboard.noticeNo}">
                                  ${noticeboard.title }</a></td>
                            <td>${noticeboard.writeDate }</td>
                            <td>${noticeboard.hits }</td>
@@ -128,17 +128,17 @@
               <c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
               <c:if test="${pb.previousPageGroup}">
 	                <li>
-	                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+	                  <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
 	                </li>
                 </c:if>
                 <li>
                  <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
-						<a href="${initParam.root }getNoticeList.gibu?pageNo=${i }">${i }</a>
+						<a href="${initParam.root }notice/getList.gibu?pageNo=${i }">${i }</a>
 					</c:forEach>
                 </li>
                 <c:if test="${pb.nextPageGroup}">
 	                <li>
-	                  <a href="${initParam.root }getNoticeList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+	                  <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
 	                </li>
                 </c:if>
               </ul>
@@ -172,7 +172,7 @@
                     </span>
                      <c:if test="${sessionScope.mvo.admin=='yes'}">
                     <span class="input-group-btn">
-                      <a href="writeNoticeView.gibu" class="btn btn-primary" type="submit">글쓰기</a>
+                      <a href="${initParam.root }notice/writeForm.gibu" class="btn btn-primary" type="submit">글쓰기</a>
                     </span>
                     </c:if>
                   </div>

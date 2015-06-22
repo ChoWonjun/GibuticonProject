@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       </selectKey>
       insert into gibu_fund (fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content)
       values(#{fundNo},#{fundName},#{proposal},
-      #{homepage},#{goalSum},#{startDate},#{dueDate},#{content})
+      #{homepage},#{goalSum},to_date(#{startDate},'yyyy-mm-dd'),to_date(#{dueDate},'yyyy-mm-dd'),#{content})
    </insert>
 
    <delete id="deleteFundByNo">

@@ -6,14 +6,11 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div style="font-family: &amp; amp;">
-
 					<h2>
-						<span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;"> 회원정보 수정</span>
+						<span style="font-family: &amp; quot;"> 회원정보 수정</span>
 					</h2>
 					<br>
-
-
-					<p style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">회원정보를 수정하시고 반드시 페이지 하단의 수정
+					<p style="font-family: &amp; quot;">회원정보를 수정하시고 반드시 페이지 하단의 수정
 						버튼을 눌러주세요.</p>
 					<div class="section">
 						<div class="container">
@@ -23,7 +20,8 @@
 						</div>
 					</div>
 				</div>
-				<form:form name="registerForm" action="updateMember.gibu"
+				<form:form name="registerForm"
+					action="${initParam.root }member/updateMember.gibu"
 					commandName="memberVO" method="post"
 					style="font-family: &quot;나눔고딕&quot;,NanumGothic,Sans-serif;">
 					<div class="form-group has-feedback" id="id">
