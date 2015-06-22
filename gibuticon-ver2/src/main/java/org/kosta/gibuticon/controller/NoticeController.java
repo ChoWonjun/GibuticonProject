@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -122,11 +121,5 @@ public class NoticeController {
 	}
 	
 }
-
-
-
-
-
-
 
 
