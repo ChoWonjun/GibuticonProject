@@ -22,6 +22,14 @@ public class MemberController {
 	@Resource
 	private MemberService memberService;
 
+	/**
+	 * login 화면으로 이동. loginForm.jsp에서 spring el로 validation 적용하기 위해서
+	 * loginForm이라는 이름의 빈 객체를 전달.
+	 * 
+	 * @param loginForm
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
 	public String loginForm(@ModelAttribute LoginForm loginForm,
 			HttpServletRequest request) {
@@ -70,8 +78,8 @@ public class MemberController {
 	}
 
 	/**
-	 * registerView에서 spring el 로 validation을 실행하기 위해서 memberVO라는 이름으로 빈
-	 * MemberVO객체를 전달.
+	 * 회원가입 화면으로 이동. registerForm.jsp에서 spring el 로 validation을 적용하기 위해서
+	 * memberVO라는 이름의 빈 객체를 전달.
 	 * 
 	 * @param request
 	 * @return
@@ -83,7 +91,26 @@ public class MemberController {
 	}
 
 	/**
-	 * 회원가입 기능. 먼저 validation 결과에 문제가 있으면 다시 회원가입창으로 돌려보낸다. registerView.jsp에서
+	 * 회원가입시 id중복체크 후 결과를 ajax 방식으로 회원가입 화면으로 전달한다.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("idCheck")
+	@ResponseBody
+	public String idCheck(String id) {
+		String message = null;
+		MemberVO mvo = memberService.findMemberById(id);
+		if (mvo == null) {
+			message = "true";
+		} else if (mvo != null) {
+			message = "fail";
+		}
+		return message;
+	}
+
+	/**
+	 * 회원가입 기능. 먼저 validation 결과에 문제가 있으면 다시 회원가입창으로 돌려보낸다. registerForm.jsp에서
 	 * id, password, name, address, tel, birth, email정보를 MemberVO객체로 받아와서
 	 * registerMember()로 DB(member table)에 등록. 새로고침시 에러를 피하기 위해 redirect로
 	 * MemberController의 registerResult 메서드에 id 전달.
@@ -105,7 +132,7 @@ public class MemberController {
 
 	/**
 	 * registerMember 메서드에서 보내준 id로 findMemberById 를 실행해서 등록한 회원정보를 반환받은 뒤
-	 * register_result.jsp 로 회원정보 전달.
+	 * registerMember_result.jsp 로 회원정보 전달.
 	 * 
 	 * @param request
 	 * @param model
@@ -120,7 +147,7 @@ public class MemberController {
 	}
 
 	/**
-	 * updateMemberView에서 spring el 로 validation을 실행하기 위해서 memberVO라는 이름으로 빈
+	 * updateMemberForm에서 spring el 로 validation을 실행하기 위해서 memberVO라는 이름으로 빈
 	 * MemberVO객체를 전달.
 	 * 
 	 * @param request
@@ -134,7 +161,7 @@ public class MemberController {
 
 	/**
 	 * 회원정보 수정 기능. 먼저 validation 결과에 문제가 있으면 다시 회원가입창으로 돌려보낸다.
-	 * updateMemberView.jsp에서 password, address, tel, birth, email정보를
+	 * updateMemberForm.jsp에서 password, address, tel, birth, email정보를
 	 * MemberVO객체로 받아와서 updateMember()로 DB(member table)에 등록. 새로고침시 에러를 피하기 위해
 	 * redirect로 MemberController의 updateResult 메서드에 id 전달.
 	 * 
@@ -162,17 +189,29 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("member/updateMemberResult")
-	public String updateMemberResult(HttpServletRequest request, Model model,String id) {
+	public String updateMemberResult(HttpServletRequest request, Model model,
+			String id) {
 		MemberVO mvo = memberService.findMemberById(id);
 		model.addAttribute("mvo", mvo);
 		return "member_updateMember_result";
 	}
 
+	/**
+	 * mypage.jsp로 이동
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "member/mypage", method = RequestMethod.GET)
 	public String mypageView() {
 		return "member_mypage";
 	}
 
+	/**
+	 * memberRanksView.jsp로 이동. getAmountRanks() 메서드를 실행해서 기부액 순위를 반환받고,
+	 * getFundCountRanks() 메서드를 실행해서 모금 사연 순위를 반환받아 전달한다.
+	 * 
+	 * @return
+	 */
 	@RequestMapping("member/memberRanksView")
 	public ModelAndView memberRanksView() {
 		ModelAndView mv = new ModelAndView();
@@ -180,19 +219,6 @@ public class MemberController {
 		mv.addObject("rank1", memberService.getAmountRanks());
 		mv.addObject("rank2", memberService.getFundCountRanks());
 		return mv;
-	}
-
-	@RequestMapping("idCheck")
-	@ResponseBody
-	public String idCheck(String id) {
-		String message = null;
-		MemberVO mvo = memberService.findMemberById(id);
-		if (mvo == null) {
-			message = "true";
-		} else if (mvo != null) {
-			message = "fail";
-		}
-		return message;
 	}
 
 }
