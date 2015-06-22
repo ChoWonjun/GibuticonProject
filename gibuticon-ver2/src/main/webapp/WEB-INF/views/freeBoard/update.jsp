@@ -2,14 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
-<!-- <link
-	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
-	rel="stylesheet" type="text/css">
-<link
-	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
-	rel="stylesheet" type="text/css"> -->
-
 <!-- bootstrap -->
 <script type="text/javascript"
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
@@ -88,7 +80,8 @@
 							<div class="col-md-11">
 								<!-- form 시작 -->
 								<form name="multiform" id="multiform"
-									enctype="multipart/form-data" method="post" action="${initParam.root }updateFreeBoard.gibu">
+									enctype="multipart/form-data" method="post"
+									action="${initParam.root}freeBoard/update.gibu">
 									<fieldset style="font-family: &amp; amp;">
 										<legend>자유게시판 수정</legend>
 										<table class="col-md-12">
@@ -106,32 +99,36 @@
 											</thead>
 											<tbody>
 												<tr>
-												<th><label>글번호</label></th>
-													<td><input type="text" name="boardNo" id="boardNo" value="${requestScope.fvo.boardNo}"
-															readonly></input></td>
-												</tr> 
+													<th><label>글번호</label></th>
+													<td><input type="text" name="boardNo" id="boardNo"
+														value="${requestScope.fvo.boardNo}" readonly></input></td>
+												</tr>
 												<tr>
 													<th class="title"><label for="formTitle">제목</label></th>
 													<td colspan="2" class="title"><br> <input
-														type="text" name="title" id="title" maxlength="25" value="${requestScope.fvo.title }">
-														 <br> <br class="cl_b"></td>
+														type="text" name="title" id="title" maxlength="25"
+														value="${requestScope.fvo.title }"> <br> <br
+														class="cl_b"></td>
 												</tr>
 												<tr>
-												<th><label>정보</label></th>
-													<td><font size="2">작성자: ${requestScope.fvo.memberVO.name }</font></td>
-													<td><font size="2">작성일시: ${requestScope.fvo.writeDate }</font></td>
+													<th><label>정보</label></th>
+													<td><font size="2">작성자:
+															${requestScope.fvo.memberVO.name }</font></td>
+													<td><font size="2">작성일시:
+															${requestScope.fvo.writeDate }</font></td>
 												</tr>
 												<tr>
 													<th class="cont"><label for="formCont">본문</label></th>
-													<td colspan="2" class="cont"><br> <textarea readonly="readonly"
-															rows="10" cols="200" name="content" id="content"
+													<td colspan="2" class="cont"><br> <textarea
+															readonly="readonly" rows="10" cols="200" name="content"
+															id="content"
 															style="width: 766px; height: 300px; display: none;">${requestScope.fvo.content }</textarea></td>
 												</tr>
 												<!-- 사진업로드 -->
 												<tr>
 													<th class="img"><label for="formImg">관련 이미지</label></th>
-													<td colspan="2"><input readonly="readonly" type="file" class="afile3"
-														name="file" /></td>
+													<td colspan="2"><input readonly="readonly" type="file"
+														class="afile3" name="file" /></td>
 												</tr>
 												<tr>
 													<th></th>
@@ -141,8 +138,9 @@
 											</tbody>
 										</table>
 										<br> <input class="btn btn-default" id="updateImg"
-											 value="수정" type="button" onclick="content_submit()"> <input class="btn btn-default"
-											value="취소" type="button" onclick="cancel()">
+											value="수정" type="button" onclick="content_submit()">
+										<input class="btn btn-default" value="취소" type="button"
+											onclick="cancel()">
 									</fieldset>
 								</form>
 							</div>
@@ -153,4 +151,3 @@
 		</div>
 	</div>
 </div>
- 

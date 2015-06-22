@@ -14,7 +14,6 @@ import org.kosta.gibuticon.model.freeBoard.PagingBean;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentListVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPagingBean;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
-import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.FreeBoardService;
 import org.kosta.gibuticon.model.service.FreeCommentService;
@@ -24,41 +23,71 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FreeBoardController {
-	@Resource(name="freeBoardServiceImpl")
+	@Resource(name = "freeBoardServiceImpl")
 	private FreeBoardService freeBoardService;
-	@Resource(name="freeCommentServiceImpl")
+	@Resource(name = "freeCommentServiceImpl")
 	private FreeCommentService freeCommentService;
-	
-	@RequestMapping("writeFreeBoard")
-	public ModelAndView writeFreeBoard(FreeBoardVO freeBoardVO, HttpServletRequest request){
-		HttpSession session=request.getSession(false);
-		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
-		freeBoardVO.setId(mvo.getId());	
+	/**
+	 * 자유게시판에 글을작성
+	 * @param freeBoardVO
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("freeBoard/write.gibu")
+	public ModelAndView write(FreeBoardVO freeBoardVO,
+			HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
+		freeBoardVO.setId(mvo.getId());
 		freeBoardService.writeFreeBoard(freeBoardVO);
-		return new ModelAndView("redirect:getFreeBoardList.gibu");
+		return new ModelAndView("redirect:getList.gibu");
 	}
-	@RequestMapping("getFreeBoardList")
-	public ModelAndView getFreeBoardList(String pageNo, String no){
-		if(no!=null)
-			pageNo=freeBoardService.getPageNo(no);
-		if(pageNo==null)
-			pageNo="1";
-			List<FreeBoardVO> list=freeBoardService.getFreeBoardList(pageNo);
-			ListVO lvo=new ListVO(list, new PagingBean(freeBoardService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-			return new ModelAndView("freeBoard_list","lvo", lvo);
-	}
-	@RequestMapping("write")
-	public ModelAndView write(HttpServletRequest request){
-		HttpSession session=request.getSession(false);
-		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
-		if(mvo!=null){
-			return new ModelAndView("freeBoard_write");
+	/**
+	 * 자유게시판에 글을 작성할수 있는 페이지로 넘어가게!
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("freeBoard/writeForm.gibu")
+	public ModelAndView writeForm(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
+		if (session==null || mvo == null) {
+			return new ModelAndView("redirect:../loginView.gibu");
 		}
-			return new ModelAndView("redirect:loginView.gibu");
+		return new ModelAndView("freeBoard_write");
 	}
-	@RequestMapping("getFreeBoardByNo")
-	public ModelAndView getFreeBoardByNo(String no, String pageNo, HttpServletRequest request, HttpServletResponse response){
-		ModelAndView mv=new ModelAndView();
+	/**
+	 * 자유게시판에 있는 목록을 보여줌
+	 * @param pageNo
+	 * @param no
+	 * @return
+	 */
+	@RequestMapping("freeBoard/getList.gibu")
+	public ModelAndView getList(String pageNo, String no) {
+		if (no != null)
+			pageNo = freeBoardService.getPageNo(no);
+		if (pageNo == null)
+			pageNo = "1";
+		List<FreeBoardVO> list = freeBoardService.getFreeBoardList(pageNo);
+		ListVO lvo = new ListVO(list, new PagingBean(
+				freeBoardService.getTotalPostingCount(),
+				Integer.parseInt(pageNo)));
+		return new ModelAndView("freeBoard_list", "lvo", lvo);
+	}
+	/**
+	 * 자유게시판에 있는 글 상세보기!
+	 * 이떄 같이 댓글목록도 불러옴!
+	 * 쿠키를 설정해 새로고침을 해도 hit수 안올라가게 설정!
+	 * @param no
+	 * @param pageNo
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("freeBoard/showContent.gibu")
+	public ModelAndView showContent(String no, String pageNo,
+			HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
 		Cookie cookies[] = request.getCookies();
 		String hitcookieVal = "";
 		String noStr = "|" + no + "|";
@@ -87,45 +116,72 @@ public class FreeBoardController {
 			// 응답객체에 쿠키를 저장해 전송한다.
 			response.addCookie(cookie);
 		} else
-		 fvo=freeBoardService.getFreeByNoNotHit(no);
-		
-		if(pageNo==null)
-			pageNo="1";
-		System.out.println("getFreeBoardByNo"+fvo);
-		List<FreeCommentVO> list=freeBoardService.getCommentList(no, pageNo);
-		FreeCommentListVO flist=new FreeCommentListVO(list, new FreeCommentPagingBean(freeCommentService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-		System.out.println("잘나오냥"+flist);
+			fvo = freeBoardService.getFreeByNoNotHit(no);
+
+		if (pageNo == null)
+			pageNo = "1";
+		System.out.println("getFreeBoardByNo" + fvo);
+		List<FreeCommentVO> list = freeBoardService.getCommentList(no, pageNo);
+		FreeCommentListVO flist = new FreeCommentListVO(list,
+				new FreeCommentPagingBean(
+						freeCommentService.getTotalPostingCount(),
+						Integer.parseInt(pageNo)));
+		System.out.println("잘나오냥" + flist);
 		mv.addObject("fvo", fvo);
-		mv.addObject("flist",flist);
+		mv.addObject("flist", flist);
 		mv.setViewName("freeBoard_show_content");
 		return mv;
 	}
-	
-	@RequestMapping("updateFreeView")
-	public ModelAndView update(String no){
-		FreeBoardVO fvo=freeBoardService.getFreeBoardByNo(no);
-		return new ModelAndView("freeBoard_update","fvo",fvo);
+	/**
+	 * 자유게시판 업데이트 폼을 제공
+	 * @param no
+	 * @return
+	 */
+	@RequestMapping("freeBoard/updateForm.gibu")
+	public ModelAndView updateForm(String no) {
+		FreeBoardVO fvo = freeBoardService.getFreeBoardByNo(no);
+		return new ModelAndView("freeBoard_update", "fvo", fvo);
 	}
-	@RequestMapping("updateFreeBoard")
-	public String updateFreeBoard(FreeBoardVO freeBoardVO){
+	/**
+	 * 자유게시판 글을 업데이트!
+	 * @param freeBoardVO
+	 * @return
+	 */
+	@RequestMapping("freeBoard/update.gibu")
+	public String update(FreeBoardVO freeBoardVO) {
 		freeBoardService.updateFreeBoard(freeBoardVO);
-		return "redirect:getFreeBoardByNo.gibu?no="+freeBoardVO.getBoardNo(); 
+		return "redirect:showContent.gibu?no=" + freeBoardVO.getBoardNo();
 	}
-	@RequestMapping("deleteFreeBoard")
-	public String deleteFreeBoard(String no){
+	/**
+	 * 자유게시판 글 삭제
+	 * @param no
+	 * @return
+	 */
+	@RequestMapping("freeBoard/delete.gibu")
+	public String delete(String no) {
 		freeBoardService.deleteFreeBoard(no);
-		return "redirect:getFreeBoardList.gibu";
+		return "redirect:getList.gibu";
 	}
-	@RequestMapping("replyView")
-	public ModelAndView replyView(String no){
-		FreeBoardVO fvo=freeBoardService.replyView(no);
-		return new ModelAndView("freeBoard_reply_form","fvo",fvo);
+	/**
+	 * 자유게시판 답글 폼을 제공
+	 * @param no
+	 * @return
+	 */
+	@RequestMapping("freeBoard/replyForm.gibu")
+	public ModelAndView replyForm(String no) {
+		FreeBoardVO fvo = freeBoardService.replyView(no);
+		return new ModelAndView("freeBoard_reply_form", "fvo", fvo);
 	}
-	@RequestMapping("reply")
-	public ModelAndView reply(FreeBoardVO freeBoardVO){
-		System.out.println("reply"+freeBoardVO);
+	/**
+	 * 자유게시판에 답글을 작성
+	 * @param freeBoardVO
+	 * @return
+	 */
+	@RequestMapping("freeBoard/reply.gibu")
+	public ModelAndView reply(FreeBoardVO freeBoardVO) {
+		System.out.println("reply" + freeBoardVO);
 		freeBoardService.reply(freeBoardVO);
-		return new ModelAndView("redirect:getFreeBoardList.gibu");
+		return new ModelAndView("redirect:getList.gibu");
 	}
 
 }
