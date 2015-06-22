@@ -8,6 +8,8 @@ import javax.validation.Valid;
 import org.kosta.gibuticon.model.member.LoginForm;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.MemberService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,7 +23,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberController {
 	@Resource
 	private MemberService memberService;
-	
+	private static final Logger logger = LoggerFactory
+			.getLogger(HomeController.class);
 	
 	@RequestMapping(value="loginView",method=RequestMethod.GET)
 	public String loginView(@ModelAttribute LoginForm loginForm, HttpServletRequest request) {

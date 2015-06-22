@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.ConeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class ConeController {
 	@Resource
 	private ConeService coneService;
+	private Logger log = LoggerFactory.getLogger(getClass());
 	
 	@RequestMapping("cone/chargeView.gibu")
 	public ModelAndView chargeView(){

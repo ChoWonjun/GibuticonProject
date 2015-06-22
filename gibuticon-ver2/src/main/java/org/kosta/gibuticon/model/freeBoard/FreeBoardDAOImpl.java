@@ -3,11 +3,8 @@ package org.kosta.gibuticon.model.freeBoard;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
-import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentListVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPageVO;
-import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPagingBean;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.mybatis.spring.SqlSessionTemplate;

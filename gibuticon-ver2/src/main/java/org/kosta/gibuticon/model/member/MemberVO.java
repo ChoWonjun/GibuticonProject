@@ -1,6 +1,5 @@
 package org.kosta.gibuticon.model.member;
 
-import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;

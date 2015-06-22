@@ -57,22 +57,30 @@
 								<td>${posting.hits }</td>
 							</tr>
 						</c:forEach>
-						<tr>
-							<td colspan=5 align="center"><c:set var="pb"
-									value="${requestScope.vo.pagingBean}"></c:set> <c:if
-									test="${pb.previousPageGroup}">
-									<a
-										href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">◀</a>
-								</c:if> <c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-									end="${pb.endPageOfPageGroup}">
-									<a href="${initParam.root }fund/getList.gibu?pageNo=${i }">${i }</a>
-								</c:forEach> <c:if test="${pb.nextPageGroup}">
-									<a
-										href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">▶</a>
-								</c:if></td>
-						</tr>
 					</tbody>
 				</table>
+				<div class="section">
+						<div class="container"></div>
+						<div class="col-md-offset-6 col-md-6">
+							<ul class="pagination">
+								<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+								<c:if test="${pb.previousPageGroup}">
+									<li><a
+										href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+									</li>
+								</c:if>
+								<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+										end="${pb.endPageOfPageGroup}">
+										<a href="${initParam.root }fund/getList.gibu?pageNo=${i }">${i }</a>
+									</c:forEach></li>
+								<c:if test="${pb.nextPageGroup}">
+									<li><a
+										href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+									</li>
+								</c:if>
+							</ul>
+						</div>
+					</div>
 				<br></br> 
 				<c:if test="${sessionScope.mvo.admin=='yes'}">
 				<a href="${initParam.root }fund/writeForm.gibu"> <input

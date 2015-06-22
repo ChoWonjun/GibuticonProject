@@ -17,6 +17,8 @@ import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.FreeBoardService;
 import org.kosta.gibuticon.model.service.FreeCommentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,6 +29,21 @@ public class FreeBoardController {
 	private FreeBoardService freeBoardService;
 	@Resource(name = "freeCommentServiceImpl")
 	private FreeCommentService freeCommentService;
+	private Logger log = LoggerFactory.getLogger(getClass());
+	/**
+	 * 자유게시판에 글을 작성할수 있는 페이지로 넘어가게!
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("freeBoard/writeForm.gibu")
+	public ModelAndView writeForm(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
+		if (session==null || mvo == null) {
+			return new ModelAndView("redirect:../loginView.gibu");
+		}
+		return new ModelAndView("freeBoard_write");
+	}
 	/**
 	 * 자유게시판에 글을작성
 	 * @param freeBoardVO
@@ -41,20 +58,6 @@ public class FreeBoardController {
 		freeBoardVO.setId(mvo.getId());
 		freeBoardService.writeFreeBoard(freeBoardVO);
 		return new ModelAndView("redirect:getList.gibu");
-	}
-	/**
-	 * 자유게시판에 글을 작성할수 있는 페이지로 넘어가게!
-	 * @param request
-	 * @return
-	 */
-	@RequestMapping("freeBoard/writeForm.gibu")
-	public ModelAndView writeForm(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
-		if (session==null || mvo == null) {
-			return new ModelAndView("redirect:../loginView.gibu");
-		}
-		return new ModelAndView("freeBoard_write");
 	}
 	/**
 	 * 자유게시판에 있는 목록을 보여줌
