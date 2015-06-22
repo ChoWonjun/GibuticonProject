@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="history">
+	<insert id="writeChargeHistory" parameterType="chargeHistoryVO">
+		insert into charge_history(history_no, member_id, charge_time, payment_type, amount)
+		values(charge_history_seq.nextval, #{memberId}, sysdate, #{paymentType}, #{amount})
+	</insert>
+	
+	<insert id="writeGibuHistory" parameterType="gibuHistoryVO">
+		insert into donation_history(history_no, fund_no, member_id, donation_time, amount)
+		values (donation_history_seq.nextval, #{fundNo}, #{memberId}, sysdate, #{amount})
+	</insert>
+	
+	<select id="getChargeHistory" resultType="chargeHistoryVO">
+		select history_no historyno, member_id memberid, charge_time chargetime, payment_type paymenttype,
+		amount from charge_history where member_id=#{value}	
+		order by chargetime desc
+	</select>
+	
+	<select id="getGibuHistory" resultType="gibuHistoryVO">
+		select history_no historyno, fund_no fundno, member_id memberid, donation_time donationtime,
+		amount from donation_history where member_id=#{value}	
+		order by donationtime desc
+	</select>
+</mapper>
