@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+        rel="stylesheet" type="text/css">
+        <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
+        rel="stylesheet" type="text/css">
+    </head>
+    
+    <body data-spy="scroll">
+        <div class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><span>Gibuticon</span></a>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">사이트소개</a>
+                        </li>
+                        <li>
+                            <a href="#">공지사항</a>
+                        </li>
+                        <li>
+                            <a href="#">모금</a>
+                        </li>
+                        <li>
+                            <a href="#">모금현황</a>
+                        </li>
+                        <li>
+                            <a href="#">자유게시판</a>
+                        </li>
+                        <li>
+                            <a href="#">로그인</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-15">
+                        <div class="section">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <span style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+                                                <strong>모금 등록</strong>
+                                                <br>
+                                                <br>관리자 아이디 :</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="section">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-11">
+                                        <h5></h5>
+                                        <iframe name="hiddenFrame" width="1" height="1" src="" style="display:none;"></iframe>
+                                        <form name="submitForm" method="post" onsubmit="return guideConfirm() &amp;&amp; DonationSuggest.validate();"
+                                        action="/donation/propose.daum">
+                                            <input type="hidden" name="email" value="hyun0979@daum.net">
+                                            <input type="hidden" name="goal_amount" value="0">
+                                            <input type="hidden" name="write_startdttm" value="20150617">
+                                            <input type="hidden" name="write_enddttm" value="20150716">
+                                            <input type="hidden" name="expected_execution_startdttm">
+                                            <input type="hidden" name="expected_execution_enddttm">
+                                            <input type="hidden" name="imgurl1" id="imgurl1" value="">
+                                            <input type="hidden" name="imgurl2" id="imgurl2" value="">
+                                            <input type="hidden" name="imgurl3" id="imgurl3" value="">
+                                            <input type="hidden" name="textMsgAlarmFlag">
+                                            <fieldset style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+                                                <legend>모금제안 입력창에 내용을 입력해 주세요.</legend>
+                                                <table class="tbl_form">
+                                                    <caption>모금제안하기 입력 상세표</caption>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th class="title">
+                                                                <label for="formTitle">모금명</label>
+                                                            </th>
+                                                            <td class="title">
+                                                                <br>
+                                                                <input class="" type="text" name="title" id="formTitle" maxlength="25"
+                                                                value="">
+                                                                <select name="category_id" size="1" title="카테고리 선택">
+                                                                    <option value="0">카테고리를 선택하세요.</option>
+                                                                    <option value="1">아동</option>
+                                                                    <option value="2">우리이웃</option>
+                                                                    <option value="3">환경</option>
+                                                                    <option value="4">지구촌나눔</option>
+                                                                    <option value="5">공익/사회</option>
+                                                                    <option value="6">기타</option>
+                                                                </select>
+                                                                <br>
+                                                                <br class="cl_b">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="writer">
+                                                                <span>작성자</span>
+                                                            </th>
+                                                            <td class="writer">수현
+                                                                <span class="">(hyun****@hanmail.net)</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="hope_sum">
+                                                                <br>
+                                                                <label for="formSum">희망 목표액</label>
+                                                            </th>
+                                                            <td class="hope_sum">
+                                                                <br>&nbsp;
+                                                                <input class="shot" type="text" name="goal_amount_text" id="formSum"
+                                                                style="text-align:right" maxlength="12" onblur="this.onkeyup();" onkeyup="this.value=Hopeman.String.numberFormat(Hopeman.String.toNumber(this.value),'0,000');"
+                                                                value="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="organ">
+                                                                <br>
+                                                                <label for="formOrgan">주관 사이트</label>
+                                                            </th>
+                                                            <td class="organ">
+                                                                <br>&nbsp;
+                                                                <input class="shot" type="text" name="supporter_text" id="formOrgan">본 모금을 함께 하고 싶은 기관이나 단체를 추천할 수 있습니다</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="execution_time">
+                                                                <br>
+                                                                <label for="formExecutionTime">집행시기</label>
+                                                            </th>
+                                                            <td class="execution_time">
+                                                                <br>&nbsp;
+                                                                <input class="inp_cal" type="text" name="expected_execution_startdttm_text"
+                                                                id="startdttm" maxlength="8" size="6" readonly="readonly" onclick="dateManager.toggleCalendar(0,true);"
+                                                                title="모금 시작일">
+                                                                <span class="hyphen">-</span>
+                                                                <input type="text" class="inp_cal" id="enddttm" name="expected_execution_enddttm_text"
+                                                                maxlength="8" size="6" readonly="readonly" onclick="dateManager.toggleCalendar(1);"
+                                                                title="모금 종료일">6개월 안에 시작해야 하며, 최대 1년안에 사용을 완료하셔야 합니다.</td>
+                                                            <script type="text/javascript">
+                                                                var dateManager = null; daum.Event.addEvent(window, 'load', function(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              if($('startdttm') && $('enddttm')){ dateManager = new CalendarManager('startdttm',
+                                                                                                                                                                                                                                                                                                                                                                                                                                                              'enddttm',-181, -365); } });
+                                                            </script>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="hope_sum">
+                                                                <br>
+                                                                <label for="formSum">희망 목표액</label>
+                                                            </th>
+                                                            <td class="hope_sum">
+                                                                <br>&nbsp;
+                                                                <input class="shot" type="text" name="goal_amount_text" id="formSum"
+                                                                style="text-align:right" maxlength="12" onblur="this.onkeyup();" onkeyup="this.value=Hopeman.String.numberFormat(Hopeman.String.toNumber(this.value),'0,000');"
+                                                                value="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="hope_sum">
+                                                                <br>
+                                                                <label for="formSum">현재 모금액</label>
+                                                            </th>
+                                                            <td class="hope_sum">
+                                                                <br>&nbsp;
+                                                                <input class="shot" type="text" name="goal_amount_text" id="formSum"
+                                                                style="text-align:right" maxlength="12" onblur="this.onkeyup();" onkeyup="this.value=Hopeman.String.numberFormat(Hopeman.String.toNumber(this.value),'0,000');"
+                                                                value="">
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="cont">
+                                                                <label for="formCont">본문</label>
+                                                            </th>
+                                                            <td class="cont">
+                                                                <br>
+                                                                <textarea style="resize:none;outline:none;" class="" cols="100" rows="10"
+                                                                name="content" id="formCont" onkeyup="this.className = !this.value.length ? 'main_paragraph' : '';"></textarea>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="img">
+                                                                <label for="formImg">관련 이미지</label>
+                                                            </th>
+                                                            <td class="img">
+                                                                <br>
+                                                                <div>&nbsp;
+                                                                    <input type="text" id="imgurl1_label" readonly="true" value="" title="첫번째이미지경로">
+                                                                    <input class="btn_charity btn_file" type="button" name="" title="업로드 팝업"
+                                                                    id="ssl_coca" style="margin-right:3px">
+                                                                </div>
+                                                                <div id="warpUploader2">&nbsp;
+                                                                    <input type="text" id="imgurl2_label" readonly="true" value="" title="두번째이미지경로">
+                                                                    <input class="btn_charity btn_del" type="button" name="" title="이미지삭제"
+                                                                    onclick="DonationSuggest.imageUpload.remove(2);">
+                                                                </div>
+                                                                <div id="warpUploader3">&nbsp;
+                                                                    <input type="text" id="imgurl3_label" readonly="true" value="" title="세번째이미지경로">
+                                                                    <input class="btn_charity btn_del" type="button" name="" title="이미지삭제"
+                                                                    onclick="DonationSuggest.imageUpload.remove(3);">
+                                                                </div>첫 번째 등록 이미지는 대표 이미지로 활용되며 최적화 사이즈는 249*227 입니다.</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th class="link">
+                                                                <br>
+                                                                <span>관련 링크</span>
+                                                            </th>
+                                                            <td class="link" id="wrapRelatedLink">
+                                                                <div id="relatedLink1">
+                                                                    <br>
+                                                                    <span class="dp_block tit_url">
+                                                                        <label for="url1">URL</label>
+                                                                        <input type="text" id="url1" name="linkurl1" value="">
+                                                                    </span>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <br>
+                                                <input class="btn_charity btn_record" type="submit" name="" value="등록">
+                                                <a class="btn_charity btn_cancel" href="#">취소</a>
+                                                <!--모금 목록페이지로-->
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                    <!-- // list_form -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="section section-primary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1>기부티콘 고객센터</h1>
+                        <p>기부티콘 이용약관 | 개인정보 취급 방침 | 경기 성남시 분당구 삼평동
+                            <br>Copyright @ 끝까지가조 Corp.Allrights Reserved &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p class="text-info text-right">
+                            <br>
+                            <br>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-12 hidden-lg hidden-md hidden-sm text-left">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 hidden-xs text-right">
+                                <a href="#"><i class="fa fa-3x fa-fw fa-instagram text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-twitter text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-facebook text-inverse"></i></a>
+                                <a href="#"><i class="fa fa-3x fa-fw fa-github text-inverse"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </body>
+
+</html>
