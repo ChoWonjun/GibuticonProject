@@ -5,7 +5,7 @@
        "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>	
 	<definition name="freeBoard_*" extends="home">
-		<put-attribute name="main"  value="/WEB-INF/views/board/{1}.jsp"  />
+		<put-attribute name="main"  value="/WEB-INF/views/freeBoard/{1}.jsp"  />
 	</definition>		
 </tiles-definitions>
 

@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -179,4 +180,18 @@ public class MemberController {
 		mv.addObject("rank2",memberService.getFundCountRanks());
 		return mv;
 	}
+	
+	@RequestMapping("idCheck")
+	@ResponseBody
+	public String idCheck(String id){
+		String message = null;
+		MemberVO mvo = memberService.findMemberById(id);
+		if(mvo==null){
+			message="true";
+		} else if (mvo != null){
+			message="fail";
+		}
+		return message;
+	}
+
 }

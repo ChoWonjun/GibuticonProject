@@ -18,7 +18,9 @@ create table free_board(
 
 drop table freeBoard_comment;
 alter table freeBoard_comment modify(hits number default 0);
-
+alter table freeBoard_comment add(ref number not null);
+alter table freeBoard_comment add(restep number not null);
+alter table freeBoard_comment add(relevel number not null);
 create table freeBoard_comment(
 	freeboard_comment_no number primary key,
 	write_date date not null,

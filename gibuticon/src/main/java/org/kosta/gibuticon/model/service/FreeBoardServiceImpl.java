@@ -4,9 +4,9 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.free.FreeBoardDAO;
-import org.kosta.gibuticon.model.free.FreeBoardVO;
-import org.kosta.gibuticon.model.freeComment.FreeCommentVO;
+import org.kosta.gibuticon.model.freeBoard.FreeBoardDAO;
+import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
+import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.springframework.stereotype.Service;
 
 @Service

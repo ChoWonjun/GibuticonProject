@@ -44,7 +44,6 @@
                                 <li>
                                     <a tabindex="-1" href="#"><strong>어르신</strong></a>
                                 </li>
-                                <li class="divider"></li>
                                 <li>
                                     <a tabindex="-1" href="#"><strong>장애인</strong></a>
                                 </li>

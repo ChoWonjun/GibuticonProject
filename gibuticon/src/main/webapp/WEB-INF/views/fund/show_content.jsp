@@ -13,6 +13,10 @@
 		location.href = "${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}";
 	}
 	function gibuPopup() {
+		if("${sessionScope.mvo}"==""){
+			location.href="${initParam.root }loginView.gibu";
+			return false;
+		}
 		var url = "${initParam.root }cone/gibuView.gibu?fundNo=${requestScope.posting.fundNo}";
 		window.open(url, "gibuPopup", "width=520,height=280,teop=150,left=200");
 	}
@@ -85,20 +89,20 @@
 	cursor: pointer;
 }
 </style>
-</head>
-<<<<<<< HEAD
-
 <c:set value="${requestScope.posting }" var="fund"></c:set>
 <c:set value="${requestScope.posting.photoList }" var="photoList"></c:set>
+<caption>
+	<br>
+	<div align="center" style="font-family: &amp; amp;">
+		<h1>${fund.fundName}</h1>
+	</div>
+</caption>
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<h3>
 				<div class="row">
-					<h3>
-						<span align="center" style="font-family: &amp; amp;">${fund.fundName}</span>
-					</h3>
-					<br> <br>
+					<br>
 					<div class="col-md-4">
 						<div class="cycle-slideshow" data-cycle-fx="scrollHorz"
 							data-cycle-pause-on-hover="true" data-cycle-speed="500"
@@ -114,54 +118,61 @@
 						<div class="row">
 							<h4>
 								<span style="font-family: &amp; amp;">&nbsp;&nbsp;&nbsp;
-									<br>&nbsp;&nbsp;모금액 이렇게 사용됩니다.
+									<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;모금 세부 정보
 								</span>
 							</h4>
 						</div>
-						<font size="2"></font> <font size="3"></font>
 						<table style="font-family: &amp; amp;" class="table">
 							<tbody>
 								<tr>
 									<th><font size="3">목표액</font></th>
-									<td><font size="3">${fund.goalSum }</font></td>
+									<td><font size="3">${fund.goalSum } 원</font></td>
 									<th><font size="3">현재 모금액</font></th>
-									<td><font size="3">${fund.curSum }</font></td>
+									<td><font size="3">${fund.curSum } 원</font></td>
 								</tr>
 							</tbody>
 							<tbody>
-								<tr height="2">
-									<th colspan="2"><font size="3">집행시기</font></th>
-									<td colspan="2"><font size="3">${fund.startDate } ~
+								<tr>
+									<th colspan="1"><font size="3">집행시기</font></th>
+									<td colspan="3"><font size="3">${fund.startDate } ~
 											${fund.dueDate }</font></td>
 								</tr>
 								<tr>
-									<th colspan="2"><font size="3">주관기관</font></th>
-									<td colspan="2"><font size="3">${fund.proposal }</font></td>
+									<th colspan="1"><font size="3">주관기관</font></th>
+									<td colspan="3"><font size="3">${fund.proposal }</font></td>
 								</tr>
 								<tr>
-									<th colspan="2"><font size="3">관련링크</font></th>
-									<td colspan="2"><a href="${fund.homepage }"><font
+									<th colspan="1"><font size="3">관련링크</font></th>
+									<td colspan="3"><a href="${fund.homepage }"><font
 											size="3">${fund.homepage }</font></a></td>
 								</tr>
 							</tbody>
+							<tfoot>
+								<tr>
+
+							
+								
+
+									<td><a class="btn btn-default" href="#" onclick="return gibuPopup()">기부하기</a></td>
+
+									<td><a class="btn btn-default">즐겨찾기</a></td><td></td><td></td>
+							
+								</tr>
+							</tfoot>
 						</table>
-						<font style="font-family: &amp; amp;" size="3"> <br>
+						<!-- <font style="font-family: &amp; amp;" size="3"> <br>
 							<h2>
 								<font style="font-family: &amp; amp;" size="5">기부금 사용계획</font>
 							</h2> <br>1. 건강-치료 캠페인 <br>&nbsp;&nbsp;(치료비, 이식비 평균
 							1,00만원×5명) | 5,000,000원 <br>2. 건강-치료 캠페인 (사회복지적치료비
 							200만원×10명) | 20,000,000원 <br> <br>*기부티콘은 신뢰성 있고 투명한 온라인
 							모금이 되고자 구체적인 모금 사용 계획과 수정사항을 네티즌에게 공개합니다.
-						</font>
+						</font> -->
 					</div>
 					<div class="col-md-1"></div>
 					<br> <br>
 					<div class="col-md-7">${fund.content }</div>
 				</div>
-				<br> <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-					class="btn btn-default">기부하기</a>&nbsp;&nbsp; <a
-					class="btn btn-default">즐겨찾기</a>
 			</h3>
 			<div class="thumb_link">
 				<div class="thumb_select"></div>
@@ -174,34 +185,68 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<font style="font-family: &amp; amp;" size="3">응원댓글</font>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<form role="form">
-						<div class="form-group">
-							<div class="input-group">
-								<input type="text" class="form-control"
-									placeholder="응원댓글을 적어주세요"> <span
-									class="input-group-btn"> <a class="btn btn-info"
-									type="submit">댓글등록</a>
-								</span>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-offset-3 col-md-9"></div>
+	 <div class="col-md-offset-2 col-md-8 col-md-offset-2">
+               <table class="table" style="font-family: &amp; quot;">
+                  <thead>
+                     <tr>
+                        <th width="100">NO</th>
+                        <th width="1000">comment</th>
+                         <th width="200">작성일</th>
+                        <th width="200">작성자</th>
+                     </tr>
+                  </thead>
+                  <tbody>
+                  <c:forEach var="comment" items="${requestScope.comment.list}">   
+			         <tr>
+			             <td>${comment.commentNo }</td>        
+			            <td>${comment.text }</td>
+			            <td>${comment.commentTime }</td>
+			             <td>${comment.memberVO.id }</td> 
+			            <td><c:if test="${comment.memberVO.id==sessionScope.mvo.id }">
+                        	<input class="btn btn-default" value="삭제하기" type="button" onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )"> 
+                        </c:if></td>
+			         </tr>
+   					</c:forEach>
+                  </tbody>
+               </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+  			<div class="section">
+              <div class="container">
+                <div class="row">
+             <div class="col-md-offset-6 col-md-2 col-md-offset-4">
+              <ul class="pagination">
+             <c:set var="pb" value="${requestScope.comment.pagingBean}"></c:set>
+               <c:if test="${pb.previousPageGroup}">
+               <li>
+                  <a href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.startPageOfPageGroup-1}">◀</a> 
+               </li>
+               </c:if>
+               <li>
+               <c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+                  <a href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${i }">${i }</a>
+               </c:forEach>
+               </li>
+               <c:if test="${pb.nextPageGroup}">
+               <li>
+                  <a href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.endPageOfPageGroup+1}">▶</a>
+               </li>
+               </c:if>
+              </ul>
+            </div>
+            </div>
+            </div>
+            </div>
 			</div>
 		</div>
-	</div>
-</div>
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12"></div>
 		</div>
 	</div>
+
 </div>
+
