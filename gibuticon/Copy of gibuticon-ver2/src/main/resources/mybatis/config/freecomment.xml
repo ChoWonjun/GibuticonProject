@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="freecomment">
+ <resultMap type="freeCommentVO" id="freeCommentRM">
+   	<result property="commentNo" column="freeboard_comment_no"/>
+   	<result property="writeDate" column="write_date"/>
+   	<result property="comment" column="freeboard_comment"/>
+   	<result property="boardNo" column="board_no"/>
+   </resultMap>
+	<insert id="writeFreeComment" parameterType="freeCommentVO">
+		<selectKey keyProperty="commentNo" resultType="string" order="BEFORE">
+			select freeboard_comment_sequence.nextval from dual
+		</selectKey>
+		insert into freeBoard_comment(
+		freeboard_comment_no, write_date, freeboard_comment, hits, id, board_no, ref, restep, relevel
+		)
+		values(#{commentNo},sysdate,#{comment},0,#{id},#{boardNo},#{boardNo},0,0)
+	</insert>
+	<select id="getFreeBoardCommentList" parameterType="freeCommentPageVO" resultMap="freeCommentRM">
+		select freeboard_comment_no,write_date, freeboard_comment, hits, id, board_no from(
+		select freeboard_comment_no,write_date, freeboard_comment, hits, id, board_no, ceil(rownum/3) as page from(
+		select freeboard_comment_no,to_char(write_date,'YYYY.MM.DD') as write_date, freeboard_comment, hits, id, board_no 
+		from freeBoard_comment order by freeboard_comment_no desc))where board_no=#{boardNo} and page=#{pageNo}  
+	</select>
+	<select id="getPageNo" resultType="string">
+		select page from(
+			select freeboard_comment_no, ceil(rownum/3) as page from(
+				select freeboard_comment_no from freeBoard_comment order by freeboard_comment_no desc
+			)
+		) where freeboard_comment_no=#{commentNo}
+	</select>
+	<select id="getTotalPostingCount" resultType="int">
+		select count(*) from freeBoard_comment
+	</select>
+	<delete id="deleteFreeComment" parameterType="string">
+		delete from freeBoard_comment where freeboard_comment_no=#{value}
+	</delete>
+	<select id="deleteFreeCommentList" parameterType="string" resultMap="freeCommentRM">
+		select * from freeBoard_comment where board_no=#{value}
+	</select>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
