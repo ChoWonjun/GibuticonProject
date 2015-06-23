@@ -15,8 +15,8 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<img src="${initParam.root }img\모금함리스트_사이트배너.jpg"
+			<div class="col-md-29" >
+				<img src="${initParam.root }img\g_gibusite.jpg"
 					class="img-responsive">
 			</div>
 		</div>
@@ -25,14 +25,12 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
-				<img src="${initParam.root }img\기부사이트 전체모금함.jpg">
-			</div>
+			<div class="col-md-12"></div>
 		</div>
 	</div>
 </div>
 <!-- 리스트 사진 시작 -->
-<c:forEach items="${requestScope.vo.list}"  var="posting">
+
 <!-- 첫번째줄 (첫번째사연-세번째사연) -->
 <div class="section">
 	<div class="container">
@@ -62,8 +60,9 @@
 					class="img-responsive">
 				<h2>A title</h2>
 				<div class="progress">
-					<div class="progress-bar" role="progressbar" aria-valuenow=" 70"
-						aria-valuemin="0" aria-valuemax="100" style="background-color:navy; width: 70%" >70%</div>
+					<div class="progress-bar" role="progressbar" aria-valuenow="c 70"
+						aria-valuemin="0" aria-valuemax="100"
+						style="background-color: navy; width: 70%">70%</div>
 				</div>
 			</div>
 
@@ -126,7 +125,6 @@
 		</div>
 	</div>
 </div>
-</c:forEach>
 
 <%-- <table class="table" style="font-family: &amp; amp;">
 					<thead>
@@ -181,10 +179,7 @@
 </c:if>
 <br>
 <br>
-</div>
-</div>
-</div>
-</div>
+
 
 <div class="section">
 	<div class="container">
