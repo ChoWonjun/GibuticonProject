@@ -13,5 +13,6 @@ public interface NoticeService {
 	public abstract String getPageNo(String noticeNo);
 	public abstract int getTotalPostingCount();
 	public abstract NoticeVO getNoticeByNo(String noticeNo);
-	
+	public abstract List<NoticeVO> getListBySearchingTitle(String pageNo, String input);
+	public abstract List<NoticeVO> getListBySearchingContent(String pageNo,String input);
 }
