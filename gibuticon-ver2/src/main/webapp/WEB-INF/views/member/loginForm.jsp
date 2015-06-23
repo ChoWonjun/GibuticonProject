@@ -75,6 +75,7 @@
                   <button type="submit" class="btn btn-default">Login</button>
                 </div>
               </div>
+              <input type="hidden" id="prev" name="prev" value="${param.prev }">
             </form:form>
             <br>
             <div class="col-sm-offset-2 col-sm-5 col-md-8">

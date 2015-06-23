@@ -27,7 +27,10 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 					// client에게 error임을 응답한다.
 					response.sendError(888);
 				} else {
-					response.sendRedirect("../member/loginForm.gibu");
+					String uri=request.getRequestURI();	
+					String contextPath=request.getContextPath();
+					System.out.println("interceptor uri:"+uri+" "+contextPath);
+					response.sendRedirect("../member/loginForm.gibu?prev="+uri.replaceAll(contextPath+"/",""));
 				}
 				System.out.println("세션 만료 혹은 비로그인 상태로 실행 거부");
 				return false;
