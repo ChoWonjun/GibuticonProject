@@ -24,7 +24,7 @@
       </div>
       </div>
             <a href="${initParam.root}home.gibu">
-              <img src="${initParam.root }img\이모티콘.jpg" class="center-block img-responsive img-thumbnail" height="100" width="100"></a>
+              <img src="${initParam.root }img\g_cone.png" class="center-block img-responsive img-thumbnail" height="100" width="100"></a>
           </div>
         </div>
       </div>
@@ -75,6 +75,7 @@
                   <button type="submit" class="btn btn-default">Login</button>
                 </div>
               </div>
+              <input type="hidden" id="prev" name="prev" value="${param.prev }">
             </form:form>
             <br>
             <div class="col-sm-offset-2 col-sm-5 col-md-8">

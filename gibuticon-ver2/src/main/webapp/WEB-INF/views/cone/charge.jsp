@@ -61,7 +61,18 @@
 </script>
 </head>
 <body>
-	<h3>콘 충전하기 (${sessionScope.mvo.name })</h3>
+
+  <div class="section">
+      <div class="container">
+        <div class="row">
+          <div style="color:white; background-color: navy; height: 60px; text-align:center; " class="col-md-5" >
+	콘 충전하기
+	</div>
+        </div>
+      </div>
+    </div>
+
+	
 	<form name="chargeCone" id="chargeCone">
 		<input type="hidden" name="point" value="50"> <input
 			type="hidden" name="id" value="${sessionScope.mvo.id }"> 충전단위
@@ -84,8 +95,8 @@
 			type="radio" name="payment" value="transfer"> 계좌이체 <input
 			type="radio" name="payment" value="credit"> 신용카드
 		<hr>
-		<input type="button" value="충전" id="chargeButton"> <input
-			type="button" value="취소" onclick="javascript:window.close()">
+		<input class="btn btn-primary" type="button" value="충전" id="chargeButton"> <input
+			class="btn btn-default" type="button" value="취소" onclick="javascript:window.close()">
 	</form>
 </body>
 </html>

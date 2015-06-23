@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.LoginForm;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.MemberService;
@@ -26,11 +27,13 @@ public class MemberController {
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
-	
-	@RequestMapping(value="loginView",method=RequestMethod.GET)
-	public String loginView(@ModelAttribute LoginForm loginForm, HttpServletRequest request) {
+
+	@RequestMapping(value = "loginView", method = RequestMethod.GET)
+	public String loginView(@ModelAttribute LoginForm loginForm,
+			HttpServletRequest request) {
 		return "member_loginView";
 	}
+
 	/**
 	 * login 화면으로 이동. loginForm.jsp에서 spring el로 validation 적용하기 위해서
 	 * loginForm이라는 이름의 빈 객체를 전달.
@@ -40,8 +43,9 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
-	public String loginForm(@ModelAttribute LoginForm loginForm,
-			HttpServletRequest request) {
+	public String loginForm(@ModelAttribute LoginForm loginForm, String prev,
+			HttpServletRequest request, Model model) {
+		model.addAttribute("prev", prev);
 		return "member_loginForm";
 	}
 
@@ -56,7 +60,7 @@ public class MemberController {
 	 */
 	@RequestMapping("member/login")
 	public String login(@Valid LoginForm loginForm, BindingResult result,
-			MemberVO memberVO, HttpServletRequest request) {
+			MemberVO memberVO, HttpServletRequest request, String prev) {
 		if (result.hasErrors()) {
 			return "member_loginForm";
 			// 유효성 검사에 에러가 있으면 가입폼으로 다시 보낸다.
@@ -68,7 +72,11 @@ public class MemberController {
 		} else {
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", mvo);
-			url = "home";
+			if (prev != null & prev != "") {
+				url = "redirect:../"+prev;
+			} else {
+				url = "home";
+			}
 		}
 		return url;
 	}
@@ -162,6 +170,7 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
+	@LoginCheck
 	@RequestMapping(value = "member/updateMemberForm", method = RequestMethod.GET)
 	public String updateMemberForm(@ModelAttribute MemberVO memberVO,
 			HttpServletRequest request) {
@@ -178,6 +187,7 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
+	@LoginCheck
 	@RequestMapping(value = "member/updateMember", method = RequestMethod.POST)
 	public String updateMember(@Valid MemberVO memberVO, BindingResult result,
 			HttpServletRequest request) {
@@ -210,6 +220,7 @@ public class MemberController {
 	 * 
 	 * @return
 	 */
+	@LoginCheck
 	@RequestMapping(value = "member/mypage", method = RequestMethod.GET)
 	public String mypageView() {
 		return "member_mypage";

@@ -7,6 +7,7 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script
 	src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	
 <script type="text/javascript">
 /* $(document).ready(function(){
 	
@@ -155,5 +156,11 @@
 					</c:choose>
 			</div>
 		</div>
+
 	</div><!--<div class="navbar navbar-default">  -->
 </body>
+
+	</div>
+
+</body>
+ㄴ

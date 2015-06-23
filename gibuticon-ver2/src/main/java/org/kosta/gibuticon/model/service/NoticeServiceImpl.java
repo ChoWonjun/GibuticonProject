@@ -58,4 +58,14 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDAO.getNoticeByNo(noticeNo);
 	}
 
+	@Override
+	public List<NoticeVO> getListBySearchingTitle(String pageNo, String input) {
+		return noticeDAO.getListBySearchingTitle(pageNo, input);
+	}
+
+	@Override
+	public List<NoticeVO> getListBySearchingContent(String pageNo, String input) {
+		return noticeDAO.getListBySearchingContent(pageNo, input);
+	}
+
 }
