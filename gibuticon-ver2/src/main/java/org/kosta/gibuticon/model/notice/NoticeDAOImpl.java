@@ -78,4 +78,21 @@ public class NoticeDAOImpl implements NoticeDAO {
 		return sqlSessionTemplate.selectOne("notice.getNoticeByNo", noticeNo);
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingTitle(String pageNo, String input) {
+		return sqlSessionTemplate.selectList("notice.searchByTitle",input);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingContent(String pageNo, String input) {
+		return sqlSessionTemplate.selectList("notice.searchByContent",input);
+	}
+
+
 }
