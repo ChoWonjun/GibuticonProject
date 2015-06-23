@@ -47,7 +47,7 @@
 					<li><a href="${initParam.root}freeBoard/getList.gibu">자유게시판</a></li>
 					<c:choose>
 						<c:when test="${sessionScope.mvo==null}">
-							<li><a href="${initParam.root }member/loginView.gibu">로그인</a></li>
+							<li><a href="${initParam.root }member/loginForm.gibu">로그인</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="dropdown"><a href="#" class="dropdown-toggle"

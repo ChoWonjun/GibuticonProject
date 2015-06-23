@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.LoginForm;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.MemberService;
@@ -153,6 +154,7 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
+	@LoginCheck
 	@RequestMapping(value = "member/updateMemberForm", method = RequestMethod.GET)
 	public String updateMemberForm(@ModelAttribute MemberVO memberVO,
 			HttpServletRequest request) {
@@ -169,6 +171,7 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
+	@LoginCheck
 	@RequestMapping(value = "member/updateMember", method = RequestMethod.POST)
 	public String updateMember(@Valid MemberVO memberVO, BindingResult result,
 			HttpServletRequest request) {
@@ -201,6 +204,7 @@ public class MemberController {
 	 * 
 	 * @return
 	 */
+	@LoginCheck
 	@RequestMapping(value = "member/mypage", method = RequestMethod.GET)
 	public String mypageView() {
 		return "member_mypage";
