@@ -110,7 +110,7 @@
 							
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="${initParam.root }memberRanksView.gibu"><img src="${initParam.root }img/회원랭킹.jpg"
+								<a href="${initParam.root }member/memberRanksView.gibu"><img src="${initParam.root }img/회원랭킹.jpg"
 									class="img-responsive"></a>
 								
 							</div>
