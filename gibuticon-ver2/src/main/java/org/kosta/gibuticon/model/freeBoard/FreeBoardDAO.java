@@ -20,8 +20,6 @@ public interface FreeBoardDAO {
 	
 	public abstract FreeBoardVO replyView(String no);
 	
-	public abstract List<FreeCommentVO> getFreeBoardCommentList(FreeCommentVO freeBoardCommentVO);
-	
 	public abstract void reply(FreeBoardVO freeBoardVO);
 
 	public abstract FreeBoardVO getFreeBoardByNo(String no);

@@ -7,11 +7,11 @@
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script
 	src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-	
+
 <script type="text/javascript">
-/* $(document).ready(function(){
+	/* $(document).ready(function(){
 	
-}); */
+	 }); */
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
 		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
@@ -48,87 +48,92 @@
 							<li><a tabindex="-1" href="#"><strong>기타</strong></a></li>
 						</ul></li>
 					<li><a href="${initParam.root }fund/currentState.gibu">모금현황</a></li>
-					<li><a href="${initParam.root}freeBoard/getList.gibu">자유게시판</a></li>	
+					<li><a href="${initParam.root}freeBoard/getList.gibu">자유게시판</a></li>
 				</ul>
 				<c:choose>
-						<c:when test="${sessionScope.mvo==null}">
-							<link rel="stylesheet"
-								href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-							<span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><span>&nbsp;</span><a id="modal-755773" href="#modal-container-755773"
-								class="btn btn-default" data-toggle="modal">로그인</a>
-							<div class="modal fade" id="modal-container-755773" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">×</button>
+					<c:when test="${sessionScope.mvo==null}">
+						<link rel="stylesheet"
+							href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+						<span>&nbsp;</span>
+						<span>&nbsp;</span>
+						<span>&nbsp;</span>
+						<span>&nbsp;</span>
+						<span>&nbsp;</span>
+						<a id="modal-755773" href="#modal-container-755773"
+							class="btn btn-default" data-toggle="modal">로그인</a>
+						<div class="modal fade" id="modal-container-755773" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">×</button>
 
-											<h4 class="modal-title" id="myModalLabel">로그인</h4>
+										<h4 class="modal-title" id="myModalLabel">로그인</h4>
 
-										</div>
-										<div class="modal-body">
+									</div>
+									<div class="modal-body">
 
 
-											<div class="section text-center">
-												<a href="${initParam.root}home.gibu"> <img
-													src="${initParam.root }img\이모티콘.jpg"
-													class="center-block img-responsive img-thumbnail"
-													height="100" width="100"></a>
-												<form class="form-horizontal" 
-													action="${initParam.root}member/login.gibu"
-													 method="post">
-													<div class="form-group">
-														<div class="col-sm-offset-2 col-sm-5 col-md-8">
-															<label for="inputEmail3" class="control-label">ID</label>
-														</div>
-														<div class="col-sm-offset-2 col-sm-5 col-md-8">
-															<input type="text" class="form-control input-lg" id="id"
-																name="id" placeholder="User Name" path="id" />
-															<p class="help-block">
-																<errors path="id" />
-															</p>
+										<div class="section text-center">
+											<a href="${initParam.root}home.gibu"> <img
+												src="${initParam.root }img\이모티콘.jpg"
+												class="center-block img-responsive img-thumbnail"
+												height="100" width="100"></a>
+											<form class="form-horizontal"
+												action="${initParam.root}member/login.gibu" method="post">
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-5 col-md-8">
+														<label for="inputEmail3" class="control-label">ID</label>
+													</div>
+													<div class="col-sm-offset-2 col-sm-5 col-md-8">
+														<input type="text" class="form-control input-lg" id="id"
+															name="id" placeholder="User Name" path="id" />
+														<p class="help-block">
+															<errors path="id" />
+														</p>
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-5 col-md-8">
+														<label for="inputPassword3" class="control-label">Password</label>
+													</div>
+													<div class="col-sm-offset-2 col-sm-5 col-md-8">
+														<input type="password" class="form-control input-lg"
+															id="password" name="password" placeholder="Password"
+															path="password" />
+													</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-5 col-md-8">
+														<div class="checkbox">
+															<label> <input type="checkbox">Remember
+																me
+															</label>
 														</div>
 													</div>
-													<div class="form-group">
-														<div class="col-sm-offset-2 col-sm-5 col-md-8">
-															<label for="inputPassword3" class="control-label">Password</label>
-														</div>
-														<div class="col-sm-offset-2 col-sm-5 col-md-8">
-															<input type="password" class="form-control input-lg"
-																id="password" name="password" placeholder="Password"
-																path="password" />
-														</div>
+												</div>
+												<div class="form-group">
+													<div class="col-sm-offset-2 col-sm-5 col-md-8">
+														<button type="submit" class="btn btn-default"
+															id="loginForm">Login</button>
 													</div>
-													<div class="form-group">
-														<div class="col-sm-offset-2 col-sm-5 col-md-8">
-															<div class="checkbox">
-																<label> <input type="checkbox">Remember
-																	me
-																</label>
-															</div>
-														</div>
-													</div>
-													<div class="form-group">
-														<div class="col-sm-offset-2 col-sm-5 col-md-8">
-															<button type="submit" class="btn btn-default" id="loginForm">Login</button>
-														</div>
-													</div>
-													<br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
-													</a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
-												</form>
-											</div>
+												</div>
+												<br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
+												</a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
+											</form>
 										</div>
 									</div>
 								</div>
-								
 							</div>
 
+						</div>
 
-							
-							<%-- <li><a href="${initParam.root }member/loginForm.gibu">로그인</a></li> --%>
-						</c:when>
-						<c:otherwise>
+
+
+						<%-- <li><a href="${initParam.root }member/loginForm.gibu">로그인</a></li> --%>
+					</c:when>
+					<c:otherwise>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="dropdown"><a href="#" class="dropdown-toggle"
 								data-hover="dropdown" data-toggle="dropdown" data-delay="1000">
@@ -151,16 +156,18 @@
 										href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
 												마이페이지</strong></a></li>
 								</ul></li>
-							<li><a href="javascript:chargePopup()">충전하기</a></li></ul>
-						</c:otherwise>
-					</c:choose>
+							<li><a href="javascript:chargePopup()">충전하기</a></li>
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 
-	</div><!--<div class="navbar navbar-default">  -->
-</body>
-
 	</div>
+	<!--<div class="navbar navbar-default">  -->
+</body>
+
+
 
 </body>
-ㄴ
+

@@ -74,12 +74,6 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeCommentVO> getFreeBoardCommentList(
-			FreeCommentVO freeBoardCommentVO) {
-		return freeBoardDAO.getFreeBoardCommentList(freeBoardCommentVO);
-	}
-
-	@Override
 	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
 		return freeBoardDAO.getCommentList(no, pageNo);
 	}

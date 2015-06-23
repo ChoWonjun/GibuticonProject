@@ -18,6 +18,5 @@ public interface FreeBoardService {
 	public abstract FreeBoardVO getFreeByNoNotHit(String no);
 	public abstract FreeBoardVO replyView(String no);
 	public abstract void reply(FreeBoardVO freeBoardVO);
-	public abstract List<FreeCommentVO> getFreeBoardCommentList(FreeCommentVO freeBoardCommentVO);
 	public abstract List<FreeCommentVO> getCommentList(String no, String pageNo);
 }
