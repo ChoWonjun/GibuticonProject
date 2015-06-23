@@ -61,12 +61,17 @@
 </script>
 </head>
 <body>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<img src="${initParam.root}img\g_chargecone.jpg" width="150" >
-	
-	<br><br><br>
+
+  <div class="section">
+      <div class="container">
+        <div class="row">
+          <div style="color:white; background-color: navy; height: 60px; text-align:center; " class="col-md-5" >
+	콘 충전하기
+	</div>
+        </div>
+      </div>
+    </div>
+
 	
 	<form name="chargeCone" id="chargeCone">
 		<input type="hidden" name="point" value="50"> <input

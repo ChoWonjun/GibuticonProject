@@ -7,6 +7,7 @@
 <script src="${initParam.root }js/jquery.bpopup.min.js"></script>
 <script
 	src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+	
 <script type="text/javascript">
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
@@ -76,4 +77,5 @@
 			</div>
 		</div>
 	</div>
+
 </body>
