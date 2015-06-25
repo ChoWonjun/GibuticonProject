@@ -48,6 +48,7 @@
 		</div>
 	</div>
 	<hr>
+		<div class="col-md-20">
 	<div class="row">
 		<%-- <c:forEach items=""> --%>
 		<c:forEach items="${requestScope.vo.list}" var="FundVO">
@@ -56,7 +57,7 @@
 				<c:set value="${FundPhotoVO.realName }" var="photoName" />
 			</c:forEach>
 			<!-- 1st 사연 -->
-			<div class="col-md-4">
+			<div class="col-md-4" align="center">
 				<a
 					href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
 					width="360" height="270"
@@ -66,7 +67,7 @@
 				<h4>${FundVO.fundName }</h4>
 				<div>${FundVO.startDate }~${FundVO.dueDate }</div>
 				<!-- progress bar -->
-				<div class="progress">
+				<div class="progress" style="width:70%;">
 					<!-- <progress max="100" value="80"></progress> -->
 					<div class="progress-bar" role="progressbar" aria-valuemin="0"
 						aria-valuemax="100" aria-text=" ${FundVO.progress }%"
@@ -77,6 +78,7 @@
 				<br>
 			</div>
 		</c:forEach>
+		</div>
 	</div>
 	<div class="col-md-offset-6 col-md-6">
 		<ul class="pagination">
