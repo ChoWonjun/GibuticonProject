@@ -132,6 +132,12 @@ public class FundVO {
 	public void setPhotoList(List<FundPhotoVO> photoList) {
 		this.photoList = photoList;
 	}
+	
+	public int getProgress(){
+		int cur = Integer.parseInt(curSum);
+		int goal = Integer.parseInt(goalSum);
+		return (int) Math.ceil(cur/goal*100);
+	}
 
 	@Override
 	public String toString() {
