@@ -7,8 +7,8 @@
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	$().ready(function() {
-		var imgHeight = $("#imgTile").width() * 0.75;
-		$("img").height(imgHeight);
+		var imgHeight = $("#imgTile").width() * 0.705;
+		$("img[name=imgEl]").height(imgHeight);
 	});
 </script>
 
@@ -22,7 +22,7 @@
 </div>
 
 
-<img src="${initParam.root }img\g_gibusite2.jpg" width="1910">
+<img src="${initParam.root }img\g_gibusite2.jpg" width="100%">
 
 <div class="section">
 	<div class="container">
@@ -56,7 +56,7 @@
 							<a
 								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
 								src="${initParam.root}upload/${photoName}" width="100%"
-								id="imgEl"
+								name="imgEl"
 								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
 								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
 						</c:when>
