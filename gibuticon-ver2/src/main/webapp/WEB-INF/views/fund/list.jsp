@@ -6,8 +6,8 @@
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-	$().ready(function(){
-		var imgHeight = $("#imgTile").width()*0.75;
+	$().ready(function() {
+		var imgHeight = $("#imgTile").width() * 0.75;
 		$("img").height(imgHeight);
 	});
 </script>
@@ -15,11 +15,31 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-29">
-				<img src="${initParam.root }img\g_gibusite.jpg"
-					class="img-responsive">
+
+			<div class="col-md-12"></div>
+		</div>
+	</div>
+</div>
+
+
+<img src="${initParam.root }img\g_gibusite2.jpg" width="1910">
+
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-md-offset-2">
+				<a href="http://www.makehope.org/"><img
+					src="${initParam.root }img\g_hope_logo.jpg"></a>| <a
+					href="http://www.dreamfull.or.kr/app/newdf/main"><img
+					src="${initParam.root }img\g_dreamfull_logo.jpg"></a> |<a
+					href="http://hope.daum.net/"><img
+					src="${initParam.root }img\g_daum_logo.jpg"></a>| <a
+					href="http://happybean.naver.com/"><img
+					src="${initParam.root }img\g_naver_logo.jpg"></a>
+
 			</div>
 		</div>
+
 		<br>
 		<hr>
 		<div class="row">
@@ -34,27 +54,28 @@
 					<c:choose>
 						<c:when test="${photoName!=null}">
 							<a
-								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img 
-								src="${initParam.root}upload/${photoName}"
-								width="100%" id="imgEl"
+								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
+								src="${initParam.root}upload/${photoName}" width="100%"
+								id="imgEl"
 								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
 								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
 						</c:when>
 						<c:otherwise>
 							<a
-								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img 
-								src="${initParam.root}img/basicImg.jpg"
-								width="100%" id="imgEl"
+								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
+								src="${initParam.root}img/basicImg.jpg" width="100%" id="imgEl"
 								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
 								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
 						</c:otherwise>
 					</c:choose>
 					<h4>${FundVO.fundName }</h4>
-					<div>${FundVO.startDate } ~ ${FundVO.dueDate }</div>
+					<div>${FundVO.startDate }~ ${FundVO.dueDate }</div>
 					<!-- progress bar -->
 					<div class="progress" width="100%">
-						<div class="progress-bar" role="progressbar" aria-valuemin="0" 
-							aria-valuemax="100" aria-text=" ${FundVO.progress }%" style="width: ${FundVO.progress }%; text-align:left;" >&nbsp;&nbsp;${FundVO.progress } %&nbsp;&nbsp;${FundVO.curSum } 원</div>
+						<div class="progress-bar" role="progressbar" aria-valuemin="0"
+							aria-valuemax="100" aria-text=" ${FundVO.progress }%"
+							style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }
+							%&nbsp;&nbsp;${FundVO.curSum } 원</div>
 					</div>
 					<div>${FundVO.proposal}</div>
 					<br>
@@ -86,5 +107,3 @@
 				class="btn btn-default" type="submit" value="글쓰기"></a>
 		</c:if>
 		<br>
-	</div>
-</div>
