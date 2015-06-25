@@ -3,6 +3,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script type="text/javascript"
+	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$().ready(function() {
+		var imgHeight = $("#imgTile").width() * 0.705;
+		$("img[name=imgEl]").height(imgHeight);
+	});
+</script>
 
 <div class="section">
 	<div class="container">
@@ -14,7 +22,7 @@
 </div>
 
 
-<img src="${initParam.root }img\g_gibusite2.jpg" width="1910">
+<img src="${initParam.root }img\g_gibusite2.jpg" width="100%">
 
 <div class="section">
 	<div class="container">
@@ -31,6 +39,7 @@
 
 			</div>
 		</div>
+<<<<<<< HEAD
 	</div>
 	<br> <br> <br>
 	<div class="section">
@@ -73,7 +82,50 @@
 						aria-valuemax="100" aria-text=" ${FundVO.progress }%"
 						style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }
 						%&nbsp;&nbsp;${FundVO.curSum } 원</div>
+=======
+
+		<br>
+		<hr>
+		<div class="row">
+			<%-- <c:forEach items=""> --%>
+			<c:forEach items="${requestScope.vo.list}" var="FundVO">
+				<c:forEach items="${FundVO.photoList }" var="FundPhotoVO" begin="0"
+					end="0">
+					<c:set value="${FundPhotoVO.realName }" var="photoName" />
+				</c:forEach>
+				<!-- 1st 사연 -->
+				<div class="col-md-4" id="imgTile">
+					<c:choose>
+						<c:when test="${photoName!=null}">
+							<a
+								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
+								src="${initParam.root}upload/${photoName}" width="100%"
+								name="imgEl"
+								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
+								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
+								src="${initParam.root}img/basicImg.jpg" width="100%" id="imgEl"
+								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
+								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+						</c:otherwise>
+					</c:choose>
+					<h4>${FundVO.fundName }</h4>
+					<div>${FundVO.startDate }~ ${FundVO.dueDate }</div>
+					<!-- progress bar -->
+					<div class="progress" width="100%">
+						<div class="progress-bar" role="progressbar" aria-valuemin="0"
+							aria-valuemax="100" aria-text=" ${FundVO.progress }%"
+							style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }
+							%&nbsp;&nbsp;${FundVO.curSum } 원</div>
+					</div>
+					<div>${FundVO.proposal}</div>
+					<br>
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 				</div>
+<<<<<<< HEAD
 				<div>${FundVO.proposal}</div>
 				<br>
 			</div>
@@ -104,3 +156,32 @@
 		<a href="${initParam.root }fund/writeForm.gibu"> <input
 			class="btn btn-default" type="submit" value="글쓰기"></a>
 	</c:if>
+=======
+			</c:forEach>
+		</div>
+		<div class="col-md-offset-6 col-md-6">
+			<ul class="pagination">
+				<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+				<c:if test="${pb.previousPageGroup}">
+					<li><a
+						href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+					</li>
+				</c:if>
+				<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+						end="${pb.endPageOfPageGroup}">
+						<a href="${initParam.root }fund/getList.gibu?pageNo=${i }">${i }</a>
+					</c:forEach></li>
+				<c:if test="${pb.nextPageGroup}">
+					<li><a
+						href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+					</li>
+				</c:if>
+			</ul>
+		</div>
+		<br></br>
+		<c:if test="${sessionScope.mvo.admin=='yes'}">
+			<a href="${initParam.root }fund/writeForm.gibu"> <input
+				class="btn btn-default" type="submit" value="글쓰기"></a>
+		</c:if>
+		<br>
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
