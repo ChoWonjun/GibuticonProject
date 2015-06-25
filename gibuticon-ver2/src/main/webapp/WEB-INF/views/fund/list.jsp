@@ -3,6 +3,15 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script type="text/javascript"
+	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript">
+	$().ready(function(){
+		var imgHeight = $("#imgTile").width()*0.75;
+		$("img").height(imgHeight);
+	});
+</script>
+
 <div class="section">
 	<div class="container">
 		<div class="row">
@@ -21,18 +30,29 @@
 					<c:set value="${FundPhotoVO.realName }" var="photoName" />
 				</c:forEach>
 				<!-- 1st 사연 -->
-				<div class="col-md-4">
-					<a
-						href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
-						width="360" height="270"
-						src="${initParam.root}upload/${photoName}"
-						onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
-						onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+				<div class="col-md-4" id="imgTile">
+					<c:choose>
+						<c:when test="${photoName!=null}">
+							<a
+								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img 
+								src="${initParam.root}upload/${photoName}"
+								width="100%" id="imgEl"
+								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
+								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+						</c:when>
+						<c:otherwise>
+							<a
+								href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img 
+								src="${initParam.root}img/basicImg.jpg"
+								width="100%" id="imgEl"
+								onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
+								onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+						</c:otherwise>
+					</c:choose>
 					<h4>${FundVO.fundName }</h4>
 					<div>${FundVO.startDate } ~ ${FundVO.dueDate }</div>
 					<!-- progress bar -->
-					<div class="progress">
-						<!-- <progress max="100" value="80"></progress> -->
+					<div class="progress" width="100%">
 						<div class="progress-bar" role="progressbar" aria-valuemin="0" 
 							aria-valuemax="100" aria-text=" ${FundVO.progress }%" style="width: ${FundVO.progress }%; text-align:left;" >&nbsp;&nbsp;${FundVO.progress } %&nbsp;&nbsp;${FundVO.curSum } 원</div>
 					</div>
