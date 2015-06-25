@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="freeboard">
+<mapper namespace="freeBoard">
 	<sql id="selectFreeBoard">
 		select board_no,title,write_date,content,hits,id from free_board
 	</sql>

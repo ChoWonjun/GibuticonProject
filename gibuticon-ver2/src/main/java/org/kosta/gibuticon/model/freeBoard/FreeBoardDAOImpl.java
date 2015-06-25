@@ -18,9 +18,12 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#getFreeBoardByNo(java.lang.String)
 	 */
+	/**
+	 * 자유게시판의 보드 no를 이용하여 상세정보를 불러온다.
+	 */
 	@Override
 	public FreeBoardVO getFreeBoardByNo(String no){
-		FreeBoardVO fvo=sqlSessionTemplate.selectOne("freeboard.getFreeBoardByNo",no);
+		FreeBoardVO fvo=sqlSessionTemplate.selectOne("freeBoard.getFreeBoardByNo",no);
 		fvo.setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",fvo.getId()));
 		return fvo;
 	}
@@ -28,94 +31,103 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#getFreeBoardList()
 	 */
+	/**
+	 * 페이지번호로 보드 리스트를 불러온다.
+	 * FreeBoardVO에 있는 member에 정보를 넣기 위해
+	 * member.findMemberById로 member정보를 불러와 set한다.
+	 */
 	@Override
 	public List<FreeBoardVO> getFreeBoardList(String pageNo){
-		List<FreeBoardVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardList", pageNo);
-		System.out.println(list+"getFreeBoardList");
+		List<FreeBoardVO> list=sqlSessionTemplate.selectList("freeBoard.getFreeBoardList", pageNo);
 		for(int i=0;i<list.size();i++){
-			System.out.println(list.get(i).getId());
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
-			//System.out.println(sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 		}
-		//System.out.println(list+"후");
-
 		return list;
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#writeFreeBoard(org.kosta.gibuticon.model.board.FreeBoardVO)
 	 */
+	/**
+	 * 자유게시판에 글을 쓰는 메서드
+	 */
 	@Override
 	public void writeFreeBoard(FreeBoardVO freeBoardVO){
-		sqlSessionTemplate.insert("freeboard.writeFreeBoard",freeBoardVO);
+		sqlSessionTemplate.insert("freeBoard.writeFreeBoard",freeBoardVO);
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#deleteFreeBoard(java.lang.String)
 	 */
+	/**
+	 * 자유게시판에 있는 글을 삭제하는 메서드
+	 * 이때 자유게시판은 코멘트보드와 연결되어 있기 때문에 우선적으로 코멘트보드를 다 지운후 
+	 * 자유게시판을 지운다.
+	 */
 	@Override
 	public void deleteFreeBoard(String no){
-		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freecomment.deleteFreeCommentList", no);
-		System.out.println("deletecomment"+list);
+		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freeComment.deleteFreeCommentList", no);
 		for(int i=0;i<list.size();i++){
-			sqlSessionTemplate.delete("freecomment.deleteFreeComment",list.get(i).getCommentNo());
+			sqlSessionTemplate.delete("freeComment.deleteFreeComment",list.get(i).getCommentNo());
 		}
-		sqlSessionTemplate.delete("freeboard.deleteFreeBoard",no);
+		sqlSessionTemplate.delete("freeBoard.deleteFreeBoard",no);
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#updateFreeBoard(org.kosta.gibuticon.model.board.FreeBoardVO)
 	 */
+	/**
+	 * freeBoardVO를 받아와 지유게시판을 수정한다.
+	 */
 	@Override
 	public void updateFreeBoard(FreeBoardVO freeBoardVO){
-		sqlSessionTemplate.update("freeboard.updateFreeBoard",freeBoardVO);
-		System.out.println(freeBoardVO+"DAO");
+		sqlSessionTemplate.update("freeBoard.updateFreeBoard",freeBoardVO);
 	}
-
+	/**
+	 * 자유게시판 글번호를 이용하여 페이지번호를 불러오는 메서드
+	 */
 	@Override
 	public String getPageNo(String no) {
-		return sqlSessionTemplate.selectOne("freeboard.getPageNo", no);
+		return sqlSessionTemplate.selectOne("freeBoard.getPageNo", no);
 	}
-
+	/**
+	 * 총 게시물의 수를 불러오는 메서드
+	 */
 	@Override
 	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("freeboard.getTotalPostingCount");
+		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCount");
 	}
-
+	/**
+	 * 조회수를 업데이트 시키는 메서드
+	 */
 	@Override
 	public void updateHit(String no) {
-		sqlSessionTemplate.update("freeboard.updateHit", no);
+		sqlSessionTemplate.update("freeBoard.updateHit", no);
 		
 	}
-
+	/**
+	 * 답글 창을 보여주는 메서드
+	 */
 	@Override
 	public FreeBoardVO replyView(String no) {
-		System.out.println("replyview"+no);
-		return sqlSessionTemplate.selectOne("freeboard.replyView",no);
+		return sqlSessionTemplate.selectOne("freeBoard.replyView",no);
 	}
-
+	/**
+	 * 우선 답글 레벨을 올리고(?)
+	 * 그 후 답글을 작성하는 메서드
+	 */
 	@Override
 	public void reply(FreeBoardVO freeBoardVO) {
-		sqlSessionTemplate.update("freeboard.replyUpdate",freeBoardVO);
-		sqlSessionTemplate.insert("freeboard.replyWrite",freeBoardVO);
+		sqlSessionTemplate.update("freeBoard.replyUpdate",freeBoardVO);
+		sqlSessionTemplate.insert("freeBoard.replyWrite",freeBoardVO);
 		
 	}
-
-	@Override
-	public List<FreeCommentVO> getFreeBoardCommentList(
-			FreeCommentVO freeBoardCommentVO) {
-		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freeboard.getFreeBoardCommentList", freeBoardCommentVO);
-		for(int i=0;i<list.size();i++){
-			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",freeBoardCommentVO.getId()));
-		}
-		System.out.println(list);
-		return list;
-	}
+	/**
+	 * 자유게시판 댓글 리스트를 불러오는 메서드
+	 */
 	@Override
 	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
-		System.out.println(pageNo+"  "+no+"코멘트 페이지");
-		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freecomment.getFreeBoardCommentList", new FreeCommentPageVO(Integer.parseInt(no), pageNo));
-		System.out.println("dao getCommentList"+list);
+		List<FreeCommentVO> list=sqlSessionTemplate.selectList("freeComment.getFreeBoardCommentList", new FreeCommentPageVO(Integer.parseInt(no), pageNo));
 		for(int i=0;i<list.size();i++){
 			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
 		}

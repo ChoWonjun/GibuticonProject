@@ -127,16 +127,16 @@
 							<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
 							<c:if test="${pb.previousPageGroup}">
 								<li><a
-									href="${initParam.root }getNoticeList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+									href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
 								</li>
 							</c:if>
 							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 									end="${pb.endPageOfPageGroup}">
-									<a href="${initParam.root }getNoticeList.gibu?pageNo=${i }">${i }</a>
+									<a href="${initParam.root }notice/getList.gibu?pageNo=${i }">${i }</a>
 								</c:forEach></li>
 							<c:if test="${pb.nextPageGroup}">
 								<li><a
-									href="${initParam.root }getNoticeList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+									href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
 								</li>
 							</c:if>
 						</ul>

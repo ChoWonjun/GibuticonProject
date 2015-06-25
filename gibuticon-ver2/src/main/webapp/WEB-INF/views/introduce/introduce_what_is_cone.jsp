@@ -49,8 +49,6 @@
 									<ul>
 										<li><a href="${initParam.root }introduce_what_is_cone.gibu" class="sr_txt5"> <span
 												style="font-family: &amp; quot;">콘 안내</span></a></li>
-										<li><a href="#"><span
-												style="font-family: &amp; quot;">콘받기 안내</span></a></li>
 										<li><a href="${initParam.root }introduce_howtogibu.gibu" class="sr_txt5"> <span
 												style="font-family: &amp; quot;">기부방법 안내</span></a></li>
 										<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->

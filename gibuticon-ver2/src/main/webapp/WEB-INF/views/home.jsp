@@ -89,7 +89,7 @@
 		</div>
 	</div>
 	<img class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner1.jpg"> <img
-		class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner2.jpg">
+		class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner3.jpg">
 </div>
 
 <div class="section">
@@ -110,7 +110,7 @@
 							
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="${initParam.root }memberRanksView.gibu"><img src="${initParam.root }img/회원랭킹.jpg"
+								<a href="${initParam.root }member/memberRanksView.gibu"><img src="${initParam.root }img/회원랭킹.jpg"
 									class="img-responsive"></a>
 								
 							</div>
