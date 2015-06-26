@@ -21,8 +21,9 @@
 		history.back(-1);
 	}
 
-	$(document).ready(function() {
-		
+	$(document)
+			.ready(
+					function() {
 						//Naver Smart Editor
 						var obj = []; //전역변수
 						nhn.husky.EZCreator
@@ -37,16 +38,11 @@
 										bUseVerticalResizer : true,
 										// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
 										bUseModeChanger : false,
-										fOnBeforeUnload : function(){
+										fOnBeforeUnload : function() {
 											//alert("완료!");
 										}
 									}
 								});
-						/* function checkContent(){
-							obj.getById["content"].exec(
-									"UPDATE_CONTENTS_FIELD", []);
-							return true;
-						} */
 						$("#writeImg").click(
 								function() {
 									//id가 smarteditor인 textarea에 에디터에서 대입
@@ -56,7 +52,7 @@
 									/* $("#multiform").submit(); */
 									return true;
 								});
-						
+
 						//MultiFile Plugin 
 						$('#multiform input[name=file]').MultiFile({
 							max : 3, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
@@ -74,7 +70,6 @@
 							},
 							list : "#afile3-list" //파일목록을 출력할 요소 지정가능
 						});
-
 					});// document ready
 </script>
 
@@ -115,43 +110,54 @@
 												</tr>
 												<tr>
 													<th class="title"><label for="formTitle">모금명</label></th>
-													<td colspan="2" class="title"><br> <input required="required"
-														type="text" name="fundName" id="fundName" >
-														<select name="fundCategory" id="fundCategory" size="1"
-														title="카테고리 선택">
-															<option value="0">카테고리를 선택하세요.</option>
-															<option value="1">아동</option>
-															<option value="2">어르신</option>
-															<option value="3">장애인</option>
-															<option value="4">기타</option>
+													<td colspan="2" class="title"><br> <input
+														required="required" type="text" name="fundName"
+														id="fundName"> <select name="category"
+														id="category" size="1">
+															<option value="">카테고리</option>
+															<option value="어린이">어린이</option>
+															<option value="어르신">어르신</option>
+															<option value="장애인">장애인</option>
+															<option value="캠페인">캠페인</option>
 													</select> <br> <br class="cl_b"></td>
-												</tr>
-												<tr>
-													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
-													<td colspan="2" class="hope_sum"><br> <input required="required"
-														class="shot" type="number" name="goalSum" id="goalSum"
-														style="text-align: right" maxlength="12"></td>
-												</tr>
-												<tr>
-													<th class="organ"><br> <label for="formOrgan">주관
-															기관</label></th>
-													<td colspan="2" class="organ"><br> <input required="required"
-														class="shot" type="text" name="proposal" id="proposal"></td>
 												</tr>
 												<tr>
 													<th class="link"><br> <label for="url1">관련
 															링크</label></th>
-													<td colspan="2" class="link"><br> <input required="required"
-														class="shot" type="text" id="homepage" name="homepage"></td>
+													<td colspan="2" class="link"><br> <input
+														required="required" class="shot" type="text" id="homepage"
+														name="homepage"> <select name="source"
+														id="source" size="1">
+															<option value="">모금출처</option>
+															<option value="해피빈">해피빈</option>
+															<option value="희망해">희망해</option>
+															<option value="드림풀">드림풀</option>
+															<option value="아름다운">아름다운</option>
+													</select> <br> <br class="cl_b"></td>
+												</tr>
+												<tr>
+													<th class="organ"><br> <label for="formOrgan">주관
+															기관</label></th>
+													<td colspan="2" class="organ"><br> <input
+														required="required" class="shot" type="text"
+														name="proposal" id="proposal"></td>
+												</tr>
+												<tr>
+													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
+													<td colspan="2" class="hope_sum"><br> <input
+														required="required" class="shot" type="number"
+														name="goalSum" id="goalSum" style="text-align: right"
+														maxlength="12"></td>
 												</tr>
 												<tr>
 													<th class="execution_time"><br> <label
 														for="formExecutionTime">집행시기</label></th>
-													<td colspan="2" class="execution_time"><br> <input required="required"
-														class="inp_cal" type="date" name="startDate"
-														id="startDate"> <span class="hyphen">-</span> <input required="required"
-														type="date" class="inp_cal" id="dueDate" name="dueDate"> 6개월
-														안에 시작해야 하며, 최대 1년안에 사용을 완료하셔야 합니다.</td>
+													<td colspan="2" class="execution_time"><br> <input
+														required="required" class="inp_cal" type="date"
+														name="startDate" id="startDate"> <span
+														class="hyphen">-</span> <input required="required"
+														type="date" class="inp_cal" id="dueDate" name="dueDate">
+														6개월 안에 시작해야 하며, 최대 1년안에 사용을 완료하셔야 합니다.</td>
 												</tr>
 												<tr>
 													<th class="cont"><label for="formCont">본문</label></th>
@@ -173,8 +179,8 @@
 											</tbody>
 										</table>
 										<br> <br> <br> <input class="btn btn-default"
-											style="font-family: &amp; amp;" type="submit" value="글쓰기" onclick="return checkContent()"
-											id="writeImg"> <input
+											style="font-family: &amp; amp;" type="submit" value="글쓰기"
+											onclick="return checkContent()" id="writeImg"> <input
 											class="btn btn-default" style="font-family: &amp; amp;"
 											type="button" value="취소" onclick="cancel()">
 									</fieldset>

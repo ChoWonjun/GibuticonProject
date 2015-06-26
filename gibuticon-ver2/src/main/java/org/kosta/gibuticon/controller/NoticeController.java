@@ -8,7 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.gibuticon.model.fund.FundVO;
+
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -18,7 +19,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -33,16 +33,10 @@ public class NoticeController {
 	 * @param request
 	 * @return
 	 */
-	
 	@RequestMapping("notice/writeForm.gibu")
-	public ModelAndView noticeWriteView(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		MemberVO mvo =(MemberVO) session.getAttribute("mvo");
-		if (session==null || mvo==null || !(mvo.getAdmin().equals("yes"))) {
-			return new ModelAndView("redirect:loginView.gibu");
-		}else{
-			return new ModelAndView("notice_write");
-		}
+	@LoginCheck
+	public String noticeWriteView(HttpServletRequest request) {
+		return "notice_write";
 	}
 	
 	/**
@@ -51,6 +45,7 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/write.gibu")
+	@LoginCheck
 	public ModelAndView write(NoticeVO noticeVO) {
 		// no로 게시글 찾아서 그 vo 전체를 넘겨주는
 		noticeService.write(noticeVO);
@@ -128,6 +123,7 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/delete.gibu")
+	@LoginCheck
 	public String delete(String noticeNo){
 		noticeService.delete(noticeNo);
 		return "redirect:getList.gibu";
@@ -141,6 +137,7 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/updateForm.gibu")
+	@LoginCheck
 	public ModelAndView updateForm(String noticeNo) {
 		System.out.println("업데이트 폼 로딩" + noticeNo);
 		NoticeVO nvo = noticeService.getNoticeByNo(noticeNo);
@@ -153,6 +150,7 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/update.gibu")
+	@LoginCheck
 	public String update(NoticeVO noticeVO) {
 		System.out.println(noticeVO + "받아온거");
 		noticeService.update(noticeVO);

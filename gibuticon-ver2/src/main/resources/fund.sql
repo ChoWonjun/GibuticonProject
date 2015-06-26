@@ -16,6 +16,9 @@
   	hits number default 0
   )
   
+  ALTER TABLE gibu_fund ADD category varchar2(200) not null;
+  ALTER TABLE gibu_fund ADD source varchar2(200) not null;
+  
   insert into gibu_fund(fund_no,fund_name,proposal,
   									homepage,goal_sum,due_date,content)
   values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',1000,'2015-06-20','효섭이를 도와주세요');

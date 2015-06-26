@@ -31,7 +31,7 @@ public class MemberController {
 	@RequestMapping(value = "loginView", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute LoginForm loginForm,
 			HttpServletRequest request) {
-		return "member_loginView";
+		return "member_loginForm";
 	}
 
 	/**
@@ -42,11 +42,17 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
-	@RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
+	/*@RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
 	public String loginForm(@ModelAttribute LoginForm loginForm, String prev,
 			HttpServletRequest request, Model model) {
 		model.addAttribute("prev", prev);
 		return "member_loginForm";
+	}*/
+	
+	@RequestMapping(value = "member/loginModal", method = RequestMethod.GET)
+	public String loginModal(Model model, String prev) {
+		model.addAttribute("prev", prev);
+		return "member_loginModal";
 	}
 
 	/**

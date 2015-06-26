@@ -14,6 +14,7 @@ import org.kosta.gibuticon.model.freeBoard.PagingBean;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentListVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPagingBean;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.FreeBoardService;
 import org.kosta.gibuticon.model.service.FreeCommentService;
@@ -36,13 +37,9 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/writeForm.gibu")
-	public ModelAndView writeForm(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
-		if (session==null || mvo == null) {
-			return new ModelAndView("redirect:../loginView.gibu");
-		}
-		return new ModelAndView("freeBoard_write");
+	@LoginCheck
+	public String writeForm(HttpServletRequest request) {
+		return "freeBoard_write";
 	}
 	/**
 	 * 자유게시판에 글을작성
@@ -51,6 +48,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/write.gibu")
+	@LoginCheck
 	public ModelAndView write(FreeBoardVO freeBoardVO,
 			HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
@@ -88,6 +86,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/showContent.gibu")
+	@LoginCheck
 	public ModelAndView showContent(String no, String pageNo,
 			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
@@ -141,6 +140,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/updateForm.gibu")
+	@LoginCheck
 	public ModelAndView updateForm(String no) {
 		FreeBoardVO fvo = freeBoardService.getFreeBoardByNo(no);
 		return new ModelAndView("freeBoard_update", "fvo", fvo);
@@ -151,6 +151,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/update.gibu")
+	@LoginCheck
 	public String update(FreeBoardVO freeBoardVO) {
 		freeBoardService.updateFreeBoard(freeBoardVO);
 		return "redirect:showContent.gibu?no=" + freeBoardVO.getBoardNo();
@@ -161,6 +162,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/delete.gibu")
+	@LoginCheck
 	public String delete(String no) {
 		freeBoardService.deleteFreeBoard(no);
 		return "redirect:getList.gibu";
@@ -171,6 +173,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/replyForm.gibu")
+	@LoginCheck
 	public ModelAndView replyForm(String no) {
 		FreeBoardVO fvo = freeBoardService.replyView(no);
 		return new ModelAndView("freeBoard_reply_form", "fvo", fvo);
@@ -181,6 +184,7 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/reply.gibu")
+	@LoginCheck
 	public ModelAndView reply(FreeBoardVO freeBoardVO) {
 		System.out.println("reply" + freeBoardVO);
 		freeBoardService.reply(freeBoardVO);
