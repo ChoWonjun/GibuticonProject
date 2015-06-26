@@ -15,22 +15,29 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-md-12"></div>
 		</div>
 	</div>
 </div>
-
 
 <img src="${initParam.root }img\g_gibusite2.jpg" width="100%">
 
 <div class="section">
 	<div class="container">
 		<div class="row">
+			<div class="col-md-12 col-md-offset-2">
+				<a href="http://www.makehope.org/"><img
+					src="${initParam.root }img\g_hope_logo.jpg"></a>| <a
+					href="http://www.dreamfull.or.kr/app/newdf/main"><img
+					src="${initParam.root }img\g_dreamfull_logo.jpg"></a> |<a
+					href="http://hope.daum.net/"><img
+					src="${initParam.root }img\g_daum_logo.jpg"></a>| <a
+					href="http://happybean.naver.com/"><img
+					src="${initParam.root }img\g_naver_logo.jpg"></a>
 			</div>
 		</div>
 	</div>
-
+</div>
 <br>
 <br>
 <br>
