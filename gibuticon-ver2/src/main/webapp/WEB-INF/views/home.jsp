@@ -80,7 +80,6 @@
 	data-cycle-easing="linear">
 	<!-- empty element for pager links -->
 	<div class="cycle-pager"></div>
-
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -88,38 +87,35 @@
 			</div>
 		</div>
 	</div>
-	<img class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner1.jpg"> <img
-		class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner3.jpg">
+	<img class="cycle-slideshow img"
+		src="${initParam.root }img/g_mainbanner1.jpg"> <img
+		class="cycle-slideshow img"
+		src="${initParam.root }img/g_mainbanner3.jpg">
 </div>
 
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-13">
-				<div class="section">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-5" >
-								<a href="${initParam.root }introduce_gibuticon.gibu"><img
-									src="${initParam.root }img/g_main_gibuticon.jpg" width="560"></a>
-								
-							</div>
-						<div class="col-md-1" ></div>
-							<div class="col-md-3" >
-								<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
-									class="img-responsive"></a>
-							
-							</div>
-							<div class="col-md-1" ></div>
-							<div class="col-md-3">
-					 			<a href="${initParam.root }member/memberRanksView.gibu"><img src="${initParam.root }img/g_main_member_ranking.jpg"
-									 class="img-responsive" ></a>
-								
-							</div>
-						</div>
+<div class="row">
+	<div class="col-md-13">
+		<div class="section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<a href="${initParam.root }introduce_gibuticon.gibu"><img
+							src="${initParam.root }img/g_main_gibuticon.jpg" width="560"></a>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-3">
+						<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
+							class="img-responsive"></a>
+					</div>
+					<div class="col-md-1"></div>
+					<div class="col-md-3">
+						<a href="${initParam.root }member/memberRanksView.gibu"><img
+							src="${initParam.root }img/g_main_member_ranking.jpg"
+							class="img-responsive"></a>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+

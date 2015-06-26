@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.message.MessageVO;
 import org.kosta.gibuticon.model.service.FriendService;
@@ -20,6 +21,7 @@ public class MessageController {
 	private MessageService messageService;
 	
 	@RequestMapping("message/sendForm.gibu")
+	@LoginCheck
 	public ModelAndView sendForm(HttpServletRequest request){
 		HttpSession session = request.getSession();
 		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
@@ -27,6 +29,7 @@ public class MessageController {
 	}
 	
 	@RequestMapping("message/send.gibu")
+	@LoginCheck
 	public ModelAndView send(MessageVO messageVO, HttpServletRequest request){
 		System.out.println(messageVO);
 		messageService.sendMessage(messageVO);

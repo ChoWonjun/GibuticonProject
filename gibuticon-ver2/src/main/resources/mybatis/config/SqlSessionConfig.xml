@@ -36,6 +36,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="friendVO" />
 		<typeAlias type="org.kosta.gibuticon.model.message.MessageVO"
 			alias="messageVO" />
+		<typeAlias type="org.kosta.gibuticon.model.bookmark.BookmarkVO"
+			alias="bookmarkVO"/>
 	</typeAliases>
 	<!-- sql mapping config xml 을 연결 -->
 	<mappers>
@@ -46,5 +48,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/config/history.xml" />
 		<mapper resource="mybatis/config/friend.xml" />
 		<mapper resource="mybatis/config/message.xml" />
+		<mapper resource="mybatis/config/bookmark.xml" />
 	</mappers>
 </configuration>

@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <link
@@ -13,6 +12,7 @@
 <link
 	href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
 	rel="stylesheet" type="text/css">
+	
 <script type="text/javascript">
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
@@ -41,29 +41,31 @@
 								<hr>
 							</dt>
 							<dd>
-								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }member/memberRanksView.gibu"
-										class="u_txt1"> <span style="font-family: &amp; quot;">기부랭킹보기</span></a></li>
-									<li><a href="#" class="u_txt2"><span
+								<ul"font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+									<li><a
+										href="${initParam.root }member/memberRanksView.gibu"
+										class="u_txt1"> <span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
+									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?id=${sessionScope.mvo.id}" class="u_txt2"><span
 											style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
 									<li><a href="#" class="u_txt3"><span
 											style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
-									<li><a href="${initParam.root}member/updateMemberForm.gibu">
-											<span style="font-family: &amp; amp;">회원정보 수정</span>
+									<li><a
+										href="${initParam.root}member/updateMemberForm.gibu"> <span
+											style="font-family: &amp; amp;">회원정보 수정</span>
 									</a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">회원탈퇴</span></a></li>
 								</ul>
 							</dd>
 							<dt class="s_srch">
-								<br> <br> <span  style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">포인트
+								<br> <br> <span style="font-family: &amp; quot;">포인트
 									부분</span> <br>
 								<hr>
 							</dt>
 							<dd>
-								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+								<ul"font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 									<li><a href="javascript:chargePopup()" class="sr_txt5">
 											<span style="font-family: &amp; amp;">충전하기</span>
 									</a></li>
@@ -78,12 +80,12 @@
 							</dd>
 							<dd></dd>
 							<dt class="s_srch">
-								<br> <br> <span  style="font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">콘
+								<br> <br> <span style="font-family: &amp; quot;">콘
 									친구</span> <br>
 								<hr>
 							</dt>
 							<dd>
-								<ul "font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+								<ul"font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 									<li><a href="#" class="sr_txt5"> <span
 											style="font-family: &amp; amp;">친구 찾기</span></a></li>
 									<li><a href="#" class="sr_txt5"> <span

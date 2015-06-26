@@ -7,7 +7,16 @@
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
+	function bookmarkRegister(){
+		if(confirm("즐겨찾기를 등록하시겠습니까?")){
+			location.href="${initParam.root}bookmark/addBookmark.gibu?id=${sessionScope.mvo.id}&fund=${requestScope.posting}";
+		}else{
+			return false;
+		}
+	}
 	function gibuCone() {
 		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
 				+ coneForm.coneCount.value;
@@ -110,7 +119,8 @@
 			</div>
 			<div class="col-md-6" align="center">
 				<h4>
-					<span style="font-family: &amp; amp;"><br><strong>모금세부 정보</strong></span>
+					<span style="font-family: &amp; amp;"><br> <strong>모금세부
+							정보</strong></span>
 				</h4>
 				<table style="font-family: &amp; amp;" class="table">
 					<tbody>
@@ -141,55 +151,48 @@
 									size="3">${fund.homepage }</font></a></td>
 						</tr>
 					</tbody>
-					<tfoot>
-						<tr align="center">
-							<td colspan="1">
-								<link rel="stylesheet"
-									href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-								<a id="modal-755773" href="#modal-container-755773" role="button"
-								class="btn btn-default" data-toggle="modal">기부하기</a>
-								<div class="modal fade" id="modal-container-755773" role="dialog"
-									aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal"
-													aria-hidden="true">×</button>
-
-												<h4 class="modal-title" id="myModalLabel">기부하기</h4>
-
-											</div>
-											<div class="modal-body">
-
-												<form name="coneForm">
-													기부하시겠습니까?<br> 기부할 콘 : <input type="text"
-														name="coneCount" size="10" maxlength="8">cone <br>보유콘
-													: ${sessionScope.mvo.point }<br>
-												</form>
-
-											</div>
-											<div class="modal-footer">
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">취소</button>
-												<button onclick="gibuCone()" type="button"
-													class="btn btn-default">기부</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</td>
-							<td colspan="2"><a class="btn btn-default" type="submit">즐겨찾기</a></td>
-							<td colspan="2"><a class="btn btn-default"
-								href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}">목록보기</a></td>
-							<td></td>
-						</tr>
-					</tfoot>
 				</table>
 			</div>
 			<div class="section">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12"></div>
+						<div class="col-md-12">
+							<a id="modal-755774" href="#modal-container-755774" role="button"
+								class="btn btn-default" data-toggle="modal">기부하기</a>
+							<div class="modal fade" id="modal-container-755774" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+
+											<h4 class="modal-title" id="myModalLabel">기부하기</h4>
+
+										</div>
+										<div class="modal-body">
+
+											<form name="coneForm">
+												기부하시겠습니까?<br> 기부할 콘 : <input type="text"
+													name="coneCount" size="10" maxlength="8">cone <br>보유콘
+												: ${sessionScope.mvo.point }<br>
+											</form>
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default"
+												data-dismiss="modal">취소</button>
+											<button onclick="gibuCone()" type="button"
+												class="btn btn-default">기부</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<a href="javascript:bookmarkRegister()"><input type="button"
+								value="즐겨찾기"></a> <a
+								href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}">목록보기</a>
+
+						</div>
 					</div>
 				</div>
 			</div>

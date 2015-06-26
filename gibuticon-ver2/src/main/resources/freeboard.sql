@@ -2,11 +2,15 @@
 
 drop table free_board;
 
+--3.
+create sequence free_board_sequence;
+
 alter table free_board add(ref number not null);
 --2.
 alter table free_board add(restep number not null);
 alter table free_board add(relevel number not null);
 alter table free_board modify(hits number default 0);
+
 --1.
 create table free_board(
 	board_no number primary key,
@@ -19,12 +23,16 @@ create table free_board(
 )
 
 drop table freeBoard_comment;
---4.
+
+--6.
+create sequence freeboard_comment_sequence;
+
+--5.
 alter table freeBoard_comment modify(hits number default 0);
 alter table freeBoard_comment add(ref number not null);
 alter table freeBoard_comment add(restep number not null);
 alter table freeBoard_comment add(relevel number not null);
---3.
+--4.
 create table freeBoard_comment(
 	freeboard_comment_no number primary key,
 	write_date date not null,
@@ -35,34 +43,4 @@ create table freeBoard_comment(
 	constraint fk_freeBoard_id foreign key(id) references member,
 	constraint fk_board_no foreign key(board_no) references free_board
 )
-select * from freeBoard_comment where board_no='113'
-select fc.freeboard_comment_no, fc.write_date, fc.freeboard_comment, fc.hits, fb.id, fb.board_no from freeBoard_comment fc, free_board fb where fb.id='chocamp' and fb.board_no=61;
 
-insert into freeBoard_comment(freeboard_comment_no, write_date, freeboard_comment, hits, id, board_no) values(freeboard_comment_sequence.nextval,sysdate,'왕왕',0,'chocamp',61);
-
-create sequence freeboard_comment_sequence;
-
-create sequence free_board_sequence;
-
-drop sequence free_board_sequence;
-
-select * from free_board;
-
-insert into free_board values (free_board_sequence.nextval,'whatamidoinghere',sysdate,'whoamiandwhereami',0,'chocamp');
-	
-select * from free_board where id='chocamp';
-
-delete from free_board where id='chocamp';
-
-delete from free_board where board_no='28';
-
- select fb.board_no, fb.title, fb.write_date, fb.content, fb.hits, fb.id from (
-  			select fb.board_no, fb.title, fb.write_date, fb.content, fb.hits, fb.id, ceil(rownum/5) as page from (
-  				select fb.board_no, fb.title, to_char(fb.write_date,'YYYY.MM.DD') as fb.write_date, fb.content, fb.hits, fb.id	 
-  				from free_board fb, member m order by fb.ref desc, fb.restep asc
-  				)
-  			) 
-  		where fb.id=m.id and page=1
-  		
-				select fb.board_no, fb.title, to_char(fb.write_date,'YYYY.MM.DD') write_date, fb.content, fb.hits, fb.id	 
-  				from free_board fb order by fb.ref desc, fb.restep asc
