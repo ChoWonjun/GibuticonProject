@@ -9,6 +9,7 @@ public class FundVO {
 	private String fundNo;
 	@NotEmpty
 	private String fundName;
+	private String category;
 	@NotEmpty
 	private String proposal;
 	@NotEmpty
@@ -51,6 +52,14 @@ public class FundVO {
 
 	public void setFundName(String fundName) {
 		this.fundName = fundName;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getProposal() {

@@ -6,13 +6,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getFundList" resultType="fundVO">
 		select * from(
 		select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
-		startdate, duedate, content, hits, ceil(rownum/9) as page from
+		startdate, duedate, content, hits, category, ceil(rownum/9) as page from
 		(select fund_no fundno, fund_name fundname, proposal, homepage,
 		cur_sum cursum, goal_sum goalsum, participant,
 		to_char(start_date,'yyyy-mm-dd') as startdate,
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate,
-		content, hits from gibu_fund order by fund_no desc))where page=#{value}
+		content, hits, category from gibu_fund order by fund_no desc))where page=#{value}
 	</select>
 
 	<select id="getFundByNo" resultType="fundVO">
@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		to_char(start_date,'yyyy-mm-dd') as startdate,
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate,
-		content, hits from gibu_fund where fund_no=#{value}
+		content, hits, category from gibu_fund where fund_no=#{value}
 	</select>
 
 	<insert id="writeFund" parameterType="fundVO">
@@ -29,9 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select gibu_fund_seq.nextval from dual
 		</selectKey>
 		insert into gibu_fund
-		(fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content)
+		(fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content, category)
 		values(#{fundNo},#{fundName},#{proposal},
-		#{homepage},#{goalSum},#{startDate},#{dueDate},#{content})
+		#{homepage},#{goalSum},#{startDate},#{dueDate},#{content},#{category})
 	</insert>
 
 	<delete id="deleteFundByNo">
@@ -42,7 +42,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update gibu_fund set
 		fund_name=#{fundName},proposal=#{proposal},
 		homepage=#{homepage},goal_sum=#{goalSum}, start_date=#{startDate},
-		due_date=#{dueDate},content=#{content}
+		due_date=#{dueDate},content=#{content}, category=#{category}
 		where fund_no=#{fundNo}
 	</update>
 

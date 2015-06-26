@@ -105,17 +105,17 @@
 				<li><a href="${initParam.root}notice/getList.gibu">공지사항</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-hover="dropdown" data-delay="1000" data-close-others="false"
-					data-toggle="dropdown"> 모금<b class="caret"></b>
+					data-toggle="dropdown"> 모금함 <b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
 						<li><a tabindex="-1"
-							href="${initParam.root}fund/getList.gibu"><strong>기부사이트보기</strong></a>
+							href="${initParam.root}fund/getList.gibu"><strong>전체보기</strong></a>
 						</li>
 						<li class="divider"></li>
-						<li><a tabindex="-1" href="#"><strong>아동</strong></a></li>
+						<li><a tabindex="-1" href="#"><strong>어린이</strong></a></li>
 						<li><a tabindex="-1" href="#"><strong>어르신</strong></a></li>
 						<li><a tabindex="-1" href="#"><strong>장애인</strong></a></li>
-						<li><a tabindex="-1" href="#"><strong>기타</strong></a></li>
+						<li><a tabindex="-1" href="#"><strong>캠페인</strong></a></li>
 					</ul></li>
 				<li><a href="${initParam.root }fund/currentState.gibu">모금현황</a></li>
 				<li><a href="${initParam.root}freeBoard/getList.gibu">자유게시판</a></li>
@@ -132,20 +132,20 @@
 								<div class="modal-header">
 									<button type="button" class="close" data-dismiss="modal"
 										aria-hidden="true">×</button>
-									<h4 class="modal-title" id="myModalLabel">로그인</h4>
+									<h4 class="modal-title" id="myModalLabel">&nbsp;LogIn</h4>
 								</div>
 								<div class="modal-body">
 									<div class="section text-center">
 										<a href="${initParam.root}home.gibu"> <img
 											src="${initParam.root }img\이모티콘.jpg"
 											class="center-block img-responsive img-thumbnail"
-											height="100" width="100"></a>
+											height="100" width="100"></a><br>
 										<form class="form-horizontal"
 											action="${initParam.root}member/login.gibu" method="post">
 											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-5 col-md-8">
+												<!-- <div class="col-sm-offset-2 col-sm-5 col-md-8">
 													<label for="inputEmail3" class="control-label">ID</label>
-												</div>
+												</div> -->
 												<div class="col-sm-offset-2 col-sm-5 col-md-8">
 													<input type="text" class="form-control input-lg" id="id"
 														name="id" placeholder="User Name" path="id" />
@@ -155,9 +155,9 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<div class="col-sm-offset-2 col-sm-5 col-md-8">
+												<!-- <div class="col-sm-offset-2 col-sm-5 col-md-8">
 													<label for="inputPassword3" class="control-label">Password</label>
-												</div>
+												</div> -->
 												<div class="col-sm-offset-2 col-sm-5 col-md-8">
 													<input type="password" class="form-control input-lg"
 														id="password" name="password" placeholder="Password"
@@ -177,7 +177,7 @@
 													<input type="hidden" id="prev" name="prev"
 														value="${param.prev }">
 													<button type="submit" class="btn btn-default"
-														id="loginForm">Login</button>
+														id="loginForm">LogIn</button>
 												</div>
 												<br><br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
 												</a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
@@ -219,9 +219,8 @@
 									href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
 											마이페이지</strong></a></li>
 							</ul></li>
-
-						<li><a id="modal-755773" href="#modal-container-755773"
-							class="btn btn-default" data-toggle="modal">충전하기</a></li>
+						
+						<li><a id="modal-755773" href="#modal-container-755773" data-toggle="modal">충전하기</a></li>
 						<div class="modal fade" id="modal-container-755773" role="dialog"
 							aria-labelledby="myModalLabel" aria-hidden="true">
 							<div class="modal-dialog">
