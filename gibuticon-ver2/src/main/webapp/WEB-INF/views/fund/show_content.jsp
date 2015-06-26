@@ -8,6 +8,13 @@
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript">
+	function bookmarkRegister(){
+		if(confirm("즐겨찾기를 등록하시겠습니까?")){
+			location.href="${initParam.root}bookmark/addBookmark.gibu?id=${sessionScope.mvo.id}&fund=${requestScope.posting}";
+		}else{
+			return false;
+		}
+	}
 	function gibuCone() {
 		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
 				+ coneForm.coneCount.value;
@@ -178,7 +185,7 @@
 									</div>
 								</div>
 							</td>
-							<td colspan="2"><a class="btn btn-default" type="submit">즐겨찾기</a></td>
+							<td colspan="2"><a href="javascript:bookmarkRegister()"class="btn btn-default" type="submit">즐겨찾기</a></td>
 							<td colspan="2"><a class="btn btn-default"
 								href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}">목록보기</a></td>
 							<td></td>

@@ -76,12 +76,6 @@
 											}
 										});
 					});
-
-	/* function chargePopup() {
-		var url = "${initParam.root }cone/chargeView.gibu";
-		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
-	} */
-
 	function sendMessagePopup() {
 		var url = "${initParam.root}message/sendForm.gibu";
 		window
@@ -224,57 +218,60 @@
 										href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
 												마이페이지</strong></a></li>
 								</ul></li>
-					
-						<li><a id="modal-755773" href="#modal-container-755773"
-							class="btn btn-default" data-toggle="modal">충전하기</a></li>
-						<div class="modal fade" id="modal-container-755773" role="dialog"
+
+							<li><a id="modal-755774" href="#modal-container-755774"
+								data-toggle="modal">충전하기</a></li>
+							<div class="modal fade" id="modal-container-755774" role="dialog"
 							aria-labelledby="myModalLabel" aria-hidden="true">
-							<div class="modal-dialog">
-								<div class="modal-content">
-									<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">×</button>
-										<h2 class="modal-title" id="myModalLabel">충전하기</h2>
-									</div>
-									<div class="modal-body">
-										<div class="section text-center" id="test">
-											<div class="section">
-												<div class="container">
-													<div class="row"></div>
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+											<h2 class="modal-title" id="myModalLabel">충전하기</h2>
+										</div>
+										<div class="modal-body">
+											<div class="section text-center" id="test">
+												<div class="section">
+													<div class="container">
+														<div class="row"></div>
+													</div>
 												</div>
+												<form name="chargeCone" id="chargeCone">
+													충전단위 <select id="coneValSel">
+														<option value="">-선택-</option>
+														<option value="10">10cone</option>
+														<option value="20">20cone</option>
+														<option value="30">30cone</option>
+														<option value="50">50cone</option>
+														<option value="100">100cone</option>
+														<option value="self">직접입력</option>
+													</select> <span id="coneInput">직접입력 <input type=text
+														id=selfConeVal>cone
+													</span>
+													<hr>
+													<br> 결제금액 <input type="text" disabled="disabled"
+														name="coneVal" id="coneVal"> X100원=<input
+														type="text" disabled="disabled" name="payVal">원
+													<hr>
+													결제수단 <input type="radio" name="payment" value="mobile">
+													휴대폰 <input type="radio" name="payment" value="transfer">
+													계좌이체 <input type="radio" name="payment" value="credit">
+													신용카드
+													<hr>
+													<input class="btn btn-primary" type="button" value="충전"
+														id="chargeButton"> <input class="btn btn-default"
+														type="button" value="취소" data-dismiss="modal">
+												</form>
 											</div>
-											<form name="chargeCone" id="chargeCone">
-												충전단위 <select id="coneValSel">
-													<option value="">-선택-</option>
-													<option value="10">10cone</option>
-													<option value="20">20cone</option>
-													<option value="30">30cone</option>
-													<option value="50">50cone</option>
-													<option value="100">100cone</option>
-													<option value="self">직접입력</option>
-												</select> <span id="coneInput">직접입력 <input type=text
-													id=selfConeVal>cone
-												</span>
-												<hr>
-												<br> 결제금액 <input type="text" disabled="disabled"
-													name="coneVal" id="coneVal"> X100원=<input
-													type="text" disabled="disabled" name="payVal">원
-												<hr>
-												결제수단 <input type="radio" name="payment" value="mobile">
-												휴대폰 <input type="radio" name="payment" value="transfer">
-												계좌이체 <input type="radio" name="payment" value="credit">
-												신용카드
-												<hr>
-												<input class="btn btn-primary" type="button" value="충전"
-													id="chargeButton"> <input class="btn btn-default"
-													type="button" value="취소" data-dismiss="modal">
-											</form>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
 						</ul>
 					</c:otherwise>
 				</c:choose>
 			</div>
+		</div>
+	</div>
+</body>
