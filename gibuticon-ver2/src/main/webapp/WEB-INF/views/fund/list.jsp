@@ -15,7 +15,7 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-29" >
+			<div class="col-md-29">
 				<img src="${initParam.root }img\g_gibusite.jpg"
 					class="img-responsive">
 			</div>

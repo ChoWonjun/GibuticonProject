@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -35,7 +36,9 @@ public class ConeController {
 	}
 	
 	@RequestMapping("cone/charge.gibu")
+	@ResponseBody
 	public ModelAndView charge(MemberVO memberVO, int point, String paymentType, HttpServletRequest request){
+		System.out.println("넘어오긴 하니");
 		memberVO.setPoint(point);
 		coneService.charge(memberVO,paymentType);
 		
@@ -45,7 +48,7 @@ public class ConeController {
 		
 		session.setAttribute("mvo",mvo);
 		
-		return new ModelAndView("cone/charge_result");
+		return new ModelAndView("cone/charge_result","h","h");
 	}
 	
 	@RequestMapping("cone/gibu.gibu")
