@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<link rel="stylesheet"
-	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<!-- <link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -12,11 +12,82 @@
 <script
 	src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <script type="text/javascript">
-	function chargePopup() {
-		var url = "${initParam.root }cone/chargeView.gibu";
-		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
+	$(document)
+			.ready(
+					function() {
+						$("#coneInput").hide();
+						$("#coneValSel")
+								.change(
+										function() {
+											chargeCone.coneVal.value = "";
+											chargeCone.payVal.value = "";
+											$("#coneInput").hide();
+											if ($("#coneValSel").val() == "") {
+												alert("수량을 선택하세요!");
+												return;
+											} else if ($("#coneValSel").val() == "self") {
+												$("#coneInput").show();
+											} else {
+												chargeCone.coneVal.value = $(
+														"#coneValSel").val();
+												chargeCone.payVal.value = chargeCone.coneVal.value * 100;
+											}
+										});
+						$("#selfConeVal")
+								.keyup(
+										function() {
+											if (isNaN($("#selfConeVal").val())) {
+												$("#selfConeVal").val("");
+												alert("숫자로만 입력하세요!");
+											}
+											chargeCone.coneVal.value = $(
+													"#selfConeVal").val();
+											chargeCone.payVal.value = chargeCone.coneVal.value * 100;
+										});
+						$("#chargeButton")
+								.click(
+										function() {
+											if (chargeCone.payVal.value == "")
+												alert("충전단위를 선택하세요!");
+											else if (chargeCone.coneVal.value < 10)
+												alert("충전단위를 10개 이상 입력해주세요!");
+											else if ($("#chargeCone :radio[name=payment]:checked").length == 0) {
+												alert("결제방식을 선택하세요!");
+											} else {
+												$
+														.ajax({
+															type : "get",
+															url : "${initParam.root}cone/charge.gibu",
+															data : "id=${sessionScope.mvo.id }&point="
+																	+ chargeCone.coneVal.value
+																	+ "&paymentType="
+																	+ $(
+																			"#chargeCone :radio[name=payment]:checked")
+																			.val(),
+															success : function(
+																	f) {
+																var data = "충전이 완료되었습니다.";
+																data += "<br>";
+																data += "<input class='btn btn-default' type='button' value='취소' data-dismiss='modal' onclick='javascript:location.reload()'>";
+
+																$("#test")
+																		.html(
+																				data);
+
+															}
+														});
+											}
+										});
+					});
+
+	function sendMessagePopup() {
+		var url = "${initParam.root}message/sendForm.gibu";
+		window
+				.open(url, "message",
+						"width=420, height=460, teop=150, left=200");
 	}
 </script>
+
 <div class="navbar navbar-default">
 	<div class="container">
 		<div class="navbar-header">
@@ -108,9 +179,8 @@
 													<button type="submit" class="btn btn-default"
 														id="loginForm">Login</button>
 												</div>
-											</div>
-											<br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 | </a>
-											<a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
+												<br><br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
+												</a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
 										</form>
 									</div>
 								</div>
@@ -118,7 +188,10 @@
 						</div>
 					</div>
 				</c:when>
+				<%--로그인 했을때 보이는 헤더--%>
 				<c:otherwise>
+					<link rel="stylesheet"
+						href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
 							data-hover="dropdown" data-toggle="dropdown" data-delay="1000">
@@ -134,18 +207,71 @@
 									href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한
 											콘</strong> ${sessionScope.mvo.point }개 </a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;친구목록
-											보기</strong></a></li>
+								<li><a tabindex="-1"
+									href="${initParam.root }friend/memberlist.gibu"><strong>&nbsp;&nbsp;&nbsp;회원검색</strong></a></li>
+								<li><a tabindex="-1"
+									href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"><strong>&nbsp;&nbsp;&nbsp;친구목록보기</strong></a></li>
+								<li class="divider"></li>
+								<li><a tabindex="-1" href="javascript:sendMessagePopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지보내기</strong></a></li>
+								<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;쪽지목록</strong></a></li>
 								<li class="divider"></li>
 								<li><a tabindex="-1"
 									href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
 											마이페이지</strong></a></li>
 							</ul></li>
-						<li><a href="javascript:chargePopup()">충전하기</a></li>
+
+						<li><a id="modal-755773" href="#modal-container-755773"
+							class="btn btn-default" data-toggle="modal">충전하기</a></li>
+						<div class="modal fade" id="modal-container-755773" role="dialog"
+							aria-labelledby="myModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal"
+											aria-hidden="true">×</button>
+										<h2 class="modal-title" id="myModalLabel">충전하기</h2>
+									</div>
+									<div class="modal-body">
+										<div class="section text-center" id="test">
+											<div class="section">
+												<div class="container">
+													<div class="row"></div>
+												</div>
+											</div>
+											<form name="chargeCone" id="chargeCone">
+												충전단위 <select id="coneValSel">
+													<option value="">-선택-</option>
+													<option value="10">10cone</option>
+													<option value="20">20cone</option>
+													<option value="30">30cone</option>
+													<option value="50">50cone</option>
+													<option value="100">100cone</option>
+													<option value="self">직접입력</option>
+												</select> <span id="coneInput">직접입력 <input type=text
+													id=selfConeVal>cone
+												</span>
+												<hr>
+												<br> 결제금액 <input type="text" disabled="disabled"
+													name="coneVal" id="coneVal"> X100원=<input
+													type="text" disabled="disabled" name="payVal">원
+												<hr>
+												결제수단 <input type="radio" name="payment" value="mobile">
+												휴대폰 <input type="radio" name="payment" value="transfer">
+												계좌이체 <input type="radio" name="payment" value="credit">
+												신용카드
+												<hr>
+												<input class="btn btn-primary" type="button" value="충전"
+													id="chargeButton"> <input class="btn btn-default"
+													type="button" value="취소" data-dismiss="modal">
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</ul>
 				</c:otherwise>
 			</c:choose>
 		</div>
 	</div>
 </div>
-

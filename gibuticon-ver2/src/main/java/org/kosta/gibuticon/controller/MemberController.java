@@ -31,7 +31,7 @@ public class MemberController {
 	@RequestMapping(value = "loginView", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute LoginForm loginForm,
 			HttpServletRequest request) {
-		return "member_loginView";
+		return "member_loginForm";
 	}
 
 	/**

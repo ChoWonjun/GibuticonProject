@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -33,8 +34,8 @@ public class NoticeController {
 	 * @param request
 	 * @return
 	 */
-	
 	@RequestMapping("notice/writeForm.gibu")
+	@LoginCheck
 	public ModelAndView noticeWriteView(HttpServletRequest request) {
 		HttpSession session = request.getSession(false);
 		MemberVO mvo =(MemberVO) session.getAttribute("mvo");
