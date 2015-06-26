@@ -17,6 +17,7 @@
   )
   
   ALTER TABLE gibu_fund ADD category varchar2(200) not null;
+  ALTER TABLE gibu_fund ADD source varchar2(200) not null;
   
   insert into gibu_fund(fund_no,fund_name,proposal,
   									homepage,goal_sum,due_date,content)

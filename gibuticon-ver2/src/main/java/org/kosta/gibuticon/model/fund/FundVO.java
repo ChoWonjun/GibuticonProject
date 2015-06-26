@@ -14,6 +14,7 @@ public class FundVO {
 	private String proposal;
 	@NotEmpty
 	private String homepage;
+	private String source;
 	private String curSum;
 	@NotEmpty
 	private String goalSum;
@@ -29,7 +30,7 @@ public class FundVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public String getStartDate() {
 		return startDate;
 	}
@@ -76,6 +77,14 @@ public class FundVO {
 
 	public void setHomepage(String homepage) {
 		this.homepage = homepage;
+	}
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
 	}
 
 	public String getCurSum() {
@@ -141,11 +150,11 @@ public class FundVO {
 	public void setPhotoList(List<FundPhotoVO> photoList) {
 		this.photoList = photoList;
 	}
-	
-	public int getProgress(){
+
+	public int getProgress() {
 		int cur = Integer.parseInt(curSum);
 		int goal = Integer.parseInt(goalSum);
-		return (int) Math.ceil(cur/goal*100);
+		return (int) Math.ceil(cur / goal * 100);
 	}
 
 	@Override
@@ -157,6 +166,5 @@ public class FundVO {
 				+ ", dueDate=" + dueDate + ", content=" + content + ", hits="
 				+ hits + "]";
 	}
-
 
 }

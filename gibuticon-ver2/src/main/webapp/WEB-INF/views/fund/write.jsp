@@ -114,19 +114,26 @@
 														required="required" type="text" name="fundName"
 														id="fundName"> <select name="category"
 														id="category" size="1">
-															<option value="0">카테고리</option>
-															<option value="1">어린이</option>
-															<option value="2">어르신</option>
-															<option value="3">장애인</option>
-															<option value="4">캠페인</option>
+															<option value="">카테고리</option>
+															<option value="어린이">어린이</option>
+															<option value="어르신">어르신</option>
+															<option value="장애인">장애인</option>
+															<option value="캠페인">캠페인</option>
 													</select> <br> <br class="cl_b"></td>
 												</tr>
 												<tr>
-													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
-													<td colspan="2" class="hope_sum"><br> <input
-														required="required" class="shot" type="number"
-														name="goalSum" id="goalSum" style="text-align: right"
-														maxlength="12"></td>
+													<th class="link"><br> <label for="url1">관련
+															링크</label></th>
+													<td colspan="2" class="link"><br> <input
+														required="required" class="shot" type="text" id="homepage"
+														name="homepage"> <select name="source"
+														id="source" size="1">
+															<option value="">모금출처</option>
+															<option value="해피빈">해피빈</option>
+															<option value="희망해">희망해</option>
+															<option value="드림풀">드림풀</option>
+															<option value="아름다운">아름다운</option>
+													</select> <br> <br class="cl_b"></td>
 												</tr>
 												<tr>
 													<th class="organ"><br> <label for="formOrgan">주관
@@ -136,11 +143,11 @@
 														name="proposal" id="proposal"></td>
 												</tr>
 												<tr>
-													<th class="link"><br> <label for="url1">관련
-															링크</label></th>
-													<td colspan="2" class="link"><br> <input
-														required="required" class="shot" type="text" id="homepage"
-														name="homepage"></td>
+													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
+													<td colspan="2" class="hope_sum"><br> <input
+														required="required" class="shot" type="number"
+														name="goalSum" id="goalSum" style="text-align: right"
+														maxlength="12"></td>
 												</tr>
 												<tr>
 													<th class="execution_time"><br> <label
