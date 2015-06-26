@@ -18,7 +18,7 @@
 	<c:otherwise>
 <h3>쪽지 보내기</h3>
 
-<form name="multiform" id="multiform" enctype="multipart/form-data" method="post" action="${initParam.root }fund/write.gibu">
+<form name="messageForm" method="post" action="${initParam.root }message/send.gibu">
 보낸이 : ${sessionScope.mvo.name }<br>
 받는이 : 
 		<select id="receiver">
@@ -36,6 +36,7 @@
 <textarea cols="53" rows="15" name="content"></textarea>
 
 <br><br><input type="submit" value="전송"> <input type="button" value="취소">
+</form>
 
 </body>
 </html>
