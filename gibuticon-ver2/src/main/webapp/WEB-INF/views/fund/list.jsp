@@ -15,12 +15,10 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-md-12"></div>
 		</div>
 	</div>
 </div>
-
 
 <img src="${initParam.root }img\g_gibusite2.jpg" width="100%">
 
@@ -36,7 +34,6 @@
 					src="${initParam.root }img\g_daum_logo.jpg"></a>| <a
 					href="http://happybean.naver.com/"><img
 					src="${initParam.root }img\g_naver_logo.jpg"></a>
-
 			</div>
 		</div>
 	</div>

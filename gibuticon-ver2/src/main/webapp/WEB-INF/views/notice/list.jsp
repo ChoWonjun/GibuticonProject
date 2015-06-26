@@ -11,17 +11,6 @@
 			<div class="row"></div>
 		</div>
 	</div>
-<%-- 	<div class="section" align="center">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-15">
-			
-						<img src="${initParam.root}img\g_notice.jpg" width="200">
-				
-				</div>
-			</div>
-		</div>
-	</div> --%>
 	<div class="section">
 		<div class="container">
 			<div class="row">
@@ -31,19 +20,19 @@
 						<div class="snb_v1">
 							<dl class="menu">
 								<dt class="s_intro">
-									<br> <br> <span style="font-family: &amp; quot;">서비스
+									<br> <br> <span style="font-family: &amp; amp;">서비스
 										소개</span> <br>
 									<hr>
 								</dt>
 								<dd>
 									<ul>
 										<li><a href="${initParam.root }introduce_gibuticon.gibu"
-											class="u_txt1"> <span style="font-family: &amp; quot;">기부티콘이란</span></a>
+											class="u_txt1"> <span style="font-family: &amp; amp;">기부티콘이란</span></a>
 										</li>
 									</ul>
 								</dd>
 								<dt class="s_srch">
-									<br> <br> <span style="font-family: &amp; quot;">이용안내</span>
+									<br> <br> <span style="font-family: &amp; amp;">이용안내</span>
 									<br>
 									<hr>
 								</dt>
@@ -51,28 +40,28 @@
 									<ul>
 										<li><a
 											href="${initParam.root }introduce_what_is_cone.gibu"
-											class="sr_txt5"> <span style="font-family: &amp; quot;">콘
+											class="sr_txt5"> <span style="font-family: &amp; amp;">콘
 													안내</span></a></li>
-										<li><a href="#"><span
-												style="font-family: &amp; quot;">콘받기 안내</span></a></li>
+										<li><a href="#"><span style="font-family: &amp; amp;">콘받기
+													안내</span></a></li>
 										<li><a href="${initParam.root }introduce_howtogibu.gibu"
-											class="sr_txt5"> <span style="font-family: &amp; quot;">기부방법
+											class="sr_txt5"> <span style="font-family: &amp; amp;">기부방법
 													안내</span></a></li>
 										<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
 									</ul>
 								</dd>
 								<dd></dd>
 								<dt class="s_srch">
-									<br> <br> <span style="font-family: &amp; quot;">친구
+									<br> <br> <span style="font-family: &amp; amp;">친구
 										안내</span> <br>
 									<hr>
 								</dt>
 								<dd>
 									<ul>
 										<li><a href="#" class="sr_txt5"> <span
-												style="font-family: &amp; quot;">콘 친구란?</span></a></li>
+												style="font-family: &amp; amp;">콘 친구란?</span></a></li>
 										<li><a href="#" class="sr_txt5"> <span
-												style="font-family: &amp; quot;">친구 등록</span></a></li>
+												style="font-family: &amp; amp;">친구 등록</span></a></li>
 									</ul>
 								</dd>
 							</dl>
@@ -81,15 +70,15 @@
 					</div>
 				</div>
 
-				<div class="col-md-9">			
-				<div class="section">
-				
-					
+				<div class="col-md-9">
+					<div class="section">
+
+
 						<div class="container">
-							<div class="row">				
+							<div class="row">
 								<div class="col-md-offset-2 col-md-8">
-								<img src="${initParam.root}img\g_notice.jpg" width="200">
-								<br><br>
+									<img src="${initParam.root}img\g_notice.jpg" width="200">
+									<br> <br>
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
@@ -163,8 +152,8 @@
 									</span>
 									<c:if test="${sessionScope.mvo.admin=='yes'}">
 										<span class="input-group-btn"> <a
-											href="writeForm.gibu" class="btn btn-primary"
-											type="submit">글쓰기</a>
+											href="${initParam.root }notice/writeForm.gibu"
+											class="btn btn-primary" type="submit">글쓰기</a>
 										</span>
 									</c:if>
 								</div>
@@ -177,4 +166,4 @@
 	</div>
 </body>
 
- 
+
