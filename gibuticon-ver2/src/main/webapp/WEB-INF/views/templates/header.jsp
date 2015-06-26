@@ -216,6 +216,10 @@
 										href="${initParam.root }friend/memberlist.gibu"><strong>&nbsp;&nbsp;&nbsp;회원검색</strong></a></li>
 									<li><a tabindex="-1"
 										href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"><strong>&nbsp;&nbsp;&nbsp;친구목록보기</strong></a></li>
+									<li class="divider"></li>
+									<li><a tabindex="-1" href="javascript:sendMessagePopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지보내기</strong></a></li>
+									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;쪽지목록</strong></a></li>
+									<li class="divider"></li>
 									<li><a tabindex="-1"
 										href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
 												마이페이지</strong></a></li>
