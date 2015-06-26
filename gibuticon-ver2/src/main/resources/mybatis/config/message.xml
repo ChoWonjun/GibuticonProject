@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="message">
 	<insert id="sendMessage" parameterType="messageVO">
-		insert into gibu_message(no, sender_id, receiver_id, subject, context, send_time)
+		insert into gibu_message(no, sender_id, receiver_id, title, content, send_time)
 		values(gibu_message_seq.nextval, #{sender.id}, #{receiverId}, #{title},#{content},sysdate)
 	</insert>
 	
@@ -21,12 +21,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </resultMap>
 	
 	<select id="getMessageByNo" resultMap="messageRM">
-		select m.no, m.sender_id, m.receiver_id, mem.name, m.subject, m.context, m.send_time, m.read_time 
+		select m.no, m.sender_id, m.receiver_id, mem.name, m.title, m.content, m.send_time, m.read_time 
 		from gibu_message m, member mem
 		where m.sender_id=mem.id and no=#{value}
 	</select>
 	
-	<update id="readMessage">
+	<update id="setReadTime">
 		update gibu_message set read_time=sysdate where no=#{value}
 	</update>
+	
+	<select id="getMessageList" resultMap="messageRM">
+		select m.no, m.sender_id, m.receiver_id, mem.name, m.title, m.content, m.send_time, m.read_time 
+		from gibu_message m, member mem
+		where m.receiver_id=#{value} and m.sender_id=mem.id
+	</select>
 </mapper>

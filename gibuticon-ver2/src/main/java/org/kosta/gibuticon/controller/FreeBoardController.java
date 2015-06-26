@@ -36,18 +36,10 @@ public class FreeBoardController {
 	 * @param request
 	 * @return
 	 */
-	public @interface LoginCheck{
-		
-	}
 	@RequestMapping("freeBoard/writeForm.gibu")
 	@LoginCheck
-	public ModelAndView writeForm(HttpServletRequest request) {
-		HttpSession session = request.getSession(false);
-		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
-		if (session==null || mvo == null) {
-			return new ModelAndView("redirect:../loginView.gibu");
-		}
-		return new ModelAndView("freeBoard_write");
+	public String writeForm(HttpServletRequest request) {
+		return "freeBoard_write";
 	}
 	/**
 	 * 자유게시판에 글을작성

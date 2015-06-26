@@ -41,7 +41,12 @@ public class MessageServiceImpl implements MessageService {
 	 * @see org.kosta.gibuticon.model.service.MessageService#getMessageList()
 	 */
 	@Override
-	public List<MessageVO> getMessageList(){
-		return messageDAO.getMessageList();
+	public List<MessageVO> getMessageList(String id){
+		return messageDAO.getMessageList(id);
+	}
+
+	@Override
+	public void setReadTime(String no) {
+		messageDAO.setReadTime(no);
 	}
 }

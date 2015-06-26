@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="col-md-12 col-md-offset-2">
 				<a href="http://www.makehope.org/"><img
-					src="${initParam.root }img\g_hope_logo.jpg"></a>| <a
+					src="${initParam.root }img\g_beautiful_logo.jpg"></a>| <a
 					href="http://www.dreamfull.or.kr/app/newdf/main"><img
 					src="${initParam.root }img\g_dreamfull_logo.jpg"></a> |<a
 					href="http://hope.daum.net/"><img
@@ -66,6 +66,35 @@
 			end="0">
 			<c:set value="${FundPhotoVO.realName }" var="photoName" />
 		</c:forEach>
+<<<<<<< HEAD
+	</div>
+	<div class="col-md-offset-6 col-md-6">
+		<ul class="pagination">
+			<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+			<c:if test="${pb.previousPageGroup}">
+				<li><a
+					href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+				</li>
+			</c:if>
+			<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+					end="${pb.endPageOfPageGroup}">
+					<a href="${initParam.root }fund/getList.gibu?pageNo=${i }">${i }</a>
+				</c:forEach></li>
+			<c:if test="${pb.nextPageGroup}">
+				<li><a
+					href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+				</li>
+			</c:if>
+		</ul>
+	</div>
+	<br></br>
+	<c:if test="${sessionScope.mvo.admin=='yes'}">
+		<a href="${initParam.root }fund/writeForm.gibu"> <input
+			class="btn btn-default" type="submit" value="글쓰기"></a>
+			
+	</c:if>
+	<br>
+=======
 		<!-- 1st 사연 -->
 		<div class="col-md-4" id="imgTile">
 			<c:choose>
@@ -97,6 +126,7 @@
 			<div>${FundVO.proposal}</div>
 			<br>
 		</div>
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 
 	</c:forEach>
 </div>

@@ -3,6 +3,7 @@ package org.kosta.gibuticon.model.message;
 import org.kosta.gibuticon.model.member.MemberVO;
 
 public class MessageVO {
+	private String no;
 	private MemberVO sender;
 	private String receiverId;
 	private String title;
@@ -13,15 +14,23 @@ public class MessageVO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public MessageVO(MemberVO sender, String receiverId, String title,
+	public MessageVO(String no, MemberVO sender, String receiverId, String title,
 			String content, String sendTime, String readTime) {
 		super();
+		this.no = no;
 		this.sender = sender;
 		this.receiverId = receiverId;
 		this.title = title;
 		this.content = content;
 		this.sendTime = sendTime;
 		this.readTime = readTime;
+	}
+	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
 	}
 	public MemberVO getSender() {
 		return sender;
@@ -61,8 +70,9 @@ public class MessageVO {
 	}
 	@Override
 	public String toString() {
-		return "MessageVO [sender=" + sender + ", receiverId=" + receiverId
-				+ ", title=" + title + ", content=" + content + ", sendTime="
-				+ sendTime + ", readTime=" + readTime + "]";
+		return "MessageVO [no=" + no + ", sender=" + sender + ", receiverId="
+				+ receiverId + ", title=" + title + ", content=" + content
+				+ ", sendTime=" + sendTime + ", readTime=" + readTime + "]";
 	}
+
 }
