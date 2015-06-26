@@ -116,6 +116,10 @@
 						<li><a tabindex="-1" href="#"><strong>어르신</strong></a></li>
 						<li><a tabindex="-1" href="#"><strong>장애인</strong></a></li>
 						<li><a tabindex="-1" href="#"><strong>캠페인</strong></a></li>
+						<c:if test="${sessionScope.mvo.admin=='yes'}">
+							<li class="divider"></li>
+							<li><a tabindex="-1" href="${initParam.root }fund/writeForm.gibu"><strong>모금 등록</strong></a></li>
+						</c:if>
 					</ul></li>
 				<li><a href="${initParam.root }fund/currentState.gibu">모금현황</a></li>
 				<li><a href="${initParam.root}freeBoard/getList.gibu">자유게시판</a></li>
