@@ -12,6 +12,11 @@
 		var url = "${initParam.root }cone/chargeView.gibu";
 		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
 	}
+	
+	function sendMessagePopup() {
+		var url = "${initParam.root}message/sendForm.gibu";
+		window.open(url, "message", "width=420, height=460, teop=150, left=200");
+	}
 </script>
 <body data-spy="scroll">
 	<div class="navbar navbar-default navbar-static-top">
@@ -63,8 +68,12 @@
 										href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한
 												콘</strong> ${sessionScope.mvo.point }개 </a></li>
 									<li class="divider"></li>
-									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;친구목록
+									<li><a tabindex="-1" href="${initParam.root }friend/memberlist.gibu"><strong>&nbsp;&nbsp;&nbsp;회원검색</strong></a></li>
+									<li><a tabindex="-1" href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"><strong>&nbsp;&nbsp;&nbsp;친구목록
 												보기</strong></a></li>
+									<li class="divider"></li>
+									<li><a tabindex="-1" href="javascript:sendMessagePopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지보내기</strong></a></li>
+									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;쪽지목록</strong></a></li>
 									<li class="divider"></li>
 									<li><a tabindex="-1" href="${initParam.root }mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
 												마이페이지</strong></a></li>

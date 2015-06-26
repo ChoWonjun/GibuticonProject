@@ -8,8 +8,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<typeAliases>
 		<typeAlias type="org.kosta.gibuticon.model.member.MemberVO"
 			alias="memberVO" />
-		<typeAlias type="org.kosta.gibuticon.model.member.MessageVO"
-			alias="messageVO" />
 		<typeAlias type="org.kosta.gibuticon.model.freeBoard.FreeBoardVO"
 			alias="freeBoardVO" />
 		<typeAlias type="org.kosta.gibuticon.model.notice.NoticeVO"
@@ -34,6 +32,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="gibuHistoryVO" />
 		<typeAlias type="org.kosta.gibuticon.model.member.MemberRankVO"
 			alias="memberRankVO" />
+		<typeAlias type="org.kosta.gibuticon.model.friend.FriendVO"
+			alias="friendVO" />
+		<typeAlias type="org.kosta.gibuticon.model.message.MessageVO"
+			alias="messageVO" />
 	</typeAliases>
 	<!-- sql mapping config xml 을 연결 -->
 	<mappers>
@@ -43,5 +45,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/config/freeBoard.xml" />
 		<mapper resource="mybatis/config/freecomment.xml" />
 		<mapper resource="mybatis/config/history.xml" />
+		<mapper resource="mybatis/config/friend.xml" />
+		<mapper resource="mybatis/config/message.xml" />
 	</mappers>
 </configuration>
