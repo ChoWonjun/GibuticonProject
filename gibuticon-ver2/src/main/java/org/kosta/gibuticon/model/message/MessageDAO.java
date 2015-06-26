@@ -10,6 +10,8 @@ public interface MessageDAO {
 
 	public abstract MessageVO getMessageByNo(String no);
 
-	public abstract List<MessageVO> getMessageList();
+	public abstract List<MessageVO> getMessageList(String id);
+
+	public abstract void setReadTime(String no);
 
 }

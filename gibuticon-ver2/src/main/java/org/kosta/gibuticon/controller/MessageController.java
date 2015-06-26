@@ -30,15 +30,21 @@ public class MessageController {
 	public ModelAndView send(MessageVO messageVO, HttpServletRequest request){
 		System.out.println(messageVO);
 		messageService.sendMessage(messageVO);
-		return new ModelAndView("");
+		return new ModelAndView("message/send_result");
 	}
 	
-/*	@RequestMapping(value = "fund/write.gibu", method = RequestMethod.POST)
-	public ModelAndView write(FundVO fundVO, HttpServletRequest request) {
-		System.out.println(fundVO.getContent());
-		fundService.writeFund(fundVO);
-		fundService.uploadPhoto(fundVO);
-		return new ModelAndView("redirect:showContentNotHit.gibu", "no",
-				fundVO.getFundNo());
-	}*/
+	@RequestMapping("message/getReceiveList.gibu")
+	public ModelAndView getReceiveList(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		MemberVO mvo=(MemberVO)session.getAttribute("mvo");
+		return new ModelAndView("message/receive_list","list",messageService.getMessageList(mvo.getId()));
+	}
+	
+	@RequestMapping("message/read.gibu")
+	public ModelAndView read(String no){
+		MessageVO msg=messageService.getMessageByNo(no);
+		if(msg.getReadTime()==null)
+			messageService.setReadTime(no);
+		return new ModelAndView("message/read","msg",messageService.getMessageByNo(no));
+	}
 }

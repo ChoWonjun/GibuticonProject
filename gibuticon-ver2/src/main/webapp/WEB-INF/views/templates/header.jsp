@@ -88,6 +88,13 @@
 				.open(url, "message",
 						"width=420, height=460, teop=150, left=200");
 	}
+	
+	function getMessageListPopup() {
+		var url = "${initParam.root}message/getReceiveList.gibu";
+		window
+				.open(url, "message",
+						"width=420, height=460, teop=150, left=200");
+	}
 </script>
 <body>
 	<div class="navbar navbar-default">
@@ -218,7 +225,7 @@
 										href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"><strong>&nbsp;&nbsp;&nbsp;친구목록보기</strong></a></li>
 									<li class="divider"></li>
 									<li><a tabindex="-1" href="javascript:sendMessagePopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지보내기</strong></a></li>
-									<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;쪽지목록</strong></a></li>
+									<li><a tabindex="-1" href="javascript:getMessageListPopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지목록</strong></a></li>
 									<li class="divider"></li>
 									<li><a tabindex="-1"
 										href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;

@@ -40,7 +40,12 @@ public class MessageDAOImpl implements MessageDAO {
 	 * @see org.kosta.gibuticon.model.message.MessageDAO#getMessageList()
 	 */
 	@Override
-	public List<MessageVO> getMessageList(){
-		return sqlSessionTemplate.selectList("message.getMessageList");
+	public List<MessageVO> getMessageList(String id){
+		return sqlSessionTemplate.selectList("message.getMessageList",id);
+	}
+
+	@Override
+	public void setReadTime(String no) {
+		sqlSessionTemplate.update("message.setReadTime", no);
 	}
 }

@@ -19,24 +19,24 @@
 <h3>쪽지 보내기</h3>
 
 <form name="messageForm" method="post" action="${initParam.root }message/send.gibu">
+<input type="hidden" name="sender.id" value="${sessionScope.mvo.id }">
 보낸이 : ${sessionScope.mvo.name }<br>
 받는이 : 
-		<select id="receiver">
+		<select name="receiverId">
 			<option value="">-선택-</option>
 			<c:forEach items="${requestScope.friendlist }" var="list">
 			<option value="${list.friend.id }">${list.friend.name}(${list.friend.id })</option>
 			</c:forEach>
 		</select>
-	</c:otherwise>
-</c:choose>
-
 <br><br>
-제목 : <input type="text"><br>
+제목 : <input type="text" name="title"><br>
 내용 : <br>
 <textarea cols="53" rows="15" name="content"></textarea>
 
 <br><br><input type="submit" value="전송"> <input type="button" value="취소">
 </form>
 
+	</c:otherwise>
+</c:choose>
 </body>
 </html>
