@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="friend">
+	<resultMap type="friendVO" id="friendRM">
+      <result property="myId" column="my_id" />
+      <result property="friend.id" column="friend_id"/>
+      <result property="friend.password" column="password"/>
+      <result property="friend.name" column="name"/>
+      <result property="friend.address" column="address"/>
+      <result property="friend.tel" column="tel"/>
+      <result property="friend.birth" column="birth"/>
+      <result property="friend.email" column="email"/>
+      <result property="friend.point" column="point"/>
+   </resultMap>
+
+	<select id="getFriendList" resultMap="friendRM">
+		select * from gibu_friend, member where gibu_friend.friend_id=member.id and my_id=#{value}
+	</select>
+	
+	<select id="getMemberList" resultType="memberVO">
+		select * from member
+	</select>
+	
+	<insert id="addFriend" parameterType="friendVO">
+		insert into gibu_friend(my_id, friend_id) values(#{myId}, #{friend.id})
+	</insert>
+	
+	<delete id="delFriend" parameterType="friendVO">
+		delete from gibu_friend where my_id=#{myId} and friend_id=#{friend.id}
+	</delete>
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

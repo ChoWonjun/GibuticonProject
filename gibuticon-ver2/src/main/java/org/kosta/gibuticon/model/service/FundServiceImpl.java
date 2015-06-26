@@ -47,7 +47,14 @@ public class FundServiceImpl implements FundService {
 	}
 
 	public List<FundVO> getFundList(String pageNo) {
-		return fundDAO.getFundList(pageNo);
+		List <FundPhotoVO> photoList = new ArrayList<FundPhotoVO>();
+		List <FundVO> list = fundDAO.getFundList(pageNo);
+		for(int i=0;i<list.size();i++){
+			FundVO vo = list.get(i);
+			photoList = fundDAO.getPhotoByNo(list.get(i).getFundNo());
+			vo.setPhotoList(photoList);
+		}
+		return list;
 	}
 
 	public void updateFund(FundVO fundVO) {
