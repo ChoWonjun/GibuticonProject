@@ -3,15 +3,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
 	src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
 <script type="text/javascript">
-	/* $(document).ready(function(){
-	
-	 }); */
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
 		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
@@ -51,14 +51,11 @@
 			</ul>
 			<c:choose>
 				<c:when test="${sessionScope.mvo==null}">
-					<link rel="stylesheet"
-						href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a id="modal-755773" href="#modal-container-755773"
 							data-toggle="modal">로그인</a></li>
 					</ul>
-					<div class="modal fade" id="modal-container-755773" role="dialog"
-						aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal fade" id="modal-container-755773" role="dialog">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -106,6 +103,8 @@
 											</div>
 											<div class="form-group">
 												<div class="col-sm-offset-2 col-sm-5 col-md-8">
+													<input type="hidden" id="prev" name="prev"
+														value="${param.prev }">
 													<button type="submit" class="btn btn-default"
 														id="loginForm">Login</button>
 												</div>
