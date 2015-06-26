@@ -107,7 +107,7 @@
 										<input type="text" class="form-control" placeholder="검색어입력">
 										<span class="input-group-btn"> <a
 											class="btn btn-primary" type="submit">검색</a>
-										</span> <span class="input-group-btn"> <a href="${initParam.root }freeBoard/writeForm.gibu"
+										</span><span class="input-group-btn"> <a href="${initParam.root }freeBoard/writeForm.gibu"
 											class="btn btn-primary" type="submit">글쓰기</a>
 										</span>
 									</div>
