@@ -27,7 +27,7 @@
 		<div class="row">
 			<div class="col-md-12 col-md-offset-2">
 				<a href="http://www.makehope.org/"><img
-					src="${initParam.root }img\g_hope_logo.jpg"></a>| <a
+					src="${initParam.root }img\g_beautiful_logo.jpg"></a>| <a
 					href="http://www.dreamfull.or.kr/app/newdf/main"><img
 					src="${initParam.root }img\g_dreamfull_logo.jpg"></a> |<a
 					href="http://hope.daum.net/"><img
