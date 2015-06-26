@@ -43,7 +43,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/config/notice.xml" />
 		<mapper resource="mybatis/config/fund.xml" />
 		<mapper resource="mybatis/config/freeBoard.xml" />
-		<mapper resource="mybatis/config/freecomment.xml" />
 		<mapper resource="mybatis/config/history.xml" />
 		<mapper resource="mybatis/config/friend.xml" />
 		<mapper resource="mybatis/config/message.xml" />

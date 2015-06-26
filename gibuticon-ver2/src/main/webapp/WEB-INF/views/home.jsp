@@ -84,34 +84,36 @@
 	<div class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12"></div>
+				<div class="col-md-18"></div>
 			</div>
 		</div>
 	</div>
-	<img class="cycle-slideshow img" src="img/메인배너1.jpg"> <img
-		class="cycle-slideshow img" src="img/메인배너2.jpg">
+	<img class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner1.jpg"> <img
+		class="cycle-slideshow img" src="${initParam.root }img/g_mainbanner3.jpg">
 </div>
 
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-13">
 				<div class="section">
 					<div class="container">
 						<div class="row">
-							<div class="col-md-4" align="center">
+							<div class="col-md-5" >
 								<a href="${initParam.root }introduce_gibuticon.gibu"><img
-									src="${initParam.root }img/기부티콘이란.jpg" width="350"></a>
+									src="${initParam.root }img/g_main_gibuticon.jpg" width="560"></a>
 								
 							</div>
-							<div class="col-md-4" align="center">
-								<a href="#"><img src="${initParam.root }img/후원후기.jpg"
-									class="img-responsive" width="1200"></a>
+						<div class="col-md-1" ></div>
+							<div class="col-md-3" >
+								<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
+									class="img-responsive"></a>
 							
 							</div>
-							<div class="col-md-4" align="center">
-								<a href="${initParam.root }memberRanksView.gibu"><img src="${initParam.root }img/회원랭킹.jpg"
-									class="img-responsive"></a>
+							<div class="col-md-1" ></div>
+							<div class="col-md-3">
+					 			<a href="${initParam.root }member/memberRanksView.gibu"><img src="${initParam.root }img/g_main_member_ranking.jpg"
+									 class="img-responsive" ></a>
 								
 							</div>
 						</div>

@@ -26,7 +26,4 @@ public class HomeController {
 	public String showView(@PathVariable String viewId) {
 		return viewId;
 	}
-	
-/*	@RequestMapping("introduce_gibuticon.gibu")
-	public String */
 }

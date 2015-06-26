@@ -1,10 +1,7 @@
 package org.kosta.gibuticon.model.freeBoard.comment;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -20,19 +17,19 @@ public class FreeCommentDAOImpl implements FreeCommentDAO {
 	@Override
 	public void writeFreeComment(FreeCommentVO freeBoardCommentVO){
 		System.out.println(freeBoardCommentVO+"writeFreeCommentDAO");
-		sqlSessionTemplate.insert("freecomment.writeFreeComment",freeBoardCommentVO);
+		sqlSessionTemplate.insert("freeComment.writeFreeComment",freeBoardCommentVO);
 	}
 	@Override
 	public String getPageNo(String no) {
-		return sqlSessionTemplate.selectOne("freecomment.getPageNo", no);
+		return sqlSessionTemplate.selectOne("freeComment.getPageNo", no);
 	}
 	@Override
 	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("freecomment.getTotalPostingCount");
+		return sqlSessionTemplate.selectOne("freeComment.getTotalPostingCount");
 	}
 	@Override
 	public void deleteFreeComment(String no) {
-		sqlSessionTemplate.delete("freecomment.deleteFreeComment", no);
+		sqlSessionTemplate.delete("freeComment.deleteFreeComment", no);
 		
 	}
 
