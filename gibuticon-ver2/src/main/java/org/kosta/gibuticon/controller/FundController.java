@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.ListVO;
 import org.kosta.gibuticon.model.fund.PagingBean;
+import org.kosta.gibuticon.model.fund.SearchOptionVO;
 import org.kosta.gibuticon.model.fund.comment.CommentListVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPagingBean;
@@ -37,14 +38,15 @@ public class FundController {
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@RequestMapping("fund/getList.gibu")
-	public ModelAndView getList(String pageNo, String no) {
-
+	public ModelAndView getList(String pageNo, String no, SearchOptionVO svo) {
 		if (no != null)
 			pageNo = "" + fundService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
-
-		List<FundVO> list = fundService.getFundList(pageNo);
+		
+		svo.setPageNo(pageNo);
+		/*List<FundVO> list = fundService.getFundList(pageNo);*/
+		List<FundVO> list = fundService.getSearchFundList(svo);		
 		ListVO vo = new ListVO(list, new PagingBean(
 				fundService.getTotalPostingCount(), Integer.parseInt(pageNo)));
 		return new ModelAndView("fund_list", "vo", vo);

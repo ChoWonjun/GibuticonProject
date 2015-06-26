@@ -89,14 +89,14 @@
 						</div>
 						<div class="col-md-5 text-right">
 							<div class="btn-group btn-group-sm">
-								<a class="active btn btn-default dropdown-toggle"
+<!-- 								<a class="active btn btn-default dropdown-toggle"
 									data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="#">제목+내용</a></li>
 									<li><a href="#">제목만</a></li>
 									<li><a href="#">내용만</a></li>
 									<li><a href="#">작성자</a></li>
-								</ul>
+								</ul> -->
 							</div>
 						</div>
 

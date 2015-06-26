@@ -119,4 +119,8 @@
 		</c:if>
 	</ul>
 </div>
+<form action="${initParam.root }fund/getList.gibu">
+<input type="text" placeholder="제목검색" id="word" name="word">
+<input type="submit" value="검색">
+</form>
 <br></br>

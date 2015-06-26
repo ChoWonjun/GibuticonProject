@@ -12,6 +12,10 @@
 		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
 				+ coneForm.coneCount.value;
 	}
+	$().ready(function() {
+		var imgHeight = $("#imgTile").width() * 0.705;
+		$("img[name=fundPhoto]").height(imgHeight);
+	});
 </script>
 
 <style type="text/css">
@@ -104,7 +108,7 @@
 					<!-- empty element for pager links -->
 					<div class="cycle-pager"></div>
 					<c:forEach items="${photoList}" var="photo" varStatus="i">
-						<img src="${initParam.root }/upload/${photo.realName}">
+						<img id="fundPhoto" src="${initParam.root }/upload/${photo.realName}">
 					</c:forEach>
 				</div>
 			</div>
