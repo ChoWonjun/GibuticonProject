@@ -59,6 +59,7 @@ public class NoticeController {
 	 */
 	@RequestMapping("notice/getList.gibu")
 	public ModelAndView getList(String pageNo, String no) {
+		
 		System.out.println(no+"   "+pageNo);
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
