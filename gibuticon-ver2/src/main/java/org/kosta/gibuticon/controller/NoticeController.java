@@ -58,13 +58,14 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/getList.gibu")
-	public ModelAndView getList(String pageNo, String no,
-			HttpServletResponse response, HttpServletRequest request) {
-		String searchCondition = request.getParameter("searchSelect");
-		String input = request.getParameter("input");
-		System.out.println(searchCondition + "   " + input);
+	public ModelAndView getList(String pageNo, String no, String searchSelect, String input) {
+		System.out.println(searchSelect + "   " + input);
 		// System.out.println(no+" "+pageNo);
-
+		if(input==null)
+			input="";
+		if(searchSelect==null)
+			searchSelect="";
+		//null 처음에 아예 넘어오니까 equals가 안먹히는거 같아융
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
@@ -77,19 +78,19 @@ public class NoticeController {
 		map.put("input", input);
 		List<NoticeVO> list = null;
 
-		if (searchCondition.equals("0")) { // 제목만
+		if (searchSelect.equals("0")) { // 제목만
 			list = noticeService.getListBySearchingTitle(map);
-			System.out.println(list);
-		} else if (searchCondition.equals("1")) { // 내용만
+			System.out.println("title "+list);
+		} else if (searchSelect.equals("1")) { // 내용만
 			list = noticeService.getListBySearchingContent(map);
 			System.out.println(list);
 
-		} else if (searchCondition.equals("2")) { // 제목+내용
+		} else if (searchSelect.equals("2")) { // 제목+내용
 
-		} else if (searchCondition.equals("")) {
+		} else if (searchSelect.equals("")) {
 			list = noticeService.getList(pageNo);
 			
-		} else {
+		} else{
 			list = noticeService.getList(pageNo);
 		}
 		System.out.println(list);
