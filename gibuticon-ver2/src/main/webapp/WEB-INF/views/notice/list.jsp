@@ -2,19 +2,13 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<<<<<<< HEAD
-<link href="${initParam.root}css/menubox.css" rel="stylesheet"
-	type="text/css">
-=======
 
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
-<link href="${initParam.root}css/table.css" rel="stylesheet"
-	type="text/css">
-<<<<<<< HEAD
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
+<link href="${initParam.root}css/table.css" rel="stylesheet"
+	type="text/css">
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
@@ -22,104 +16,77 @@
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
 
 
-
+<div class="section">
+	<div class="container">
+		<div class="row"></div>
+	</div>
+</div>
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
+				<div class="navi_ca_is"></div>
 				<div id="container">
-					<ul>
-						<li class="clearfix"><span class="entypo-inbox"></span> <a
-							href="#">Inbox</a></li>
-						<li class="clearfix"><span class="entypo-star"></span> <a
-							href="#">Favorites</a></li>
-						<li class="clearfix"><span class="entypo-paper-plane"></span>
-							<a href="#">Sent</a></li>
-						<li class="clearfix"><span class="entypo-flag"></span> <a
-							href="#">Flagged</a></li>
-						<li class="clearfix"><span class="entypo-trash"></span> <a
-							href="#">Deleted</a></li>
-					</ul>
-				</div>
-			</div>
-=======
-<body data-spy="scroll">
-	<div class="section">
-		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-2">
-					<div class="navi_ca_is"></div>
-					<div id="container">
-						<div class="snb_v1">
-							<dl class="menu">
-								<dt class="s_intro">
-									<br> <br> <span style="font-family: &amp; amp;">서비스
-										소개</span> <br>
-									<hr>
-								</dt>
-								<dd>
-									<ul>
-										<li><a href="${initParam.root }introduce_gibuticon.gibu"
-											class="u_txt1"> <span style="font-family: &amp; amp;">기부티콘이란</span></a>
-										</li>
-									</ul>
-								</dd>
-								<dt class="s_srch">
-									<br> <br> <span style="font-family: &amp; amp;">이용안내</span>
-									<br>
-									<hr>
-								</dt>
-								<dd>
-									<ul>
-										<li><a
-											href="${initParam.root }introduce_what_is_cone.gibu"
-											class="sr_txt5"> <span style="font-family: &amp; amp;">콘
-													안내</span></a></li>
-										<li><a href="#"><span style="font-family: &amp; amp;">콘받기
-													안내</span></a></li>
-										<li><a href="${initParam.root }introduce_howtogibu.gibu"
-											class="sr_txt5"> <span style="font-family: &amp; amp;">기부방법
-													안내</span></a></li>
-										<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
-									</ul>
-								</dd>
-								<dd></dd>
-								<dt class="s_srch">
-									<br> <br> <span style="font-family: &amp; amp;">친구
-										안내</span> <br>
-									<hr>
-								</dt>
-								<dd>
-									<ul>
-										<li><a href="#" class="sr_txt5"> <span
-												style="font-family: &amp; amp;">콘 친구란?</span></a></li>
-										<li><a href="#" class="sr_txt5"> <span
-												style="font-family: &amp; amp;">친구 등록</span></a></li>
-									</ul>
-								</dd>
-							</dl>
-							<ul class="snb_btn"></ul>
-						</div>
+					<div class="snb_v1">
+						<dl class="menu">
+							<dt class="s_intro">
+								<br> <br> <span style="font-family: &amp; amp;">서비스
+									소개</span> <br>
+								<hr>
+							</dt>
+							<dd>
+								<ul>
+									<li><a href="${initParam.root }introduce_gibuticon.gibu"
+										class="u_txt1"> <span style="font-family: &amp; amp;">기부티콘이란</span></a>
+									</li>
+								</ul>
+							</dd>
+							<dt class="s_srch">
+								<br> <br> <span style="font-family: &amp; amp;">이용안내</span>
+								<br>
+								<hr>
+							</dt>
+							<dd>
+								<ul>
+									<li><a
+										href="${initParam.root }introduce_what_is_cone.gibu"
+										class="sr_txt5"> <span style="font-family: &amp; amp;">콘
+												안내</span></a></li>
+									<li><a href="#"><span style="font-family: &amp; amp;">콘받기
+												안내</span></a></li>
+									<li><a href="${initParam.root }introduce_howtogibu.gibu"
+										class="sr_txt5"> <span style="font-family: &amp; amp;">기부방법
+												안내</span></a></li>
+									<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
+								</ul>
+							</dd>
+							<dd></dd>
+							<dt class="s_srch">
+								<br> <br> <span style="font-family: &amp; amp;">친구
+									안내</span> <br>
+								<hr>
+							</dt>
+							<dd>
+								<ul>
+									<li><a href="#" class="sr_txt5"> <span
+											style="font-family: &amp; amp;">콘 친구란?</span></a></li>
+									<li><a href="#" class="sr_txt5"> <span
+											style="font-family: &amp; amp;">친구 등록</span></a></li>
+								</ul>
+							</dd>
+						</dl>
+						<ul class="snb_btn"></ul>
 					</div>
 				</div>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+			</div>
 
-<<<<<<< HEAD
 			<div class="col-md-9">
 				<div class="section">
-
-
 					<div class="container">
 						<div class="row">
 							<div class="col-md-offset-2 col-md-8">
 								<img src="${initParam.root}img\g_notice.jpg" width="200">
-								<br>
-								<br>
+								<br> <br>
 								<table class="type09" style="font-family: &amp; amp;">
 									<thead>
 										<tr>
@@ -131,19 +98,6 @@
 									</thead>
 									<tbody>
 										<c:forEach items="${requestScope.nlvo.list}" var="noticeboard">
-=======
-				<div class="col-md-9">
-					<div class="section">
-
-
-						<div class="container">
-							<div class="row">
-								<div class="col-md-offset-2 col-md-8">
-									<img src="${initParam.root}img\g_notice.jpg" width="200">
-									<br> <br>
-									<table class="type09" style="font-family: &amp; amp;">
-										<thead>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 											<tr>
 												<td>${noticeboard.noticeNo}</td>
 												<td><a
@@ -207,17 +161,7 @@
 									<span class="input-group-btn"> <a href="writeForm.gibu"
 										class="btn btn-primary" type="submit">글쓰기</a>
 									</span>
-<<<<<<< HEAD
 								</c:if>
-=======
-									<c:if test="${sessionScope.mvo.admin=='yes'}">
-										<span class="input-group-btn"> <a
-											href="${initParam.root }notice/writeForm.gibu"
-											class="btn btn-primary" type="submit">글쓰기</a>
-										</span>
-									</c:if>
-								</div>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 							</div>
 						</div>
 					</form>
@@ -226,6 +170,6 @@
 		</div>
 	</div>
 </div>
-</body>
+
 
 
