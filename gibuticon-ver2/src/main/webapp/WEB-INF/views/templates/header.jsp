@@ -120,10 +120,10 @@
                      href="${initParam.root}fund/getList.gibu"><strong>전체보기</strong></a>
                   </li>
                   <li class="divider"></li>
-                  <li><a tabindex="-1" href="#"><strong>어린이</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>어르신</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>장애인</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>캠페인</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=어린이"><strong>어린이</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=어르신"><strong>어르신</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=장애인"><strong>장애인</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=캠페인"><strong>캠페인</strong></a></li>
                   <c:if test="${sessionScope.mvo.admin=='yes'}">
                      <li class="divider"></li>
                      <li><a tabindex="-1" href="${initParam.root }fund/writeForm.gibu"><strong>모금 등록</strong></a></li>
