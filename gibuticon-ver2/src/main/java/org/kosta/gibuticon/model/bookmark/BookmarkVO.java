@@ -3,14 +3,24 @@ package org.kosta.gibuticon.model.bookmark;
 import org.kosta.gibuticon.model.fund.FundVO;
 
 public class BookmarkVO {
-	private String myid;
+	private String myId;
 	private FundVO fund;
 	
-	public String getMyid() {
-		return myid;
+	public BookmarkVO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
-	public void setMyid(String myid) {
-		this.myid = myid;
+	public BookmarkVO(String myId, String fundNo) {
+		super();
+		this.myId = myId;
+		this.fund =  new FundVO();
+		this.fund.setFundNo(fundNo);
+	}
+	public String getMyId() {
+		return myId;
+	}
+	public void setMyId(String myId) {
+		this.myId = myId;
 	}
 	public FundVO getFund() {
 		return fund;
@@ -20,6 +30,6 @@ public class BookmarkVO {
 	}
 	@Override
 	public String toString() {
-		return "BookmarkVO [myid=" + myid + ", fund=" + fund + "]";
+		return "BookmarkVO [myId=" + myId + ", fund=" + fund + "]";
 	}
 }

@@ -45,7 +45,7 @@
 									<li><a
 										href="${initParam.root }member/memberRanksView.gibu"
 										class="u_txt1"> <span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
-									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?id=${sessionScope.mvo.id}" class="u_txt2"><span
+									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}" class="u_txt2"><span
 											style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
 									<li><a href="#" class="u_txt3"><span
 											style="font-family: &amp; amp;">작성글</span></a></li>

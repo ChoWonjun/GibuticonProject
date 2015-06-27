@@ -16,13 +16,31 @@ public class BookmarkController {
 	private BookmarkService bookmarkService;
 	
 	@RequestMapping("bookmark/addBookmark.gibu")
-	public String addBookmark(BookmarkVO bvo){
-		bookmarkService.addBookmark(bvo);
-		return "";
+	public String addBookmark(String myId, String fundNo){
+		boolean flag=false;
+		List<BookmarkVO> list=bookmarkService.getBookmarkList(myId);
+		for(int i=0;i<list.size();i++){
+			if(list.get(i).getFund().getFundNo().equals(fundNo)){
+				flag=true;
+				break;
+			}
+		}
+		if(flag==false){
+			BookmarkVO bvo=new BookmarkVO(myId, fundNo);
+			bookmarkService.addBookmark(bvo);
+		}
+		return "redirect:getBookmarkList.gibu?myId="+myId;
 	}
 	@RequestMapping("bookmark/getBookmarkList.gibu")
-	public ModelAndView getBookmarkList(String id){
-		List<BookmarkVO> list=bookmarkService.getBookmarkList(id);
+	public ModelAndView getBookmarkList(String myId){
+		List<BookmarkVO> list=bookmarkService.getBookmarkList(myId);
 		return new ModelAndView("bookmark_bookmarkList","list",list);
+	}
+	@RequestMapping("bookmark/delBookmark.gibu")
+	public String delBookmark(String myId, String fundNo){
+		BookmarkVO bvo=new BookmarkVO(myId, fundNo);
+		bookmarkService.delBookmark(bvo);
+		System.out.println("삭제 좀 하자");
+		return "redirect:getBookmarkList.gibu?myId="+myId;
 	}
 }

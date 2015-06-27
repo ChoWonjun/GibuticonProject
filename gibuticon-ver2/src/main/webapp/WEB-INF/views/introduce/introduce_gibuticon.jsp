@@ -2,25 +2,17 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<link href="${initParam.root}css/menubox.css" rel="stylesheet"
-	type="text/css">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
+<link href="${initParam.root}css/menubox.css" rel="stylesheet"
+	type="text/css">
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
-
-
-
-
-<body data-spy="scroll">
-
-<br><br><br><br><br><br><br>
 
 	<div class="section">
 		<div class="container">
@@ -47,5 +39,5 @@
 		<!-- end mailbox -->
 		<br><br><br><br><br><br><br>
 		</div>
-</body>
+
 

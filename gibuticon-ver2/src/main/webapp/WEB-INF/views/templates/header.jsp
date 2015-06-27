@@ -11,7 +11,8 @@
 <script
    src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
-   src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   
 <script type="text/javascript">
    $(document)
          .ready(
@@ -154,9 +155,6 @@
                               <form class="form-horizontal"
                                  action="${initParam.root}member/login.gibu" method="post">
                                  <div class="form-group">
-                                    <!-- <div class="col-sm-offset-2 col-sm-5 col-md-8">
-                                       <label for="inputEmail3" class="control-label">ID</label>
-                                    </div> -->
                                     <div class="col-sm-offset-2 col-sm-5 col-md-8">
                                        <input type="text" class="form-control input-lg" id="id"
                                           name="id" placeholder="User Name" path="id" />
@@ -166,9 +164,6 @@
                                     </div>
                                  </div>
                                  <div class="form-group">
-                                    <!-- <div class="col-sm-offset-2 col-sm-5 col-md-8">
-                                       <label for="inputPassword3" class="control-label">Password</label>
-                                    </div> -->
                                     <div class="col-sm-offset-2 col-sm-5 col-md-8">
                                        <input type="password" class="form-control input-lg"
                                           id="password" name="password" placeholder="Password"
