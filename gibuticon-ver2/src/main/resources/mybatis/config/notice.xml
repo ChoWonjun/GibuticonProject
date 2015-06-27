@@ -57,21 +57,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
 	</select>
 	
-	<select id="getListBySearchingTitle" parameterType="string" resultMap="noticeListRM">
-		SELECT
-		notice_no,title,write_date,content,hits
-		FROM(
-		SELECT
-		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
-		FROM (
-		SELECT
-		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
-		FROM notice where title like '%#{value}%' order by notice_no desc
-		)
-		) WHERE page=#{value}
+	<select id="getListBySearchingTitle" parameterType="hashmap" resultMap="noticeListRM">
+		SELECT notice_no,title,write_date,content,hits
+		FROM(SELECT notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
+		FROM(SELECT notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits FROM notice  
+		<where>
+			<if test="input != null">
+				title like '%' || #{input} || '%'
+			</if>
+		</where>
+		order by notice_no desc)) WHERE page=#{page}
 	</select>
 	
-	<select id="getListBySearchingContent" parameterType="string" resultMap="noticeListRM">
+	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="noticeListRM">
 		SELECT
 		notice_no,title,write_date,content,hits
 		FROM(
@@ -80,7 +78,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM (
 		SELECT
 		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
-		FROM notice where content like %#{value}% order by notice_no desc
+		FROM notice	
+		<where>
+			<if test="input != null">
+				content like '%' || #{input} || '%'
+			</if>
+		</where> 
+		order by notice_no desc
 		)
 		) WHERE page=#{value}
 	</select>

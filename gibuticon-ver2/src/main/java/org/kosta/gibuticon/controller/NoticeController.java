@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
 
 
 import org.kosta.gibuticon.model.member.LoginCheck;
@@ -51,6 +53,7 @@ public class NoticeController {
 		noticeService.write(noticeVO);
 		return new ModelAndView("redirect:getList.gibu");
 	}
+	
 	/**
 	 * 공지사항 목록글들을 불러오는 컨트롤러 
 	 * @param pageNo
@@ -58,18 +61,43 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/getList.gibu")
-	public ModelAndView getList(String pageNo, String no) {
-		
-		System.out.println(no+"   "+pageNo);
+	public ModelAndView getList(String pageNo, String no,
+			HttpServletResponse response, HttpServletRequest request) {
+		String searchCondition = request.getParameter("searchSelect");
+		String input = request.getParameter("input");
+		System.out.println(searchCondition + "   " + input);
+		// System.out.println(no+" "+pageNo);
+
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
-		// System.out.println(pageNo);
-		List<NoticeVO> list = noticeService.getList(pageNo);
-		//System.out.println(list);
+
+		// System.out.println(no+" "+pageNo);
+
+		// System.out.println(list);
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageNo);
+		List<NoticeVO> list = null;
+		if (searchCondition == "0") { // 제목만
+			map.put("input", input);
+			//System.out.println(map.get("input"));
+			list = noticeService.getListBySearchingTitle(map);
+		} else if (searchCondition == "1") { // 내용만
+			map.put("content", input);
+			list = noticeService.getListBySearchingContent(map);
+		} else if (searchCondition == "2") { // 제목+내용
+
+		} else if (searchCondition == "") {
+		} else {
+			list = noticeService.getList(pageNo);
+		}
+		System.out.println(list);
+		
 		ListVO lvo = new ListVO(list, new PagingBean(
 				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 

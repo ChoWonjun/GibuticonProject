@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -59,13 +60,13 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public List<NoticeVO> getListBySearchingTitle(String pageNo, String input) {
-		return noticeDAO.getListBySearchingTitle(pageNo, input);
+	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return noticeDAO.getListBySearchingTitle(map);
 	}
 
 	@Override
-	public List<NoticeVO> getListBySearchingContent(String pageNo, String input) {
-		return noticeDAO.getListBySearchingContent(pageNo, input);
+	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return noticeDAO.getListBySearchingContent(map);
 	}
 
 }
