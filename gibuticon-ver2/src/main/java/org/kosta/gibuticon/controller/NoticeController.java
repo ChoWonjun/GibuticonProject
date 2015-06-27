@@ -72,21 +72,20 @@ public class NoticeController {
 
 		// System.out.println(no+" "+pageNo);
 
-		// System.out.println(list);
-
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageNo);
+		map.put("input", input);
 		List<NoticeVO> list = null;
+		//System.out.println(map.get("input"));
+		//System.out.println(map.get("page"));
 		if (searchCondition == "0") { // 제목만
-			map.put("input", input);
-			//System.out.println(map.get("input"));
 			list = noticeService.getListBySearchingTitle(map);
 		} else if (searchCondition == "1") { // 내용만
-			map.put("input", input);
 			list = noticeService.getListBySearchingContent(map);
 		} else if (searchCondition == "2") { // 제목+내용
 
 		} else if (searchCondition == "") {
+		
 		} else {
 			list = noticeService.getList(pageNo);
 		}

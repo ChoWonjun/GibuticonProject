@@ -21,3 +21,9 @@ select * from NOTICE;
 update notice set hits=hits+1 where notice_no='1'
 
 select count(*) from notice
+
+SELECT notice_no,title,write_date,content,hits
+	FROM(SELECT notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
+	FROM(SELECT notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits FROM notice  
+	where title like '%#{word}%' 
+	order by notice_no desc)) WHERE page=#{1}
