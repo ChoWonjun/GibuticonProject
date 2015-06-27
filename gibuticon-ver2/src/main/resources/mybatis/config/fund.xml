@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fund">
-	<select id="getFundList" resultType="fundVO">
+	<!-- <select id="getFundList" resultType="fundVO">
 		select * from(
 		select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
 		startdate, duedate, content, hits, category, source, ceil(rownum/9) as page from
@@ -13,6 +13,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate,
 		content, hits, category, source from gibu_fund order by fund_no desc))where page=#{value}
+	</select> -->
+	
+	<select id="getSearchFundList" parameterType="searchOptionVO" resultType="fundVO">
+		select * from(
+		select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
+		startdate, duedate, content, hits, category, source, ceil(rownum/9) as page from
+		(select fund_no fundno, fund_name fundname, proposal, homepage,
+		cur_sum cursum, goal_sum goalsum, participant,
+		to_char(start_date,'yyyy-mm-dd') as startdate,
+		to_char(due_date,'yyyy-mm-dd') as
+		duedate, content, hits, category, source from gibu_fund 
+		<where>
+			<if test="word != null">
+				fund_name like '%' || #{word} || '%'
+			</if>
+		</where>
+		order by fund_no desc))where page=#{pageNo}	
 	</select>
 
 	<select id="getFundByNo" resultType="fundVO">

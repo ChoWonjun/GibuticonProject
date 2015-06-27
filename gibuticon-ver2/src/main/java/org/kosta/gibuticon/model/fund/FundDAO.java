@@ -25,7 +25,9 @@ public interface FundDAO {
 	// sql문에서 curSum 만큼 증가시켜 기부액 반영
 	public abstract void gibuMoney(FundVO fundVO);
 
-	List<FundVO> getFundList(String pageNo);
+	public abstract List<FundVO> getFundList(String pageNo);
+	
+	public abstract List<FundVO> getSearchFundList(SearchOptionVO svo);
 
 	public abstract String getPageNo(String no);
 

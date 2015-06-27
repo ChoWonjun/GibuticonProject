@@ -55,7 +55,10 @@ public class FundDAOImpl implements FundDAO {
 	public List<FundVO> getFundList(String pageNo) {
 		return sqlSessionTemplate.selectList("fund.getFundList", pageNo);
 	}
-
+	
+	public List<FundVO> getSearchFundList(SearchOptionVO svo) {
+		return sqlSessionTemplate.selectList("fund.getSearchFundList", svo);
+	}
 	// select * from gibu_fund
 
 	/*

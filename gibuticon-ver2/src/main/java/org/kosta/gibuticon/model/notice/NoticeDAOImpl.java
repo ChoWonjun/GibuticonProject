@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,6 +19,22 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public List<NoticeVO> getList(String pageNo) {
 		return sqlSessionTemplate.selectList("notice.getNoticeList", pageNo);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearchingTitle",map);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearchingContent",map);
 	}
 
 	/**
@@ -76,22 +93,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public NoticeVO getNoticeByNo(String noticeNo) {
 		return sqlSessionTemplate.selectOne("notice.getNoticeByNo", noticeNo);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingTitle(String pageNo, String input) {
-		return sqlSessionTemplate.selectList("notice.searchByTitle",input);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingContent(String pageNo, String input) {
-		return sqlSessionTemplate.selectList("notice.searchByContent",input);
 	}
 
 
