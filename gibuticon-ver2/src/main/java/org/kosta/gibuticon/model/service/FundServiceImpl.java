@@ -47,20 +47,9 @@ public class FundServiceImpl implements FundService {
 		return vo;
 	}
 
-	public List<FundVO> getFundList(String pageNo) {
+	public List<FundVO> getFundList(SearchOptionVO svo) {
 		List <FundPhotoVO> photoList = new ArrayList<FundPhotoVO>();
-		List <FundVO> list = fundDAO.getFundList(pageNo);
-		for(int i=0;i<list.size();i++){
-			FundVO vo = list.get(i);
-			photoList = fundDAO.getPhotoByNo(list.get(i).getFundNo());
-			vo.setPhotoList(photoList);
-		}
-		return list;
-	}
-	
-	public List<FundVO> getSearchFundList(SearchOptionVO svo) {
-		List <FundPhotoVO> photoList = new ArrayList<FundPhotoVO>();
-		List <FundVO> list = fundDAO.getSearchFundList(svo);
+		List <FundVO> list = fundDAO.getFundList(svo);
 		for(int i=0;i<list.size();i++){
 			FundVO vo = list.get(i);
 			photoList = fundDAO.getPhotoByNo(list.get(i).getFundNo());
@@ -86,14 +75,14 @@ public class FundServiceImpl implements FundService {
 	}
 
 	@Override
-	public String getPageNo(String no) {
-		return fundDAO.getPageNo(no);
+	public String getPageNo(SearchOptionVO svo) {
+		return fundDAO.getPageNo(svo);
 	}
 
 	@Override
-	public int getTotalPostingCount() {
+	public int getTotalPostingCount(SearchOptionVO svo) {
 		// TODO Auto-generated method stub
-		return fundDAO.getTotalPostingCount();
+		return fundDAO.getTotalPostingCount(svo);
 	}
 
 	@Override

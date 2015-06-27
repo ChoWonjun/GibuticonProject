@@ -40,15 +40,14 @@ public class FundController {
 	@RequestMapping("fund/getList.gibu")
 	public ModelAndView getList(String pageNo, String no, SearchOptionVO svo) {
 		if (no != null)
-			pageNo = "" + fundService.getPageNo(no);
+			pageNo = "" + fundService.getPageNo(svo);
 		if (pageNo == null)
 			pageNo = "1";
 		
 		svo.setPageNo(pageNo);
-		/*List<FundVO> list = fundService.getFundList(pageNo);*/
-		List<FundVO> list = fundService.getSearchFundList(svo);		
+		List<FundVO> list = fundService.getFundList(svo);		
 		ListVO vo = new ListVO(list, new PagingBean(
-				fundService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+				fundService.getTotalPostingCount(svo), Integer.parseInt(pageNo)),svo);
 		return new ModelAndView("fund_list", "vo", vo);
 	}
 

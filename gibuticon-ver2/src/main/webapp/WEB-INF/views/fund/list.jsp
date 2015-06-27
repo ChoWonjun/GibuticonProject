@@ -59,6 +59,45 @@
 
 <br>
 <hr>
+
+<!-- 검색 & 정렬 -->
+<script type="text/javascript">
+	$().ready(function(){
+		var rankOption = $("#rankOption").val();
+		$("#rank").val(rankOption).attr("selected", "selected");
+		$("select[name=rank]").change(function(){
+			$("#searchOptionForm").submit();
+		});
+		
+		var categoryOption = $("#categoryOption").val();
+		$("#category").val(categoryOption).attr("selected", "selected");
+		$("select[name=category]").change(function(){
+			$("#searchOptionForm").submit();
+		});	
+	});
+</script>
+<c:set value="${requestScope.vo.searchOption}" var="option"></c:set>
+<form action="${initParam.root }fund/getList.gibu" name="searchOptionForm" id="searchOptionForm">
+	<input type="hidden" name="rankOption" id="rankOption" value="${option.rank }">
+	<select name="rank" id="rank">
+		<option id="rankOp" value="">Sort By</option>
+		<option id="rankOp" value="fundNo">최신등록</option>
+		<option id="rankOp" value="dueDate">마감임박</option>
+		<option id="rankOp" value="amountDesc">모금율&nbsp;&and;</option>
+		<option id="rankOp" value="amountAsc">모금율&nbsp;&or;</option>
+	</select>&nbsp;&nbsp;
+	<input type="hidden" name="categoryOption" id="categoryOption" value="${option.category }">
+	<select name="category" id="category">
+		<option id="categoryOp" value=""> Categories</option>
+		<option id="categoryOp" value="어린이">어린이</option>
+		<option id="categoryOp" value="어르신">어르신</option>
+		<option id="categoryOp" value="장애인">장애인</option>
+		<option id="categoryOp" value="캠페인">캠페인</option>
+	</select>&nbsp;&nbsp;
+	<input type="text" placeholder="제목검색" id="word" name="word" value="${option.word }">
+	<input type="submit" value="검색">
+</form>
+
 <div class="row">
 	<%-- <c:forEach items=""> --%>
 	<c:forEach items="${requestScope.vo.list}" var="FundVO">
@@ -105,22 +144,18 @@
 		<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
 		<c:if test="${pb.previousPageGroup}">
 			<li><a
-				href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
+				href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&rank=${option.rank}&category=${option.category}&word=${option.word}">Prev</a>
 			</li>
 		</c:if>
 		<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 				end="${pb.endPageOfPageGroup}">
-				<a href="${initParam.root }fund/getList.gibu?pageNo=${i }">${i }</a>
+				<a href="${initParam.root }fund/getList.gibu?pageNo=${i }&rank=${option.rank}&category=${option.category}&word=${option.word}">${i }</a>
 			</c:forEach></li>
 		<c:if test="${pb.nextPageGroup}">
 			<li><a
-				href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
+				href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&rank=${option.rank}&category=${option.category}&word=${option.word}">Next</a>
 			</li>
 		</c:if>
 	</ul>
 </div>
-<form action="${initParam.root }fund/getList.gibu">
-	<input type="text" placeholder="제목검색" id="word" name="word"> <input
-		type="submit" value="검색">
-</form>
-<br></br>
+<br></br><br></br>
