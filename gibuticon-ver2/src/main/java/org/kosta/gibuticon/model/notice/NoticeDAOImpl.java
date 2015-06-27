@@ -22,6 +22,22 @@ public class NoticeDAOImpl implements NoticeDAO {
 	}
 
 	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearchingTitle",map);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearchingContent",map);
+	}
+
+	/**
 	 * 공지사항 글을 공지사항 DB에 인서트 시키는 메서드
 	 */
 	@Override
@@ -77,22 +93,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public NoticeVO getNoticeByNo(String noticeNo) {
 		return sqlSessionTemplate.selectOne("notice.getNoticeByNo", noticeNo);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("notice.searchByTitle",map);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("notice.searchByContent",map);
 	}
 
 

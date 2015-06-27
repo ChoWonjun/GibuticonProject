@@ -76,16 +76,19 @@ public class NoticeController {
 		map.put("page", pageNo);
 		map.put("input", input);
 		List<NoticeVO> list = null;
-		//System.out.println(map.get("input"));
-		//System.out.println(map.get("page"));
-		if (searchCondition == "0") { // 제목만
-			list = noticeService.getListBySearchingTitle(map);
-		} else if (searchCondition == "1") { // 내용만
-			list = noticeService.getListBySearchingContent(map);
-		} else if (searchCondition == "2") { // 제목+내용
 
-		} else if (searchCondition == "") {
-		
+		if (searchCondition.equals("0")) { // 제목만
+			list = noticeService.getListBySearchingTitle(map);
+			System.out.println(list);
+		} else if (searchCondition.equals("1")) { // 내용만
+			list = noticeService.getListBySearchingContent(map);
+			System.out.println(list);
+
+		} else if (searchCondition.equals("2")) { // 제목+내용
+
+		} else if (searchCondition.equals("")) {
+			list = noticeService.getList(pageNo);
+			
 		} else {
 			list = noticeService.getList(pageNo);
 		}
@@ -96,7 +99,6 @@ public class NoticeController {
 
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
-
 
 	/**
 	 * 공지사항의 글을 클릭 할 시 글의 컨텐츠(내용)을 불러오는 컨트롤러
