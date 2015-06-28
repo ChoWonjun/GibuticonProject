@@ -58,6 +58,7 @@ public class FreeBoardController {
 		freeBoardService.writeFreeBoard(freeBoardVO);
 		return new ModelAndView("redirect:getList.gibu");
 	}
+	
 	/**
 	 * 자유게시판에 있는 목록을 보여줌
 	 * @param pageNo
@@ -101,6 +102,7 @@ public class FreeBoardController {
 				Integer.parseInt(pageNo)));
 		return new ModelAndView("freeBoard_list", "lvo", lvo);
 	}
+	
 	/**
 	 * 자유게시판에 있는 글 상세보기!
 	 * 이떄 같이 댓글목록도 불러옴!

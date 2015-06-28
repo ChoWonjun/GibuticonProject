@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -12,7 +12,8 @@
 	});
 </script>
 
-<link href="${initParam.root}css/table.css" rel="stylesheet" type="text/css">
+<link href="${initParam.root}css/table.css" rel="stylesheet"
+	type="text/css">
 
 
 <body data-spy="scroll">
@@ -130,7 +131,7 @@
 							</c:if>
 							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 									end="${pb.endPageOfPageGroup}">
-									<a href="${initParam.root }notice/getList.gibu?pageNo=${i }">${i }</a>
+									<a href="${initParam.root }notice/getList.gibu?pageNo=${i}">${i}</a>
 								</c:forEach></li>
 							<c:if test="${pb.nextPageGroup}">
 								<li><a
@@ -155,9 +156,9 @@
 						<div class="col-md-6 text-left">
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="검색어입력" name="input" id="input"> <span
-										class="input-group-btn"> <input type="submit" class="btn btn-primary"
-										value="검색">
+									<input type="text" class="form-control" placeholder="검색어입력"
+										name="input" id="input"> <span class="input-group-btn">
+										<input type="submit" class="btn btn-primary" value="검색">
 									</span>
 									<c:if test="${sessionScope.mvo.admin=='yes'}">
 										<span class="input-group-btn"> <a
