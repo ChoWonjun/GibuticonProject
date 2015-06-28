@@ -12,7 +12,7 @@
 <script type="text/javascript">
 	function bookmarkRegister(){
 		if(confirm("즐겨찾기를 등록하시겠습니까?")){
-			location.href="${initParam.root}bookmark/addBookmark.gibu?id=${sessionScope.mvo.id}&fund=${requestScope.posting}";
+			location.href="${initParam.root}bookmark/addBookmark.gibu?myId=${sessionScope.mvo.id}&fundNo=${requestScope.posting.fundNo}";
 		}else{
 			return false;
 		}
@@ -21,6 +21,10 @@
 		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
 				+ coneForm.coneCount.value;
 	}
+	$().ready(function() {
+		var imgHeight = $("#imgTile").width() * 0.705;
+		$("img[name=fundPhoto]").height(imgHeight);
+	});
 </script>
 
 <style type="text/css">
@@ -113,7 +117,7 @@
 					<!-- empty element for pager links -->
 					<div class="cycle-pager"></div>
 					<c:forEach items="${photoList}" var="photo" varStatus="i">
-						<img src="${initParam.root }/upload/${photo.realName}">
+						<img id="fundPhoto" src="${initParam.root }/upload/${photo.realName}">
 					</c:forEach>
 				</div>
 			</div>
@@ -145,11 +149,11 @@
 							<td colspan="3"><font size="3">${fund.proposal }</font></td>
 						</tr>
 
-						<tr>
+						<%-- <tr>
 							<th colspan="1"><font size="3">관련링크</font></th>
 							<td colspan="3"><a href="${fund.homepage }"><font
 									size="3">${fund.homepage }</font></a></td>
-						</tr>
+						</tr> --%>
 					</tbody>
 				</table>
 			</div>
@@ -186,10 +190,9 @@
 							</div>
 							</div>
 							<div class="col-md-2">
-							<a href="javascript:bookmarkRegister()"><input type="button"
-								value="즐겨찾기"></a> </div>
+							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a></div>
 								<div class="col-md-2">
-								<a href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}">목록보기</a></div>						
+								<a href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}" class="btn btn-default">목록보기</a></div>						
 					</div>
 				</div>
 			</div>

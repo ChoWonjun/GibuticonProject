@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.freeBoard;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPageVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.kosta.gibuticon.model.member.MemberVO;
+import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +28,22 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		FreeBoardVO fvo=sqlSessionTemplate.selectOne("freeBoard.getFreeBoardByNo",no);
 		fvo.setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",fvo.getId()));
 		return fvo;
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingTitle",map);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingContent",map);
 	}
 
 	/* (non-Javadoc)

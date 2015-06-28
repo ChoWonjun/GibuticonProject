@@ -3,25 +3,107 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fund">
-	<select id="getFundList" resultType="fundVO">
+	<select id="getFundList" parameterType="searchOptionVO"
+		resultType="fundVO">
 		select * from(
-		select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
-		startdate, duedate, content, hits, category, source, ceil(rownum/9) as page from
-		(select fund_no fundno, fund_name fundname, proposal, homepage,
-		cur_sum cursum, goal_sum goalsum, participant,
+		select fundno, fundname, proposal, homepage, cursum,
+		goalsum, participant,
+		startdate, duedate, content, hits, category,
+		source, ceil(rownum/9) as page from
+		(select fund_no fundno, fund_name
+		fundname, proposal, homepage,
+		cur_sum cursum, goal_sum goalsum,
+		participant,
 		to_char(start_date,'yyyy-mm-dd') as startdate,
 		to_char(due_date,'yyyy-mm-dd') as
-		duedate,
-		content, hits, category, source from gibu_fund order by fund_no desc))where page=#{value}
+		duedate, content, hits, category,
+		source, goal_sum/nullif(cur_sum,0) as amount from gibu_fund
+		<where>
+			<if test="category != null and category != ''">
+				category = #{category}
+			</if>
+			<if test="category != null and category != '' and word!= null and word != ''">
+				and
+			</if>
+			<if test="word != null and word != ''">
+				fund_name like '%' || #{word} || '%'
+			</if>
+		</where>
+		<if test="rank != null and rank != '' and rank == 'fundNo'">
+			order by fund_no desc
+		</if>
+		<if test="rank != null and rank !='' and rank == 'dueDate'">
+			order by due_date desc
+		</if>
+		<if test="rank != null and rank !='' and rank == 'amountAsc'">
+			order by amount desc
+		</if>
+		<if test="rank != null and rank !='' and rank == 'amountDesc'">
+			order by amount asc
+		</if>
+		)) where page=#{pageNo}
+	</select>
+
+	<select id="getTotalPostingCount" parameterType="searchOptionVO"
+		resultType="int">
+		select count(*)
+		from gibu_fund
+		<where>
+			<if test="category != null and category != ''">
+				category = #{category}
+			</if>
+			<if test="category != null and category != '' and word!= null and word!= ''">
+				and
+			</if>
+			<if test="word != null and word != ''">
+				fund_name like '%' || #{word} || '%'
+			</if>
+		</where>
+	</select>
+
+	<select id="getPageNo" parameterType="searchOptionVO"
+		resultType="string">
+		select page from(
+		select
+		fund_no fundno, ceil(rownum/5) as page from(
+		select fund_no, goal_sum/nullif(cur_sum,0) as amount from
+		gibu_fund
+		<where>
+			<if test="category != null and category != ''">
+				category = #{category}
+			</if>
+			<if test="category != null and word!= null and word != ''">
+				and
+			</if>
+			<if test="word != null and word != ''">
+				fund_name like '%' || #{word} || '%'
+			</if>
+		</where>
+		<if test="rank != null and rank != '' and rank == 'fundNo'">
+			order by fund_no desc
+		</if>
+		<if test="rank != null and rank != '' and rank == 'dueDate'">
+			order by due_date desc
+		</if>
+		<if test="rank != null and rank != '' and rank == 'amountAsc'">
+			order by amount desc
+		</if>
+		<if test="rank != null and rank != '' and rank == 'amountDesc'">
+			order by amount asc
+		</if>
+		)) where page=#{pageNo}
 	</select>
 
 	<select id="getFundByNo" resultType="fundVO">
-		select fund_no fundno, fund_name fundname, proposal, homepage,
-		cur_sum cursum, goal_sum goalsum, participant,
+		select fund_no fundno,
+		fund_name fundname, proposal, homepage,
+		cur_sum cursum, goal_sum
+		goalsum, participant,
 		to_char(start_date,'yyyy-mm-dd') as startdate,
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate,
-		content, hits, category, source from gibu_fund where fund_no=#{value}
+		content, hits, category,
+		source from gibu_fund where fund_no=#{value}
 	</select>
 
 	<insert id="writeFund" parameterType="fundVO">
@@ -29,7 +111,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select gibu_fund_seq.nextval from dual
 		</selectKey>
 		insert into gibu_fund
-		(fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content, category, source)
+		(fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content,
+		category, source)
 		values(#{fundNo},#{fundName},#{proposal},
 		#{homepage},#{goalSum},#{startDate},#{dueDate},#{content},#{category},#{source})
 	</insert>
@@ -42,22 +125,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update gibu_fund set
 		fund_name=#{fundName},proposal=#{proposal},
 		homepage=#{homepage},goal_sum=#{goalSum}, start_date=#{startDate},
-		due_date=#{dueDate},content=#{content}, category=#{category}, source=#{source}
+		due_date=#{dueDate},content=#{content}, category=#{category},
+		source=#{source}
 		where fund_no=#{fundNo}
 	</update>
-
-	<select id="getPageNo" resultType="string">
-		select page from(
-		select fund_no fundno, ceil(rownum/5) as page from(
-		select fund_no from gibu_fund order by fund_no desc
-		)
-		) where fundno=#{value}
-	</select>
-
-	<select id="getTotalPostingCount" resultType="int">
-		select count(*)
-		from gibu_fund
-	</select>
 
 	<update id="updateHit">
 		update gibu_fund set hits=hits+1 where
@@ -83,14 +154,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getCommentList" resultType="fundCommentVO"
 		parameterType="commentPageVO">
 		select * from(
-		select commentno, fundno, text, commenttime, id, name, ceil(rownum/5) as
+		select commentno, fundno, text,
+		commenttime, id, name, ceil(rownum/5) as
 		page from
-		(select co.comment_no commentno, co.fund_no fundno, co.text, co.comment_time
+		(select co.comment_no
+		commentno, co.fund_no fundno, co.text, co.comment_time
 		commenttime,
-		co.member_id id, mem.name name from gibu_fund_comment co, member mem where
+		co.member_id id, mem.name name from gibu_fund_comment co, member mem
+		where
 		co.member_id=mem.id order by comment_no desc
 		))
-		where page=${commentPage} and fundno=${fundNo}
+		where
+		page=${commentPage} and fundno=${fundNo}
 	</select>
 
 	<select id="getTotalCommentCount" resultType="int">
@@ -99,7 +174,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="getTotalGibuAmount" resultType="int">
-		select sum(amount) from donation_history
+		select sum(amount)
+		from donation_history
 	</select>
 
 	<select id="getTotalGibuParticipants" resultType="int">
@@ -119,7 +195,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		to_char(donation_time,'yyyy')=#{value}
 	</select>
 	<select id="getPhotoByNo" resultType="fundPhotoVO">
-		select photo_no photono, org_name orgname, real_name realname, fund_no
-		fundno from fund_photo where fund_no = #{value}
+		select photo_no photono,
+		org_name orgname, real_name realname, fund_no
+		fundno from fund_photo
+		where fund_no = #{value}
 	</select>
 </mapper>

@@ -188,3 +188,12 @@ select count(distinct(member_id)) from donation_history where to_char(donation_t
 --연도별 기부액
 select sum(amount) from donation_history where to_char(donation_time,'yyyy')=2015
 
+select * from(
+		select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
+		startdate, duedate, content, hits, category, source, ceil(rownum/9) as page from
+		(select fund_no fundno, fund_name fundname, proposal, homepage,
+		cur_sum cursum, goal_sum goalsum, participant,
+		to_char(start_date,'yyyy-mm-dd') as startdate,
+		to_char(due_date,'yyyy-mm-dd') as
+		duedate,
+		content, hits, category, source from gibu_fund where fund_name like '%#{word}%' order by fund_no desc))where page=#{1}
