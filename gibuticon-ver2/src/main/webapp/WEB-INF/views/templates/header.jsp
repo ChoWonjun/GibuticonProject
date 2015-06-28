@@ -185,7 +185,7 @@
                                        <button type="submit" class="btn btn-default"
                                           id="loginForm">LogIn</button>
                                     </div>
-                                    <br><br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
+                                    <br><br> <a href="member_findIdForm.gibu">아이디찾기 | </a> <a href="member_findPasswordForm.gibu">비밀번호찾기 |
                                     </a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
                               </form>
                            </div>

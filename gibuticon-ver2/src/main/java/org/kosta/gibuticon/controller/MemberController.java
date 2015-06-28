@@ -119,11 +119,24 @@ public class MemberController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("idCheck")
+	@RequestMapping(value="member/idCheck" , method=RequestMethod.POST)
 	@ResponseBody
 	public String idCheck(String id) {
 		String message = null;
 		MemberVO mvo = memberService.findMemberById(id);
+		if (mvo == null) {
+			message = "true";
+		} else if (mvo != null) {
+			message = "fail";
+		}
+		return message;
+	}
+	
+	@RequestMapping(value="member/emailCheck" , method=RequestMethod.POST)
+	@ResponseBody
+	public String emailCheck(String email) {
+		String message = null;
+		MemberVO mvo = memberService.findMemberByEmil(email);
 		if (mvo == null) {
 			message = "true";
 		} else if (mvo != null) {
@@ -219,6 +232,24 @@ public class MemberController {
 		MemberVO mvo = memberService.findMemberById(id);
 		model.addAttribute("mvo", mvo);
 		return "member_updateMember_result";
+	}
+	
+	/**
+	 * 회원가입시 id중복체크 후 결과를 ajax 방식으로 회원가입 화면으로 전달한다.
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping("findId")
+	@ResponseBody
+	public String findId(String name,String email) {
+		MemberVO vo = new MemberVO();
+		vo.setName(name);
+		vo.setEmail(email);
+		String id = memberService.findId(vo);
+		if (id == null) 
+			id = "fail to find id";
+		return id;
 	}
 
 	/**

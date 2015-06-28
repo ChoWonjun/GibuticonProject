@@ -10,6 +10,8 @@ public interface MemberService {
 	public abstract void registerMember(MemberVO memberVO);
 
 	public abstract MemberVO findMemberById(String id);
+	
+	public abstract MemberVO findMemberByEmil(String email);
 
 	public abstract void updateMember(MemberVO memberVO);
 
@@ -22,5 +24,7 @@ public interface MemberService {
 	public abstract List<MemberRankVO> getAmountRanks();
 	
 	public abstract List<MemberRankVO> getFundCountRanks();
+	
+	public abstract String findId(MemberVO memberVO);
 
 }
