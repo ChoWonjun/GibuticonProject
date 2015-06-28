@@ -11,7 +11,7 @@ public interface MemberService {
 
 	public abstract MemberVO findMemberById(String id);
 	
-	public abstract MemberVO findMemberByEmil(String email);
+	public abstract MemberVO findMemberByEmail(String email);
 
 	public abstract void updateMember(MemberVO memberVO);
 

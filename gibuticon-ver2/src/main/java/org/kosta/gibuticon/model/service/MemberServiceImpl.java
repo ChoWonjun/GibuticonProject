@@ -39,7 +39,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public MemberVO findMemberByEmil(String email) {
+	public MemberVO findMemberByEmail(String email) {
 		// TODO Auto-generated method stub
 		return memberDAO.findMemberByEmail(email);
 	}

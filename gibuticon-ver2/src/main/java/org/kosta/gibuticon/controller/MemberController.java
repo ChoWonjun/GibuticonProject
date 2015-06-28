@@ -136,7 +136,7 @@ public class MemberController {
 	@ResponseBody
 	public String emailCheck(String email) {
 		String message = null;
-		MemberVO mvo = memberService.findMemberByEmil(email);
+		MemberVO mvo = memberService.findMemberByEmail(email);
 		if (mvo == null) {
 			message = "true";
 		} else if (mvo != null) {

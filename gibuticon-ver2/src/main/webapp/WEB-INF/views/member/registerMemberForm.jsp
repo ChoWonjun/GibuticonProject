@@ -22,7 +22,7 @@
 					}
 				});
 
-				$("#id").keyup(
+				$("#mId").keyup(
 						function() {
 							var memberId = $("#mId").val().trim();
 							//trim() : 공란제거
