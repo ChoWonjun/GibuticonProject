@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.freeBoard.FreeBoardDAO;
 import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
+import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,6 +27,16 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public List<FreeBoardVO> getFreeBoardList(String pageNo) {
 		return freeBoardDAO.getFreeBoardList(pageNo);
+	}
+	
+	@Override
+	public List<FreeBoardVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return freeBoardDAO.getListBySearchingTitle(map);
+	}
+
+	@Override
+	public List<FreeBoardVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return freeBoardDAO.getListBySearchingContent(map);
 	}
 
 	@Override
