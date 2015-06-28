@@ -111,10 +111,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			select gibu_fund_seq.nextval from dual
 		</selectKey>
 		insert into gibu_fund
-		(fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content,
-		category, source)
-		values(#{fundNo},#{fundName},#{proposal},
-		#{homepage},#{goalSum},#{startDate},#{dueDate},#{content},#{category},#{source})
+		(fund_no,fund_name,proposal,homepage,goal_sum,start_date,due_date,content,category, source)
+		values(#{fundNo},#{fundName},#{proposal},#{homepage},#{goalSum},#{startDate},#{dueDate},#{content},#{category},#{source})
 	</insert>
 
 	<delete id="deleteFundByNo">
