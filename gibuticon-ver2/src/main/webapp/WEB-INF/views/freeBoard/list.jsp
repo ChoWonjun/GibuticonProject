@@ -22,7 +22,7 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-md-8">
-								<img src="${initParam.root}img\freeBoardName.jpg" width="200">
+									<img src="${initParam.root}img\freeBoardName.jpg" width="200">
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
@@ -87,33 +87,34 @@
 								</c:if>
 							</ul>
 						</div>
-						<div class="col-md-5 text-right">
-							<div class="btn-group btn-group-sm">
-<!-- 								<a class="active btn btn-default dropdown-toggle"
-									data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="#">제목+내용</a></li>
-									<li><a href="#">제목만</a></li>
-									<li><a href="#">내용만</a></li>
-									<li><a href="#">작성자</a></li>
-								</ul> -->
+						<form id="searchForm"
+							action="${initParam.root }freeBoard/getList.gibu">
+							<div class="col-md-5 text-right">
+								<div class="btn-group btn-group-sm">
+									<select class="selectpicker" name="searchSelect"
+										id="searchSelect">
+										<option value="">검색조건</option>
+										<option value="0">제목만</option>
+										<option value="1">내용만</option>
+										<option value="2">제목+내용</option>
+									</select>
+								</div>
 							</div>
-						</div>
 
-						<div class="col-md-6 text-left">
-							<form role="form">
+							<div class="col-md-6 text-left">
 								<div class="form-group">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="검색어입력">
-										<span class="input-group-btn"> <a
-											class="btn btn-primary" type="submit">검색</a>
-										</span><span class="input-group-btn"> <a href="${initParam.root }freeBoard/writeForm.gibu"
+									<input type="text" class="form-control" placeholder="검색어입력"
+										name="input" id="input"> <span class="input-group-btn">
+										<input type="submit" class="btn btn-primary" value="검색">
+										</span><span class="input-group-btn"> <a
+											href="${initParam.root }freeBoard/writeForm.gibu"
 											class="btn btn-primary" type="submit">글쓰기</a>
 										</span>
 									</div>
 								</div>
-							</form>
-						</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

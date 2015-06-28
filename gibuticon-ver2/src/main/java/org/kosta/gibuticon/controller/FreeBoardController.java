@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -57,6 +58,7 @@ public class FreeBoardController {
 		freeBoardService.writeFreeBoard(freeBoardVO);
 		return new ModelAndView("redirect:getList.gibu");
 	}
+	
 	/**
 	 * 자유게시판에 있는 목록을 보여줌
 	 * @param pageNo
@@ -64,17 +66,43 @@ public class FreeBoardController {
 	 * @return
 	 */
 	@RequestMapping("freeBoard/getList.gibu")
-	public ModelAndView getList(String pageNo, String no) {
+	public ModelAndView getList(String pageNo, String no, String searchSelect, String input) {
+
+		System.out.println(searchSelect + "   " + input);
+
 		if (no != null)
 			pageNo = freeBoardService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
-		List<FreeBoardVO> list = freeBoardService.getFreeBoardList(pageNo);
+		if (input==null)
+			input="";
+		if(searchSelect==null)
+			searchSelect="";
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageNo);
+		map.put("input", input);
+		List<FreeBoardVO> list = null;
+
+		if (searchSelect.equals("0")) { // 제목만
+			list = freeBoardService.getListBySearchingTitle(map);
+			System.out.println(list);
+		} else if (searchSelect.equals("1")) { // 내용만
+			list = freeBoardService.getListBySearchingContent(map);
+			System.out.println(list);
+		} else if (searchSelect.equals("2")) { // 제목+내용
+
+		} else {
+			list = freeBoardService.getFreeBoardList(pageNo);
+		}
+		System.out.println(list);
+
 		ListVO lvo = new ListVO(list, new PagingBean(
 				freeBoardService.getTotalPostingCount(),
 				Integer.parseInt(pageNo)));
 		return new ModelAndView("freeBoard_list", "lvo", lvo);
 	}
+	
 	/**
 	 * 자유게시판에 있는 글 상세보기!
 	 * 이떄 같이 댓글목록도 불러옴!

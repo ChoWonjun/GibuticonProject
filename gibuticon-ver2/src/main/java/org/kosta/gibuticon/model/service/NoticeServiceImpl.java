@@ -24,7 +24,16 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getList(String pageNo) {
 		return noticeDAO.getList(pageNo);
 	}
+	
+	@Override
+	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return noticeDAO.getListBySearchingTitle(map);
+	}
 
+	@Override
+	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return noticeDAO.getListBySearchingContent(map);
+	}
 	@Override
 	public NoticeVO showContentNoHit(String noticeNo) {
 		return noticeDAO.getNoticeByNo(noticeNo);
@@ -59,14 +68,6 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeDAO.getNoticeByNo(noticeNo);
 	}
 
-	@Override
-	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
-		return noticeDAO.getListBySearchingTitle(map);
-	}
 
-	@Override
-	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
-		return noticeDAO.getListBySearchingContent(map);
-	}
 
 }
