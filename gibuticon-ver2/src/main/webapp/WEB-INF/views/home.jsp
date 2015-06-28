@@ -93,7 +93,7 @@
 		src="${initParam.root }img/g_mainbanner3.jpg">
 </div>
 
-<<<<<<< HEAD
+
 <div class="section">
 	<div class="container">
 		<div class="row">
@@ -101,51 +101,29 @@
 				<div class="section">
 					<div class="container">
 						<div class="row">
-								<div class="col-md-4" align="center">
+							<div class="col-md-4" align="center">
 								<a href="${initParam.root }introduce_gibuticon.gibu"><img
 									src="${initParam.root }img/g_main_gibuticon.jpg" width="350"></a>
-								
+
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="${initParam.root }img/g_main_fund_img.jpg"
+								<a href="#"><img
+									src="${initParam.root }img/g_main_fund_img.jpg"
 									class="img-responsive" width="1200"></a>
-							
+
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="${initParam.root }memberRanksView.gibu"><img src="${initParam.root }img/g_main_ranking_img.jpg"
+								<a href="${initParam.root }memberRanksView.gibu"><img
+									src="${initParam.root }img/g_main_ranking_img.jpg"
 									class="img-responsive"></a>
-								
+
 							</div>
-=======
-<div class="row">
-	<div class="col-md-13">
-		<div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
-						<a href="${initParam.root }introduce_gibuticon.gibu"><img
-							src="${initParam.root }img/g_main_gibuticon.jpg" width="560"></a>
+
+						</div>
 					</div>
-					<div class="col-md-1"></div>
-					<div class="col-md-3">
-						<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
-							class="img-responsive"></a>
-					</div>
-					<div class="col-md-1"></div>
-					<div class="col-md-3">
-						<a href="${initParam.root }member/memberRanksView.gibu"><img
-							src="${initParam.root }img/g_main_member_ranking.jpg"
-							class="img-responsive"></a>
-					</div>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-<<<<<<< HEAD
-</div>
-</div>
-=======
 
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
