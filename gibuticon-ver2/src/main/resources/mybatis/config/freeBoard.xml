@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 	<select id="getListBySearchingTitle" parameterType="hashmap"
-		resultMap="noticeListRM">
+		resultMap="freeBoardRM">
 		select board_no, title, write_date, content, hits, id from(
 		select board_no, title, write_date, content, hits, id, ceil(rownum/5) as
 		page from
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by ref desc, restep asc))where page=#{page}
 	</select>
 	
-	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="noticeListRM">
+	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="freeBoardRM">
 			   select board_no, title, write_date, content, hits, id from(
         select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
       (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id 
