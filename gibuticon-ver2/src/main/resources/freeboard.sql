@@ -19,7 +19,7 @@ create table free_board(
 	content varchar2(200) not null,
 	hits number not null,
 	id varchar2(50),
-	constraint fk_id foreign key(id) references member
+	constraint fk_id foreign key(id) references member(id)
 )
 
 drop table freeBoard_comment;
