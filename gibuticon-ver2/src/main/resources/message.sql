@@ -27,4 +27,14 @@ where no=2 and m.sender_id=mem.id
 
 select m.no, m.sender_id, m.receiver_id, mem.name, m.title, m.content, m.send_time, m.read_time 
 from gibu_message m, member mem
-where m.receiver_id='java3' and m.sender_id=mem.id
+where m.sender_id='java' and m.sender_id=mem.id
+
+
+select * from (
+select ceil(rownum/10) page, no, sender_id, name, title, send_time, read_time from(
+select m.no, m.sender_id, mem.name, m.title, to_char(m.send_time,'YYYY/MM/DD') send_time, m.read_time 
+from gibu_message m, member mem
+where m.receiver_id='java' and m.sender_id=mem.id
+order by m.send_time desc)) where page=1;
+
+select count(no) from gibu_message where receiver_id='java';

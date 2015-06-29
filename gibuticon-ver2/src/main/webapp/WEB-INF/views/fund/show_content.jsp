@@ -6,7 +6,7 @@
 <!-- Cycle2 (슬라이드쇼) -->
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+   src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
@@ -18,8 +18,22 @@
 		}
 	}
 	function gibuCone() {
-		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
-				+ coneForm.coneCount.value;
+		$.ajax({
+			type: "get",
+			url: "${initParam.root}cone/gibu.gibu",
+			data: "fundNo=${requestScope.posting.fundNo}&point="+coneForm.coneCount.value,
+			success:function(){
+				var data1="<h2>기부해주셔서 감사합니다.</h2><br>";
+				data1+="<form name='writeCommentForm' action='${initParam.root }fund/writeComment.gibu'>";
+				data1+="응원댓글 남기기 <br> ${sessionScope.mvo.name } <input type='text' class='form-control' name='text' placeholder='응원댓글을 남겨주세요'>";
+				data1+="<br><input type='hidden' name='fundNo' value='${param.fundNo }''>";
+				data1+="<input type='hidden' name='memberId' value='${sessionScope.mvo.id }'></form>"; 
+				var data2="<button onclick='gibuCone()' type='button' class='btn btn-default'>댓글달기</button></a>";
+				data2+="<button type='button' class='btn btn-default' data-dismiss='modal'>취소</button>";
+				$("#modal-body").html(data1);
+				$("#modal-footer").html(data2);
+			}
+		});
 	}
 	$().ready(function() {
 		var imgHeight = $("#imgTile").width() * 0.705;
@@ -149,11 +163,11 @@
 							<td colspan="3"><font size="3">${fund.proposal }</font></td>
 						</tr>
 
-						<%-- <tr>
+						<tr>
 							<th colspan="1"><font size="3">관련링크</font></th>
 							<td colspan="3"><a href="${fund.homepage }"><font
 									size="3">${fund.homepage }</font></a></td>
-						</tr> --%>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -172,14 +186,14 @@
 												aria-hidden="true">×</button>
 											<h4 class="modal-title" id="myModalLabel">기부하기</h4>
 										</div>
-										<div class="modal-body">
+										<div class="modal-body" id="modal-body">
 											<form name="coneForm">
 												기부하시겠습니까?<br> 기부할 콘 : <input type="text"
 													name="coneCount" size="10" maxlength="8">cone <br>보유콘
 												: ${sessionScope.mvo.point }<br>
 											</form>
 										</div>
-										<div class="modal-footer">
+										<div class="modal-footer" id="modal-footer">
 											<button type="button" class="btn btn-default"
 												data-dismiss="modal">취소</button>
 											<button onclick="gibuCone()" type="button"
