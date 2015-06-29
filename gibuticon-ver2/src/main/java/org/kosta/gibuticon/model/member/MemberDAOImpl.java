@@ -133,4 +133,10 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne("member.findId",memberVO);
 	}
+	
+	@Override
+	public String findPassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("member.findPassword",memberVO);
+	}
 }

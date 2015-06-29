@@ -5,10 +5,12 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
 	<!-- 어노테이션컨트롤러관련 설정 RequestMappingHandlerMapping : 어노테이션 컨트롤러의 HandlerMapping 
 		Ajax Json : @ResponseBody 관련 설정 등 -->
 	<mvc:annotation-driven />
 	<context:component-scan base-package="org.kosta.gibuticon.controller" />
+	
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
@@ -53,13 +55,29 @@
 		class="org.springframework.web.servlet.view.BeanNameViewResolver">
 		<property name="order" value="1"></property>
 	</bean>
-	<!-- 파일다운로드를 위한 view를 설정 -->
-	<!-- <bean name="downloadView" class="org.kosta.springmvc26.controller.DownloadView"></bean> -->
-
+	
+	<!-- interceptor -->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="org.kosta.gibuticon.controller.LoginCheckInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+    
+    <!-- gmail -->
+	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="25" />
+		<property name="username" value="amorce27@gmail.com" />
+		<property name="password" value="cho05703" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtps.debug">true</prop>
+			</props>
+		</property>
+	</bean> -->
 </beans>

@@ -27,4 +27,6 @@ public interface MemberDAO {
 	public List<MemberRankVO> getFundCountRanks();
 	
 	public String findId(MemberVO memberVO);
+
+	public String findPassword(MemberVO memberVO);
 }

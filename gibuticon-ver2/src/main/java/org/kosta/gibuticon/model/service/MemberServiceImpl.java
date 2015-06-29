@@ -109,4 +109,10 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDAO.findId(memberVO);
 	}
+	
+	@Override
+	public String findPassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return memberDAO.findPassword(memberVO);
+	}
 }

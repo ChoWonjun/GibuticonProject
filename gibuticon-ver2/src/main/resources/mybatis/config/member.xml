@@ -55,6 +55,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="findId" parameterType="memberVO" resultType="String">
    		select id from member where name=#{name} and email=#{email}
    </select>
+   <select id="findPassword" parameterType="memberVO" resultType="String">
+   		select password from member where name=#{name} and id=#{id} and email=#{email}
+   </select>
 </mapper>
  
  
