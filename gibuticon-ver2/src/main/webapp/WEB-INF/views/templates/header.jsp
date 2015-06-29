@@ -81,8 +81,8 @@
                               });
                });
 
-   function sendMessagePopup() {
-      var url = "${initParam.root}message/sendForm.gibu";
+   function sendMessagePopup(receiverId) {
+      var url = "${initParam.root}message/sendForm.gibu?receiverId="+receiverId;
       window
             .open(url, "message",
                   "width=420, height=460, teop=150, left=200");
