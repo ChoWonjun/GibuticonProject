@@ -67,10 +67,8 @@
 						        <img src="${initParam.root }img\g_favorite_3.jpg" width="150"> <br>
 								
 								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }friend/memberlist.gibu" class="sr_txt5"> <span
-											style="font-family: &amp; amp;">친구 찾기</span></a></li>
-									<li><a href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}" class="sr_txt5"> <span
-											style="font-family: &amp; amp;">친구 목록보기</span></a></li>
+									<li><a href="${initParam.root }friend/memberlist.gibu">친구 찾기</a></li>
+									<li><a href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"> 친구 목록보기</a></li>
 								</ul>
 						
 					</div>

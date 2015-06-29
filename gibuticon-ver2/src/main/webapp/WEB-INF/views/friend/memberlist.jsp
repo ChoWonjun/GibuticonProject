@@ -115,14 +115,7 @@
 				</table>
 			</div>
 
-<<<<<<< HEAD
-<c:forEach items="${requestScope.list }" var="member">
-	${member.id }, ${member.name }, ${member.address }, ${member.birth}, ${member.email }
-	<input type="button" value="친구등록" onclick="addFriend('${member.id}')">
-	<input type="button" value="쪽지전송" onclick="sendMessagePopup('${member.id}')"><br>
-</c:forEach>
-=======
 		</div>
 	</div>
 </div>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+

@@ -6,12 +6,19 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				$("#passwordChecks").keyup(function() {
-					if ($("#passwordChecks").val() == $("#passwords").val()) {
-						$("#passCheckM").text("");
-					}
-					if ($("#passwordChecks").val() != $("#passwords").val()) {
-						$("#passCheckM").text("패스워드가 일치하지 않습니다.");
+				$("#registerBtn").click(function() {
+					if ($("#password").val() != $("#passwordCheck").val()) {
+						$("#passCheckM").html("패스워드가 일치하지 않습니다.");
+						$("#passwordCheck").focus();
+						return false;
+					} else if ($("#idCheckForm").text() != "") {
+						$("#id").focus();
+						return false;
+					} else if ($("#emailCheckForm").text() != "") {
+						$("#email").focus();
+						return false;
+					} else {
+						$("#registForm").submit();
 					}
 				});
 
@@ -50,21 +57,6 @@
 								}
 							});
 						});
-				$("#registerBtn").click(function() {
-					if ($("#passCheckM").text() != "") {
-						$("#passwordChecks").focus();
-						return false;
-					} else if ($("#idCheckForm").text() != "") {
-						$("#mId").focus();
-						return false;
-					} else if ($("#emailCheckForm").text() != "") {
-						$("#email").focus();
-						return false;
-					} else {
-						$("#registForm").submit();
-					}
-				});
-
 			});
 </script>
 <div class="section">
@@ -114,7 +106,7 @@
 												<label for="inputPassword" class="col-sm-2 control-label">비밀번호</label>
 												<div class="col-sm-6">
 													<form:input type="password" class="form-control"
-														id="passwords" name="password" placeholder="Password"
+														id="password" name="password" placeholder="Password"
 														path="password" />
 													<p class="help-block">
 														<form:errors path="password" />
@@ -126,10 +118,10 @@
 												<label for="inputPasswordCheck"
 													class="col-sm-2 control-label">비밀번호 확인</label>
 												<div class="col-sm-6">
-													<p id="passCheckM"></p>
 													<input type="password" class="form-control"
-														id="passwordChecks" name="passwordCheck"
+														id="passwordCheck" name="passwordCheck"
 														placeholder="Password Check">
+													<p class="help-block" id="passCheckM"></p>
 												</div>
 											</div>
 											<br>

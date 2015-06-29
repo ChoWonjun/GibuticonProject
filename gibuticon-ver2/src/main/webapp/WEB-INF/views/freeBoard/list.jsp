@@ -13,19 +13,28 @@
 	}
 </script>
 <link href="${initParam.root}css/table.css" rel="stylesheet"
+
 	type="text/css">
+
+<body data-spy="scroll">
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 	<div class="section">
 		<div class="container">
-				<div class="col-md-12">
+			<div class="row"></div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="navi_ca_is"></div>
+				</div>
+				<div class="col-md-8">
 					<div class="section">
 						<div class="container">
 							<div class="row">
-								<div class="col-md-12" align="center">
-								
-								<div class="col-md-11">
-								<br><br>
+								<div class="col-md-8">
 									<img src="${initParam.root}img/freeBoardName.jpg" width="200">
-									<br><br><br><br>
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
@@ -65,6 +74,7 @@
 										</tbody>
 									</table>
 								</div>
+<<<<<<< HEAD
 							</div>
 						</div>
 					</div>
@@ -76,6 +86,12 @@
 							action="${initParam.root }freeBoard/getList.gibu">
 					</div>
 						<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
+=======
+							</div>
+						</div>
+					</div>
+
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 					<div class="section">
 						<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 
@@ -113,7 +129,11 @@
 							</div>
 
 
+
 							<div class="col-md-6 text-left">
+
+							<div class="col-md-6 text-left">
+
 
 							<div class="col-md-6 text-left">
 
@@ -135,10 +155,15 @@
 			</div>
 		</div>
 	</div>
+<<<<<<< HEAD
 </div>
 <<<<<<< HEAD
 
 =======
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+=======
+</body>
+
 >>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 
 

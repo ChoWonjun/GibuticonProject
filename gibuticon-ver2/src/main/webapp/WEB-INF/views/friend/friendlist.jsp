@@ -29,13 +29,6 @@
 	<div class="container">
 		<div class="row">
 
-<<<<<<< HEAD
-<c:forEach items="${requestScope.list }" var="list">
-	${list.friend.id }, ${list.friend.name }, ${list.friend.address }, ${list.friend.birth}, ${list.friend.email }
-	<input type="button" value="쪽지전송" onclick="sendMessagePopup('${list.friend.id}')">
-	<input type="button" value="친구삭제" onclick="delFriend('${list.friend.id}')"><br>
-</c:forEach>
-=======
 			<div class="col-md-2">
 				<div id="container">
 					<div class="snb_v1">
@@ -147,4 +140,4 @@
 		</div>
 	</div>
 </div>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+
