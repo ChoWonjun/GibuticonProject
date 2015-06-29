@@ -24,7 +24,8 @@ public class BookmarkDAOImpl implements BookmarkDAO {
 	 */
 	@Override
 	public void delBookmark(BookmarkVO bvo){
-		sqlSessionTemplate.delete("bookmark.delBookmark",bvo.getFund().getFundNo());
+		System.out.println(bvo);
+		sqlSessionTemplate.delete("bookmark.delBookmark",bvo);
 	}
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.bookmark.BookmarkDAO#getBookmarkList(java.lang.String)

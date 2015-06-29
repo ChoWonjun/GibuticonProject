@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -20,6 +21,26 @@ public class NoticeDAOImpl implements NoticeDAO {
 		return sqlSessionTemplate.selectList("notice.getNoticeList", pageNo);
 	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearchingTitle",map);
+	}
+
+	/**
+	 * 
+	 */
+	@Override
+	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearchingContent",map);
+	}
+	public List<NoticeVO> getListBySearchingBoth(HashMap<String, Object> map){
+		return sqlSessionTemplate.selectList("notice.getListBySearchingBoth",map);
+	}
+
+	
 	/**
 	 * 공지사항 글을 공지사항 DB에 인서트 시키는 메서드
 	 */
@@ -66,8 +87,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 	 * 공지사항에 글이 몇개인지 불러오는 메서드
 	 */
 	@Override
-	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount");
+	public int getTotalPostingCount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount",map);
 	}
 
 	/**
@@ -76,22 +97,6 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Override
 	public NoticeVO getNoticeByNo(String noticeNo) {
 		return sqlSessionTemplate.selectOne("notice.getNoticeByNo", noticeNo);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingTitle(String pageNo, String input) {
-		return sqlSessionTemplate.selectList("notice.searchByTitle",input);
-	}
-
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingContent(String pageNo, String input) {
-		return sqlSessionTemplate.selectList("notice.searchByContent",input);
 	}
 
 

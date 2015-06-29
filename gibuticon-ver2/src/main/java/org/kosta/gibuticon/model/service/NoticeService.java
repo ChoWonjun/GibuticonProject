@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -11,8 +12,9 @@ public interface NoticeService {
 	public abstract void delete(String noticeNo);
 	public abstract void update(NoticeVO noticeVO);
 	public abstract String getPageNo(String noticeNo);
-	public abstract int getTotalPostingCount();
+	public abstract int getTotalPostingCount(HashMap<String, Object> map);
 	public abstract NoticeVO getNoticeByNo(String noticeNo);
-	public abstract List<NoticeVO> getListBySearchingTitle(String pageNo, String input);
-	public abstract List<NoticeVO> getListBySearchingContent(String pageNo,String input);
+	public abstract List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map);
+	public abstract List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map);
+	public abstract List<NoticeVO> getListBySearchingBoth(HashMap<String, Object> map);	
 }

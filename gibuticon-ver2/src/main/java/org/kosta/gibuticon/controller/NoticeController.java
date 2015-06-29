@@ -1,16 +1,16 @@
 package org.kosta.gibuticon.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-
+import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.fund.SearchOptionVO;
 import org.kosta.gibuticon.model.member.LoginCheck;
-import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.kosta.gibuticon.model.notice.PagingBean;
@@ -25,11 +25,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class NoticeController {
 	@Resource
 	private NoticeService noticeService;
-	private Logger log = LoggerFactory.getLogger(getClass());	
-	
+	private Logger log = LoggerFactory.getLogger(getClass());
+
 	/**
-	 * 글쓰기 입력폼을 불러오는 컨트롤러
-	 * notice 폴더에 있는 write.jsp로 보낸다
+	 * 글쓰기 입력폼을 불러오는 컨트롤러 notice 폴더에 있는 write.jsp로 보낸다
+	 * 
 	 * @param request
 	 * @return
 	 */
@@ -38,9 +38,10 @@ public class NoticeController {
 	public String noticeWriteView(HttpServletRequest request) {
 		return "notice_write";
 	}
-	
+
 	/**
 	 * 공지사항에 글을 쓴거를 데이터 베이스로 넘기는 컨트롤러
+	 * 
 	 * @param noticeVO
 	 * @return
 	 */
@@ -51,6 +52,7 @@ public class NoticeController {
 		noticeService.write(noticeVO);
 		return new ModelAndView("redirect:getList.gibu");
 	}
+
 	/**
 	 * 공지사항 목록글들을 불러오는 컨트롤러 
 	 * @param pageNo
@@ -58,23 +60,49 @@ public class NoticeController {
 	 * @return
 	 */
 	@RequestMapping("notice/getList.gibu")
-	public ModelAndView getList(String pageNo, String no) {
-		System.out.println(no+"   "+pageNo);
+	public ModelAndView getList(String pageNo, String no, String searchSelect, String input) {
+//		String searchCondition = request.getParameter("searchSelect");
+//		String input = request.getParameter("input");
+		System.out.println(searchSelect + "   " + input);
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
-		// System.out.println(pageNo);
-		List<NoticeVO> list = noticeService.getList(pageNo);
-		//System.out.println(list);
+		if (input==null)
+			input="";
+		if(searchSelect==null)
+			searchSelect="";
+
+		// System.out.println(no+" "+pageNo);
+
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("page", pageNo);
+		map.put("input", input);
+		map.put("searchSelect", searchSelect);
+		List<NoticeVO> list = null;
+		if (searchSelect.equals("0")) { // 제목만
+			list = noticeService.getListBySearchingTitle(map);
+			// System.out.println(list);
+		} else if (searchSelect.equals("1")) { // 내용만
+			list = noticeService.getListBySearchingContent(map);
+			// System.out.println(list);
+		} else if (searchSelect.equals("2")) { // 제목+내용
+			list = noticeService.getListBySearchingBoth(map);
+			System.out.println(list);
+		} else {
+			list = noticeService.getList(pageNo);
+		}
+		System.out.println(list);
+		
 		ListVO lvo = new ListVO(list, new PagingBean(
-				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+				noticeService.getTotalPostingCount(map), Integer.parseInt(pageNo)));
+		
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 
-	
 	/**
 	 * 공지사항의 글을 클릭 할 시 글의 컨텐츠(내용)을 불러오는 컨트롤러
+	 * 
 	 * @param noticeNo
 	 * @param request
 	 * @param response
@@ -114,25 +142,23 @@ public class NoticeController {
 		// System.out.println(vo);
 		return new ModelAndView("notice_show_content", "posting", vo);
 	}
-	
-	
+
 	/**
-	 *  공지사항의 글을 지우기위한 delete 컨트롤러
+	 * 공지사항의 글을 지우기위한 delete 컨트롤러
 	 * 
 	 * @param noticeNo
 	 * @return
 	 */
 	@RequestMapping("notice/delete.gibu")
 	@LoginCheck
-	public String delete(String noticeNo){
+	public String delete(String noticeNo) {
 		noticeService.delete(noticeNo);
 		return "redirect:getList.gibu";
 	}
-	
-	
+
 	/**
-	 *  업데이트 폼을 불러오기 위한 컨트롤러
-	 * notice 폴더에 있는 update 폼을 불러온다
+	 * 업데이트 폼을 불러오기 위한 컨트롤러 notice 폴더에 있는 update 폼을 불러온다
+	 * 
 	 * @param noticeNo
 	 * @return
 	 */
@@ -143,9 +169,10 @@ public class NoticeController {
 		NoticeVO nvo = noticeService.getNoticeByNo(noticeNo);
 		return new ModelAndView("notice_update", "nvo", nvo);
 	}
-	
+
 	/**
 	 * 업데이트한 내용을 실제 데이터베이스로 보내는 컨트롤러
+	 * 
 	 * @param noticeVO
 	 * @return
 	 */

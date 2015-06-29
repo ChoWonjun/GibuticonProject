@@ -83,39 +83,55 @@
 	<div class="section">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-18"></div>
+				<div class="col-md-12"></div>
 			</div>
 		</div>
 	</div>
 	<img class="cycle-slideshow img"
-		src="${initParam.root }img/g_mainbanner1.jpg"> <img
+		src="${initParam.root }img/g_mainbanner3.jpg"><img
 		class="cycle-slideshow img"
-		src="${initParam.root }img/g_mainbanner3.jpg">
+		src="${initParam.root }img/g_mainbanner1.jpg">
 </div>
-
-<div class="row">
-	<div class="col-md-13">
-		<div class="section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-5">
-						<a href="${initParam.root }introduce_gibuticon.gibu"><img
-							src="${initParam.root }img/g_main_gibuticon.jpg" width="560"></a>
-					</div>
-					<div class="col-md-1"></div>
-					<div class="col-md-3">
-						<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
-							class="img-responsive"></a>
-					</div>
-					<div class="col-md-1"></div>
-					<div class="col-md-3">
-						<a href="${initParam.root }member/memberRanksView.gibu"><img
-							src="${initParam.root }img/g_main_member_ranking.jpg"
-							class="img-responsive"></a>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="section">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-4" align="center">
+								<a href="${initParam.root }introduce_gibuticon.gibu"><img
+									src="${initParam.root }img/g_main_gibuticon.jpg" width="350"></a>
+							</div>
+							<div class="col-md-4" align="center">
+								<a href="${initParam.root }memberRanksView.gibu"><img
+									src="${initParam.root }img/g_main_ranking.jpg" width="350"></a>
+							</div>
+							<div class="col-md-4" align="center">
+								<a href="#"><img
+									src="${initParam.root }img/g_main_fund.jpg"
+									width="350"></a>
+							</div>
+							
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12"></div>
+			</div>
+		</div>
+	</div>
 

@@ -1,0 +1,18 @@
+@charset "utf-8";
+#mypage ul li { 
+	list-style: none; 
+} 
+#mypage ul li a { 
+	width: 100px; 
+	height: 30px; 
+/* 	line-height: 53px; 
+	border-bottom: 2px solid #999;   */
+	padding-left: 5px; 
+	color: #333; 
+	text-decoration: none; 
+ 	display: block;
+} 
+#mypage ul li a:hover { 
+	border-bottom: 35px solid #999;
+	height: 9px; 
+}

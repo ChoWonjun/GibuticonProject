@@ -27,7 +27,7 @@
 <div class="section">
 	<div class="container">
 		<div class="col-sm-offset-1 col-sm-5 col-md-8">
-			<img src="${initParam.root}img\기부현황안내.jpg" width="150">
+			<img src="${initParam.root}img\g_fund_state.jpg" width="150">
 		</div>
 	</div>
 </div>

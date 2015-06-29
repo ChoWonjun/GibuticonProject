@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.notice;
 
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -13,9 +14,9 @@ public interface NoticeDAO {
 	public abstract void updateHit(String noticeNo);
 	public abstract NoticeVO getNoticeByNo(String noticeNo);
 	public abstract String getPageNo(String noticeNo);
-	public abstract int getTotalPostingCount();
-	public abstract List<NoticeVO> getListBySearchingTitle(String pageNo,String input);
-	public abstract List<NoticeVO> getListBySearchingContent(String pageNo,String input);
-	
+	public abstract int getTotalPostingCount(HashMap<String, Object> map);
+	public abstract List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map);
+	public abstract List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map);
+	public abstract List<NoticeVO> getListBySearchingBoth(HashMap<String, Object> map);
 
 }

@@ -52,11 +52,21 @@ public class FundDAOImpl implements FundDAO {
 	 * @see org.kosta.gibuticon.model.fund.FundDAO#getFundList()
 	 */
 	@Override
-	public List<FundVO> getFundList(String pageNo) {
-		return sqlSessionTemplate.selectList("fund.getFundList", pageNo);
+	public List<FundVO> getFundList(SearchOptionVO svo) {
+		return sqlSessionTemplate.selectList("fund.getFundList", svo);
 	}
 
-	// select * from gibu_fund
+	@Override
+	public int getTotalPostingCount(SearchOptionVO svo) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getTotalPostingCount", svo);
+	}
+
+	@Override
+	public String getPageNo(SearchOptionVO svo) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("fund.getPageNo", svo);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -117,18 +127,6 @@ public class FundDAOImpl implements FundDAO {
 	}
 
 	@Override
-	public String getPageNo(String no) {
-		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("fund.getPageNo", no);
-	}
-
-	@Override
-	public int getTotalPostingCount() {
-		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("fund.getTotalPostingCount");
-	}
-
-	@Override
 	public void updateHit(String no) {
 		// TODO Auto-generated method stub
 		sqlSessionTemplate.update("fund.updateHit", no);
@@ -183,12 +181,14 @@ public class FundDAOImpl implements FundDAO {
 	@Override
 	public int getTotalGibuAmount(String year) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("fund.getTotalGibuAmountYear",year);
+		return sqlSessionTemplate
+				.selectOne("fund.getTotalGibuAmountYear", year);
 	}
 
 	@Override
 	public int getTotalGibuParticipants(String year) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("fund.getTotalGibuParticipantsYear",year);
+		return sqlSessionTemplate.selectOne(
+				"fund.getTotalGibuParticipantsYear", year);
 	}
 }

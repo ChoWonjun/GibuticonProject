@@ -13,16 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from gibu_bookmark, gibu_fund where gibu_bookmark.fund_no=gibu_fund.fund_no and my_id=#{value}
 	</select>
 	
-	<select id="getMemberList" resultType="memberVO">
-		select * from member
-	</select>
-	
 	<insert id="addBookmark" parameterType="bookmarkVO">
-		insert into gibu_bookmark(my_id, fund_no) values(#{myId}, #{fundNo})
+		insert into gibu_bookmark(my_id, fund_no) values(#{myId}, #{fund.fundNo})
 	</insert>
 	
 	<delete id="delBookmark" parameterType="bookmarkVO">
-		delete from gibu_bookmark where my_id=#{myId} and fund_no=#{fundNo}
+		delete from gibu_bookmark where my_id=#{myId} and fund_no=#{fund.fundNo}
 	</delete>
 </mapper>
  

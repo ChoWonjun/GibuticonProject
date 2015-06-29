@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.fund.FundDAO;
 import org.kosta.gibuticon.model.fund.FundPhotoVO;
 import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.fund.SearchOptionVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
@@ -46,9 +47,9 @@ public class FundServiceImpl implements FundService {
 		return vo;
 	}
 
-	public List<FundVO> getFundList(String pageNo) {
+	public List<FundVO> getFundList(SearchOptionVO svo) {
 		List <FundPhotoVO> photoList = new ArrayList<FundPhotoVO>();
-		List <FundVO> list = fundDAO.getFundList(pageNo);
+		List <FundVO> list = fundDAO.getFundList(svo);
 		for(int i=0;i<list.size();i++){
 			FundVO vo = list.get(i);
 			photoList = fundDAO.getPhotoByNo(list.get(i).getFundNo());
@@ -74,14 +75,14 @@ public class FundServiceImpl implements FundService {
 	}
 
 	@Override
-	public String getPageNo(String no) {
-		return fundDAO.getPageNo(no);
+	public String getPageNo(SearchOptionVO svo) {
+		return fundDAO.getPageNo(svo);
 	}
 
 	@Override
-	public int getTotalPostingCount() {
+	public int getTotalPostingCount(SearchOptionVO svo) {
 		// TODO Auto-generated method stub
-		return fundDAO.getTotalPostingCount();
+		return fundDAO.getTotalPostingCount(svo);
 	}
 
 	@Override

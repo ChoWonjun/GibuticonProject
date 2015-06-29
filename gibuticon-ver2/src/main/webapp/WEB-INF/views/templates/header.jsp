@@ -11,7 +11,8 @@
 <script
    src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
-   src="http:////cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+   
 <script type="text/javascript">
    $(document)
          .ready(
@@ -119,10 +120,10 @@
                      href="${initParam.root}fund/getList.gibu"><strong>전체보기</strong></a>
                   </li>
                   <li class="divider"></li>
-                  <li><a tabindex="-1" href="#"><strong>어린이</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>어르신</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>장애인</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>캠페인</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=어린이"><strong>어린이</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=어르신"><strong>어르신</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=장애인"><strong>장애인</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=캠페인"><strong>캠페인</strong></a></li>
                   <c:if test="${sessionScope.mvo.admin=='yes'}">
                      <li class="divider"></li>
                      <li><a tabindex="-1" href="${initParam.root }fund/writeForm.gibu"><strong>모금 등록</strong></a></li>
@@ -154,9 +155,6 @@
                               <form class="form-horizontal"
                                  action="${initParam.root}member/login.gibu" method="post">
                                  <div class="form-group">
-                                    <!-- <div class="col-sm-offset-2 col-sm-5 col-md-8">
-                                       <label for="inputEmail3" class="control-label">ID</label>
-                                    </div> -->
                                     <div class="col-sm-offset-2 col-sm-5 col-md-8">
                                        <input type="text" class="form-control input-lg" id="id"
                                           name="id" placeholder="User Name" path="id" />
@@ -166,9 +164,6 @@
                                     </div>
                                  </div>
                                  <div class="form-group">
-                                    <!-- <div class="col-sm-offset-2 col-sm-5 col-md-8">
-                                       <label for="inputPassword3" class="control-label">Password</label>
-                                    </div> -->
                                     <div class="col-sm-offset-2 col-sm-5 col-md-8">
                                        <input type="password" class="form-control input-lg"
                                           id="password" name="password" placeholder="Password"
@@ -190,7 +185,7 @@
                                        <button type="submit" class="btn btn-default"
                                           id="loginForm">LogIn</button>
                                     </div>
-                                    <br><br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
+                                    <br><br> <a href="member_findIdForm.gibu">아이디찾기 | </a> <a href="member_findPasswordForm.gibu">비밀번호찾기 |
                                     </a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
                               </form>
                            </div>

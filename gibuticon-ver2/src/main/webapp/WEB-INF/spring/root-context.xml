@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -41,15 +40,29 @@
 	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-	
+
 	<!-- upload path -->
 	<bean id="uploadPath" class="java.lang.String">
 		<constructor-arg>
-
 			<!-- <value>C:\\Users\\KOSTA\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value> -->
-
-			<value>C:\\Users\\You kyounghee\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value>
-
+			<value>C:\\Users\\Youkyounghee\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value>
 		</constructor-arg>
+	</bean>
+
+	<!-- gmail -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="25" />
+		<property name="username" value="amorce27@gmail.com" />
+		<property name="password" value="cho05703" />
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtps.debug">true</prop>
+			</props>
+		</property>
 	</bean>
 </beans>
