@@ -6,11 +6,11 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				$("#passwordCheck").keyup(function() {
-					if ($("#passwordCheck").val() == $("#password").val()) {
+				$("#passwordChecks").keyup(function() {
+					if ($("#passwordChecks").val() == $("#passwords").val()) {
 						$("#passCheckM").text("");
 					}
-					if ($("#passwordCheck").val() != $("#password").val()) {
+					if ($("#passwordChecks").val() != $("#passwords").val()) {
 						$("#passCheckM").text("패스워드가 일치하지 않습니다.");
 					}
 				});
@@ -52,7 +52,7 @@
 						});
 				$("#registerBtn").click(function() {
 					if ($("#passCheckM").text() != "") {
-						$("#passwordCheck").focus();
+						$("#passwordChecks").focus();
 						return false;
 					} else if ($("#idCheckForm").text() != "") {
 						$("#mId").focus();
@@ -114,7 +114,7 @@
 												<label for="inputPassword" class="col-sm-2 control-label">비밀번호</label>
 												<div class="col-sm-6">
 													<form:input type="password" class="form-control"
-														id="password" name="password" placeholder="Password"
+														id="passwords" name="password" placeholder="Password"
 														path="password" />
 													<p class="help-block">
 														<form:errors path="password" />
@@ -128,7 +128,7 @@
 												<div class="col-sm-6">
 													<p id="passCheckM"></p>
 													<input type="password" class="form-control"
-														id="passwordCheck" name="passwordCheck"
+														id="passwordChecks" name="passwordCheck"
 														placeholder="Password Check">
 												</div>
 											</div>
