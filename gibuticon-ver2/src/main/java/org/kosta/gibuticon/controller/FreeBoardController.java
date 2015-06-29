@@ -82,6 +82,8 @@ public class FreeBoardController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageNo);
 		map.put("input", input);
+		map.put("searchSelect", searchSelect);
+
 		List<FreeBoardVO> list = null;
 
 		if (searchSelect.equals("0")) { // 제목만
