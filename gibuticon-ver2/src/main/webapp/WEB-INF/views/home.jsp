@@ -108,8 +108,11 @@
 									src="${initParam.root }img/g_main_ranking.jpg" width="350"></a>
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
+								<a href="#"><img
+									src="${initParam.root }img/g_main_fund.jpg"
+
 									width="350"></a>
+
 							</div>
 						</div>
 					</div>

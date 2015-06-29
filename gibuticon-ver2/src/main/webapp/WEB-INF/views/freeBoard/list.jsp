@@ -14,53 +14,58 @@
 </script>
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
-<div class="section">
-	<div class="container">
-		<div class="col-md-12">
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12" align="center">
-							<img src="${initParam.root}img\freeBoardName.jpg" width="300"
-								align="top">
-							<table class="type09" style="font-family: &amp; amp;">
-								<thead>
-									<tr>
-										<th width="100">NO</th>
-										<th width="800">제목</th>
-										<th width="300">작성일</th>
-										<th width="300">작성자</th>
-										<th width="300">조회수</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:choose>
-										<c:when test="${sessionScope.mvo!=null}">
-											<c:forEach items="${requestScope.lvo.list}" var="board">
-												<tr>
-													<td>${board.boardNo}</td>
-													<td><a
-														href="${initParam.root }freeBoard/showContent.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td>
-													<td>${board.writeDate}</td>
-													<td>${board.memberVO.name}</td>
-													<td>${board.hits}</td>
-												</tr>
-											</c:forEach>
-										</c:when>
-										<c:otherwise>
-											<c:forEach items="${requestScope.lvo.list}" var="board">
-												<tr>
-													<td>${board.boardNo}</td>
-													<td>${board.title}</td>
-													<td>${board.writeDate}</td>
-													<td>${board.memberVO.name}</td>
-													<td>${board.hits}</td>
-												</tr>
-											</c:forEach>
-										</c:otherwise>
-									</c:choose>
-								</tbody>
-							</table>
+	<div class="section">
+		<div class="container">
+				<div class="col-md-12">
+					<div class="section">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-12" align="center">
+								
+								<div class="col-md-11">
+								<br><br>
+									<img src="${initParam.root}img/freeBoardName.jpg" width="200">
+									<br><br><br><br>
+									<table class="type09" style="font-family: &amp; amp;">
+										<thead>
+											<tr>
+												<th width="100">NO</th>
+												<th width="800">제목</th>
+												<th width="300">작성일</th>
+												<th width="300">작성자</th>
+												<th width="300">조회수</th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:choose>
+												<c:when test="${sessionScope.mvo!=null}">
+													<c:forEach items="${requestScope.lvo.list}" var="board">
+														<tr>
+															<td>${board.boardNo}</td>
+															<td><a
+																href="${initParam.root }freeBoard/showContent.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">${board.title}</a></td>
+															<td>${board.writeDate}</td>
+															<td>${board.memberVO.name}</td>
+															<td>${board.hits}</td>
+														</tr>
+													</c:forEach>
+												</c:when>
+												<c:otherwise>
+													<c:forEach items="${requestScope.lvo.list}" var="board">
+														<tr>
+															<td>${board.boardNo}</td>
+															<td>${board.title}</td>
+															<td>${board.writeDate}</td>
+															<td>${board.memberVO.name}</td>
+															<td>${board.hits}</td>
+														</tr>
+													</c:forEach>
+												</c:otherwise>
+											</c:choose>
+										</tbody>
+									</table>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -69,6 +74,11 @@
 					<div class="section">
 						<form id="searchForm"
 							action="${initParam.root }freeBoard/getList.gibu">
+					</div>
+						<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
+					<div class="section">
+						<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
+
 							<div class="container"></div>
 							<div class="col-md-offset-6 col-md-6">
 								<ul class="pagination">
@@ -102,7 +112,11 @@
 								</div>
 							</div>
 
+
 							<div class="col-md-6 text-left">
+
+							<div class="col-md-6 text-left">
+
 								<div class="form-group">
 									<div class="input-group">
 										<input type="text" class="form-control" placeholder="검색어입력"
@@ -122,7 +136,10 @@
 		</div>
 	</div>
 </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 
 
 

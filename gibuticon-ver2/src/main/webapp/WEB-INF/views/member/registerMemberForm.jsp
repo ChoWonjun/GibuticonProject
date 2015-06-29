@@ -6,19 +6,12 @@
 <script type="text/javascript">
 	$(document).ready(
 			function() {
-				$("#registerBtn").click(function() {
-					if ($("#password").val() != $("#passwordCheck").val()) {
-						$("#passCheckM").html("패스워드가 일치하지 않습니다.");
-						$("#passwordCheck").focus();
-						return false;
-					} else if ($("#idCheckForm").text() != "") {
-						$("#id").focus();
-						return false;
-					} else if ($("#emailCheckForm").text() != "") {
-						$("#email").focus();
-						return false;
-					} else {
-						$("#registForm").submit();
+				$("#passwordCheck").keyup(function() {
+					if ($("#passwordCheck").val() == $("#password").val()) {
+						$("#passCheckM").text("");
+					}
+					if ($("#passwordCheck").val() != $("#password").val()) {
+						$("#passCheckM").text("패스워드가 일치하지 않습니다.");
 					}
 				});
 
@@ -57,6 +50,21 @@
 								}
 							});
 						});
+				$("#registerBtn").click(function() {
+					if ($("#passCheckM").text() != "") {
+						$("#passwordCheck").focus();
+						return false;
+					} else if ($("#idCheckForm").text() != "") {
+						$("#mId").focus();
+						return false;
+					} else if ($("#emailCheckForm").text() != "") {
+						$("#email").focus();
+						return false;
+					} else {
+						$("#registForm").submit();
+					}
+				});
+
 			});
 </script>
 <div class="section">
@@ -118,10 +126,10 @@
 												<label for="inputPasswordCheck"
 													class="col-sm-2 control-label">비밀번호 확인</label>
 												<div class="col-sm-6">
+													<p id="passCheckM"></p>
 													<input type="password" class="form-control"
 														id="passwordCheck" name="passwordCheck"
 														placeholder="Password Check">
-													<p class="help-block" id="passCheckM"></p>
 												</div>
 											</div>
 											<br>
