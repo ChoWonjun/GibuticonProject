@@ -30,7 +30,7 @@ function getList(pageNo){
 						<div class="container">
 							<div class="row">
 								<div class="col-md-8">
-									<img src="${initParam.root}img\freeBoardName.jpg" width="200">
+									<img src="${initParam.root}img/freeBoardName.jpg" width="200">
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
