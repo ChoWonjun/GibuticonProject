@@ -6,7 +6,8 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
-
+<link href="${initParam.root}css/mypage.css" rel="stylesheet"
+	type="text/css">
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript">
@@ -25,77 +26,65 @@
 	}
 </script>
 
+<script type="text/javascript">
+	function chargePopup() {
+		var url = "${initParam.root }cone/chargeView.gibu";
+		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
+	}
+</script>
+
+<div class="section" align="center">
+	<div class="container">
+		<div class="row"></div>
+	</div>
+</div>
 <div class="section">
 	<div class="container">
 		<div class="row">
-
+			&nbsp;&nbsp;&nbsp; <img src="${initParam.root }img/g_my_gibuticon.jpg"
+				height="30" width="130"> <br> <br>
 			<div class="col-md-2">
+				<div class="mypage"></div>
 				<div id="container">
-					<div class="snb_v1">
-						<dl class="menu">
-							<dt class="u_intro">
-							<br><br>
-								<img src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
-									width="130"> <br> <br> <span
-									style="font-family: &amp; amp;">회원정보</span> <br>
-								<hr>
-							</dt>
-							<dd>
-								<ul"font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a
-										href="${initParam.root }member/memberRanksView.gibu"
-										class="u_txt1"> <span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
-									<li><a
-										href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}"
-										class="u_txt2"><span style="font-family: &amp; amp;">즐겨찾기
-												목록</span></a></li>
-									<li><a href="#" class="u_txt3"><span
+					<div id="mypage">
+					<br>
+								<img src="${initParam.root }img\g_favorite_1.jpg" width="150"> <br>
+								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+									<li><a href="${initParam.root }member/memberRanksView.gibu"> 
+										<span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
+									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}">
+									<span style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
+									<li><a href="#"><span
 											style="font-family: &amp; amp;">작성글</span></a></li>
-									<li><a href="#" class="u_txt5"> <span
+									<li><a href="#"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
 									<li><a
 										href="${initParam.root}member/updateMemberForm.gibu"> <span
 											style="font-family: &amp; amp;">회원정보 수정</span>
 									</a></li>
-									<li><a href="#" class="u_txt5"> <span
+									<li><a href="#"> <span
 											style="font-family: &amp; amp;">회원탈퇴</span></a></li>
 								</ul>
-							</dd>
-							<dt class="s_srch">
-								<br> <br> <span style="font-family: &amp; amp;">포인트
-									부분</span> <br>
-								<hr>
-							</dt>
-							<dd>
-								<ul"font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+								<img src="${initParam.root }img\g_favorite_2.jpg" width="150"> <br>
+								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 									<li><a href="javascript:chargePopup()" class="sr_txt5">
 											<span style="font-family: &amp; amp;">충전하기</span>
 									</a></li>
-									<li><a href="#" class="sr_txt5"> <span
+									<li><a href="#"> <span
 											style="font-family: &amp; amp;">선물하기</span></a></li>
-									<li><a href="#" class="sr_txt5"> <span
+									<li><a href="#"> <span
 											style="font-family: &amp; amp;">선물함 내역</span></a></li>
-									<li><a href="#" class="sr_txt5"> <span
+									<li><a href="#"> <span
 											style="font-family: &amp; amp;">사용 내역</span></a></li>
 									<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
 								</ul>
-							</dd>
-							<dd></dd>
-							<dt class="s_srch">
-								<br> <br> <span style="font-family: &amp; amp;">콘
-									친구</span> <br>
-								<hr>
-							</dt>
-							<dd>
-								<ul"font-family: &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="#" class="sr_txt5"> <span
-											style="font-family: &amp; amp;">친구 찾기</span></a></li>
-									<li><a href="#" class="sr_txt5"> <span
-											style="font-family: &amp; amp;">친구 목록보기</span></a></li>
+						        <img src="${initParam.root }img\g_favorite_3.jpg" width="150"> <br>
+								
+								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+									<li><a href="${initParam.root }friend/memberlist.gibu">친구 찾기</a></li>
+									<li><a href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"> 친구 목록보기</a></li>
 								</ul>
-							</dd>
-						</dl>
-						<ul class="snb_btn"></ul>
+						
 					</div>
 				</div>
 			</div>
