@@ -43,7 +43,7 @@ public class FundController {
 			pageNo = "" + fundService.getPageNo(svo);
 		if (pageNo == null)
 			pageNo = "1";
-		
+
 		svo.setPageNo(pageNo);
 		List<FundVO> list = fundService.getFundList(svo);		
 		ListVO vo = new ListVO(list, new PagingBean(

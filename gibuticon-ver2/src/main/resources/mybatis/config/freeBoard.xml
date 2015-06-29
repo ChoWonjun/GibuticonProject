@@ -68,16 +68,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getPageNo" resultType="string">
-		select page from(
-			select board_no, ceil(rownum/5) as page from(
-				select board_no from free_board order by board_no desc
-			)
-		) where board_no=#{boardNo}
+	select page from(
+	select board_no, ceil(rownum/5) as page from(
+	select board_no from free_board order by board_no desc
+	)
+	) where board_no=#{boardNo}
 	</select>
 	
-	<select id="getTotalPostingCount" resultType="int">
-		select count(*) from free_board
-	</select>
+	<select id="getTotalPostingCount" parameterType="hashmap" resultType="int">
+	select count(*) from free_board
+	<if test="searchSelect == 0">
+		<where>
+			<if test="input!=''">
+				title like '%' || #{input} || '%'
+			</if>
+		</where>
+	</if>
+	<if test="searchSelect == 1">
+		<where>
+			<if test="input !=''">
+				content like '%' || #{input} || '%' 
+			</if>
+		</where>
+		</if>
+	</select>	
 	
 	<update id="updateHit" parameterType="string">
 		update free_board set hits=hits+1 where board_no=#{boardNo}
