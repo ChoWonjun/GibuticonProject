@@ -10,11 +10,8 @@
 <script type="text/javascript"
 	src="${initParam.root }resource/editor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
-	<script
-   src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <!-- jQuery import -->
-<script
-   src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="${initParam.root }js/jquery-1.11.3.min.js"></script>
 <!-- jQuery Form Plugin import -->
 <script src="${initParam.root }js/jquery.form.js"></script>
 <!-- jQuery MultiFile Plugin import -->

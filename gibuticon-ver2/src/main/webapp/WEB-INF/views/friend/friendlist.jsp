@@ -28,22 +28,15 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			<c:forEach items="${requestScope.list }" var="list">
-	${list.friend.id }, ${list.friend.name }, ${list.friend.address }, ${list.friend.birth}, ${list.friend.email }
-	<input type="button" value="쪽지전송"
-					onclick="sendMessagePopup('${list.friend.id}')">
-				<input type="button" value="친구삭제"
-					onclick="delFriend('${list.friend.id}')">
-				<br>
-			</c:forEach>
+
 			<div class="col-md-2">
 				<div id="container">
 					<div class="snb_v1">
 						<dl class="menu">
 							<dt class="u_intro">
-								<br>
-								<br> <img src="${initParam.root }img/g_my_gibuticon.jpg"
-									height="30" width="130"> <br> <br> <span
+							<br><br>
+								<img src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
+									width="130"> <br> <br> <span
 									style="font-family: &amp; amp;">회원정보</span> <br>
 								<hr>
 							</dt>
@@ -106,15 +99,18 @@
 					</div>
 				</div>
 			</div>
-
+		
 			<div class="col-md-8 col-md-offset-1">
 
 				<div align="center">
-					<br>
-					<br> <img src="${initParam.root}img\g_my_cone_friend.jpg"
-						width="800">
+				<br><br>
+					<img src="${initParam.root}img/g_my_cone_friend.jpg" width="800">
 				</div>
-				<br> <br> <br> <br> <br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
 				<div class="col-md-12 col-md-offset-1/2">
 					<table class="type09">
 						<thead>
@@ -144,3 +140,4 @@
 		</div>
 	</div>
 </div>
+
