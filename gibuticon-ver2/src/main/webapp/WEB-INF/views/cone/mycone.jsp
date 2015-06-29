@@ -86,7 +86,7 @@
 	</div>
 
 	<center>
-		<img src="${initParam.root}img\마이콘.jpg" width="300"> <br>
+		<img src="${initParam.root}img\g_mycone.jpg" width="300"> <br>
 
 		<hr align="center" width="60%">
 		<br>
