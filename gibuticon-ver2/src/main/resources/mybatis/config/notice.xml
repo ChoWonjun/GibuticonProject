@@ -77,7 +77,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		) WHERE page=#{page}
 	</select>
 	
-	
+	<select id="getListBySearchingBoth" parameterType="hashmap" resultMap="noticeListRM">
+		SELECT
+		notice_no,title,write_date,content,hits
+		FROM(
+		SELECT
+		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
+		FROM (
+		SELECT
+		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
+		FROM notice	
+		<where>
+			<if test="input != null">
+				content like '%' || #{input} || '%' or title like '%' || #{input} || '%'
+			</if>
+		</where> 
+		order by notice_no desc
+		)
+		) WHERE page=#{page}
+	</select>
+		
 	<update id="updateCount" parameterType="string">
 		update notice set hits=hits+1 where notice_no=#{noticeNo}
 	</update>
@@ -104,6 +123,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<where>
 				<if test="input !=''">
 					content like '%' || #{input} || '%' 
+				</if>
+			</where>
+			</if>
+		<if test="searchSelect == 2">
+			<where>
+				<if test="input !=''">
+					content like '%' || #{input} || '%' or title like '%' || #{input} || '%'
 				</if>
 			</where>
 			</if>
