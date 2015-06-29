@@ -1,7 +1,7 @@
 -- 자유게시판글번호(프라이머리키),제목, 작성일, 글내용, 조회수, 작성자id(fk)
 
 drop table free_board;
-
+drop sequence free_board_sequence;
 --3.
 create sequence free_board_sequence;
 
@@ -26,7 +26,7 @@ drop table freeBoard_comment;
 
 --6.
 create sequence freeboard_comment_sequence;
-
+drop sequence freeboard_comment_sequence;
 --5.
 alter table freeBoard_comment modify(hits number default 0);
 alter table freeBoard_comment add(ref number not null);
