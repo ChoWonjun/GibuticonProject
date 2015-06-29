@@ -67,6 +67,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by ref desc, restep asc))where page=#{page}
 	</select>
 	
+	<select id="getListBySearchingBoth" parameterType="hashmap" resultMap="freeBoardRM">
+			   select board_no, title, write_date, content, hits, id from(
+        select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
+      (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id 
+      from free_board
+      <where>
+			<if test="input != null">
+				content like '%' || #{input} || '%' or title like '%' || #{input} || '%'
+			</if>
+		</where>
+		order by ref desc, restep asc))where page=#{page}
+	</select>
+	
 	<select id="getPageNo" resultType="string">
 	select page from(
 	select board_no, ceil(rownum/5) as page from(
@@ -90,7 +103,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				content like '%' || #{input} || '%' 
 			</if>
 		</where>
-		</if>
+	</if>
+ 	<if test="searchSelect ==2">
+		<where>
+			<if test="input !=''">
+				content like '%' || #{input} || '%' or content like '%' || #{input} || '%'
+			</if>
+		</where>	
+	</if>
 	</select>	
 	
 	<update id="updateHit" parameterType="string">

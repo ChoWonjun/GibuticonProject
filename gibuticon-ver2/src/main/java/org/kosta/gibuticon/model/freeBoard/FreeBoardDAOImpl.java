@@ -45,7 +45,15 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public List<FreeBoardVO> getListBySearchingContent(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingContent",map);
 	}
-
+	
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingBoth(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingBoth",map);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#getFreeBoardList()
 	 */

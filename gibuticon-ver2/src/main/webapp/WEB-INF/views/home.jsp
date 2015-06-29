@@ -111,6 +111,7 @@
 								<a href="#"><img
 									src="${initParam.root }img/g_main_fund.jpg"
 									width="350"></a>
+
 							</div>
 							
 						</div>

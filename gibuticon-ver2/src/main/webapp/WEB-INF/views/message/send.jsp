@@ -6,37 +6,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+	function closeWindow(){
+		window.close();
+	}
+</script>
 </head>
 <body>
-<c:choose>
-	<c:when test="${requestScope.friendlist.size()==0 }">
-		<script>
-			alert("먼저 친구를 추가하세요!");
-			window.close();
-		</script>
-	</c:when>
-	<c:otherwise>
+
 <h3>쪽지 보내기</h3>
 
 <form name="messageForm" method="post" action="${initParam.root }message/send.gibu">
 <input type="hidden" name="sender.id" value="${sessionScope.mvo.id }">
 보낸이 : ${sessionScope.mvo.name }<br>
 받는이 : 
+	<c:if test="${requestScope.receiver!=null }">
+		<input type="hidden" name="receiverId" value="${requestScope.receiver.id }">
+		${requestScope.receiver.name }(${requestScope.receiver.id })
+	</c:if>
+	<c:if test="${requestScope.receiver==null }">
 		<select name="receiverId">
 			<option value="">-선택-</option>
+			<option value="${sessionScope.mvo.id }">나에게</option>
 			<c:forEach items="${requestScope.friendlist }" var="list">
 			<option value="${list.friend.id }">${list.friend.name}(${list.friend.id })</option>
 			</c:forEach>
 		</select>
+	</c:if>
 <br><br>
 제목 : <input type="text" name="title"><br>
 내용 : <br>
 <textarea cols="53" rows="15" name="content"></textarea>
 
-<br><br><input type="submit" value="전송"> <input type="button" value="취소">
+<br><br><input type="submit" value="전송"> <input type="button" value="취소" onclick="closeWindow()">
 </form>
 
-	</c:otherwise>
-</c:choose>
 </body>
 </html>

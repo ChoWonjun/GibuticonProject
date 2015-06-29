@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<link href="${initParam.root}css/mypage.css" rel="stylesheet"
-	type="text/css">
-	
+
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
@@ -24,53 +22,78 @@
 
 
 <body data-spy="scroll">
-
-<div class="section" align="center">
-	<div class="container">
-		<div class="row"></div>
+	<div class="section">
+		<div class="container">
+			<div class="row"></div>
+		</div>
 	</div>
-</div>
-<div class="section">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-2">
-				<div class="mypage"></div>
-				<div id="container">
-					<div id="mypage">
-					<br><br><br><br><br>
-								<img src="${initParam.root }img\g_notice_introduce_service.jpg" width="150"> <br>
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }introduce_gibuticon.gibu"> 
-										기부티콘이란<br></a></li>
-								</ul>
-								<img src="${initParam.root }img\g_notice_operation_guide.jpg" width="150"> <br>
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }introduce_what_is_cone.gibu">
-											콘 안내
-									</a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">콘받기 안내</span></a></li>
-												<li><a href="${initParam.root }introduce_howtogibu.gibu">
-												기부방법 안내<br></a></li>
-								</ul>
-						        <img src="${initParam.root }img\g_notice_friend_guide.jpg" width="150"> <br>
-								
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="#">콘친구란?</a></li>
-									<li><a href="#">친구등록<br></a></li>
-								</ul>
-						
+	<div class="section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<div class="navi_ca_is"></div>
+					<div id="container">
+						<div class="snb_v1">
+							<dl class="menu">
+								<dt class="s_intro">
+									<br> <br> <span style="font-family: &amp; amp;">서비스
+										소개</span> <br>
+									<hr>
+								</dt>
+								<dd>
+									<ul>
+										<li><a href="${initParam.root }introduce_gibuticon.gibu"
+											class="u_txt1"> <span style="font-family: &amp; amp;">기부티콘이란</span></a>
+										</li>
+									</ul>
+								</dd>
+								<dt class="s_srch">
+									<br> <br> <span style="font-family: &amp; amp;">이용안내</span>
+									<br>
+									<hr>
+								</dt>
+								<dd>
+									<ul>
+										<li><a
+											href="${initParam.root }introduce_what_is_cone.gibu"
+											class="sr_txt5"> <span style="font-family: &amp; amp;">콘
+													안내</span></a></li>
+										<li><a href="#"><span style="font-family: &amp; amp;">콘받기
+													안내</span></a></li>
+										<li><a href="${initParam.root }introduce_howtogibu.gibu"
+											class="sr_txt5"> <span style="font-family: &amp; amp;">기부방법
+													안내</span></a></li>
+										<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
+									</ul>
+								</dd>
+								<dd></dd>
+								<dt class="s_srch">
+									<br> <br> <span style="font-family: &amp; amp;">친구
+										안내</span> <br>
+									<hr>
+								</dt>
+								<dd>
+									<ul>
+										<li><a href="#" class="sr_txt5"> <span
+												style="font-family: &amp; amp;">콘 친구란?</span></a></li>
+										<li><a href="#" class="sr_txt5"> <span
+												style="font-family: &amp; amp;">친구 등록</span></a></li>
+									</ul>
+								</dd>
+							</dl>
+							<ul class="snb_btn"></ul>
+						</div>
 					</div>
 				</div>
-			</div>
+				<div class="col-md-9">
+					<div class="section">
+
+
 						<div class="container">
 							<div class="row">
-								<div class="col-md-offset-1 col-md-8">
-								<div align="center">
-								<br>
+								<div class="col-md-offset-2 col-md-8">
 									<img src="${initParam.root}img/g_notice.jpg" width="200">
-									</div>
-									<br> <br><br>
+									<br> <br>
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
@@ -104,7 +127,7 @@
 						</div>
 					</div>
 					<form id="searchForm" action="${initParam.root }notice/getList.gibu">
-						<div class="col-md-offset-7 col-md-6">
+						<div class="col-md-offset-6 col-md-6">
 							<ul class="pagination">
 								<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
 								<c:if test="${pb.previousPageGroup}">
@@ -125,7 +148,7 @@
 								</c:if>
 							</ul>
 						</div>
-						<div class="col-md-2 col-md-offset-3">
+						<div class="col-md-3 text-right">
 							<div class="btn-group btn-group-sm">
 								<select class="selectpicker" name="searchSelect"
 									id="searchSelect">
@@ -136,7 +159,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="col-md-4 col-md-offset-5">
+						<div class="col-md-6 text-left">
 							<div class="form-group">
 								<div class="input-group">
 									<input type="text" class="form-control" placeholder="검색어입력"

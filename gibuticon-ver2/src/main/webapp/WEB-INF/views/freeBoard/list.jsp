@@ -6,36 +6,25 @@
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-	function getList(pageNo) {
-		var selectComp = document.getElementById("searchSelect").value;
-		location.href = "${initParam.root }notice/getList.gibu?pageNo="
-				+ pageNo + "&searchSelect=" + selectComp;
-	}
+function getList(pageNo){
+	var selectComp=document.getElementById("searchSelect").value;
+	location.href="${initParam.root }freeBoard/getList.gibu?pageNo="+pageNo+"&searchSelect="+ selectComp;
+}
 </script>
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
-<body data-spy="scroll">
 	<div class="section">
 		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
 				<div class="col-md-12">
 					<div class="section">
 						<div class="container">
 							<div class="row">
-								<div class="col-md-11 col-md-offset-1">
-									<div align="center">
-										<img src="${initParam.root}img\freeBoardName.jpg" width="200">
-										<br>
-										<br>
-										<br>
-										<br>
-										<br>
-									</div>
+								<div class="col-md-12" align="center">
+								
+								<div class="col-md-11">
+								<br><br>
+									<img src="${initParam.root}img/freeBoardName.jpg" width="200">
+									<br><br><br><br>
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
@@ -78,39 +67,33 @@
 							</div>
 						</div>
 					</div>
-
+						<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
 					<div class="section">
-						<form id="searchForm"
-							action="${initParam.root }freeBoard/getList.gibu">
+						<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 							<div class="container"></div>
 							<div class="col-md-offset-6 col-md-6">
 								<ul class="pagination">
 									<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 									<c:if test="${pb.previousPageGroup}">
-										<li><a
-											href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
-											<%-- <a href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a> --%>
+										<li>
+										<a href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>										
 										</li>
 									</c:if>
 									<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 											end="${pb.endPageOfPageGroup}">
 											<a href="javascript:getList('${i}')">${i}</a>
-											<%-- 										<a href="${initParam.root }freeBoard/getList.gibu?pageNo=${i }">${i }</a> --%>
 										</c:forEach></li>
 									<c:if test="${pb.nextPageGroup}">
-										<li><a
-											href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
-											<%-- 									<a href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a> --%>
+										<li>
+										<a href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>	
 										</li>
 									</c:if>
 								</ul>
 							</div>
-						</form>
-						<div>
+
 							<div class="col-md-5 text-right">
 								<div class="btn-group btn-group-sm">
-									<select class="selectpicker" name="searchSelect"
-										id="searchSelect">
+									<select class="selectpicker" name="searchSelect" id="searchSelect">
 										<option value="">검색조건</option>
 										<option value="0">제목만</option>
 										<option value="1">내용만</option>
@@ -119,7 +102,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-6 col-md-offset-5">
+							<div class="col-md-6 text-left">
 								<div class="form-group">
 									<div class="input-group">
 										<input type="text" class="form-control" placeholder="검색어입력"
@@ -133,14 +116,13 @@
 									</div>
 								</div>
 							</div>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</body>
-
+</div>
 
 
 
