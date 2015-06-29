@@ -18,6 +18,9 @@ public interface FreeBoardService {
 	public abstract List<FreeBoardVO> getListBySearchingContent(
 			HashMap<String, Object> map);
 
+	public abstract List<FreeBoardVO> getListBySearchingBoth(
+			HashMap<String, Object> map);
+
 	public abstract FreeBoardVO getFreeBoardByNo(String no);
 
 	public abstract void updateFreeBoard(FreeBoardVO freeBoardVO);
