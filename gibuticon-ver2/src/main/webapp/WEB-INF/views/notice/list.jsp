@@ -10,6 +10,11 @@
 		style : 'btn-info',
 		size : 4
 	});
+	
+	function getList(pageNo){
+		var selectComp=document.getElementById("searchSelect").value;
+		location.href="${initParam.root }notice/getList.gibu?pageNo="+pageNo+"&searchSelect="+ selectComp;
+	}
 </script>
 
 <link href="${initParam.root}css/table.css" rel="stylesheet"
@@ -121,27 +126,28 @@
 							<div class="col-md-7"></div>
 						</div>
 					</div>
-					<div class="col-md-offset-6 col-md-6">
-						<ul class="pagination">
-							<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
-							<c:if test="${pb.previousPageGroup}">
-								<li><a
-									href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
-								</li>
-							</c:if>
-							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-									end="${pb.endPageOfPageGroup}">
-									<a href="${initParam.root }notice/getList.gibu?pageNo=${i}">${i}</a>
-								</c:forEach></li>
-							<c:if test="${pb.nextPageGroup}">
-								<li><a
-									href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
-								</li>
-							</c:if>
-						</ul>
-					</div>
-					<form id="searchForm"
-						action="${initParam.root }notice/getList.gibu">
+					<form id="searchForm" action="${initParam.root }notice/getList.gibu">
+						<div class="col-md-offset-6 col-md-6">
+							<ul class="pagination">
+								<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
+								<c:if test="${pb.previousPageGroup}">
+									<li>
+									<a href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${}">Prev</a> --%>
+									</li>
+								</c:if>
+								<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+										<a href="javascript:getList('${i}')">${i}</a>
+										<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
+									</c:forEach></li>
+								<c:if test="${pb.nextPageGroup}">
+									<li>
+									<a href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>									
+ 									<%--<a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${}">Next</a> --%>
+									</li>
+								</c:if>
+							</ul>
+						</div>
 						<div class="col-md-3 text-right">
 							<div class="btn-group btn-group-sm">
 								<select class="selectpicker" name="searchSelect"

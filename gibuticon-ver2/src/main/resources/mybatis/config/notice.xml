@@ -84,9 +84,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		) where notice_no=#{noticeNo}
 	</select>
 	
-	<select id="getTotalPostingCount" resultType="int">
+	<select id="getTotalPostingCount" parameterType="hashmap" resultType="int">
 		select count(*) from notice
-	</select>
+		<where>
+			<if test="searchSelect=='0' and input != null">
+				title like '%' || #{input} || '%'
+			</if>
+			<if test="searchSelect=='1' and input != null">
+				content like '%' || #{input} || '%'
+			</if>
+
+		</where>
+	</select>	
+	
 	<select id="getNoticeByNo" resultMap="noticeListRM">
 		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
 	</select>

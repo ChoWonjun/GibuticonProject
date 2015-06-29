@@ -83,8 +83,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 	 * 공지사항에 글이 몇개인지 불러오는 메서드
 	 */
 	@Override
-	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount");
+	public int getTotalPostingCount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount",map);
 	}
 
 	/**

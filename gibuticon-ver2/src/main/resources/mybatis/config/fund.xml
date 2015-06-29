@@ -44,10 +44,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)) where page=#{pageNo}
 	</select>
 
-	<select id="getTotalPostingCount" parameterType="searchOptionVO"
-		resultType="int">
-		select count(*)
-		from gibu_fund
+	<select id="getTotalPostingCount" parameterType="searchOptionVO" resultType="int">
+		select count(*) from gibu_fund
 		<where>
 			<if test="category != null and category != ''">
 				category = #{category}
@@ -56,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and
 			</if>
 			<if test="word != null and word != ''">
-				fund_name like '%' || #{word} || '%'
+				fund_name like '%' || #{i} || '%'
 			</if>
 		</where>
 	</select>

@@ -57,9 +57,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int getTotalPostingCount() {
+	public int getTotalPostingCount(HashMap<String, Object> map) {
 		// TODO Auto-generated method stub
-		return noticeDAO.getTotalPostingCount();
+		return noticeDAO.getTotalPostingCount(map);
 	}
 
 	@Override

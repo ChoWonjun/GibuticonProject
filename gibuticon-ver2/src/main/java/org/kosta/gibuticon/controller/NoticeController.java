@@ -8,6 +8,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.fund.SearchOptionVO;
 import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -62,7 +64,6 @@ public class NoticeController {
 //		String searchCondition = request.getParameter("searchSelect");
 //		String input = request.getParameter("input");
 		System.out.println(searchSelect + "   " + input);
-
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
@@ -77,6 +78,7 @@ public class NoticeController {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageNo);
 		map.put("input", input);
+		map.put("searchSelect", searchSelect);
 		List<NoticeVO> list = null;
 
 		if (searchSelect.equals("0")) { // 제목만
@@ -94,7 +96,7 @@ public class NoticeController {
 		System.out.println(list);
 		
 		ListVO lvo = new ListVO(list, new PagingBean(
-				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
+				noticeService.getTotalPostingCount(map), Integer.parseInt(pageNo)));
 
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
