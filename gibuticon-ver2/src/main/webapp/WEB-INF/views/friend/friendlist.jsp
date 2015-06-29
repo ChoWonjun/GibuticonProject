@@ -104,7 +104,7 @@
 
 				<div align="center">
 				<br><br>
-					<img src="${initParam.root}img\g_my_cone_friend.jpg" width="800">
+					<img src="${initParam.root}img/g_my_cone_friend.jpg" width="800">
 				</div>
 				<br>
 				<br>

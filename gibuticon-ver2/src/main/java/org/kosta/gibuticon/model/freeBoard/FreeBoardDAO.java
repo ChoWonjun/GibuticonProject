@@ -14,7 +14,10 @@ public interface FreeBoardDAO {
 
 	public abstract List<FreeBoardVO> getListBySearchingContent(
 			HashMap<String, Object> map);
-
+	
+	public abstract List<FreeBoardVO> getListBySearchingBoth(
+			HashMap<String, Object> map);
+	
 	public abstract void writeFreeBoard(FreeBoardVO freeBoardVO);
 
 	public abstract void deleteFreeBoard(String no);
