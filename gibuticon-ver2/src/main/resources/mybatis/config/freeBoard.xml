@@ -90,7 +90,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				content like '%' || #{input} || '%' 
 			</if>
 		</where>
-		</if>
+	</if>
+<!-- 	<if test="searchSelect ==2">
+		<where>
+			<if test="input !=''">
+				content like '%' || #{input} || '%' or content like '%' || #{input} || '%'
+			</if>
+		</where>	
+	</if> -->
 	</select>	
 	
 	<update id="updateHit" parameterType="string">

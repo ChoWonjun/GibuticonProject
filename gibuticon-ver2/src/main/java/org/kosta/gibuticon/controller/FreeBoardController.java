@@ -93,7 +93,7 @@ public class FreeBoardController {
 			list = freeBoardService.getListBySearchingContent(map);
 			System.out.println(list);
 		} else if (searchSelect.equals("2")) { // 제목+내용
-
+			
 		} else {
 			list = freeBoardService.getFreeBoardList(pageNo);
 		}

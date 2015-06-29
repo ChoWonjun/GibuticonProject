@@ -8,7 +8,7 @@
 <script type="text/javascript">
 function getList(pageNo){
 	var selectComp=document.getElementById("searchSelect").value;
-	location.href="${initParam.root }notice/getList.gibu?pageNo="+pageNo+"&searchSelect="+ selectComp;
+	location.href="${initParam.root }freeBoard/getList.gibu?pageNo="+pageNo+"&searchSelect="+ selectComp;
 }
 </script>
 <link href="${initParam.root}css/table.css" rel="stylesheet"
@@ -75,8 +75,7 @@ function getList(pageNo){
 					</div>
 
 					<div class="section">
-						<form id="searchForm"
-							action="${initParam.root }freeBoard/getList.gibu">
+						<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 							<div class="container"></div>
 							<div class="col-md-offset-6 col-md-6">
 								<ul class="pagination">
@@ -84,18 +83,15 @@ function getList(pageNo){
 									<c:if test="${pb.previousPageGroup}">
 										<li>
 										<a href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>										
-										<%-- <a href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a> --%>
 										</li>
 									</c:if>
 									<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 											end="${pb.endPageOfPageGroup}">
 											<a href="javascript:getList('${i}')">${i}</a>
-<%-- 										<a href="${initParam.root }freeBoard/getList.gibu?pageNo=${i }">${i }</a> --%>
 										</c:forEach></li>
 									<c:if test="${pb.nextPageGroup}">
 										<li>
 										<a href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>	
-<%-- 									<a href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a> --%>
 										</li>
 									</c:if>
 								</ul>
@@ -103,8 +99,7 @@ function getList(pageNo){
 
 							<div class="col-md-5 text-right">
 								<div class="btn-group btn-group-sm">
-									<select class="selectpicker" name="searchSelect"
-										id="searchSelect">
+									<select class="selectpicker" name="searchSelect" id="searchSelect">
 										<option value="">검색조건</option>
 										<option value="0">제목만</option>
 										<option value="1">내용만</option>
