@@ -104,21 +104,13 @@
 									src="${initParam.root }img/g_main_gibuticon.jpg" width="350"></a>
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="${initParam.root }memberRanksView.gibu"><img
+								<a href="${initParam.root }member/memberRanksView.gibu"><img
 									src="${initParam.root }img/g_main_ranking.jpg" width="350"></a>
 							</div>
 							<div class="col-md-4" align="center">
-<<<<<<< HEAD
-								<a href="${initParam.root }member/memberRanksView.gibu"><img
-									src="${initParam.root }img/g_main_ranking_img.jpg"
-									class="img-responsive"></a>
-=======
-								<a href="#"><img
-									src="${initParam.root }img/g_main_fund.jpg"
+								<a href="#"><img src="${initParam.root }img/g_main_fund.jpg"
 									width="350"></a>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -127,17 +119,17 @@
 	</div>
 </div>
 <div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"></div>
 		</div>
 	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
+</div>
+<div class="section">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12"></div>
 		</div>
 	</div>
+</div>
 

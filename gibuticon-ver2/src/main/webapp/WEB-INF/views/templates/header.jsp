@@ -237,11 +237,6 @@
                            </div>
                            <div class="modal-body">
                               <div class="section text-center" id="test">
-                                 <div class="section">
-                                    <div class="container">
-                                       <div class="row"></div>
-                                    </div>
-                                 </div>
                                  <form name="chargeCone" id="chargeCone">
                                     충전단위 <select id="coneValSel">
                                        <option value="">-선택-</option>
@@ -266,7 +261,7 @@
                                     <hr>
                                     <input class="btn btn-primary" type="button" value="충전"
                                        id="chargeButton"> <input class="btn btn-default"
-                                       type="button" value="취소" data-dismiss="modal">
+                                       type="button" value="취소" data-dismiss="modal" onclick="">
                                  </form>
                               </div>
                            </div>
