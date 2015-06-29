@@ -9,6 +9,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findMemberById" resultType="memberVO">
 		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where id=#{value}
 	</select>
+	<select id="findMemberByEmail" resultType="memberVO">
+		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where email=#{value}
+	</select>
 	<update id="updateMember" parameterType="memberVO">
 		update member set password=#{password},address=#{address},tel=#{tel},birth=#{birth},
 		email=#{email} where id=#{id}
@@ -48,6 +51,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             group by DONATION_HISTORY.MEMBER_ID
          )
       )
+   </select>
+   <select id="findId" parameterType="memberVO" resultType="String">
+   		select id from member where name=#{name} and email=#{email}
+   </select>
+   <select id="findPassword" parameterType="memberVO" resultType="String">
+   		select password from member where name=#{name} and id=#{id} and email=#{email}
    </select>
 </mapper>
  

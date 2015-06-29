@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
@@ -10,9 +10,15 @@
 		style : 'btn-info',
 		size : 4
 	});
+	
+	function getList(pageNo){
+		var selectComp=document.getElementById("searchSelect").value;
+		location.href="${initParam.root }notice/getList.gibu?pageNo="+pageNo+"&searchSelect="+ selectComp;
+	}
 </script>
 
-<link href="${initParam.root}css/table.css" rel="stylesheet" type="text/css">
+<link href="${initParam.root}css/table.css" rel="stylesheet"
+	type="text/css">
 
 
 <body data-spy="scroll">
@@ -120,27 +126,28 @@
 							<div class="col-md-7"></div>
 						</div>
 					</div>
-					<div class="col-md-offset-6 col-md-6">
-						<ul class="pagination">
-							<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
-							<c:if test="${pb.previousPageGroup}">
-								<li><a
-									href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
-								</li>
-							</c:if>
-							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-									end="${pb.endPageOfPageGroup}">
-									<a href="${initParam.root }notice/getList.gibu?pageNo=${i }">${i }</a>
-								</c:forEach></li>
-							<c:if test="${pb.nextPageGroup}">
-								<li><a
-									href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}">Next</a>
-								</li>
-							</c:if>
-						</ul>
-					</div>
-					<form id="searchForm"
-						action="${initParam.root }notice/getList.gibu">
+					<form id="searchForm" action="${initParam.root }notice/getList.gibu">
+						<div class="col-md-offset-6 col-md-6">
+							<ul class="pagination">
+								<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
+								<c:if test="${pb.previousPageGroup}">
+									<li>
+									<a href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${}">Prev</a> --%>
+									</li>
+								</c:if>
+								<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}" end="${pb.endPageOfPageGroup}">
+										<a href="javascript:getList('${i}')">${i}</a>
+										<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
+									</c:forEach></li>
+								<c:if test="${pb.nextPageGroup}">
+									<li>
+									<a href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>									
+ 									<%--<a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${}">Next</a> --%>
+									</li>
+								</c:if>
+							</ul>
+						</div>
 						<div class="col-md-3 text-right">
 							<div class="btn-group btn-group-sm">
 								<select class="selectpicker" name="searchSelect"
@@ -155,9 +162,9 @@
 						<div class="col-md-6 text-left">
 							<div class="form-group">
 								<div class="input-group">
-									<input type="text" class="form-control" placeholder="검색어입력" name="input" id="input"> <span
-										class="input-group-btn"> <input type="submit" class="btn btn-primary"
-										value="검색">
+									<input type="text" class="form-control" placeholder="검색어입력"
+										name="input" id="input"> <span class="input-group-btn">
+										<input type="submit" class="btn btn-primary" value="검색">
 									</span>
 									<c:if test="${sessionScope.mvo.admin=='yes'}">
 										<span class="input-group-btn"> <a

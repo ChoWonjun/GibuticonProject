@@ -5,12 +5,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.kosta.gibuticon.model.email.EmailVO;
 import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.LoginForm;
 import org.kosta.gibuticon.model.member.MemberVO;
+import org.kosta.gibuticon.model.service.EmailService;
 import org.kosta.gibuticon.model.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -24,6 +27,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class MemberController {
 	@Resource
 	private MemberService memberService;
+	@Autowired
+	private EmailService emailService;
 
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
@@ -42,13 +47,13 @@ public class MemberController {
 	 * @param request
 	 * @return
 	 */
-	/*@RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
-	public String loginForm(@ModelAttribute LoginForm loginForm, String prev,
-			HttpServletRequest request, Model model) {
-		model.addAttribute("prev", prev);
-		return "member_loginForm";
-	}*/
-	
+	/*
+	 * @RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
+	 * public String loginForm(@ModelAttribute LoginForm loginForm, String prev,
+	 * HttpServletRequest request, Model model) { model.addAttribute("prev",
+	 * prev); return "member_loginForm"; }
+	 */
+
 	@RequestMapping(value = "member/loginModal", method = RequestMethod.GET)
 	public String loginModal(Model model, String prev) {
 		model.addAttribute("prev", prev);
@@ -79,7 +84,7 @@ public class MemberController {
 			HttpSession session = request.getSession();
 			session.setAttribute("mvo", mvo);
 			if (prev != null & prev != "") {
-				url = "redirect:../"+prev;
+				url = "redirect:../" + prev;
 			} else {
 				url = "home";
 			}
@@ -119,11 +124,24 @@ public class MemberController {
 	 * @param id
 	 * @return
 	 */
-	@RequestMapping("idCheck")
+	@RequestMapping(value = "member/idCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public String idCheck(String id) {
 		String message = null;
 		MemberVO mvo = memberService.findMemberById(id);
+		if (mvo == null) {
+			message = "true";
+		} else if (mvo != null) {
+			message = "fail";
+		}
+		return message;
+	}
+
+	@RequestMapping(value = "member/emailCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String emailCheck(String email) {
+		String message = null;
+		MemberVO mvo = memberService.findMemberByEmail(email);
 		if (mvo == null) {
 			message = "true";
 		} else if (mvo != null) {
@@ -219,6 +237,43 @@ public class MemberController {
 		MemberVO mvo = memberService.findMemberById(id);
 		model.addAttribute("mvo", mvo);
 		return "member_updateMember_result";
+	}
+
+	@RequestMapping("findId")
+	@ResponseBody
+	public String findId(String name, String email) {
+		MemberVO vo = new MemberVO();
+		vo.setName(name);
+		vo.setEmail(email);
+		String id = memberService.findId(vo);
+		if (id == null)
+			id = "fail to find id";
+		return id;
+	}
+
+	@RequestMapping("findPassword")
+	@ResponseBody
+	public String findPassword(String name, String id, String email) throws Exception {
+		MemberVO vo = new MemberVO();
+		vo.setName(name);
+		vo.setId(id);
+		vo.setEmail(email);
+		String password = memberService.findPassword(vo);
+		String message = null;
+		if (password == null) {
+			message = "fail";
+		} else if (password != null) {
+			EmailVO emailVO = new EmailVO();
+			emailVO.setReceiver(email);
+			emailVO.setSubject("기부티콘 비밀번호 안내입니다.");
+			emailVO.setContent(name + "님의 기부티콘 비밀번호는 " + password + " 입니다.");
+			if (emailService.sendMail(emailVO)) {
+				message = "비밀번호 안내 메일을 전송했습니다.";
+			} else {
+				message = "비밀번호 안내 메일 전송에 실패했습니다.";
+			}
+		}
+		return message;
 	}
 
 	/**

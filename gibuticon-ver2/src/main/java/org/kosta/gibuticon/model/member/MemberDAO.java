@@ -7,6 +7,8 @@ public interface MemberDAO {
 	public abstract void registerMember(MemberVO memberVO);
 
 	public abstract MemberVO findMemberById(String id);
+	
+	public abstract MemberVO findMemberByEmail(String email);
 
 	public abstract void updateMember(MemberVO memberVO);
 
@@ -23,4 +25,8 @@ public interface MemberDAO {
 	public List<MemberRankVO> getAmountRanks();
 	
 	public List<MemberRankVO> getFundCountRanks();
+	
+	public String findId(MemberVO memberVO);
+
+	public String findPassword(MemberVO memberVO);
 }
