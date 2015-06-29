@@ -5,24 +5,14 @@
 
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
-<body data-spy="scroll">
 	<div class="section">
 		<div class="container">
-			<div class="row"></div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="navi_ca_is"></div>
-				</div>
-				<div class="col-md-8">
+				<div class="col-md-12">
 					<div class="section">
 						<div class="container">
 							<div class="row">
-								<div class="col-md-8">
-								<img src="${initParam.root}img\freeBoardName.jpg" width="200">
+								<div class="col-md-12" align="center">
+								<img src="${initParam.root}img\freeBoardName.jpg" width="300" align="top">
 									<table class="type09" style="font-family: &amp; amp;">
 										<thead>
 											<tr>
@@ -67,7 +57,7 @@
 					</div>
 					<div class="section">
 						<div class="container"></div>
-						<div class="col-md-offset-6 col-md-6">
+						<div class="col-md-12" align="center">
 							<ul class="pagination">
 								<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 								<c:if test="${pb.previousPageGroup}">
@@ -87,20 +77,20 @@
 								</c:if>
 							</ul>
 						</div>
-						<div class="col-md-5 text-right">
+						<!-- <div class="col-md-5 text-right">
 							<div class="btn-group btn-group-sm">
-<!-- 								<a class="active btn btn-default dropdown-toggle"
+								<a class="active btn btn-default dropdown-toggle"
 									data-toggle="dropdown">검색 조건 <span class="fa fa-caret-down"></span></a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="#">제목+내용</a></li>
 									<li><a href="#">제목만</a></li>
 									<li><a href="#">내용만</a></li>
 									<li><a href="#">작성자</a></li>
-								</ul> -->
+								</ul>
 							</div>
-						</div>
+						</div> -->
 
-						<div class="col-md-6 text-left">
+						<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
 							<form role="form">
 								<div class="form-group">
 									<div class="input-group">
@@ -119,7 +109,6 @@
 			</div>
 		</div>
 	</div>
-</body>
 
 
 

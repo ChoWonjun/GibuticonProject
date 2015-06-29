@@ -66,8 +66,7 @@
                                                    + $(
                                                          "#chargeCone :radio[name=payment]:checked")
                                                          .val(),
-                                             success : function(
-                                                   f) {
+                                             success : function() {
                                                 var data = "충전이 완료되었습니다.";
                                                 data += "<br>";
                                                 data += "<input class='btn btn-default' type='button' value='취소' data-dismiss='modal' onclick='javascript:location.reload()'>";

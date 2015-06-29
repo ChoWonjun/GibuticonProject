@@ -55,7 +55,8 @@ public class FreeBoardController {
 		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
 		freeBoardVO.setId(mvo.getId());
 		freeBoardService.writeFreeBoard(freeBoardVO);
-		return new ModelAndView("redirect:getList.gibu");
+		System.out.println("write!!!"+freeBoardVO);
+		return new ModelAndView("redirect:showContent.gibu?no="+freeBoardVO.getBoardNo());
 	}
 	/**
 	 * 자유게시판에 있는 목록을 보여줌
@@ -89,6 +90,7 @@ public class FreeBoardController {
 	@LoginCheck
 	public ModelAndView showContent(String no, String pageNo,
 			HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("우항항핳"+no);
 		ModelAndView mv = new ModelAndView();
 		Cookie cookies[] = request.getCookies();
 		String hitcookieVal = "";

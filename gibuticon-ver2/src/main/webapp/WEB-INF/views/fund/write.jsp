@@ -10,8 +10,11 @@
 <script type="text/javascript"
 	src="${initParam.root }resource/editor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
+	<script
+   src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <!-- jQuery import -->
-<script src="${initParam.root }js/jquery-1.11.3.min.js"></script>
+<script
+   src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- jQuery Form Plugin import -->
 <script src="${initParam.root }js/jquery.form.js"></script>
 <!-- jQuery MultiFile Plugin import -->
@@ -121,7 +124,7 @@
 															<option value="캠페인">캠페인</option>
 													</select> <br> <br class="cl_b"></td>
 												</tr>
-												<!-- <tr>
+												<tr>
 													<th class="link"><br> <label for="url1">관련
 															링크</label></th>
 													<td colspan="2" class="link"><br> <input
@@ -134,7 +137,7 @@
 															<option value="드림풀">드림풀</option>
 															<option value="아름다운">아름다운</option>
 													</select> <br> <br class="cl_b"></td>
-												</tr> -->
+												</tr>
 												<tr>
 													<th class="organ"><br> <label for="formOrgan">주관
 															기관</label></th>
