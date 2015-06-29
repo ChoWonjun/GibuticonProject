@@ -81,8 +81,8 @@
                               });
                });
 
-   function sendMessagePopup() {
-      var url = "${initParam.root}message/sendForm.gibu";
+   function sendMessagePopup(receiverId) {
+      var url = "${initParam.root}message/sendForm.gibu?receiverId="+receiverId;
       window
             .open(url, "message",
                   "width=420, height=460, teop=150, left=200");
@@ -119,10 +119,10 @@
                      href="${initParam.root}fund/getList.gibu"><strong>전체보기</strong></a>
                   </li>
                   <li class="divider"></li>
-                  <li><a tabindex="-1" href="#"><strong>어린이</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>어르신</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>장애인</strong></a></li>
-                  <li><a tabindex="-1" href="#"><strong>캠페인</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=어린이"><strong>어린이</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=어르신"><strong>어르신</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=장애인"><strong>장애인</strong></a></li>
+                  <li><a tabindex="-1" href="${initParam.root }fund/getList.gibu?&category=캠페인"><strong>캠페인</strong></a></li>
                   <c:if test="${sessionScope.mvo.admin=='yes'}">
                      <li class="divider"></li>
                      <li><a tabindex="-1" href="${initParam.root }fund/writeForm.gibu"><strong>모금 등록</strong></a></li>
@@ -184,7 +184,7 @@
                                        <button type="submit" class="btn btn-default"
                                           id="loginForm">LogIn</button>
                                     </div>
-                                    <br><br> <a href="#">아이디찾기 | </a> <a href="#">비밀번호찾기 |
+                                    <br><br> <a href="member_findIdForm.gibu">아이디찾기 | </a> <a href="member_findPasswordForm.gibu">비밀번호찾기 |
                                     </a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
                               </form>
                            </div>

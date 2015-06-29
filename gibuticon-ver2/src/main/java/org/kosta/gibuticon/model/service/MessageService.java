@@ -12,8 +12,14 @@ public interface MessageService {
 
 	public abstract MessageVO getMessageByNo(String no);
 
-	public abstract List<MessageVO> getMessageList(String id);
+	public abstract List<MessageVO> getReceiveList(String id, String page);
 
 	public abstract void setReadTime(String no);
+
+	public abstract List<MessageVO> getSendList(String id, String page);
+
+	int getReceiveCount(String receiverId);
+
+	int getSendCount(String senderId);
 
 }

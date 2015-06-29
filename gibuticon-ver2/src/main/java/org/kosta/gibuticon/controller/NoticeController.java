@@ -8,6 +8,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kosta.gibuticon.model.fund.FundVO;
+import org.kosta.gibuticon.model.fund.SearchOptionVO;
 import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.notice.ListVO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
@@ -59,45 +61,42 @@ public class NoticeController {
 	 */
 	@RequestMapping("notice/getList.gibu")
 	public ModelAndView getList(String pageNo, String no, String searchSelect, String input) {
+//		String searchCondition = request.getParameter("searchSelect");
+//		String input = request.getParameter("input");
 		System.out.println(searchSelect + "   " + input);
-		// System.out.println(no+" "+pageNo);
-		if(input==null)
-			input="";
-		if(searchSelect==null)
-			searchSelect="";
-		//null 처음에 아예 넘어오니까 equals가 안먹히는거 같아융
 		if (no != null)
 			pageNo = noticeService.getPageNo(no);
 		if (pageNo == null)
 			pageNo = "1";
+		if (input==null)
+			input="";
+		if(searchSelect==null)
+			searchSelect="";
 
 		// System.out.println(no+" "+pageNo);
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("page", pageNo);
 		map.put("input", input);
+		map.put("searchSelect", searchSelect);
 		List<NoticeVO> list = null;
-
 		if (searchSelect.equals("0")) { // 제목만
 			list = noticeService.getListBySearchingTitle(map);
-			System.out.println("title "+list);
+			// System.out.println(list);
 		} else if (searchSelect.equals("1")) { // 내용만
 			list = noticeService.getListBySearchingContent(map);
-			System.out.println(list);
-
+			// System.out.println(list);
 		} else if (searchSelect.equals("2")) { // 제목+내용
-
-		} else if (searchSelect.equals("")) {
-			list = noticeService.getList(pageNo);
-			
-		} else{
+			list = noticeService.getListBySearchingBoth(map);
+			System.out.println(list);
+		} else {
 			list = noticeService.getList(pageNo);
 		}
 		System.out.println(list);
 		
 		ListVO lvo = new ListVO(list, new PagingBean(
-				noticeService.getTotalPostingCount(), Integer.parseInt(pageNo)));
-
+				noticeService.getTotalPostingCount(map), Integer.parseInt(pageNo)));
+		
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 

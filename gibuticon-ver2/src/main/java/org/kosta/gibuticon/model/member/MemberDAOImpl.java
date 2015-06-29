@@ -36,6 +36,13 @@ public class MemberDAOImpl implements MemberDAO {
 				"member.findMemberById", id);
 		return memberVO;
 	}
+	
+	@Override
+	public MemberVO findMemberByEmail(String email) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne(
+				"member.findMemberByEmail", email);
+	}
 
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.member.MemberDAO#updateMember(org.kosta.gibuticon.model.member.MemberVO)
@@ -119,5 +126,17 @@ public class MemberDAOImpl implements MemberDAO {
 	public List<MemberRankVO> getFundCountRanks() {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("member.getFundCountRanks");
+	}
+	
+	@Override
+	public String findId(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("member.findId",memberVO);
+	}
+	
+	@Override
+	public String findPassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("member.findPassword",memberVO);
 	}
 }

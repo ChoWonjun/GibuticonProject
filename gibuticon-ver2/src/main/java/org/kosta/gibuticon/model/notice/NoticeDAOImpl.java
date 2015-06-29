@@ -36,7 +36,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectList("notice.getListBySearchingContent",map);
 	}
+	public List<NoticeVO> getListBySearchingBoth(HashMap<String, Object> map){
+		return sqlSessionTemplate.selectList("notice.getListBySearchingBoth",map);
+	}
 
+	
 	/**
 	 * 공지사항 글을 공지사항 DB에 인서트 시키는 메서드
 	 */
@@ -83,8 +87,8 @@ public class NoticeDAOImpl implements NoticeDAO {
 	 * 공지사항에 글이 몇개인지 불러오는 메서드
 	 */
 	@Override
-	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount");
+	public int getTotalPostingCount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne("notice.getTotalPostingCount",map);
 	}
 
 	/**

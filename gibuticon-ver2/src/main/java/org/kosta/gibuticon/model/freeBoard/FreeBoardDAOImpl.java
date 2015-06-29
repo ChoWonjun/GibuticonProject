@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.freeBoard;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +8,7 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPageVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.kosta.gibuticon.model.member.MemberVO;
+import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -27,7 +29,31 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		fvo.setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",fvo.getId()));
 		return fvo;
 	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingTitle(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingTitle",map);
+	}
 
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingContent(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingContent",map);
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingBoth(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingBoth",map);
+	}
+	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#getFreeBoardList()
 	 */
@@ -94,8 +120,8 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 * 총 게시물의 수를 불러오는 메서드
 	 */
 	@Override
-	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCount");
+	public int getTotalPostingCount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCount",map);
 	}
 	/**
 	 * 조회수를 업데이트 시키는 메서드

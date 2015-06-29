@@ -37,6 +37,12 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO findMemberById(String id) {
 		return memberDAO.findMemberById(id);
 	}
+	
+	@Override
+	public MemberVO findMemberByEmail(String email) {
+		// TODO Auto-generated method stub
+		return memberDAO.findMemberByEmail(email);
+	}
 
 	/*
 	 * (non-Javadoc)
@@ -96,5 +102,17 @@ public class MemberServiceImpl implements MemberService {
 	public List<MemberRankVO> getFundCountRanks() {
 		// TODO Auto-generated method stub
 		return memberDAO.getFundCountRanks();
+	}
+	
+	@Override
+	public String findId(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return memberDAO.findId(memberVO);
+	}
+	
+	@Override
+	public String findPassword(MemberVO memberVO) {
+		// TODO Auto-generated method stub
+		return memberDAO.findPassword(memberVO);
 	}
 }

@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.message;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -40,12 +41,33 @@ public class MessageDAOImpl implements MessageDAO {
 	 * @see org.kosta.gibuticon.model.message.MessageDAO#getMessageList()
 	 */
 	@Override
-	public List<MessageVO> getMessageList(String id){
-		return sqlSessionTemplate.selectList("message.getMessageList",id);
+	public List<MessageVO> getReceiveList(String id, String page){
+		HashMap<String,String> map=new HashMap<String,String>();
+		map.put("id", id);
+		map.put("page", page);
+		return sqlSessionTemplate.selectList("message.getReceiveList",map);
 	}
 
 	@Override
 	public void setReadTime(String no) {
 		sqlSessionTemplate.update("message.setReadTime", no);
+	}
+
+	@Override
+	public List<MessageVO> getSendList(String id,String page) {
+		HashMap<String,String> map=new HashMap<String,String>();
+		map.put("id",id);
+		map.put("page", page);
+		return sqlSessionTemplate.selectList("message.getSendList",map);
+	}
+	
+	@Override
+	public int getReceiveCount(String receiverId){
+		return sqlSessionTemplate.selectOne("message.getReceiveCount",receiverId);
+	}
+
+	@Override
+	public int getSendCount(String senderId) {
+		return sqlSessionTemplate.selectOne("message.getSendCount",senderId);
 	}
 }

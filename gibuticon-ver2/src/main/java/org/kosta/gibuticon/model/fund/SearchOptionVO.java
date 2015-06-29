@@ -6,7 +6,7 @@ public class SearchOptionVO {
 	private String word;
 	private String category;
 	private String source;
-	private String funding;
+	private String rank;
 
 	public SearchOptionVO() {
 		super();
@@ -53,19 +53,19 @@ public class SearchOptionVO {
 		this.source = source;
 	}
 
-	public String getFunding() {
-		return funding;
+	public String getRank() {
+		return rank;
 	}
 
-	public void setFunding(String funding) {
-		this.funding = funding;
+	public void setRank(String rank) {
+		this.rank = rank;
 	}
 
 	@Override
 	public String toString() {
-		return "SearchOptionVO [pageNo=" + pageNo + ", word=" + word
-				+ ", category=" + category + ", source=" + source
-				+ ", funding=" + funding + "]";
+		return "SearchOptionVO [no=" + no + ", pageNo=" + pageNo + ", word="
+				+ word + ", category=" + category + ", source=" + source
+				+ ", rank=" + rank + "]";
 	}
 
 }
