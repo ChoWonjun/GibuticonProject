@@ -63,8 +63,8 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public int getTotalPostingCount() {
-		return freeBoardDAO.getTotalPostingCount();
+	public int getTotalPostingCount(HashMap<String, Object> map) {
+		return freeBoardDAO.getTotalPostingCount(map);
 	}
 
 	@Override

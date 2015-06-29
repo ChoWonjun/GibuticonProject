@@ -26,7 +26,7 @@ public interface FreeBoardService {
 
 	public abstract String getPageNo(String no);
 
-	public abstract int getTotalPostingCount();
+	public abstract int getTotalPostingCount(HashMap<String, Object> map);
 
 	public abstract FreeBoardVO getFreeByNoNotHit(String no);
 

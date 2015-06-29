@@ -112,8 +112,8 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 * 총 게시물의 수를 불러오는 메서드
 	 */
 	@Override
-	public int getTotalPostingCount() {
-		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCount");
+	public int getTotalPostingCount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCount",map);
 	}
 	/**
 	 * 조회수를 업데이트 시키는 메서드

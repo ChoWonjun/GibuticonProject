@@ -80,7 +80,6 @@ public class NoticeController {
 		map.put("input", input);
 		map.put("searchSelect", searchSelect);
 		List<NoticeVO> list = null;
-
 		if (searchSelect.equals("0")) { // 제목만
 			list = noticeService.getListBySearchingTitle(map);
 			System.out.println(list);
@@ -97,7 +96,7 @@ public class NoticeController {
 		
 		ListVO lvo = new ListVO(list, new PagingBean(
 				noticeService.getTotalPostingCount(map), Integer.parseInt(pageNo)));
-
+		
 		return new ModelAndView("notice_list", "nlvo", lvo);
 	}
 

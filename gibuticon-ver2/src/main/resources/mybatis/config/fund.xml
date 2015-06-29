@@ -59,8 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 
-	<select id="getPageNo" parameterType="searchOptionVO"
-		resultType="string">
+	<select id="getPageNo" parameterType="searchOptionVO" resultType="string">
 		select page from(
 		select
 		fund_no fundno, ceil(rownum/5) as page from(

@@ -98,7 +98,7 @@ public class FreeBoardController {
 		System.out.println(list);
 
 		ListVO lvo = new ListVO(list, new PagingBean(
-				freeBoardService.getTotalPostingCount(),
+				freeBoardService.getTotalPostingCount(map),
 				Integer.parseInt(pageNo)));
 		return new ModelAndView("freeBoard_list", "lvo", lvo);
 	}

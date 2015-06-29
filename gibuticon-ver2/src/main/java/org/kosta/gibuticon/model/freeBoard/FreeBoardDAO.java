@@ -21,7 +21,7 @@ public interface FreeBoardDAO {
 
 	public abstract void updateFreeBoard(FreeBoardVO freeBoardVO);
 
-	public abstract int getTotalPostingCount();
+	public abstract int getTotalPostingCount(HashMap<String, Object> map);
 
 	public abstract void updateHit(String no);
 
