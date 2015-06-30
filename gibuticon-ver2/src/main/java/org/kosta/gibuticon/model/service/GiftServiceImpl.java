@@ -4,7 +4,9 @@ import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.gift.GiftDAO;
 import org.kosta.gibuticon.model.gift.GiftVO;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GiftServiceImpl implements GiftService {
 	@Resource
 	private GiftDAO giftDAO;
@@ -23,5 +25,15 @@ public class GiftServiceImpl implements GiftService {
 	@Override
 	public void sendToNonMember(GiftVO giftVO){
 		giftDAO.sendToNonMember(giftVO);
+	}
+	
+	@Override
+	public GiftVO confirmPin(String pinNo) {
+		// TODO Auto-generated method stub
+		return giftDAO.confirmPin(pinNo);
+	}
+	
+	public void insertReciever(GiftVO giftVO){
+		giftDAO.insertReciever(giftVO);
 	}
 }

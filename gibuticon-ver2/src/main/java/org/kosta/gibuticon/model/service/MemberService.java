@@ -28,5 +28,7 @@ public interface MemberService {
 	public abstract String findId(MemberVO memberVO);
 
 	public abstract String findPassword(MemberVO memberVO);
+	
+	public void decreasePoint(MemberVO memberVO);
 
 }

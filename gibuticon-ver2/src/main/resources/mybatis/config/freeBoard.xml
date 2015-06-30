@@ -19,17 +19,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 		values(#{boardNo},#{title},sysdate,#{content},0,#{id},#{boardNo},0,0)
 	</insert>
+	
 	<delete id="deleteFreeBoard">
 		delete from free_board where board_no=#{value}
 	</delete>
+	
 	<update id="updateFreeBoard" parameterType="freeBoardVO">
 		update free_board set title=#{title},content=#{content}
 		where board_no=#{boardNo}
 	</update>
+	
 	<select id="getFreeBoardByNo" resultMap="freeBoardRM">
 		<include refid="selectFreeBoard" />
 		where board_no=#{value}
 	</select>
+	
 	<select id="getFreeBoardList" parameterType="string" resultMap="freeBoardRM">
 		   select board_no, title, write_date, content, hits, id from(
         select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
@@ -37,6 +41,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       from free_board order by ref desc, restep asc))where page=#{value}
 	</select>
 
+	<select id="getListBySearchingMyId" parameterType="hashmap" resultMap="freeBoardRM">
+		select board_no, title, write_date, content, hits, id from(
+		select board_no, title, write_date, content, hits, id, ceil(rownum/5) as
+		page from
+		(select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date,
+		content, hits, id
+		from free_board where id=#{myId}
+		order by ref desc, restep asc))where page=#{page}
+	</select>
 
 	<select id="getListBySearchingTitle" parameterType="hashmap"
 		resultMap="freeBoardRM">
@@ -111,6 +124,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>	
 	</if>
+	</select>	
+	
+	<select id="getTotalPostingCountByMyId" parameterType="hashmap" resultType="int">
+	select count(*) from free_board
+		<where>
+				id = #{myId}
+		</where>
 	</select>	
 	
 	<update id="updateHit" parameterType="string">
