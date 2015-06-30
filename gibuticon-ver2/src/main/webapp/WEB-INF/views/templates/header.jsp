@@ -12,7 +12,6 @@
    src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
    src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-   
 <script type="text/javascript">
    $(document)
          .ready(
@@ -56,8 +55,7 @@
                                  else if ($("#chargeCone :radio[name=payment]:checked").length == 0) {
                                     alert("결제방식을 선택하세요!");
                                  } else {
-                                    $
-                                          .ajax({
+                                    $.ajax({
                                              type : "get",
                                              url : "${initParam.root}cone/charge.gibu",
                                              data : "id=${sessionScope.mvo.id }&point="
@@ -66,19 +64,14 @@
                                                    + $(
                                                          "#chargeCone :radio[name=payment]:checked")
                                                          .val(),
-                                             success : function(
-                                                   f) {
+                                             success : function() {
                                                 var data = "충전이 완료되었습니다.";
                                                 data += "<br>";
                                                 data += "<input class='btn btn-default' type='button' value='취소' data-dismiss='modal' onclick='javascript:location.reload()'>";
-
-                                                $("#test")
-                                                      .html(
-                                                            data);
-
-                                             }
+                                                $("#test").html(data);
+												 }
                                           });
-                                 }
+                                	 }
                               });
                });
 
@@ -149,7 +142,7 @@
                         <div class="modal-body">
                            <div class="section text-center">
                               <a href="${initParam.root}home.gibu"> <img
-                                 src="${initParam.root }img\이모티콘.jpg"
+                                 src="${initParam.root }img\g_cone.png"
                                  class="center-block img-responsive img-thumbnail"
                                  height="100" width="100"></a><br>
                               <form class="form-horizontal"
@@ -185,8 +178,9 @@
                                        <button type="submit" class="btn btn-default"
                                           id="loginForm">LogIn</button>
                                     </div>
-                                    <br><br> <a href="member_findIdForm.gibu">아이디찾기 | </a> <a href="member_findPasswordForm.gibu">비밀번호찾기 |
+                                    <br><br> <a href="${initParam.root}member/findIdForm.gibu">아이디찾기 | </a> <a href="${initParam.root}member/findPasswordForm.gibu">비밀번호찾기 |
                                     </a> <a href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
+                                    </div>
                               </form>
                            </div>
                         </div>
