@@ -5,13 +5,6 @@
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 
 <script type="text/javascript">
-
-/* 	function chargePopup() {
-		var url = "${initParam.root }cone/chargeView.gibu";
-		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
-	} */
-</script>
-<script type="text/javascript">
 	var selectComp = document.getElementById("searchSelect").value;
 	location.href = "${initParam.root }freeBoard/getList.gibu?pageNo=" + pageNo; // myId 추가해야하나
 </script>
@@ -43,7 +36,7 @@
 										class="u_txt2"><span style="font-family: &amp; amp;">즐겨찾기
 												목록</span></a></li>
 									<li><a
-										href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}" 
+										href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"
 										class="u_txt3"><span style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>

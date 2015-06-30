@@ -115,7 +115,7 @@ public class FreeBoardController {
 	 * @param myId
 	 * @return
 	 */
-	@RequestMapping("member/myPost.gibu")
+	@RequestMapping("freeBoard/myPost.gibu")
 	public ModelAndView getMyPost(String pageNo, String no, String myId){
 		ModelAndView mv = new ModelAndView();
 		if(no != null)
