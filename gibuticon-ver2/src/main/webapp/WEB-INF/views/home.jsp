@@ -68,7 +68,7 @@
 .cycle-pager span.cycle-pager-active {
 	color: #337cbb;
 }
-
+ 
 .cycle-pager>* {
 	cursor: pointer;
 }
