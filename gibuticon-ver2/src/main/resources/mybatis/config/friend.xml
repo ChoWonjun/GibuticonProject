@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getMemberList" resultType="memberVO">
-		select * from member
+		select id,name,email,to_char(birth,'yyyy-mm-dd') as birth from member
 	</select>
 	
 	<insert id="addFriend" parameterType="friendVO">

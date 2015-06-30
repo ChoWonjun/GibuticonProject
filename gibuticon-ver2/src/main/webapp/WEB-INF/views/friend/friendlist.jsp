@@ -98,16 +98,20 @@
 				<br>
 				<br>
 				<br>
+				<h3>회원 검색</h3>
+				<input type="text" placeholder="아이디 입력" id="word" name="word"
+					value="${option.word }" size="50" maxlength="255"
+					style="font-size: 13pt"> <input type="submit" value="검색">
 				<br>
 				<br>
 				<div class="col-md-12 col-md-offset-1/2">
-					<table class="type09">
+					<table class="type09" align="center" >
 						<thead>
 							<tr>
-								<th scope="col">아이디</th>
-								<th scope="col">이름</th>
-								<th scope="col">이메일</th>
-								<th scope="col">삭제</th>
+								<th scope="col" width="100" align="center" >아이디</th>
+								<th scope="col" width="100" align="center">이름</th>
+								<th scope="col" width="200" align="center">이메일</th>
+								<th scope="col" width="100" align="center">삭제</th>
 							</tr>
 						</thead>
 						<c:forEach items="${requestScope.list }" var="list">

@@ -29,6 +29,7 @@ public class FriendServiceImpl implements FriendService {
 	}
 	
 	public void addFriend(String myId, String friendId){
+		
 		friendDAO.addFriend(myId, friendId);
 	}
 
