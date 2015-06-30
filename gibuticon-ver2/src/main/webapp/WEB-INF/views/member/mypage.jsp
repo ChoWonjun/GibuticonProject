@@ -33,7 +33,7 @@
 				src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
 				width="130"> <br> <br>
 			<div class="col-md-2">
-				<div class="mypage"></div>
+				
 				<div id="container">
 					<div id="mypage">
 						<br> <img src="${initParam.root }img/g_favorite_1.jpg"

@@ -14,7 +14,6 @@
    src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <script type="text/javascript">
-
    $(document)
          .ready(
                function() {
@@ -307,8 +306,8 @@
                                        <button type="submit" class="btn btn-default"
                                           id="loginForm">LogIn</button>
                                     </div>
-                                    <br> <br> <a href="member_findIdForm.gibu">아이디찾기
-                                       | </a> <a href="member_findPasswordForm.gibu">비밀번호찾기 | </a> <a
+                                    <br> <br> <a href="${initParam.root }member/findIdForm.gibu">아이디찾기
+                                       | </a> <a href="${initParam.root }member/findPasswordForm.gibu">비밀번호찾기 | </a> <a
                                        href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
                               </form>
                            </div>
