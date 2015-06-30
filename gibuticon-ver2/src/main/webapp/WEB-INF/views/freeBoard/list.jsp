@@ -5,10 +5,9 @@
 
 <script
    src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-   <script
-   src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script
    src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
 	function getList(pageNo) {
 		var selectComp = document.getElementById("searchSelect").value;
@@ -22,17 +21,16 @@
 <br>
 <br>
 <br>
-<div class="col-md-8">
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-11 col-md-offset-4">
+	<div class="section" align="center">
+		<div class="container" align="center">
+			<div class="row" align="center">
+				<div class="col-md-8" align="center">
 					<img src="${initParam.root}img/freeBoardName.jpg" width="200">
 					<br>
 					<br>
 					<br>
 					<br>
-					<table class="type09" style="font-family: &amp; amp;">
+					<table class="type09" align="center" style="font-family: &amp; amp;" >
 						<thead>
 							<tr>
 								<th width="100">NO</th>
@@ -73,7 +71,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+
 <div class="section">
 	<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 		<div class="container"></div>
