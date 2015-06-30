@@ -5,7 +5,7 @@
 
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-<%--위에꺼 주석처리하면 로그인했을때랑 로그아웃했을때랑 글씨체가 달라져요.. 주석처리 하지 마세유 --%>
+<%--위에꺼 주석처리하면 로그인했을때랑 로그아웃했을때랑 글씨체가 달라져요.. 주석처리 하지 마세요 --%>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script
@@ -14,6 +14,76 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <script type="text/javascript">
+
+   $(document)
+         .ready(
+               function() {
+                  $("#coneInput").hide();
+                  $("#coneValSel")
+                        .change(
+                              function() {
+                                 chargeCone.coneVal.value = "";
+                                 chargeCone.payVal.value = "";
+                                 $("#coneInput").hide();
+                                 if ($("#coneValSel").val() == "") {
+                                    alert("수량을 선택하세요!");
+                                    return;
+                                 } else if ($("#coneValSel").val() == "self") {
+                                    $("#coneInput").show();
+                                 } else {
+                                    chargeCone.coneVal.value = $(
+                                          "#coneValSel").val();
+                                    chargeCone.payVal.value = chargeCone.coneVal.value * 100;
+                                 }
+                              });
+                  $("#selfConeVal")
+                        .keyup(
+                              function() {
+                                 if (isNaN($("#selfConeVal").val())) {
+                                    $("#selfConeVal").val("");
+                                    alert("숫자로만 입력하세요!");
+                                 }
+                                 chargeCone.coneVal.value = $(
+                                       "#selfConeVal").val();
+                                 chargeCone.payVal.value = chargeCone.coneVal.value * 100;
+                              });
+                  $("#chargeButton")
+                        .click(
+                              function() {
+                                 if (chargeCone.payVal.value == "")
+                                    alert("충전단위를 선택하세요!");
+                                 else if (chargeCone.coneVal.value < 10)
+                                    alert("충전단위를 10개 이상 입력해주세요!");
+                                 else if ($("#chargeCone :radio[name=payment]:checked").length == 0) {
+                                    alert("결제방식을 선택하세요!");
+                                 } else {
+                                    $.ajax({
+                                             type : "get",
+                                             url : "${initParam.root}cone/charge.gibu",
+                                             data : "id=${sessionScope.mvo.id }&point="
+                                                   + chargeCone.coneVal.value
+                                                   + "&paymentType="
+                                                   + $(
+                                                         "#chargeCone :radio[name=payment]:checked")
+                                                         .val(),
+                                             success : function() {
+                                                var data = "충전이 완료되었습니다.";
+                                                data += "<br>";
+                                                data += "<input class='btn btn-default' type='button' value='취소' data-dismiss='modal' onclick='javascript:location.reload()'>";
+                                                $("#test").html(data);
+												 }
+                                          });
+                                	 }
+                              });
+               });
+
+   function sendMessagePopup(receiverId) {
+      var url = "${initParam.root}message/sendForm.gibu?receiverId="+receiverId;
+      window
+            .open(url, "message",
+                  "width=420, height=460, teop=150, left=200");
+   }
+
 	$(document)
 			.ready(
 					function() {
@@ -197,7 +267,7 @@
 								<div class="modal-body">
 									<div class="section text-center">
 										<a href="${initParam.root}home.gibu"> <img
-											src="${initParam.root }img\이모티콘.jpg"
+											src="${initParam.root }img\g_cone.jpg"
 											class="center-block img-responsive img-thumbnail"
 											height="100" width="100"></a><br>
 										<form class="form-horizontal"

@@ -106,6 +106,36 @@ public class FreeBoardController {
 		return new ModelAndView("freeBoard_list", "lvo", lvo);
 	}
 	
+	
+	/**
+	 * 마이페이지에서 
+	 * 내가 쓴 글만 볼 수 있게 불러오는 컨트롤러
+	 * @param pageNo
+	 * @param no
+	 * @param myId
+	 * @return
+	 */
+	@RequestMapping("freeBoard/myPost.gibu")
+	public ModelAndView getMyPost(String pageNo, String no, String myId){
+		ModelAndView mv = new ModelAndView();
+		if(no != null)
+			pageNo = freeBoardService.getPageNo(no);
+		if (pageNo == null)
+			pageNo = "1";
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("page", pageNo);
+		map.put("myId", myId);
+		List<FreeBoardVO> list = freeBoardService.getListBySearchingMyId(map);
+		System.out.println(list);
+
+		ListVO lvo = new ListVO(list, new PagingBean(
+				freeBoardService.getTotalPostingCountByMyId(map),
+				Integer.parseInt(pageNo)));
+		return new ModelAndView("member_myPost", "lvo", lvo);
+	}
+	
+	
 	/**
 	 * 자유게시판에 있는 글 상세보기!
 	 * 이떄 같이 댓글목록도 불러옴!
