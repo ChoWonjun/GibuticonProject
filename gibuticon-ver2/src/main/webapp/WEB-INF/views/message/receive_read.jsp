@@ -51,9 +51,31 @@
 	</tr>
 </table>
 <hr>
-<input type="button" value="답장" onclick="reply()">
+  <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="breadcrumb">
+              <li>
+                <a onclick="reply()">답장</a>
+              </li>
+              <li>
+                <a onclick="deleteMessage()">삭제</a>
+              </li>
+              <li>
+                <a onclick="getList()">목록</a>
+              </li>
+              <li>
+                <a onclick="closeWindow()">Library</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- <input type="button" value="답장" onclick="reply()">
 <input type="button" value="삭제" onclick="deleteMessage()">
 <input type="button" value="목록" onclick="getList()">
-<input type="button" value="닫기" onclick="closeWindow()">
+<input type="button" value="닫기" onclick="closeWindow()"> -->
 </body>
 </html>

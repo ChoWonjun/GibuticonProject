@@ -20,8 +20,8 @@
   ALTER TABLE gibu_fund ADD source varchar2(200) not null;
   
   insert into gibu_fund(fund_no,fund_name,proposal,
-  									homepage,goal_sum,due_date,content)
-  values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',1000,'2015-06-20','효섭이를 도와주세요');
+  									homepage,goal_sum,start_date,due_date,content,category,source)
+  values(gibu_fund_seq.nextval,'희망모금','불우이웃돕기','hyodols.info',1000,to_char('2015-06-20','yyyy-mm-dd'),'효섭이를 도와주세요','어린이','해피빈');
    
   
   select fund_no fundno, fund_name fundname, proposal, homepage,

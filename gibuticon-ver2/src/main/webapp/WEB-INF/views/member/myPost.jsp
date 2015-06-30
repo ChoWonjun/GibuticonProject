@@ -13,9 +13,11 @@
 <link href="${initParam.root}css/mypage.css" rel="stylesheet"
 	type="text/css">
 <script type="text/javascript">
-function getList(pageNo) {
-	location.href = "${initParam.root }freeBoard/getList.gibu?pageNo=" + pageNo+"&searchSelect=3"; // myId 추가해야하나
-}
+	function getPost(pageNo) {
+		/* var selectComp = document.getElementById("searchSelect").value; */
+		location.href = "${initParam.root }freeBoard/getPost.gibu?pageNo="
+				+ pageNo; // myId 추가해야하나
+	}
 </script>
 <div class="section" align="center">
 	<div class="container">
@@ -30,6 +32,7 @@ function getList(pageNo) {
 			<div class="col-md-2">
 				<div class="mypage"></div>
 				<div id="container">
+<<<<<<< HEAD
 					<div id="mypage">
 					<br>
 								<img src="${initParam.root }img\g_favorite_1.jpg" width="150"> <br>
@@ -166,16 +169,18 @@ function getList(pageNo) {
 								<ul class="pagination">
 									<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 									<c:if test="${pb.previousPageGroup}">
-										<li><a href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+
+										<li><a
+											href="javascript:getPost('${pb.startPageOfPageGroup-1}')">Prev</a>
 										</li>
 									</c:if>
 									<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 											end="${pb.endPageOfPageGroup}">
-											<a href="javascript:getList('${i}')">${i}</a>
+											<a href="javascript:getPost('${i}')">${i}</a>
 										</c:forEach></li>
 									<c:if test="${pb.nextPageGroup}">
 										<li><a
-											href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
+											href="javascript:getPost('${pb.endPageOfPageGroup+1}')">Next</a>
 										</li>
 									</c:if>
 								</ul>
