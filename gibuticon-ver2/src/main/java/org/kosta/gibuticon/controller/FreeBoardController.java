@@ -67,7 +67,7 @@ public class FreeBoardController {
 	 */
 	@RequestMapping("freeBoard/getList.gibu")
 	public ModelAndView getList(String pageNo, String no, String searchSelect, String input) {
-
+		String url=null;
 		System.out.println(searchSelect + "   " + input);
 
 		if (no != null)
@@ -88,22 +88,29 @@ public class FreeBoardController {
 
 		if (searchSelect.equals("0")) { // 제목만
 			list = freeBoardService.getListBySearchingTitle(map);
+			url="freeBoard_list";
 			//System.out.println(list);
 		} else if (searchSelect.equals("1")) { // 내용만
 			list = freeBoardService.getListBySearchingContent(map);
+			url="freeBoard_list";
 			//System.out.println(list);
 		} else if (searchSelect.equals("2")) { // 제목+내용
 			list = freeBoardService.getListBySearchingBoth(map);
+			url="freeBoard_list";
 			System.out.println(list);
-		} else {
+		} else if(searchSelect.equals("3")) {
 			list = freeBoardService.getFreeBoardList(pageNo);
+			url="member_myPost";
+		}else{
+			list = freeBoardService.getFreeBoardList(pageNo);
+			url="freeBoard_list";
 		}
 		System.out.println(list);
-
 		ListVO lvo = new ListVO(list, new PagingBean(
 				freeBoardService.getTotalPostingCount(map),
 				Integer.parseInt(pageNo)));
-		return new ModelAndView("freeBoard_list", "lvo", lvo);
+		
+		return new ModelAndView(url, "lvo", lvo);
 	}
 	
 	

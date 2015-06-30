@@ -121,4 +121,9 @@ public class MemberServiceImpl implements MemberService {
 	public void decreasePoint(MemberVO memberVO){
 		memberDAO.decreasePoint(memberVO);
 	}
+
+	@Override
+	public void increasePoint(MemberVO memberVO) {
+		memberDAO.increasePoint(memberVO);
+	}
 }

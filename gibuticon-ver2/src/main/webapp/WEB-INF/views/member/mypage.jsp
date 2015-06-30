@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script
@@ -11,7 +13,7 @@
 	rel="stylesheet" type="text/css">
 <link href="${initParam.root}css/mypage.css" rel="stylesheet"
 	type="text/css">
-	
+
 <script type="text/javascript">
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
@@ -27,50 +29,60 @@
 <div class="section">
 	<div class="container">
 		<div class="row">
-			&nbsp;&nbsp;&nbsp; <img src="${initParam.root }img/g_my_gibuticon.jpg"
-				height="30" width="130"> <br> <br>
+			&nbsp;&nbsp;&nbsp; <img
+				src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
+				width="130"> <br> <br>
 			<div class="col-md-2">
 				<div class="mypage"></div>
 				<div id="container">
 					<div id="mypage">
-					<br>
-								<img src="${initParam.root }img/g_favorite_1.jpg" width="150"> <br>
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }member/memberRanksView.gibu"> 
-										<span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
-									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}">
-									<span style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
-									<li><a href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"><span
-											style="font-family: &amp; amp;">작성글</span></a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
-									<li><a
-										href="${initParam.root}member/updateMemberForm.gibu"> <span
-											style="font-family: &amp; amp;">회원정보 수정</span>
-									</a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">회원탈퇴</span></a></li>
-								</ul>
-								<img src="${initParam.root }img/g_favorite_2.jpg" width="150"> <br>
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="javascript:chargePopup()" class="sr_txt5">
-											<span style="font-family: &amp; amp;">충전하기</span>
-									</a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">선물하기</span></a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">선물함 내역</span></a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">사용 내역</span></a></li>
-									<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
-								</ul>
-						        <img src="${initParam.root }img/g_favorite_3.jpg" width="150"> <br>
-								
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }friend/memberlist.gibu">친구 찾기</a></li>
-									<li><a href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"> 친구 목록보기</a></li>
-								</ul>
-						
+						<br> <img src="${initParam.root }img/g_favorite_1.jpg"
+							width="170"> <br>
+						<ul class="left01"
+							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+							<li><a href="${initParam.root }member/memberRanksView.gibu">
+									<span style="font-family: &amp; amp;">기부랭킹보기</span>
+							</a></li>
+							<li><a
+								href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}">
+									<span style="font-family: &amp; amp;">즐겨찾기 목록</span>
+							</a></li>
+							<li><a
+								href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"><span
+									style="font-family: &amp; amp;">작성글</span></a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">댓글
+										단 글</span></a></li>
+							<li><a href="${initParam.root}member/updateMemberForm.gibu">
+									<span style="font-family: &amp; amp;">회원정보 수정</span>
+							</a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">회원탈퇴</span></a></li>
+						</ul>
+						<img src="${initParam.root }img/g_favorite_2.jpg" width="150">
+						<br>
+						<ul class="left01"
+							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+							<li><a href="javascript:chargePopup()" class="sr_txt5">
+									<span style="font-family: &amp; amp;">충전하기</span>
+							</a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">선물하기</span></a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">선물함
+										내역</span></a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">사용
+										내역</span></a></li>
+							<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
+						</ul>
+						<img src="${initParam.root }img/g_favorite_3.jpg" width="150">
+						<br>
+
+						<ul class="left01"
+							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+							<li><a href="${initParam.root }friend/memberlist.gibu">친구
+									찾기</a></li>
+							<li><a
+								href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}">
+									친구 목록보기</a></li>
+						</ul>
+
 					</div>
 				</div>
 			</div>
@@ -93,11 +105,24 @@
 												<br>
 												<div class="num_ranking">
 													<div class="num_myb">
-														<span class="no9">9</span> <span class="coma">,</span> <span
-															class="no1">1</span> <span class="no1">1</span> <span
-															class="no4">4</span> <span class="coma">,</span> <span
-															class="no7">7</span> <span class="no7">7</span> <span
-															class="no4">4</span> <span class="we">위</span>
+														<table class="table" style="font-family: &amp; amp;">
+															<thead>
+																<tr>
+																	<th width="100">RANK</th>
+																	<th width="500">아이디</th>
+																	<th width="500">총기부액</th>
+																</tr>
+															</thead>
+															<tbody>
+																<c:forEach items="${requestScope.rank1}" var="posting">
+																	<tr>
+																		<td>${posting.rank }</td>
+																		<td>${posting.memberId }</td>
+																		<td>${posting.rankVal }</td>
+																	</tr>
+																</c:forEach>
+															</tbody>
+														</table>
 													</div>
 												</div>
 												<div class="bx_bg">
@@ -106,25 +131,7 @@
 															<col width="87">
 															<col width="">
 														</colgroup>
-														<tbody>
-															<tr>
-																<th><img
-																	src="http://happyimg2.naver.net/img3/happybean/img/th_my_dona_bank.gif"
-																	width="67" height="11" alt="기부 · 저금횟수"></th>
-																<td><strong class="keep">9,114,774</strong>위</td>
-															</tr>
-															<tr>
-																<th><img src="${initParam.root }img/g_cone_chargeamount.jpg"
-																	width="55" height="13" alt="콘 충전금액"></th>
-																<td><strong class="keep">403,944</strong>위</td>
-															</tr>
-															<tr>
-																<th><img
-																	src="http://happyimg2.naver.net/img3/happybean/img/th_my_dona_bank2.gif"
-																	width="57" height="11" alt="기부 · 저금액"></th>
-																<td><strong class="keep">9,114,761</strong>위</td>
-															</tr>
-														</tbody>
+
 													</table>
 												</div>
 											</div>
@@ -138,8 +145,8 @@
 										<!-- 100104 수정 -->
 										<div class="bean_subject">
 											<a href="http://happybean.naver.com/my/CongAccount.nhn"><img
-												src="${initParam.root }img/g_possession_cone.jpg" width="" height="20"
-												alt="보유한 콘"></a> <img
+												src="${initParam.root }img/g_possession_cone.jpg" width=""
+												height="20" alt="보유한 콘"></a> <img
 												src="http://happyimg2.naver.net/img3/happybean/img/icon_folder_next.gif"
 												width="4" height="9" alt="" class="arrow">
 											<div class="bean_num">
@@ -158,7 +165,8 @@
 												</colgroup>
 												<tbody>
 													<tr>
-														<th><img src="${initParam.root }img/g_cone_quantity.jpg"
+														<th><img
+															src="${initParam.root }img/g_cone_quantity.jpg"
 															width="53" height="17" alt="개인보유콘"></th>
 														<td class="bd_l"><a href="#"><strong class="gibu">${sessionScope.mvo.point }</strong></a>개</td>
 													</tr>
@@ -169,8 +177,9 @@
 											<!-- 100104 수정 -->
 											<div class="bean_subject">
 												<h4>
-													<a href="#"><img src="${initParam.root }img/g_fund_cone.jpg"
-														width="" height="20" alt="기부한콘"></a> <img
+													<a href="#"><img
+														src="${initParam.root }img/g_fund_cone.jpg" width=""
+														height="20" alt="기부한콘"></a> <img
 														src="http://happyimg2.naver.net/img3/happybean/img/icon_folder_next.gif"
 														width="4" height="9" alt="" class="arrow">
 												</h4>
