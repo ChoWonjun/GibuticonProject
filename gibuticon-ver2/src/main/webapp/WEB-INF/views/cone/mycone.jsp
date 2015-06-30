@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -11,38 +7,15 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
-<<<<<<< HEAD
 
-=======
-
-
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
-<<<<<<< HEAD
 <script type="text/javascript">
-=======
-
-<script
-   src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<link href="${initParam.root}css/table.css" rel="stylesheet"
-	type="text/css">
-
-
- <script type="text/javascript">
-
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 	window.onload = function() {
 		// 다음으로 라디오 버튼에 click 이벤트 핸들러를 붙임!
-<<<<<<< HEAD
 		var radios = document.myCone["type"];
 		for (var i = [0 ]; i < radios.length; i++) {
-=======
-
-		var radios = document.myCone['type'];
-		for (var i = [ 0 ]; i < radios.length; i++) {
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 			radios[i].onclick = radioClicked;
 		}
 	}
@@ -115,14 +88,7 @@
 		<br>
 		<h4>${sessionScope.mvo.name }님의콘충전/사용내역</h4>
 
-<<<<<<< HEAD
 		<form name=myCone>
-=======
-
-
-		<form id=myCone name=myCone>
-
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 			<input type="radio" name="type" value="charge">
 			충전내역&nbsp;&nbsp; <input type="radio" name="type" value="gibu">
 			사용내역<br> <br> <br> <br>
