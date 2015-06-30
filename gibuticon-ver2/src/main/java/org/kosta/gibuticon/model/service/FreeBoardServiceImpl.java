@@ -8,10 +8,11 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.freeBoard.FreeBoardDAO;
 import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
-import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class FreeBoardServiceImpl implements FreeBoardService {
 	@Resource(name = "freeBoardDAOImpl")
 	private FreeBoardDAO freeBoardDAO;

@@ -5,8 +5,10 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.gift.GiftDAO;
 import org.kosta.gibuticon.model.gift.GiftVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class GiftServiceImpl implements GiftService {
 	@Resource
 	private GiftDAO giftDAO;

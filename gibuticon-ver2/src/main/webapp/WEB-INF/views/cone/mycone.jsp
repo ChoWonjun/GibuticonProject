@@ -1,10 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -87,14 +83,7 @@
       <br>
       <h4>${sessionScope.mvo.name }님의콘충전/사용내역</h4>
 
-<<<<<<< HEAD
-		<form name=myCone>
-			<input type="radio" name="type" value="charge">
-			충전내역&nbsp;&nbsp; <input type="radio" name="type" value="gibu">
-			사용내역<br> <br> <br> <br>
-			<div id="resultView"></div>
-		</form>
-=======
+
       <form name=myCone>
          <input type="radio" name="type" value="charge">
          충전내역&nbsp;&nbsp; <input type="radio" name="type" value="gibu">
@@ -103,7 +92,6 @@
       </form>
 
    </center>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 
    <div class="section">
       <div class="container">
@@ -154,59 +142,6 @@
             <div class="col-md-12"></div>
          </div>
       </div>
-
-<<<<<<< HEAD
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12"></div>
-			</div>
-		</div>
-	</div> 
-=======
    </div>
    <div class="section">
       <div class="container">
@@ -215,4 +150,3 @@
          </div>
       </div>
    </div> 
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git

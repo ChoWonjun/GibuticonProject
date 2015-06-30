@@ -8,8 +8,10 @@ import org.kosta.gibuticon.model.friend.FriendDAO;
 import org.kosta.gibuticon.model.friend.FriendVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class FriendServiceImpl implements FriendService {
 	@Resource(name = "friendDAOImpl")
 	FriendDAO friendDAO;
