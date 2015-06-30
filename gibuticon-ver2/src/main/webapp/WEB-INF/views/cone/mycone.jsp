@@ -4,13 +4,16 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+ 
+
+<script
+   src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script
+   src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+ <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+ <%--위에껏만 써야되야 부트스트랩 안그럼 헤더 내려오는거 안대요!!! --%>
   <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
-
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript">
 	window.onload = function() {
 		// 다음으로 라디오 버튼에 click 이벤트 핸들러를 붙임!
@@ -82,7 +85,7 @@
 	</div>
 
 	<center>
-		<img src="${initParam.root}img/마이콘.jpg" width="300"> <br>
+		<img src="${initParam.root}img/g_mycone.jpg" width="300"> <br>
 
 		<hr align="center" width="60%">
 		<br>
