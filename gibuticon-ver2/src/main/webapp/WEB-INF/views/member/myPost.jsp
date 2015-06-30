@@ -5,8 +5,11 @@
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 
 <script type="text/javascript">
-	var selectComp = document.getElementById("searchSelect").value;
-	location.href = "${initParam.root }freeBoard/getList.gibu?pageNo=" + pageNo; // myId 추가해야하나
+	function getPost(pageNo) {
+		/* var selectComp = document.getElementById("searchSelect").value; */
+		location.href = "${initParam.root }freeBoard/getPost.gibu?pageNo="
+				+ pageNo; // myId 추가해야하나
+	}
 </script>
 <div class="section" align="center">
 	<div class="container">
@@ -133,16 +136,16 @@
 									<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 									<c:if test="${pb.previousPageGroup}">
 										<li><a
-											href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+											href="javascript:getPost('${pb.startPageOfPageGroup-1}')">Prev</a>
 										</li>
 									</c:if>
 									<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 											end="${pb.endPageOfPageGroup}">
-											<a href="javascript:getList('${i}')">${i}</a>
+											<a href="javascript:getPost('${i}')">${i}</a>
 										</c:forEach></li>
 									<c:if test="${pb.nextPageGroup}">
 										<li><a
-											href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
+											href="javascript:getPost('${pb.endPageOfPageGroup+1}')">Next</a>
 										</li>
 									</c:if>
 								</ul>
