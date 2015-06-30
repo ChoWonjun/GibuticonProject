@@ -115,4 +115,8 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberDAO.findPassword(memberVO);
 	}
+	
+	public void decreasePoint(MemberVO memberVO){
+		memberDAO.decreasePoint(memberVO);
+	}
 }
