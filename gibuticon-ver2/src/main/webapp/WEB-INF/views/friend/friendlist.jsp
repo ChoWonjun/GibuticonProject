@@ -1,27 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<link href="${initParam.root}css/table.css" rel="stylesheet"
+	type="text/css">
 <link href="${initParam.root}css/mypage.css" rel="stylesheet"
 	type="text/css">
-<script type="text/javascript"
-	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+<script type="text/javascript">
+	function delFriend(friendid) {
+		alert(friendid + " 친구삭제");
 
-<script type="text/javascript">
-	function chargePopup() {
-		var url = "${initParam.root }cone/chargeView.gibu";
-		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
+		$.ajax({
+			type : "post",
+			url : "${initParam.root}friend/delFriend.gibu",
+			data : "myId=${sessionScope.mvo.id}&friendId=" + friendid,
+			success : function(result) {
+				if (result)
+					alert("친구삭제 완료");
+			}//success
+		});//ajax
 	}
 </script>
-<script type="text/javascript">
-	function delBookmark(fundNo) {
-		if (confirm("즐겨찾기에서 삭제하시겠습니까?")) {
-			location.href = "${initParam.root}bookmark/delBookmark.gibu?myId=${sessionScope.mvo.id}&fundNo="
-					+ fundNo;
-		} else {
-			return false;
-		}
-	}
-</script>
+
 <script type="text/javascript">
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
@@ -84,18 +88,43 @@
 					</div>
 				</div>
 			</div>
+		
 			<div class="col-md-8 col-md-offset-1">
-				<img src="${initParam.root}img\g_bookmark.jpg">
-				<c:forEach items="${requestScope.list}" var="bookmark">
-					<br>
-					<br>
-					<br>
-	NO. <a href="${initParam.root}fund/showContent.gibu?no=${bookmark.fund.fundNo}">${bookmark.fund.fundNo}</a> | 모금명 : ${bookmark.fund.fundName} 
-					<input type="button"
-						onclick="delBookmark('${bookmark.fund.fundNo}')" value="삭제">
-					<br>
-				</c:forEach>
 
+				<div align="center">
+				<br><br>
+					<img src="${initParam.root}img/g_my_cone_friend.jpg" width="800">
+				</div>
+				<br>
+				<br>
+				<br>
+				<br>
+				<br>
+				<div class="col-md-12 col-md-offset-1/2">
+					<table class="type09">
+						<thead>
+							<tr>
+								<th scope="col">아이디</th>
+								<th scope="col">이름</th>
+								<th scope="col">이메일</th>
+								<th scope="col">삭제</th>
+							</tr>
+						</thead>
+						<c:forEach items="${requestScope.list }" var="list">
+
+							<tbody>
+								<tr>
+									<td>${list.friend.id }</td>
+									<td>${list.friend.name }</td>
+									<td>${list.friend.email }</td>
+									<td><input type="button" value="친구삭제"
+										onclick="delFriend('${list.friend.id}')"><br></td>
+								</tr>
+							</tbody>
+
+						</c:forEach>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -19,21 +19,25 @@
 					function() {
 						$("#coneInput").hide();
 						$("#charge2").hide();
-						$("input[name=payment]","#chargeCone").change(function(){
-							if($("input[name=payment]:checked","#chargeCone").val()=="gibuticon"){
-								$("#charge1").hide();
-								$("#charge2").show();
-							} else {
-								$("#charge1").show();
-								$("#charge2").hide();
-							}
-						});
-						$("#1stPin").keyup(function(){
-							if($("#1stPin").val().length==5)
+						$("input[name=payment]", "#chargeCone")
+								.change(
+										function() {
+											if ($(
+													"input[name=payment]:checked",
+													"#chargeCone").val() == "gibuticon") {
+												$("#charge1").hide();
+												$("#charge2").show();
+											} else {
+												$("#charge1").show();
+												$("#charge2").hide();
+											}
+										});
+						$("#1stPin").keyup(function() {
+							if ($("#1stPin").val().length == 5)
 								$("#2ndPin").focus();
 						});
-						$("#2ndPin").keyup(function(){
-							if($("#2ndPin").val().length==5)
+						$("#2ndPin").keyup(function() {
+							if ($("#2ndPin").val().length == 5)
 								$("#3rdPin").focus();
 						});
 						$("#coneValSel")
@@ -67,47 +71,55 @@
 						$("#chargeButton")
 								.click(
 										function() {
-											if($("input[name=payment]:checked","#chargeCone").val()!="gibuticon"){
-												if (chargeCone.payVal.value == ""){
+											if ($(
+													"input[name=payment]:checked",
+													"#chargeCone").val() != "gibuticon") {
+												if (chargeCone.payVal.value == "") {
 													alert("충전단위를 선택하세요!");
 													return false;
-												}
-												else if (chargeCone.coneVal.value < 10){													
+												} else if (chargeCone.coneVal.value < 10) {
 													alert("충전단위를 10개 이상 입력해주세요!");
 													return false;
-												}
-												else if ($("#chargeCone :radio[name=payment]:checked").length == 0){ 
+												} else if ($("#chargeCone :radio[name=payment]:checked").length == 0) {
 													alert("결제방식을 선택하세요!");
 													return false;
 												}
-											} else if ($("input[name=payment]:checked","#chargeCone").val()=="gibuticon"){
-												if($("#1stPin").val()=="" || $("#2ndPin").val()=="" || $("#3rdPin").val()==""){
+											} else if ($(
+													"input[name=payment]:checked",
+													"#chargeCone").val() == "gibuticon") {
+												if ($("#1stPin").val() == ""
+														|| $("#2ndPin").val() == ""
+														|| $("#3rdPin").val() == "") {
 													alert("Pin NO를 확인해주세요");
 													return false;
 												}
 											}
-												$
-														.ajax({
-															type : "get",
-															url : "${initParam.root}cone/charge.gibu",
-															data : "id=${sessionScope.mvo.id }&point="
-																	+ chargeCone.coneVal.value
-																	+ "&paymentType="
-																	+ $(
-																			"#chargeCone :radio[name=payment]:checked")
-																			.val()
-																	+ "&pinNo=" + $("#1stPin").val()+$("#2ndPin").val()+$("#3rdPin").val(),
-															success : function(data) {
-																data = "충전이 완료되었습니다.";
-																data += "<br>";
-																data += "<input class='btn btn-default' type='button' value='닫기' data-dismiss='modal' onclick='javascript:location.reload()'>";
-																$("#test")
-																		.html(
-																				data);
+											$
+													.ajax({
+														type : "get",
+														url : "${initParam.root}cone/charge.gibu",
+														data : "id=${sessionScope.mvo.id }&point="
+																+ chargeCone.coneVal.value
+																+ "&paymentType="
+																+ $(
+																		"#chargeCone :radio[name=payment]:checked")
+																		.val()
+																+ "&pinNo="
+																+ $("#1stPin")
+																		.val()
+																+ $("#2ndPin")
+																		.val()
+																+ $("#3rdPin")
+																		.val(),
+														success : function(data) {
+															data = "충전이 완료되었습니다.";
+															data += "<br>";
+															data += "<input class='btn btn-default' type='button' value='닫기' data-dismiss='modal' onclick='javascript:location.reload()'>";
+															$("#test").html(
+																	data);
+														}
+													});
 
-															}
-														});
-											
 										});
 					});
 
@@ -296,15 +308,14 @@
 														<option value="self">직접입력</option>
 													</select> <span id="coneInput">직접입력 <input type=text
 														id=selfConeVal>cone
-													</span> <br>
-													<br> 결제금액 <input type="text" disabled="disabled"
-														name="coneVal" id="coneVal" value="0"> X100원=<input
-														type="text" disabled="disabled" name="payVal">원
+													</span> <br> <br> 결제금액 <input type="text"
+														disabled="disabled" name="coneVal" id="coneVal" value="0">
+													X100원=<input type="text" disabled="disabled" name="payVal">원
 												</div>
 												<div id="charge2">
-													<span>Pin NO <input size="5" type=text
-														id=1stPin>-<input size="5" type=text id=2ndPin>-<input
-														type=text size="5" id=3rdPin>
+													<span>Pin NO <input size="5" type=text id=1stPin>-<input
+														size="5" type=text id=2ndPin>-<input type=text
+														size="5" id=3rdPin>
 													</span>
 												</div>
 												<hr>
@@ -323,3 +334,4 @@
 		</div>
 	</div>
 </div>
+
