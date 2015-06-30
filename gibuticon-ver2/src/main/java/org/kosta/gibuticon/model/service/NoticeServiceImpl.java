@@ -8,8 +8,10 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.notice.NoticeDAO;
 import org.kosta.gibuticon.model.notice.NoticeVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class NoticeServiceImpl implements NoticeService {
 	@Resource
 	private NoticeDAO noticeDAO;

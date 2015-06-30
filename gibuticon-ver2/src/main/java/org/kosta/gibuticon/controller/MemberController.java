@@ -33,7 +33,7 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 
-	@RequestMapping(value = "loginView", method = RequestMethod.GET)
+	@RequestMapping(value = "member/loginView", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute LoginForm loginForm,
 			HttpServletRequest request) {
 		return "member_loginForm";

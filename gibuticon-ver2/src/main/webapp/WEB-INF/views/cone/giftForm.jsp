@@ -71,7 +71,7 @@
 </form>
 
 <div id="giftToNonMemberDiv">
-<form action="cone/giftToNonMember.gibu" id="giftForm">
+<form action="${initParam.root }cone/giftToNonMember.gibu" id="giftForm">
 	선물하실 금액을 선택하세요.<br>
 	50콘<input type="radio" id="price" name="price" value="50" checked="checked">&nbsp;
 	100콘<input type="radio" id="price" name="price" value="100">&nbsp;

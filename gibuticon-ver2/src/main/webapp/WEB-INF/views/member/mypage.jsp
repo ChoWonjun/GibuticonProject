@@ -91,7 +91,7 @@
 					<tbody>
 						<tr class="info">
 							<td width="280">
-								<div class="col-md-11 col-md-offset-2">
+								<div class="col-md-11 col-md-offset-3">
 									<div id="content_w">
 										<div class="sectioin_mymain_bean2">
 											<div class="bx_inner"></div>
@@ -140,18 +140,15 @@
 								</div>
 							</td>
 							<td width="250">
-								<div class="col-md-8">
+								<div class="col-md-8 col-md-offset-8">
 									<div class="row">
 										<!-- 100104 수정 -->
 										<div class="bean_subject">
-											<a href="http://happybean.naver.com/my/CongAccount.nhn"><img
-												src="${initParam.root }img/g_possession_cone.jpg" width=""
-												height="20" alt="보유한 콘"></a> <img
-												src="http://happyimg2.naver.net/img3/happybean/img/icon_folder_next.gif"
-												width="4" height="9" alt="" class="arrow">
-											<div class="bean_num">
-												<div class="bean_number"></div>
-											</div>
+										<br><br>
+										<img src="${initParam.root }img/g_possession_cone.jpg" width="" height="20"> 
+										<img src="http://happyimg2.naver.net/img3/happybean/img/icon_folder_next.gif"
+												width="4" height="9"  alt="보유한 콘">
+					
 										</div>
 										<br>
 										<!-- //100104 수정 -->
@@ -173,13 +170,15 @@
 												</tbody>
 											</table>
 										</div>
+									
 										<div class="bean">
 											<!-- 100104 수정 -->
 											<div class="bean_subject">
 												<h4>
-													<a href="#"><img
-														src="${initParam.root }img/g_fund_cone.jpg" width=""
-														height="20" alt="기부한콘"></a> <img
+													
+														<br><br><img
+														src="${initParam.root }img/g_fund_cone.jpg"
+														height="20" alt="기부한콘"> <img
 														src="http://happyimg2.naver.net/img3/happybean/img/icon_folder_next.gif"
 														width="4" height="9" alt="" class="arrow">
 												</h4>
@@ -201,21 +200,14 @@
 						</tr>
 					</tbody>
 				</table>
+				
+	<div class="col-md-offset-2" >	
+	<br><br><br><br><br><br>
+	<img src="${initParam.root}img\g_mypage_cone_friend.jpg"} width="700">
+	</div>
 			</div>
 		</div>
 		<!-- //이전,다음,목록 -->
 	</div>
 </div>
-<div class="section">
-	<div class="container">
-		<div class="row"></div>
-	</div>
-</div>
-<div class="section">
-	<div class="container">
-		<div class="row"></div>
-	</div>
-</div>
-
-
-
+	<br><br><br><br><br>

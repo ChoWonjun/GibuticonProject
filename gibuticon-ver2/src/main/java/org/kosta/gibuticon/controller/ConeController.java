@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.kosta.gibuticon.model.email.EmailVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.gift.GiftVO;
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.message.MessageVO;
 import org.kosta.gibuticon.model.service.ConeService;
@@ -45,8 +46,11 @@ public class ConeController {
 	}
 
 	@RequestMapping("cone/gibuView.gibu")
-	public ModelAndView gibuView() {
-		return new ModelAndView("cone/gibu");
+	public String gibuView(HttpServletRequest request) {
+		HttpSession session=request.getSession(false);
+		if(session.getAttribute("mvo")==null)
+			return "redirect:../member/loginView.gibu";
+		return "cone/gibu";
 	}
 
 	@RequestMapping("cone/mycone.gibu")
@@ -135,7 +139,7 @@ public class ConeController {
 		return new ModelAndView("redirect:../message/sendRead.gibu?no="+messageVO.getNo());
 	}
 
-	@RequestMapping(value="giftToNonMember",method=RequestMethod.POST)
+	@RequestMapping(value="cone/giftToNonMember",method=RequestMethod.POST)
 	@ResponseBody
 	public String giftToNonMember(String price, String sender, String reciever , 
 			HttpSession session) {

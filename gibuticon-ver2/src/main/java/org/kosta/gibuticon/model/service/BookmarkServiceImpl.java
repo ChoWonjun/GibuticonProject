@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.bookmark.BookmarkDAO;
 import org.kosta.gibuticon.model.bookmark.BookmarkVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class BookmarkServiceImpl implements BookmarkService {
 	@Resource(name="bookmarkDAOImpl")
 	private BookmarkDAO bookmarkDAO;

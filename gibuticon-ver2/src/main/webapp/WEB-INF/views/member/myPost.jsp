@@ -183,6 +183,8 @@ $(document)
                      });
       });
 </script>
+<link href="${initParam.root}css/mypage.css" rel="stylesheet"
+	type="text/css">
 <div class="section" align="center">
 	<div class="container">
 		<div class="row"></div>
@@ -191,98 +193,110 @@ $(document)
 <div class="section">
 	<div class="container">
 		<div class="row">
-			&nbsp;&nbsp;&nbsp; <img src="${initParam.root }img/g_my_gibuticon.jpg"
-				height="30" width="130"> <br> <br>
+
+			&nbsp;&nbsp;&nbsp; <img
+				src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
+				width="130"> <br> <br>
+
 			<div class="col-md-2">
 				<div class="mypage"></div>
 				<div id="container">
 					<div id="mypage">
-					<br>
-								<img src="${initParam.root }img\g_favorite_1.jpg" width="150"> <br>
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }member/memberRanksView.gibu"> 
-										<span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
-									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}">
-									<span style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
-									<li><a href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"><span
-											style="font-family: &amp; amp;">작성글</span></a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
-									<li><a
-										href="${initParam.root}member/updateMemberForm.gibu"> <span
-											style="font-family: &amp; amp;">회원정보 수정</span>
-									</a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">회원탈퇴</span></a></li>
-								</ul>
-								<img src="${initParam.root }img\g_favorite_2.jpg" width="150"> <br>
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><li><a id="modal-755773" href="#modal-container-755773"
-                     data-toggle="modal">충전하기</a></li>
-                  <div class="modal fade" id="modal-container-755773" role="dialog"
-                     aria-labelledby="myModalLabel" aria-hidden="true">
-                     <div class="modal-dialog">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal"
-                                 aria-hidden="true">×</button>
-                              <h2 class="modal-title" id="myModalLabel">충전하기</h2>
-                           </div>
-                           <div class="modal-body">
-                              <div class="section text-center" id="test">
-                                 <form name="chargeCone" id="chargeCone">
-                                    결제수단 <input type="radio" name="payment" value="mobile">
-                                    휴대폰 <input type="radio" name="payment" value="transfer">
-                                    계좌이체 <input type="radio" name="payment" value="credit">
-                                    신용카드 <input type="radio" name="payment" value="gibuticon">
-                                    기부티콘
-                                    <hr>
-                                    <div id="charge1">
-                                       충전단위 <select id="coneValSel">
-                                          <option value="">-선택-</option>
-                                          <option value="10">10cone</option>
-                                          <option value="20">20cone</option>
-                                          <option value="30">30cone</option>
-                                          <option value="50">50cone</option>
-                                          <option value="100">100cone</option>
-                                          <option value="self">직접입력</option>
-                                       </select> <span id="coneInput">직접입력 <input type=text
-                                          id=selfConeVal>cone
-                                       </span> <br> <br> 결제금액 <input type="text"
-                                          disabled="disabled" name="coneVal" id="coneVal" value="0">
-                                       X100원=<input type="text" disabled="disabled" name="payVal">원
-                                    </div>
-                                    <div id="charge2">
-                                       <span>Pin NO <input size="5" type=text id=1stPin>-<input
-                                          size="5" type=text id=2ndPin>-<input type=text
-                                          size="5" id=3rdPin>
-                                       </span>
-                                    </div>
-                                    <hr>
-                                    <input class="btn btn-primary" type="button" value="충전"
-                                       id="chargeButton"> <input class="btn btn-default"
-                                       type="button" value="취소" data-dismiss="modal">
-                                 </form>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div></span>
-									</a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">선물하기</span></a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">선물함 내역</span></a></li>
-									<li><a href="#"> <span
-											style="font-family: &amp; amp;">사용 내역</span></a></li>
-									<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
-								</ul>
-						        <img src="${initParam.root }img\g_favorite_3.jpg" width="150"> <br>
-								
-								<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-									<li><a href="${initParam.root }friend/memberlist.gibu">친구 찾기</a></li>
-									<li><a href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"> 친구 목록보기</a></li>
-								</ul>
+						<br> <img src="${initParam.root }img\g_favorite_1.jpg"
+							width="150"> <br>
+						<ul class="left01"
+							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+							<li><a href="${initParam.root }member/memberRanksView.gibu">
+									<span style="font-family: &amp; amp;">기부랭킹보기</span>
+							</a></li>
+							<li><a
+								href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}">
+									<span style="font-family: &amp; amp;">즐겨찾기 목록</span>
+							</a></li>
+							<li><a
+								href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"><span
+									style="font-family: &amp; amp;">작성글</span></a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">댓글
+										단 글</span></a></li>
+							<li><a href="${initParam.root}member/updateMemberForm.gibu">
+									<span style="font-family: &amp; amp;">회원정보 수정</span>
+							</a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">회원탈퇴</span></a></li>
+						</ul>
+						<img src="${initParam.root }img\g_favorite_2.jpg" width="150">
+						<br>
+						<ul class="left01"
+							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+							<li>
+							<li><a id="modal-755773" href="#modal-container-755773"
+								data-toggle="modal">충전하기</a></li>
+							<div class="modal fade" id="modal-container-755773" role="dialog"
+								aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal"
+												aria-hidden="true">×</button>
+											<h2 class="modal-title" id="myModalLabel">충전하기</h2>
+										</div>
+										<div class="modal-body">
+											<div class="section text-center" id="test">
+												<form name="chargeCone" id="chargeCone">
+													결제수단 <input type="radio" name="payment" value="mobile">
+													휴대폰 <input type="radio" name="payment" value="transfer">
+													계좌이체 <input type="radio" name="payment" value="credit">
+													신용카드 <input type="radio" name="payment" value="gibuticon">
+													기부티콘
+													<hr>
+													<div id="charge1">
+														충전단위 <select id="coneValSel">
+															<option value="">-선택-</option>
+															<option value="10">10cone</option>
+															<option value="20">20cone</option>
+															<option value="30">30cone</option>
+															<option value="50">50cone</option>
+															<option value="100">100cone</option>
+															<option value="self">직접입력</option>
+														</select> <span id="coneInput">직접입력 <input type=text
+															id=selfConeVal>cone
+														</span> <br> <br> 결제금액 <input type="text"
+															disabled="disabled" name="coneVal" id="coneVal" value="0">
+														X100원=<input type="text" disabled="disabled" name="payVal">원
+													</div>
+													<div id="charge2">
+														<span>Pin NO <input size="5" type=text id=1stPin>-<input
+															size="5" type=text id=2ndPin>-<input type=text
+															size="5" id=3rdPin>
+														</span>
+													</div>
+													<hr>
+													<input class="btn btn-primary" type="button" value="충전"
+														id="chargeButton"> <input class="btn btn-default"
+														type="button" value="취소" data-dismiss="modal">
+												</form>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<li><a href="#"> <span style="font-family: &amp; amp;">선물하기</span></a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">선물함
+										내역</span></a></li>
+							<li><a href="#"> <span style="font-family: &amp; amp;">사용
+										내역</span></a></li>
+							<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
+						</ul>
+						<img src="${initParam.root }img\g_favorite_3.jpg" width="150">
+						<br>
+
+						<ul class="left01"
+							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
+							<li><a href="${initParam.root }friend/memberlist.gibu">친구
+									찾기</a></li>
+							<li><a
+								href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}">
+									친구 목록보기</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
@@ -325,27 +339,28 @@ $(document)
 				</table>
 				<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
 					<div class="section">
-							<div class="container"></div>
-							<div class="col-md-offset-6 col-md-6">
-								<ul class="pagination">
-									<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
-									<c:if test="${pb.previousPageGroup}">
+						<div class="container"></div>
+						<div class="col-md-offset-6 col-md-6">
+							<ul class="pagination">
+								<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
+								<c:if test="${pb.previousPageGroup}">
 
-										<li><a
-											href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.startPageOfPageGroup-1}&myId=${sessionScope.mvo.id}">Prev</a>
-										</li>
-									</c:if>
-									<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-											end="${pb.endPageOfPageGroup}">
-											<a href="${initParam.root }freeBoard/myPost.gibu?pageNo=${i}&myId=${sessionScope.mvo.id}">${i}</a>
-										</c:forEach></li>
-									<c:if test="${pb.nextPageGroup}">
-										<li><a
-											href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.endPageOfPageGroup+1}&myId=${sessionScope.mvo.id}">Next</a>
-										</li>
-									</c:if>
-								</ul>
-							</div>
+									<li><a
+										href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.startPageOfPageGroup-1}&myId=${sessionScope.mvo.id}">Prev</a>
+									</li>
+								</c:if>
+								<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+										end="${pb.endPageOfPageGroup}">
+										<a
+											href="${initParam.root }freeBoard/myPost.gibu?pageNo=${i}&myId=${sessionScope.mvo.id}">${i}</a>
+									</c:forEach></li>
+								<c:if test="${pb.nextPageGroup}">
+									<li><a
+										href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.endPageOfPageGroup+1}&myId=${sessionScope.mvo.id}">Next</a>
+									</li>
+								</c:if>
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>
