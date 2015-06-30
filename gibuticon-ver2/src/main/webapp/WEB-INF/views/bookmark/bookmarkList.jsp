@@ -90,7 +90,7 @@
 					<br>
 					<br>
 					<br>
-	NO. <a href="#"	>${bookmark.fund.fundNo}</a> | 모금명 : ${bookmark.fund.fundName} 
+	NO. <a href="${initParam.root}fund/showContent.gibu?no=${bookmark.fund.fundNo}">${bookmark.fund.fundNo}</a> | 모금명 : ${bookmark.fund.fundName} 
 					<input type="button"
 						onclick="delBookmark('${bookmark.fund.fundNo}')" value="삭제">
 					<br>
