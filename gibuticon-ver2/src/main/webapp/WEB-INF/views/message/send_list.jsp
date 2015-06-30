@@ -22,90 +22,71 @@
 </head>
 
 <body>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<h1>보낸 쪽지함</h1>
-				</div>
-			</div>
+	<div class="col-md-12">
+		<h1>보낸 쪽지함</h1>
+	</div>
+	<div class="col-md-12">
+		<div class="btn-group">
+			<a href="${initParam.root }message/getReceiveList.gibu"
+				class="btn btn-default">받은 쪽지함</a> <a href="#"
+				class="btn btn-default">보낸 쪽지함</a>
 		</div>
 	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="btn-group">
-						<a href="${initParam.root }message/getReceiveList.gibu"
-							class="btn btn-default">받은 쪽지함</a> <a href="#"
-							class="btn btn-default">보낸 쪽지함</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6">
-					<table class="table">
-						<thead>
-							<tr>
-								<th class="active">제목</th>
-								<th class="active">받는이</th>
-								<th class="active">작성일</th>
-							</tr>
-						</thead>
-						<tbody>
-							<c:forEach var="msg" items="${requestScope.list.list}">
-								<tr>
-									<c:if test="${msg.readTime==null }">
-										<!-- 읽지않은쪽지 -->
-										<td><a
-											href="${initParam.root}message/sendRead.gibu?no=${msg.no }"><b>${msg.title }</b></a></td>
-									</c:if>
-									<c:if test="${msg.readTime!=null }">
-										<!-- 읽은쪽지 -->
-										<td><a
-											href="${initParam.root}message/sendRead.gibu?no=${msg.no }">${msg.title }</a></td>
-									</c:if>
-									<td><a
-										href="${initParam.root}message/sendForm.gibu?receiverId=${msg.receiverId }">${msg.sender.name }(${msg.receiverId }</a>)</td>
-									<td>${msg.sendTime }</td>
-								</tr>
+	<br>
+	<div class="col-md-10">
+		<table class="table" align="center">
+			<thead>
+				<tr>
+					<th class="active">제목</th>
+					<th class="active">받는이</th>
+					<th class="active">작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="msg" items="${requestScope.list.list}">
+					<tr>
+						<c:if test="${msg.readTime==null }">
+							<!-- 읽지않은쪽지 -->
+							<td><a
+								href="${initParam.root}message/sendRead.gibu?no=${msg.no }"><b>${msg.title }</b></a></td>
+						</c:if>
+						<c:if test="${msg.readTime!=null }">
+							<!-- 읽은쪽지 -->
+							<td><a
+								href="${initParam.root}message/sendRead.gibu?no=${msg.no }">${msg.title }</a></td>
+						</c:if>
+						<td><a
+							href="${initParam.root}message/sendForm.gibu?receiverId=${msg.receiverId }">${msg.sender.name }(${msg.receiverId })</a></td>
+						<td>${msg.sendTime }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="3" align="center">
+						<ul class="pagination">
+							<c:set var="pb" value="${requestScope.list.pagingBean}"></c:set>
+							<c:if test="${pb.previousPageGroup}">
+								<li><a
+									href="${initParam.root}message/getSendList.gibu?page=${pb.startPageOfPageGroup-1}">Prev</a>
+								</li>
+							</c:if>
+							<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+								end="${pb.endPageOfPageGroup}">
+								<li><a
+									href="${initParam.root}message/getSendList.gibu?page=${i }">${i }</a>
+								</li>
 							</c:forEach>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="section">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<ul class="pagination">
-						<c:set var="pb" value="${requestScope.list.pagingBean}"></c:set>
-						<c:if test="${pb.previousPageGroup}">
-							<li><a
-								href="${initParam.root}message/getSendList.gibu?page=${pb.startPageOfPageGroup-1}">Prev</a>
-							</li>
-						</c:if>
-						<c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-							end="${pb.endPageOfPageGroup}">
-							<li><a
-								href="${initParam.root}message/getSendList.gibu?page=${i }">${i }</a>
-							</li>
-						</c:forEach>
-						<c:if test="${pb.nextPageGroup}">
-							<li><a
-								href="${initParam.root}message/getSendList.gibu?page=${pb.endPageOfPageGroup+1}">Next</a>
-							</li>
-						</c:if>
-					</ul>
-				</div>
-			</div>
-		</div>
+							<c:if test="${pb.nextPageGroup}">
+								<li><a
+									href="${initParam.root}message/getSendList.gibu?page=${pb.endPageOfPageGroup+1}">Next</a>
+								</li>
+							</c:if>
+						</ul>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
 	</div>
 </body>
 
