@@ -21,7 +21,7 @@
 			<img src="${initParam.root}img\g_notice_introduce_service.jpg"  width="150">
 				<ul class="left01" font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 					<li><a href="${initParam.root }introduce_gibuticon.gibu">기부티콘은</a></li>
-					<li><a href="#">함께하는사람들</a></li>
+					<li><a href="${initParam.root }introduce_people.gibu">함께하는사람들</a></li>
 					<li><a href="#">오시는길</a></li>
 				</ul>
 			</div>
