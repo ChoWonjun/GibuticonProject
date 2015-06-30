@@ -27,7 +27,7 @@
 			</div>
 			</div>
 			<div class="col-md-8">
-			<div>
+			<div class="col-md-3">
 				<img src="img/gibuticonintro.jpg" class="img-introduce" width="100%"
 					height="100%">
 			</div>
