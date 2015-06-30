@@ -238,8 +238,13 @@ public class MemberController {
 		model.addAttribute("mvo", mvo);
 		return "member_updateMember_result";
 	}
+	
+	@RequestMapping("member/findIdForm")
+	public String findIdForm(){
+		return "member_findIdForm";
+	}
 
-	@RequestMapping("findId")
+	@RequestMapping("member/findId")
 	@ResponseBody
 	public String findId(String name, String email) {
 		MemberVO vo = new MemberVO();
@@ -250,8 +255,13 @@ public class MemberController {
 			id = "fail to find id";
 		return id;
 	}
-
-	@RequestMapping("findPassword")
+	
+	@RequestMapping("member/findPasswordForm.gibu")
+	public String findPasswordForm(){
+		return "member_findPasswordForm";
+	}
+	
+	@RequestMapping("member/findPassword")
 	@ResponseBody
 	public String findPassword(String name, String id, String email) throws Exception {
 		MemberVO vo = new MemberVO();
@@ -294,6 +304,7 @@ public class MemberController {
 	 * @return
 	 */
 	@RequestMapping("member/memberRanksView")
+	@LoginCheck
 	public ModelAndView memberRanksView() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member_memberRanksView");

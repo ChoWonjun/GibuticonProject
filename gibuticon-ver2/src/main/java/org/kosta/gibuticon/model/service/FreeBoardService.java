@@ -21,6 +21,9 @@ public interface FreeBoardService {
 	public abstract List<FreeBoardVO> getListBySearchingBoth(
 			HashMap<String, Object> map);
 
+	public abstract List<FreeBoardVO> getListBySearchingMyId(
+			HashMap<String, Object> map);
+
 	public abstract FreeBoardVO getFreeBoardByNo(String no);
 
 	public abstract void updateFreeBoard(FreeBoardVO freeBoardVO);
@@ -30,6 +33,8 @@ public interface FreeBoardService {
 	public abstract String getPageNo(String no);
 
 	public abstract int getTotalPostingCount(HashMap<String, Object> map);
+
+	public abstract int getTotalPostingCountByMyId(HashMap<String, Object> map);
 
 	public abstract FreeBoardVO getFreeByNoNotHit(String no);
 

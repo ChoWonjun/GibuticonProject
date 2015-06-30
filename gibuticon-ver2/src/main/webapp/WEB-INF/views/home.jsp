@@ -68,7 +68,7 @@
 .cycle-pager span.cycle-pager-active {
 	color: #337cbb;
 }
-
+ 
 .cycle-pager>* {
 	cursor: pointer;
 }
@@ -88,8 +88,8 @@
 		</div>
 	</div>
 	<img class="cycle-slideshow img"
-		src="${initParam.root }img/g_mainbanner3.jpg"><img
-		class="cycle-slideshow img"
+		src="${initParam.root }img/g_mainbanner3.jpg">
+		<img class="cycle-slideshow img"
 		src="${initParam.root }img/g_mainbanner1.jpg">
 </div>
 <div class="section">
@@ -104,24 +104,12 @@
 									src="${initParam.root }img/g_main_gibuticon.jpg" width="350"></a>
 							</div>
 							<div class="col-md-4" align="center">
-								<a href="${initParam.root }member/memberRanksView.gibu"><img
-									src="${initParam.root }img/g_main_ranking.jpg" width="350"></a>
-<<<<<<< HEAD
-
-=======
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+								<a href="${initParam.root }member/memberRanksView.gibu">
+								<img src="${initParam.root }img/g_main_ranking.jpg" width="350"></a>
 							</div>
-<<<<<<< HEAD
 							<div class="col-md-4" align="center">
 								<a href="#"><img
-									src="${initParam.root }img/g_main_fund.jpg"
-
-									width="350"></a>
-=======
-							<div class="col-md-4" align="center">
-							<a href="#"><img
-									src="${initParam.root }img/g_main_fund.jpg" width="350"></a>
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
+									src="${initParam.root }img/g_main_fund.jpg"width="350"></a>
 							</div>
 						</div>
 					</div>
@@ -144,4 +132,3 @@
 		</div>
 	</div>
 </div>
-
