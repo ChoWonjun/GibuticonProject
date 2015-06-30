@@ -31,4 +31,5 @@ public interface MemberService {
 	
 	public void decreasePoint(MemberVO memberVO);
 
+	public void increasePoint(MemberVO memberVO);
 }

@@ -1,7 +1,5 @@
 package org.kosta.gibuticon.controller;
 
-import java.net.URLEncoder;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -10,10 +8,13 @@ import org.kosta.gibuticon.model.email.EmailVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.gift.GiftVO;
 import org.kosta.gibuticon.model.member.MemberVO;
+import org.kosta.gibuticon.model.message.MessageVO;
 import org.kosta.gibuticon.model.service.ConeService;
 import org.kosta.gibuticon.model.service.EmailService;
+import org.kosta.gibuticon.model.service.FriendService;
 import org.kosta.gibuticon.model.service.GiftService;
 import org.kosta.gibuticon.model.service.MemberService;
+import org.kosta.gibuticon.model.service.MessageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -31,7 +32,11 @@ public class ConeController {
 	@Resource
 	private EmailService emailService;
 	@Resource
+	private FriendService friendService;
+	@Resource
 	private MemberService memberService;
+	@Resource
+	private MessageService messageService;
 	private Logger log = LoggerFactory.getLogger(getClass());
 
 	@RequestMapping("cone/chargeView.gibu")
@@ -88,6 +93,46 @@ public class ConeController {
 
 		return new ModelAndView("cone/gibu_result", "fundNo",
 				fundVO.getFundNo());
+	}
+	
+	@RequestMapping("cone/giftForm.gibu")
+	public ModelAndView giftForm(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		MemberVO memberVO = (MemberVO) session.getAttribute("mvo");
+		
+		return new ModelAndView("cone/giftForm","friendlist",friendService.getFriendList(memberVO.getId()));
+	}
+	
+	@RequestMapping("cone/giftToMember")
+	public ModelAndView giftToMember(String price, String senderId, String receiverId, HttpServletRequest request){
+		System.out.println("price: "+price +", senderId: "+ senderId +", receiverID: "+ receiverId);
+		
+		ModelAndView mv=new ModelAndView();
+		MemberVO memberVO=new MemberVO();
+		
+		//senderId의 포인트를 price만큼 감소
+		memberVO.setId(senderId);
+		memberVO.setPoint(Integer.parseInt(price));
+		memberService.decreasePoint(memberVO);
+		
+		//receiverId의 포인트를 price만큼 증가
+		memberVO.setId(receiverId);
+		memberService.increasePoint(memberVO);
+		
+		//sender의 session 정보를 새로고침
+		HttpSession session = request.getSession();
+		memberVO = memberService.findMemberById(senderId);
+		session.setAttribute("mvo", memberVO);
+		
+		//senderId가 receiverId에게 쪽지 전송
+		MessageVO messageVO=new MessageVO();
+		messageVO.setSender(memberVO);
+		messageVO.setReceiverId(receiverId);
+		messageVO.setTitle("[기부티콘] 선물이 도착했습니다!");
+		messageVO.setContent(memberVO.getName()+"님이 "+price+"콘을 선물하셨습니다.");
+		messageService.sendMessage(messageVO);
+		
+		return new ModelAndView("redirect:../message/sendRead.gibu?no="+messageVO.getNo());
 	}
 
 	@RequestMapping(value="giftToNonMember",method=RequestMethod.POST)
