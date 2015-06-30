@@ -4,18 +4,13 @@ package org.kosta.gibuticon.model.service;
 
 import javax.annotation.Resource;
 
-
-
-
-
-
-
-
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentDAO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class FreeCommentServiceImpl implements FreeCommentService {
 	@Resource(name="freeCommentDAOImpl")
 	private FreeCommentDAO freeCommentDAO;

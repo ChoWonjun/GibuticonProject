@@ -8,8 +8,10 @@ import org.kosta.gibuticon.model.member.MemberDAO;
 import org.kosta.gibuticon.model.member.MemberRankVO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class MemberServiceImpl implements MemberService {
 	@Resource
 	private MemberDAO memberDAO;

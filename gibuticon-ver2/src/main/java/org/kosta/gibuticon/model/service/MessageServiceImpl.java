@@ -7,8 +7,10 @@ import javax.annotation.Resource;
 import org.kosta.gibuticon.model.message.MessageDAO;
 import org.kosta.gibuticon.model.message.MessageVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class MessageServiceImpl implements MessageService {
 	@Resource
 	private MessageDAO messageDAO;

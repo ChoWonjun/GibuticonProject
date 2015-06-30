@@ -16,9 +16,11 @@ import org.kosta.gibuticon.model.history.ChargeHistoryVO;
 import org.kosta.gibuticon.model.history.GibuHistoryVO;
 import org.kosta.gibuticon.model.history.HistoryDAO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Service
+@Transactional
 public class FundServiceImpl implements FundService {
 	@Resource(name = "uploadPath")
 	private String path;

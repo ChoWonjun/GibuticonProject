@@ -10,8 +10,10 @@ import org.kosta.gibuticon.model.history.HistoryDAO;
 import org.kosta.gibuticon.model.member.MemberDAO;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class ConeServiceImpl implements ConeService {
 	@Resource
 	private MemberDAO memberDAO;
@@ -52,5 +54,10 @@ public class ConeServiceImpl implements ConeService {
 		values (donation_history_seq.nextval, 22, 'java', sysdate, 100);
 		-- 'java' 아이디의  사용자가 22번 기부함에 100 포인트를 기부*/
 		historyDAO.writeGibuHistory(new GibuHistoryVO(fundVO.getFundNo(), memberVO.getId(), point));
+	}
+	
+	public void testTransaction(MemberVO sender, MemberVO reciever){
+		memberDAO.decreasePoint(sender);
+		memberDAO.increasePoint(reciever);
 	}
 }
