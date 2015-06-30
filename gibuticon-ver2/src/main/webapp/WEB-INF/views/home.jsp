@@ -106,13 +106,9 @@
 							<div class="col-md-4" align="center">
 								<a href="${initParam.root }member/memberRanksView.gibu"><img
 									src="${initParam.root }img/g_main_ranking.jpg" width="350"></a>
-<<<<<<< HEAD
+
 							</div>
 							<div class="col-md-4" align="center">
-=======
-							</div>
-							<div class="col-md-4" align="center">
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 								<a href="#"><img
 									src="${initParam.root }img/g_main_fund.jpg"
 
