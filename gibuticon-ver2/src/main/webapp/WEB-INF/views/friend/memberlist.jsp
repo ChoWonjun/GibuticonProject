@@ -20,6 +20,7 @@
 			data : "myId=${sessionScope.mvo.id}&friendId=" + friendid,
 			success : function(result) {
 				if (result)
+	/* 					document.getElementById("addFriendButton").disabled = true; */
 					alert("친구추가 완료");
 			}//success
 		});//ajax
@@ -116,7 +117,7 @@
 										</c:when>
 										<c:otherwise>
 											<input type="button" value="친구등록"
-												onclick="addFriend('${member.id}')">
+												onclick="addFriend('${member.id}')" id="addFriendButton">
 										</c:otherwise>
 									</c:choose></td>
 							</tr>

@@ -24,7 +24,7 @@
 					<div class="snb_v1">
 						<dl class="menu">
 							<dt class="u_intro">
-								<img src="${initParam.root }img/MY기부티콘.jpg" height="30"
+								<img src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
 									width="130"><br> <br> <span
 									style="font-family: &amp; amp;">회원정보</span> <br>
 								<hr>
