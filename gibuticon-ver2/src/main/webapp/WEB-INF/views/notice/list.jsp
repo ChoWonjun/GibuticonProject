@@ -32,41 +32,40 @@
 <br>
 
 
-
 <div class="section">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-2">
 				<div id="mypage">
-					<img src="${initParam.root }img/g_notice_introduce_service.jpg"
+					<img src="/gibuticon-ver2/img/g_notice_introduce_service.jpg"
 						width="150"> <br>
 					<ul class="left01"
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-						<li><a href="${initParam.root }introduce_gibuticon.gibu">기부티콘이란</a></li>
+						<li><a href="/gibuticon-ver2/introduce_gibuticon.gibu">기부티콘이란</a></li>
 
 					</ul>
-					<img src="${initParam.root }img/g_notice_operation_guide.jpg"
+					<img src="/gibuticon-ver2/img/g_notice_operation_guide.jpg"
 						width="150"> <br>
 					<ul class="left01"
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 						<li><a href="javascript:chargePopup()" class="sr_txt5"> 콘
 								안내 </a></li>
-						<li><a href="${initParam.root }introduce_what_is_cone.gibu">
+						<li><a href="/gibuticon-ver2/introduce_what_is_cone.gibu">
 								콘 받기 안내</a></li>
-						<li><a href="${initParam.root }introduce_howtogibu.gibu">기부방법
+						<li><a href="/gibuticon-ver2/introduce_howtogibu.gibu">기부방법
 								안내</a></li>
 						<li><a href="#"> <span style="font-family: &amp; amp;">사용
 									내역</span></a></li>
 						<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
 					</ul>
-					<img src="${initParam.root }img/g_notice_friend_guide.jpg"
+					<img src="/gibuticon-ver2/img/g_notice_friend_guide.jpg"
 						width="150"> <br>
 
 					<ul class="left01"
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-						<li><a href="${initParam.root }friend/memberlist.gibu">콘친구란?</a></li>
+						<li><a href="/gibuticon-ver2/friend/memberlist.gibu">콘친구란?</a></li>
 						<li><a
-							href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}">친구
+							href="/gibuticon-ver2/friend/friendlist.gibu?myId=java">친구
 								둥록 안내</a></li>
 					</ul>
 
@@ -76,7 +75,7 @@
 			<!-- ---------------------- -->
 
 			<div class="col-md-offset-1 col-md-8">
-				<img src="${initParam.root}img/g_notice.jpg" width="200"> <br>
+				<img src="/gibuticon-ver2/img/g_notice.jpg" width="200"> <br>
 				<br>
 				<table class="type09" style="font-family: &amp; amp;">
 					<thead>
@@ -88,16 +87,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach items="${requestScope.nlvo.list}" var="noticeboard">
+						
 							<tr>
-								<td>${noticeboard.noticeNo}</td>
+								<td>25</td>
 								<td><a
-									href="${initParam.root}notice/showContent.gibu?noticeNo=${noticeboard.noticeNo}">
-										${noticeboard.title }</a></td>
-								<td>${noticeboard.writeDate }</td>
-								<td>${noticeboard.hits }</td>
+									href="/gibuticon-ver2/notice/showContent.gibu?noticeNo=25">
+										조원준</a></td>
+								<td>2015.06.23</td>
+								<td>2</td>
 							</tr>
-						</c:forEach>
+						
+							<tr>
+								<td>24</td>
+								<td><a
+									href="/gibuticon-ver2/notice/showContent.gibu?noticeNo=24">
+										이곳은 공지사항입니다. </a></td>
+								<td>2015.06.20</td>
+								<td>6</td>
+							</tr>
+						
 					</tbody>
 				</table>
 			</div>
@@ -112,27 +120,16 @@
 <div class="section">
 	<div class="container">
 		<div class="col-md-7 col-md-offset-3">
-			<form id="searchForm" action="${initParam.root }notice/getList.gibu">
+			<form id="searchForm" action="/gibuticon-ver2/notice/getList.gibu">
 				<div class="col-md-offset-6 col-md-6">
 					<ul class="pagination">
-						<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
-						<c:if test="${pb.previousPageGroup}">
-							<li><a
-								href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
-								<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${}">Prev</a> --%>
+						
+						
+						<li>
+								<a href="javascript:getList('1')">1</a>
+								
 							</li>
-						</c:if>
-						<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-								end="${pb.endPageOfPageGroup}">
-								<a href="javascript:getList('${i}')">${i}</a>
-								<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
-							</c:forEach></li>
-						<c:if test="${pb.nextPageGroup}">
-							<li><a
-								href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
-								<%--<a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${}">Next</a> --%>
-							</li>
-						</c:if>
+						
 					</ul>
 				</div>
 				<div class="col-md-3 text-right">
@@ -152,12 +149,12 @@
 								name="input" id="input"> <span class="input-group-btn">
 								<input type="submit" class="btn btn-primary" value="검색">
 							</span>
-							<c:if test="${sessionScope.mvo.admin=='yes'}">
+							
 								<span class="input-group-btn"> <a
-									href="${initParam.root }notice/writeForm.gibu"
+									href="/gibuticon-ver2/notice/writeForm.gibu"
 									class="btn btn-primary" type="submit">글쓰기</a>
 								</span>
-							</c:if>
+							
 						</div>
 					</div>
 				</div>

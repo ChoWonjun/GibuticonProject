@@ -15,33 +15,17 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css"
     rel="stylesheet" type="text/css">
   </head>
-  
   <body>
-    <div class="section">
-      <div class="container">
-        <div class="row">
+ 
           <div class="col-md-12">
             <h1>받은 쪽지함</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-   <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
             <div class="btn-group">
               <a href="#" class="btn btn-default">받은 쪽지함</a>
               <a href="${initParam.root }message/getSendList.gibu" class="btn btn-default">보낸 쪽지함</a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-	<div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
+          <br>
+          <div class="col-md-10" align="center">
             <table class="table">
               <thead>
                 <tr>
@@ -66,16 +50,10 @@
                   </tr>
                  </c:forEach>
               </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <ul class="pagination">
+              <tfoot>
+              <tr>
+              <td colspan="3" align="center">
+              <ul class="pagination">
             <c:set var="pb" value="${requestScope.list.pagingBean}"></c:set>
             <c:if test="${pb.previousPageGroup}">
                  <li>
@@ -93,10 +71,13 @@
                  </li>
             </c:if>
             </ul>
+            </td></tr>
+              </tfoot>
+            </table>
+            </div>
+          <div class="col-md-12" align="center">
+            
           </div>
-        </div>
-      </div>
-    </div>
   </body>
 
 </html>
