@@ -17,7 +17,6 @@
 	type="text/css">
 
 <body data-spy="scroll">
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 	<div class="section">
 		<div class="container">
 			<div class="row"></div>
@@ -74,24 +73,18 @@
 										</tbody>
 									</table>
 								</div>
-<<<<<<< HEAD
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
-					<div class="section">
-						<form id="searchForm"
-							action="${initParam.root }freeBoard/getList.gibu">
-					</div>
+					
 						<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
-=======
 							</div>
 						</div>
 					</div>
 
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 					<div class="section">
 						<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 
@@ -127,14 +120,6 @@
 									</select>
 								</div>
 							</div>
-
-
-
-							<div class="col-md-6 text-left">
-
-							<div class="col-md-6 text-left">
-
-
 							<div class="col-md-6 text-left">
 
 								<div class="form-group">
@@ -155,16 +140,10 @@
 			</div>
 		</div>
 	</div>
-<<<<<<< HEAD
 </div>
-<<<<<<< HEAD
 
-=======
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
-=======
 </body>
 
->>>>>>> branch 'master' of https://github.com/ChoWonjun/GibuticonProject.git
 
 
 
