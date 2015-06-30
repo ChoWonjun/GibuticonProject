@@ -36,7 +36,7 @@
 <br><br>
 제목 : <input type="text" name="title"><br>
 내용 : <br>
-<textarea cols="53" rows="15" name="content"></textarea>
+<textarea cols="45" rows="10" name="content"></textarea>
 
 <br><br><input type="submit" value="전송"> <input type="button" value="취소" onclick="closeWindow()">
 </form>
