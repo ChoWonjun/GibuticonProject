@@ -54,7 +54,7 @@
 					</div>
 				</form>
 				<div class="col-md-12">
-					<a class="btn btn-success" href="${initParam.root }member/loginForm.gibu">로그인</a>
+					<a class="btn btn-success" href="${initParam.root }member/loginModal.gibu">로그인</a>
 				</div>
 			</div>
 		</div>

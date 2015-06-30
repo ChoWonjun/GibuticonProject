@@ -33,7 +33,7 @@
 				src="${initParam.root }img/g_my_gibuticon.jpg" height="30"
 				width="130"> <br> <br>
 			<div class="col-md-2">
-				<div class="mypage"></div>
+				
 				<div id="container">
 					<div id="mypage">
 						<br> <img src="${initParam.root }img/g_favorite_1.jpg"
@@ -61,7 +61,9 @@
 						<br>
 						<ul class="left01"
 							font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-							<li><a href="javascript:chargePopup()" class="sr_txt5">
+							<li><!-- <a href="javascript:chargePopup()" class="sr_txt5"> -->
+							<a id="modal-755774" href="#modal-container-755774"
+                     data-toggle="modal" class="sr_txt5">
 									<span style="font-family: &amp; amp;">충전하기</span>
 							</a></li>
 							<li><a href="#"> <span style="font-family: &amp; amp;">선물하기</span></a></li>

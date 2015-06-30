@@ -25,6 +25,11 @@
 		var imgHeight = $("#imgTile").width() * 0.705;
 		$("img[name=fundPhoto]").height(imgHeight);
 	});
+	function gibuPopup(){
+		var url="${initParam.root }cone/gibuView.gibu?fundNo=${requestScope.posting.fundNo}";
+		window.open(url,"gibuPopup",
+	   				"width=520,height=280,teop=150,left=200");
+	}
 </script>
 
 <style type="text/css">
@@ -161,34 +166,9 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-2">
-							<a id="modal-755774" href="#modal-container-755774" role="button"
-								class="btn btn-default" data-toggle="modal">기부하기</a>
-							<div class="modal fade" id="modal-container-755774" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<button type="button" class="close" data-dismiss="modal"
-												aria-hidden="true">×</button>
-											<h4 class="modal-title" id="myModalLabel">기부하기</h4>
-										</div>
-										<div class="modal-body">
-											<form name="coneForm">
-												기부하시겠습니까?<br> 기부할 콘 : <input type="text"
-													name="coneCount" size="10" maxlength="8">cone <br>보유콘
-												: ${sessionScope.mvo.point }<br>
-											</form>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">취소</button>
-											<button onclick="gibuCone()" type="button"
-												class="btn btn-default">기부</button>
-										</div>
-									</div>
-								</div>
-							</div>
-							</div>
+							<a href="javascript:gibuPopup()" role="button"
+								class="btn btn-default">기부하기</a></div>
+						
 							<div class="col-md-2">
 							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a></div>
 								<div class="col-md-2">

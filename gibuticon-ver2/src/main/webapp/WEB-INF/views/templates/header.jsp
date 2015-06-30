@@ -14,7 +14,6 @@
    src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <script type="text/javascript">
-
    $(document)
          .ready(
                function() {
@@ -307,8 +306,8 @@
                                        <button type="submit" class="btn btn-default"
                                           id="loginForm">LogIn</button>
                                     </div>
-                                    <br> <br> <a href="member_findIdForm.gibu">아이디찾기
-                                       | </a> <a href="member_findPasswordForm.gibu">비밀번호찾기 | </a> <a
+                                    <br> <br> <a href="${initParam.root }member/findIdForm.gibu">아이디찾기
+                                       | </a> <a href="${initParam.root }member/findPasswordForm.gibu">비밀번호찾기 | </a> <a
                                        href="${initParam.root}member/registerMemberForm.gibu">회원가입</a>
                               </form>
                            </div>
@@ -351,9 +350,9 @@
                      </ul></li>
 
                   <li><a href="javascript:giftPopup()">선물하기</a></li>
-                  <li><a id="modal-755773" href="#modal-container-755773"
+                  <li><a id="modal-755774" href="#modal-container-755774"
                      data-toggle="modal">충전하기</a></li>
-                  <div class="modal fade" id="modal-container-755773" role="dialog"
+                  <div class="modal fade" id="modal-container-755774" role="dialog"
                      aria-labelledby="myModalLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">

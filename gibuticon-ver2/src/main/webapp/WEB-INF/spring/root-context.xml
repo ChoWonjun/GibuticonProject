@@ -47,8 +47,8 @@
 	<!-- upload path -->
 	<bean id="uploadPath" class="java.lang.String">
 		<constructor-arg>
-			<!-- <value>C:\\Users\\KOSTA\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value> -->
-			<value>C:\\Users\\Youkyounghee\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value>
+			<value>C:\\Users\\KOSTA\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value>
+			<!-- <value>C:\\Users\\Youkyounghee\\git\\GibuticonProject\\gibuticon-ver2\\src\\main\\webapp\\upload\\</value> -->
 		</constructor-arg>
 	</bean>
 

@@ -54,5 +54,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="mybatis/config/message.xml" />
 		<mapper resource="mybatis/config/bookmark.xml" />
 		<mapper resource="mybatis/config/gibuticon.xml" />
+		<mapper resource="mybatis/config/freeComment.xml"/>
 	</mappers>
 </configuration>
