@@ -14,10 +14,13 @@ public interface FreeBoardDAO {
 
 	public abstract List<FreeBoardVO> getListBySearchingContent(
 			HashMap<String, Object> map);
-	
+
 	public abstract List<FreeBoardVO> getListBySearchingBoth(
 			HashMap<String, Object> map);
-	
+
+	public abstract List<FreeBoardVO> getListBySearchingMyId(
+			HashMap<String, Object> map);
+
 	public abstract void writeFreeBoard(FreeBoardVO freeBoardVO);
 
 	public abstract void deleteFreeBoard(String no);
@@ -25,6 +28,8 @@ public interface FreeBoardDAO {
 	public abstract void updateFreeBoard(FreeBoardVO freeBoardVO);
 
 	public abstract int getTotalPostingCount(HashMap<String, Object> map);
+
+	public abstract int getTotalPostingCountByMyId(HashMap<String, Object> map);
 
 	public abstract void updateHit(String no);
 

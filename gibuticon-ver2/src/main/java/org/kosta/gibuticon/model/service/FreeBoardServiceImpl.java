@@ -13,14 +13,18 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class FreeBoardServiceImpl implements FreeBoardService {
-	@Resource(name="freeBoardDAOImpl")
+	@Resource(name = "freeBoardDAOImpl")
 	private FreeBoardDAO freeBoardDAO;
-	
-	/* (non-Javadoc)
-	 * @see org.kosta.gibuticon.service.FreeBoardService#writeFreeBoard(org.kosta.gibuticon.model.board.FreeBoardVO)
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.kosta.gibuticon.service.FreeBoardService#writeFreeBoard(org.kosta
+	 * .gibuticon.model.board.FreeBoardVO)
 	 */
 	@Override
-	public void writeFreeBoard(FreeBoardVO freeBoardVO){
+	public void writeFreeBoard(FreeBoardVO freeBoardVO) {
 		freeBoardDAO.writeFreeBoard(freeBoardVO);
 	}
 
@@ -28,7 +32,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public List<FreeBoardVO> getFreeBoardList(String pageNo) {
 		return freeBoardDAO.getFreeBoardList(pageNo);
 	}
-	
+
 	@Override
 	public List<FreeBoardVO> getListBySearchingTitle(HashMap<String, Object> map) {
 		return freeBoardDAO.getListBySearchingTitle(map);
@@ -40,13 +44,19 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeBoardVO> getListBySearchingContent(HashMap<String, Object> map) {
+	public List<FreeBoardVO> getListBySearchingContent(
+			HashMap<String, Object> map) {
 		return freeBoardDAO.getListBySearchingContent(map);
 	}
 
 	@Override
+	public List<FreeBoardVO> getListBySearchingMyId(HashMap<String, Object> map) {
+		return freeBoardDAO.getListBySearchingMyId(map);
+	}
+
+	@Override
 	public FreeBoardVO getFreeBoardByNo(String no) {
-		//조회수 증가
+		// 조회수 증가
 		freeBoardDAO.updateHit(no);
 		return freeBoardDAO.getFreeBoardByNo(no);
 	}
@@ -59,7 +69,7 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public void deleteFreeBoard(String no) {
 		freeBoardDAO.deleteFreeBoard(no);
-		
+
 	}
 
 	@Override
@@ -70,6 +80,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	@Override
 	public int getTotalPostingCount(HashMap<String, Object> map) {
 		return freeBoardDAO.getTotalPostingCount(map);
+	}
+
+	@Override
+	public int getTotalPostingCountByMyId(HashMap<String, Object> map) {
+		return freeBoardDAO.getTotalPostingCountByMyId(map);
 	}
 
 	@Override
@@ -84,10 +99,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 
 	@Override
 	public void reply(FreeBoardVO freeBoardVO) {
-		freeBoardVO.setRestep(freeBoardVO.getRestep()+1);
-		freeBoardVO.setRelevel(freeBoardVO.getRelevel()+1);
+		freeBoardVO.setRestep(freeBoardVO.getRestep() + 1);
+		freeBoardVO.setRelevel(freeBoardVO.getRelevel() + 1);
 		freeBoardDAO.reply(freeBoardVO);
-		
+
 	}
 
 	@Override
