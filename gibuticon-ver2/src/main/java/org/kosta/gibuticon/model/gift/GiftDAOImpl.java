@@ -23,7 +23,22 @@ public class GiftDAOImpl implements GiftDAO {
 	 */
 	@Override
 	public void sendToNonMember(GiftVO giftVO){
+		String giftNo = sqlSessionTemplate.selectOne("getGiftNo");
+		giftVO.setGiftNo(giftNo);
+		giftVO.setPinNo(giftNo+System.currentTimeMillis());
 		sqlSessionTemplate.insert("gibuticon.sendToNonMember", giftVO);
+	}
+	
+	@Override
+	public GiftVO confirmPin(String pinNo) {
+		// TODO Auto-generated method stub
+		return  sqlSessionTemplate.selectOne("gibuticon.confirmPin",pinNo);
+	}
+	
+	@Override
+	public void insertReciever(GiftVO giftVO) {
+		// TODO Auto-generated method stub
+		sqlSessionTemplate.update("gibuticon.insertReciever", giftVO);
 	}
 	
 }

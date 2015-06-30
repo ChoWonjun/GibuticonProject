@@ -54,6 +54,15 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingBoth",map);
 	}
 	
+	/**
+	 * 
+	 */
+	@Override
+	public List<FreeBoardVO> getListBySearchingMyId(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingMyId",map);
+	}
+	
+	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.board.FreeBoardDAO#getFreeBoardList()
 	 */
@@ -123,6 +132,15 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	public int getTotalPostingCount(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCount",map);
 	}
+	
+	/**
+	 *  내가 쓴 글(작성글)을 불러올 때 사용하는 메서드
+	 */
+	@Override
+	public int getTotalPostingCountByMyId(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne("freeBoard.getTotalPostingCountByMyId",map);
+	}
+	
 	/**
 	 * 조회수를 업데이트 시키는 메서드
 	 */

@@ -32,7 +32,7 @@
 										<span style="font-family: &amp; amp;">기부랭킹보기</span></a></li>
 									<li><a href="${initParam.root}bookmark/getBookmarkList.gibu?myId=${sessionScope.mvo.id}">
 									<span style="font-family: &amp; amp;">즐겨찾기 목록</span></a></li>
-									<li><a href="#"><span
+									<li><a href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"><span
 											style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
