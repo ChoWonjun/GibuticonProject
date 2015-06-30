@@ -43,7 +43,7 @@
 										class="u_txt2"><span style="font-family: &amp; amp;">즐겨찾기
 												목록</span></a></li>
 									<li><a
-										href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}"
+										href="${initParam.root}freeBoard/myPost.gibu?myId=${sessionScope.mvo.id}" 
 										class="u_txt3"><span style="font-family: &amp; amp;">작성글</span></a></li>
 									<li><a href="#" class="u_txt5"> <span
 											style="font-family: &amp; amp;">댓글 단 글</span></a></li>
