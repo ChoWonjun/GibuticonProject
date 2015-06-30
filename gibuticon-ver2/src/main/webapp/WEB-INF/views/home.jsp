@@ -88,8 +88,8 @@
 		</div>
 	</div>
 	<img class="cycle-slideshow img"
-		src="${initParam.root }img/g_mainbanner3.jpg"><img
-		class="cycle-slideshow img"
+		src="${initParam.root }img/g_mainbanner3.jpg">
+		<img class="cycle-slideshow img"
 		src="${initParam.root }img/g_mainbanner1.jpg">
 </div>
 <div class="section">
