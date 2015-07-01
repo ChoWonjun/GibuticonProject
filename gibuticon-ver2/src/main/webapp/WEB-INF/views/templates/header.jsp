@@ -207,7 +207,7 @@
    }
    function giftPopup() {
       var url = "${initParam.root }cone/giftForm.gibu";
-      window.open(url, "gift", "width=420, height=460, teop=150, left=200");
+      window.open(url, "gift", "width=350, height=350, teop=150, left=200");
    }
 </script>
 
