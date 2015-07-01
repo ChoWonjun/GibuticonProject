@@ -51,23 +51,44 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		order by ref desc, restep asc))where page=#{page}
 	</select>
 
-	<select id="getListBySearchingTitle" parameterType="hashmap"
+	<select id="getListBySearching" parameterType="hashmap"
 		resultMap="freeBoardRM">
-		select board_no, title, write_date, content, hits, id from(
-		select board_no, title, write_date, content, hits, id, ceil(rownum/5) as
-		page from
-		(select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date,
-		content, hits, id
-		from free_board
+	select board_no, title, write_date, content, hits, id from(
+	select
+	board_no, title, write_date, content, hits, id, ceil(rownum/5) as
+	page
+	from
+	(select board_no, title, to_char(write_date,'YYYY.MM.DD') as
+	write_date,
+	content, hits, id
+	from free_board
+	<if test="searchSelect == 0">
 		<where>
 			<if test="input != null">
 				title like '%' || #{input} || '%'
 			</if>
 		</where>
-		order by ref desc, restep asc))where page=#{page}
+	</if>
+	<if test="searchSelect == 1">
+		<where>
+			<if test="input != null">
+				content like '%' || #{input} || '%'
+			</if>
+		</where>
+	</if>
+	<if test="searchSelect == 2">
+		<where>
+			<if test="input != null">
+				content like '%' || #{input} || '%' or title like '%' ||
+				#{input} || '%'
+			</if>
+		</where>
+	</if>
+
+	order by ref desc, restep asc))where page=#{page}
 	</select>
 	
-	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="freeBoardRM">
+<!-- 	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="freeBoardRM">
 			   select board_no, title, write_date, content, hits, id from(
         select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
       (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id 
@@ -91,7 +112,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			</if>
 		</where>
 		order by ref desc, restep asc))where page=#{page}
-	</select>
+	</select> -->
 	
 	<select id="getPageNo" resultType="string">
 	select page from(

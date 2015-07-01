@@ -85,15 +85,8 @@ public class FreeBoardController {
 
 		List<FreeBoardVO> list = null;
 
-		if (searchSelect.equals("0")) { // 제목만
-			list = freeBoardService.getListBySearchingTitle(map);
-			//System.out.println(list);
-		} else if (searchSelect.equals("1")) { // 내용만
-			list = freeBoardService.getListBySearchingContent(map);
-			//System.out.println(list);
-		} else if (searchSelect.equals("2")) { // 제목+내용
-			list = freeBoardService.getListBySearchingBoth(map);
-			System.out.println(list);
+		if (searchSelect.equals("0") ||searchSelect.equals("1") ||searchSelect.equals("2")) { // 제목만
+			list = freeBoardService.getListBySearching(map);
 		}else{
 			list = freeBoardService.getFreeBoardList(pageNo);
 	

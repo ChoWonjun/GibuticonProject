@@ -31,7 +31,7 @@
 					<li><a href="${initParam.root }introduce_map.gibu">오시는길</a></li>
 				</ul>
 			</div>
-		</div>
+		</div> 	
 		<div class="col-md-8">
 			<div>
 				<img src="img/gibuticonintro.jpg" class="img-introduce" width="100%"
