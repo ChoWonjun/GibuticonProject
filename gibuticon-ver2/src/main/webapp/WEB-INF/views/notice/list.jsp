@@ -65,8 +65,8 @@
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 						<li><a href="/gibuticon-ver2/friend/memberlist.gibu">콘친구란?</a></li>
 						<li><a
-							href="/gibuticon-ver2/friend/friendlist.gibu?myId=java">친구
-								둥록 안내</a></li>
+							href="/gibuticon-ver2/friend/friendlist.gibu?myId=java">친구 둥록
+								안내</a></li>
 					</ul>
 
 				</div>
@@ -74,95 +74,105 @@
 
 			<!-- ---------------------- -->
 
-			<div class="col-md-offset-1 col-md-8">
-				<img src="/gibuticon-ver2/img/g_notice.jpg" width="200"> <br>
+			<div class="col-md-offset-1 col-md-6">
+				<img src="${initParam.root}img/g_notice.jpg" width="200"> <br>
 				<br>
 				<table class="type09" style="font-family: &amp; amp;">
+
 					<thead>
+
 						<tr>
+
 							<th width="100">NO</th>
 							<th width="800">제목</th>
 							<th width="300">작성일</th>
 							<th width="300">조회수</th>
 						</tr>
+
 					</thead>
+
 					<tbody>
-						
-							<tr>
-								<td>25</td>
+
+						<c:forEach items="${requestScope.nlvo.list}" var="noticeboard">
+
+								<td>${noticeboard.noticeNo}</td>
 								<td><a
-									href="/gibuticon-ver2/notice/showContent.gibu?noticeNo=25">
-										조원준</a></td>
-								<td>2015.06.23</td>
-								<td>2</td>
+									href="${initParam.root}notice/showContent.gibu?noticeNo=${noticeboard.noticeNo}">
+										${noticeboard.title }</a></td>
+								<td>${noticeboard.writeDate }</td>
+								<td>${noticeboard.hits }</td>
 							</tr>
-						
-							<tr>
-								<td>24</td>
-								<td><a
-									href="/gibuticon-ver2/notice/showContent.gibu?noticeNo=24">
-										이곳은 공지사항입니다. </a></td>
-								<td>2015.06.20</td>
-								<td>6</td>
-							</tr>
-						
+						</c:forEach>
+
 					</tbody>
+
 				</table>
+
+
+
+
 			</div>
-
-
-
-
 		</div>
 	</div>
-</div>
 
-<div class="section">
-	<div class="container">
-		<div class="col-md-7 col-md-offset-3">
-			<form id="searchForm" action="/gibuticon-ver2/notice/getList.gibu">
-				<div class="col-md-offset-6 col-md-6">
-					<ul class="pagination">
-						
-						
-						<li>
-								<a href="javascript:getList('1')">1</a>
-								
-							</li>
-						
-					</ul>
-				</div>
-				<div class="col-md-3 text-right">
-					<div class="btn-group btn-group-sm">
-						<select class="selectpicker" name="searchSelect" id="searchSelect">
-							<option value="">검색조건</option>
-							<option value="0">제목만</option>
-							<option value="1">내용만</option>
-							<option value="2">제목+내용</option>
-						</select>
+	<div class="section">
+		<div class="container">
+			<div class="col-md-7 col-md-offset-3">
+				<form id="searchForm" action="/gibuticon-ver2/notice/getList.gibu">
+					<div class="col-md-offset-6 col-md-6">
+						<ul class="pagination">
+
+							<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
+
+							<c:if test="${pb.previousPageGroup}">
+										<li><a
+									href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${}">Prev</a> --%>
+								</li>
+									</c:if>
+
+							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+									end="${pb.endPageOfPageGroup}">
+											<a href="javascript:getList('${i}')">${i}</a>
+											<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
+										</c:forEach></li>
+							<c:if test="${pb.nextPageGroup}">
+										<li><a
+									href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
+									<%--<a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${}">Next</a> --%>
+								</li>
+									</c:if>
+						</ul>
 					</div>
-				</div>
-				<div class="col-md-6 text-left">
-					<div class="form-group">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="검색어입력"
-								name="input" id="input"> <span class="input-group-btn">
-								<input type="submit" class="btn btn-primary" value="검색">
-							</span>
-							
-								<span class="input-group-btn"> <a
+					<div class="col-md-3 text-right">
+						<div class="btn-group btn-group-sm">
+							<select class="selectpicker" name="searchSelect"
+								id="searchSelect">
+								<option value="">검색조건</option>
+								<option value="0">제목만</option>
+								<option value="1">내용만</option>
+								<option value="2">제목+내용</option>
+							</select>
+						</div>
+					</div>
+					<div class="col-md-6 text-left">
+						<div class="form-group">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="검색어입력"
+									name="input" id="input"> <span class="input-group-btn">
+									<input type="submit" class="btn btn-primary" value="검색">
+								</span> <span class="input-group-btn"> <a
 									href="/gibuticon-ver2/notice/writeForm.gibu"
 									class="btn btn-primary" type="submit">글쓰기</a>
 								</span>
-							
+
+							</div>
 						</div>
 					</div>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
 
 
-</body>
-
+	</body>
