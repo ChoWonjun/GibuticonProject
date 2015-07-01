@@ -132,7 +132,7 @@ public class FreeBoardController {
 		ListVO lvo = new ListVO(list, new PagingBean(
 				freeBoardService.getTotalPostingCountByMyId(map),
 				Integer.parseInt(pageNo)));
-		return new ModelAndView("member_myPost", "lvo", lvo);
+		return new ModelAndView("mypage_myPost", "lvo", lvo);
 	}
 	
 	
