@@ -11,101 +11,88 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</selectKey>
 		insert into notice values (#{noticeNo},#{title},sysdate,#{content},0)
 	</insert>
-	
+
 	<update id="updateNotice" parameterType="noticeVO">
 		update notice set
 		title=#{title},content=#{content}
 		where notice_no=#{noticeNo}
 	</update>
-	
+
 	<delete id="deleteNotice" parameterType="string">
-		delete from notice where notice_no=#{value}
+		delete from notice where
+		notice_no=#{value}
 	</delete>
-	
+
 	<resultMap type="noticeVO" id="noticeListRM">
-		<result property="noticeNo" column="notice_no" />	
+		<result property="noticeNo" column="notice_no" />
 		<result property="writeDate" column="write_date" />
 	</resultMap>
-	
+
 	<select id="showContent" resultMap="noticeListRM">
-		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
-	</select>
-	
-	<select id="getNoticeList"  parameterType="string" resultMap="noticeListRM">
-		SELECT
-		notice_no,title,write_date,content,hits
-		FROM(
-		SELECT
-		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
-		FROM (
-		SELECT
-		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
-		FROM notice order by notice_no desc
-		)
-		) WHERE page=#{value}
+		select
+		notice_no,title,write_date,content,hits from notice where
+		notice_no=#{value}
 	</select>
 
-	<select id="getListBySearchingTitle" parameterType="hashmap" resultMap="noticeListRM">
+	<select id="getNoticeList" parameterType="string" resultMap="noticeListRM">
+		SELECT
+		notice_no,title,write_date,content,hits
+		FROM(
+		SELECT
+		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
+		FROM (
+		SELECT
+		notice_no,title,to_char(write_date,'YYYY.MM.DD') as
+		write_date,content,hits
+		FROM notice order by notice_no desc
+		)
+		) WHERE
+		page=#{value}
+	</select>
+
+	<select id="getListBySearching" parameterType="hashmap"
+		resultMap="noticeListRM">
 		SELECT notice_no,title,write_date,content,hits
-		FROM(SELECT notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
-		FROM(SELECT notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits FROM notice  
-		<where>
-			<if test="input != null">
-				title like '%' || #{input} || '%'
-			</if>
-		</where>
+		FROM(SELECT
+		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
+		FROM(SELECT notice_no,title,to_char(write_date,'YYYY.MM.DD') as
+		write_date,content,hits FROM notice
+		<if test="searchSelect == 0">
+			<where>
+				<if test="input != null">
+					title like '%' || #{input} || '%'
+				</if>
+			</where>
+		</if>
+		<if test="searchSelect == 1">
+			<where>
+				<if test="input != null">
+					content like '%' || #{input} || '%'
+				</if>
+			</where>
+		</if>
+		<if test="searchSelect == 2">
+			<where>
+				<if test="input != null">
+					content like '%' || #{input} || '%' or title like '%' ||
+					#{input} || '%'
+				</if>
+			</where>
+		</if>
 		order by notice_no desc)) WHERE page=#{page}
 	</select>
-	
-	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="noticeListRM">
-		SELECT
-		notice_no,title,write_date,content,hits
-		FROM(
-		SELECT
-		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
-		FROM (
-		SELECT
-		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
-		FROM notice	
-		<where>
-			<if test="input != null">
-				content like '%' || #{input} || '%'
-			</if>
-		</where> 
-		order by notice_no desc
-		)
-		) WHERE page=#{page}
-	</select>
-	
-	<select id="getListBySearchingBoth" parameterType="hashmap" resultMap="noticeListRM">
-		SELECT
-		notice_no,title,write_date,content,hits
-		FROM(
-		SELECT
-		notice_no,title,write_date,content,hits,CEIL(rownum/5) AS page
-		FROM (
-		SELECT
-		notice_no,title,to_char(write_date,'YYYY.MM.DD') as write_date,content,hits
-		FROM notice	
-		<where>
-			<if test="input != null">
-				content like '%' || #{input} || '%' or title like '%' || #{input} || '%'
-			</if>
-		</where> 
-		order by notice_no desc
-		)
-		) WHERE page=#{page}
-	</select>
-		
+
+
 	<update id="updateCount" parameterType="string">
-		update notice set hits=hits+1 where notice_no=#{noticeNo}
+		update notice set
+		hits=hits+1 where notice_no=#{noticeNo}
 	</update>
-	
+
 	<select id="getPageNo" resultType="string">
 		select page from(
-			select notice_no, ceil(rownum/5) as page from(
-				select notice_no from notice order by notice_no desc
-			)
+		select notice_no, ceil(rownum/5) as page from(
+		select notice_no from notice order by notice_no desc
+		)
 		) where notice_no=#{noticeNo}
 	</select>
 
@@ -122,21 +109,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="searchSelect == 1">
 			<where>
 				<if test="input !=''">
-					content like '%' || #{input} || '%' 
+					content like '%' || #{input} || '%'
 				</if>
 			</where>
-			</if>
+		</if>
 		<if test="searchSelect == 2">
 			<where>
 				<if test="input !=''">
-					content like '%' || #{input} || '%' or title like '%' || #{input} || '%'
+					content like '%' || #{input} || '%' or title like '%' ||
+					#{input} || '%'
 				</if>
 			</where>
-			</if>
-	</select>	
-	
-	<select id="getNoticeByNo" resultMap="noticeListRM">
-		select notice_no,title,write_date,content,hits from notice where notice_no=#{value}
+		</if>
 	</select>
-	
+
+	<select id="getNoticeByNo" resultMap="noticeListRM">
+		select
+		notice_no,title,write_date,content,hits from notice where
+		notice_no=#{value}
+	</select>
+
 </mapper>
