@@ -121,7 +121,7 @@
 								<th width="1000">comment</th>
 								<th width="200">작성일</th>
 								<th width="300">작성자</th>
-								<th width="300">추천수</th>
+								<!-- <th width="300">추천수</th> -->
 							</tr>
 						</thead>
 						<tbody>
@@ -131,7 +131,7 @@
 									<td>${comment.comment}</td>
 									<td>${comment.writeDate}</td>
 									<td>${comment.memberVO.name}</td>
-									<td>${comment.hits}</td>
+									<%-- <td>${comment.hits}</td> --%>
 									<td><c:if test="${comment.id==sessionScope.mvo.id }">
 											<input class="btn btn-default" value="삭제하기" type="button"
 												onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )">
