@@ -35,20 +35,10 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	}
 
 	@Override
-	public List<FreeBoardVO> getListBySearchingTitle(HashMap<String, Object> map) {
-		return freeBoardDAO.getListBySearchingTitle(map);
+	public List<FreeBoardVO> getListBySearching(HashMap<String, Object> map) {
+		return freeBoardDAO.getListBySearching(map);
 	}
 
-	@Override
-	public List<FreeBoardVO> getListBySearchingBoth(HashMap<String, Object> map) {
-		return freeBoardDAO.getListBySearchingBoth(map);
-	}
-
-	@Override
-	public List<FreeBoardVO> getListBySearchingContent(
-			HashMap<String, Object> map) {
-		return freeBoardDAO.getListBySearchingContent(map);
-	}
 
 	@Override
 	public List<FreeBoardVO> getListBySearchingMyId(HashMap<String, Object> map) {

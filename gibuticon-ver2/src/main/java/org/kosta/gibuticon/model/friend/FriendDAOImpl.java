@@ -35,4 +35,15 @@ public class FriendDAOImpl implements FriendDAO {
 		FriendVO friendVO=new FriendVO(myId,friendId);
 		sqlSessionTemplate.delete("friend.delFriend",friendVO);
 	}
+	
+	public boolean checkFriend(String myId, String friendId) {
+		FriendVO friendVO=new FriendVO(myId,friendId);
+		int cnt = sqlSessionTemplate.selectOne("friend.checkFriend",friendVO);
+		boolean result = false;
+		if(cnt != 0){
+			result = true;
+		}
+		System.out.println(friendId+" "+result);
+		return result;
+	}
 }

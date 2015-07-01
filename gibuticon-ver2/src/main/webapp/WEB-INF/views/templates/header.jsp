@@ -207,7 +207,7 @@
    }
    function giftPopup() {
       var url = "${initParam.root }cone/giftForm.gibu";
-      window.open(url, "gift", "width=420, height=460, teop=150, left=200");
+      window.open(url, "gift", "width=350, height=350, teop=150, left=200");
    }
 </script>
 
@@ -350,9 +350,9 @@
                      </ul></li>
 
                   <li><a href="javascript:giftPopup()">선물하기</a></li>
-                  <li><a id="modal-755773" href="#modal-container-755773"
+                  <li><a id="modal-755774" href="#modal-container-755774"
                      data-toggle="modal">충전하기</a></li>
-                  <div class="modal fade" id="modal-container-755773" role="dialog"
+                  <div class="modal fade" id="modal-container-755774" role="dialog"
                      aria-labelledby="myModalLabel" aria-hidden="true">
                      <div class="modal-dialog">
                         <div class="modal-content">

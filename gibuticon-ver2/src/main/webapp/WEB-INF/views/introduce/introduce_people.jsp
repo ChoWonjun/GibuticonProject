@@ -94,7 +94,7 @@
 										style="width: 200px; height:200px;"
 										class="center-block img-circle img-responsive">
 									<h3 class="text-center">서정우</h3>
-									<p class="text-center">Developer</p>
+									<p class="text-center">Teacher</p>
 								</div>
 							</div>
 						</div>

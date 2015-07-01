@@ -39,12 +39,6 @@
 				</ul>
 			</div>
 		</div>
-		<div class="col-md-8">
-			<div>
-				<img src="img/gibuticonintro.jpg" class="img-introduce" width="100%"
-					height="100%">
-			</div>
-		</div>
 	</div>
 </div>
 <div class="section">
@@ -58,11 +52,13 @@
 </div>
 <div class="section">
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<img class="img-responsive"
-					src="http://maps.googleapis.com/maps/api/staticmap?center=Tombouctou,Mali&amp;zoom=12&amp;size=500x300&amp;sensor=false">
-			</div>
+		<div class="col-md-12">
+			<iframe width="600" height="450" frameborder="0" style="border: 0"
+				src="https://www.google.com/maps/embed/v1/place?key=API_KEY
+    &q=Space+Needle,Seattle+WA"
+				allowfullscreen> </iframe>
+			<!-- 			<img class="img-responsive"
+				src="http://maps.googleapis.com/maps/api/staticmap?center=Tombouctou,Mali&amp;zoom=12&amp;size=500x300&amp;sensor=false"> -->
 		</div>
 	</div>
 </div>

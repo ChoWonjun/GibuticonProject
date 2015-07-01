@@ -26,7 +26,7 @@
 								<td>조회수 : ${requestScope.posting.hits}</td>
 							</tr>
 							<tr>
-								<td colspan="3"><pre>${requestScope.posting.content}</pre>
+								<td colspan="3" ><pre>${requestScope.posting.content}</pre>
 								</td>
 							</tr>
 							<tr>

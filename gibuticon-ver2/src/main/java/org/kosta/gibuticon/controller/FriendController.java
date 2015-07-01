@@ -1,7 +1,11 @@
 package org.kosta.gibuticon.controller;
 
-import javax.annotation.Resource;
+import java.util.HashMap;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
+
+import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.FriendService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,5 +41,13 @@ public class FriendController {
 		System.out.println("친구삭제 : "+myId+" "+friendId);
 		friendService.delFriend(myId, friendId);
 		return true;
+	}
+	
+	@RequestMapping("friend/findMember.gibu")
+	@ResponseBody
+	public HashMap<String, Object> findMember(String id, HttpSession session){
+		MemberVO myVO = (MemberVO) session.getAttribute("mvo");
+		HashMap<String, Object> findResult = friendService.findMember(myVO.getId(),id); 
+		return findResult;
 	}
 }
