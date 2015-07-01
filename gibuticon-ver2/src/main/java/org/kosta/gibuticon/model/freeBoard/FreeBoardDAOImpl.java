@@ -44,7 +44,11 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 */
 	@Override
 	public List<FreeBoardVO> getListBySearchingMyId(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingMyId",map);
+		List<FreeBoardVO> list=sqlSessionTemplate.selectList("freeBoard.getListBySearchingMyId",map);
+		for(int i=0;i<list.size();i++){
+			list.get(i).setMemberVO((MemberVO)sqlSessionTemplate.selectOne("member.findMemberById",list.get(i).getId()));
+		}
+		return list;
 	}
 	
 	

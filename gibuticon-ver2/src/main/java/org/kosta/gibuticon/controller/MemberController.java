@@ -294,7 +294,7 @@ public class MemberController {
 	@LoginCheck
 	@RequestMapping(value = "member/mypage", method = RequestMethod.GET)
 	public String mypageView() {
-		return "member_mypage";
+		return "mypage_mypage";
 	}
 
 	/**
@@ -307,7 +307,7 @@ public class MemberController {
 	@LoginCheck
 	public ModelAndView memberRanksView() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("member_memberRanksView");
+		mv.setViewName("mypage_memberRanksView");
 		mv.addObject("rank1", memberService.getAmountRanks());
 		mv.addObject("rank2", memberService.getFundCountRanks());
 		return mv;
