@@ -73,7 +73,6 @@
 </div>
 <!--  Paging  -->
 <div class="section">
-<<<<<<< HEAD
 	<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 		<div class="container"></div>
 		<div class="col-md-offset-6 col-md-6">
