@@ -270,7 +270,7 @@
                         <div class="modal-body">
                            <div class="section text-center">
                               <a href="${initParam.root}home.gibu"> <img
-                                 src="${initParam.root }img\g_cone.jpg"
+                                 src="${initParam.root }img\g_cone.png"
                                  class="center-block img-responsive img-thumbnail"
                                  height="100" width="100"></a><br>
                               <form class="form-horizontal"
@@ -327,26 +327,20 @@
                   </a>
                      <ul class="dropdown-menu">
                         <li><a tabindex="-1"
-                           href="${initParam.root }member/logout.gibu"><strong>&nbsp;&nbsp;&nbsp;로그아웃</strong></a></li>
+                           href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;마이페이지</strong></a></li>
                         <li class="divider"></li>
-                        <li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;총
-                                 기부액</strong> 0원</a></li>
+                        <li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;총기부액</strong> 0원</a></li>
                         <li><a tabindex="-1"
-                           href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한
-                                 콘</strong> ${sessionScope.mvo.point }개 </a></li>
+                           href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한콘</strong> ${sessionScope.mvo.point }개 </a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1"
-                           href="${initParam.root }friend/memberlist.gibu"><strong>&nbsp;&nbsp;&nbsp;회원검색</strong></a></li>
-                        <li><a tabindex="-1"
-                           href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"><strong>&nbsp;&nbsp;&nbsp;친구목록보기</strong></a></li>
-                        <li class="divider"></li>
-                        <li><a tabindex="-1" href="javascript:sendMessagePopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지보내기</strong></a></li>
+                           href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}"><strong>&nbsp;&nbsp;&nbsp;친구목록</strong></a></li>
                         <li><a tabindex="-1"
                            href="javascript:getMessageListPopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지목록</strong></a></li>
+                        <li><a tabindex="-1" href="javascript:sendMessagePopup()"><strong>&nbsp;&nbsp;&nbsp;쪽지보내기</strong></a></li>
                         <li class="divider"></li>
                         <li><a tabindex="-1"
-                           href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;
-                                 마이페이지</strong></a></li>
+                           href="${initParam.root }member/logout.gibu"><strong>&nbsp;&nbsp;&nbsp;로그아웃</strong></a></li>
                      </ul></li>
 
                   <li><a href="javascript:giftPopup()">선물하기</a></li>

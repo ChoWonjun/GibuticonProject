@@ -28,18 +28,8 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 	
 	@Override
-	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
-		return noticeDAO.getListBySearchingTitle(map);
-	}
-
-	@Override
-	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
-		return noticeDAO.getListBySearchingContent(map);
-	}
-	
-	@Override
-	public List<NoticeVO> getListBySearchingBoth(HashMap<String, Object> map) {
-		return noticeDAO.getListBySearchingBoth(map);
+	public List<NoticeVO> getListBySearching(HashMap<String, Object> map) {
+		return noticeDAO.getListBySearching(map);
 	}
 	
 	

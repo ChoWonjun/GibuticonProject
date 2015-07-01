@@ -25,20 +25,11 @@ public class NoticeDAOImpl implements NoticeDAO {
 	 * 
 	 */
 	@Override
-	public List<NoticeVO> getListBySearchingTitle(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("notice.getListBySearchingTitle",map);
+	public List<NoticeVO> getListBySearching(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("notice.getListBySearching",map);
 	}
 
-	/**
-	 * 
-	 */
-	@Override
-	public List<NoticeVO> getListBySearchingContent(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("notice.getListBySearchingContent",map);
-	}
-	public List<NoticeVO> getListBySearchingBoth(HashMap<String, Object> map){
-		return sqlSessionTemplate.selectList("notice.getListBySearchingBoth",map);
-	}
+
 
 	
 	/**

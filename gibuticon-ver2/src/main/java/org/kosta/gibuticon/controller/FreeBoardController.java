@@ -85,11 +85,10 @@ public class FreeBoardController {
 
 		List<FreeBoardVO> list = null;
 
-		if (searchSelect.equals("0") ||searchSelect.equals("1") ||searchSelect.equals("2")) { // 제목만
+		if (searchSelect.equals("0") ||searchSelect.equals("1") ||searchSelect.equals("2")) {
 			list = freeBoardService.getListBySearching(map);
 		}else{
 			list = freeBoardService.getFreeBoardList(pageNo);
-	
 		}
 		System.out.println(list);
 		ListVO lvo = new ListVO(list, new PagingBean(
@@ -125,7 +124,7 @@ public class FreeBoardController {
 		ListVO lvo = new ListVO(list, new PagingBean(
 				freeBoardService.getTotalPostingCountByMyId(map),
 				Integer.parseInt(pageNo)));
-		return new ModelAndView("member_myPost", "lvo", lvo);
+		return new ModelAndView("mypage_myPost", "lvo", lvo);
 	}
 	
 	

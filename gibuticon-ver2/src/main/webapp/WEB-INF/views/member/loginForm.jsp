@@ -23,10 +23,8 @@
 							<div class="col-md-12"></div>
 						</div>
 					</div>
-					<a href="${initParam.root}home.gibu"> <img
-						src="${initParam.root }img/g_cone.png"
-						class="center-block img-responsive img-thumbnail" height="100"
-						width="100"></a>
+					<a href="${initParam.root}home.gibu"> 
+					<img src="${initParam.root}img\g_cone.png"></a>
 				</div>
 			</div>
 		</div>
@@ -48,7 +46,7 @@
 							</div>
 							<div class="col-sm-offset-2 col-sm-5 col-md-8">
 								<form:input type="text" class="form-control input-lg" id="id"
-									name="id" placeholder="User Name" path="id" />
+									name="id" placeholder="ID" path="id" />
 								<p class="help-block">
 									<form:errors path="id" />
 								</p>
