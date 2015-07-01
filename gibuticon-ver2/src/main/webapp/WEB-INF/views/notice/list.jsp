@@ -95,12 +95,12 @@
 
 						<c:forEach items="${requestScope.nlvo.list}" var="noticeboard">
 
-								<td>${noticeboard.noticeNo}</td>
-								<td><a
-									href="${initParam.root}notice/showContent.gibu?noticeNo=${noticeboard.noticeNo}">
-										${noticeboard.title }</a></td>
-								<td>${noticeboard.writeDate }</td>
-								<td>${noticeboard.hits }</td>
+							<td>${noticeboard.noticeNo}</td>
+							<td><a
+								href="${initParam.root}notice/showContent.gibu?noticeNo=${noticeboard.noticeNo}">
+									${noticeboard.title }</a></td>
+							<td>${noticeboard.writeDate }</td>
+							<td>${noticeboard.hits }</td>
 							</tr>
 						</c:forEach>
 
@@ -125,23 +125,23 @@
 							<c:set var="pb" value="${requestScope.nlvo.pagingBean}"></c:set>
 
 							<c:if test="${pb.previousPageGroup}">
-										<li><a
+								<li><a
 									href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
 									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${}">Prev</a> --%>
 								</li>
-									</c:if>
+							</c:if>
 
 							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 									end="${pb.endPageOfPageGroup}">
-											<a href="javascript:getList('${i}')">${i}</a>
-											<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
-										</c:forEach></li>
+									<a href="javascript:getList('${i}')">${i}</a>
+									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
+								</c:forEach></li>
 							<c:if test="${pb.nextPageGroup}">
-										<li><a
+								<li><a
 									href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
 									<%--<a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${}">Next</a> --%>
 								</li>
-									</c:if>
+							</c:if>
 						</ul>
 					</div>
 					<div class="col-md-3 text-right">
@@ -173,6 +173,4 @@
 			</div>
 		</div>
 	</div>
-
-
-	</body>
+</div>
