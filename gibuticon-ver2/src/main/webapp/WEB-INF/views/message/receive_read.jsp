@@ -43,7 +43,7 @@
 	<table border=0>
 		<tr>
 			<td width=100>보낸이</td>
-			<td width=300>${requestScope.msg.sender.name }(ID :
+			<td width=300>${requestScope.msg.sender.name }(ID:
 				${requestScope.msg.sender.id })</td>
 		</tr>
 		<tr>

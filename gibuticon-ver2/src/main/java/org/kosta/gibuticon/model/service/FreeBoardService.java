@@ -12,13 +12,7 @@ public interface FreeBoardService {
 
 	public abstract List<FreeBoardVO> getFreeBoardList(String pageNo);
 
-	public abstract List<FreeBoardVO> getListBySearchingTitle(
-			HashMap<String, Object> map);
-
-	public abstract List<FreeBoardVO> getListBySearchingContent(
-			HashMap<String, Object> map);
-
-	public abstract List<FreeBoardVO> getListBySearchingBoth(
+	public abstract List<FreeBoardVO> getListBySearching(
 			HashMap<String, Object> map);
 
 	public abstract List<FreeBoardVO> getListBySearchingMyId(

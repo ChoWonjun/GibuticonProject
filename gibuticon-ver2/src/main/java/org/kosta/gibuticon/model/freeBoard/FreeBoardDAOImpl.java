@@ -34,26 +34,11 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 	 * 
 	 */
 	@Override
-	public List<FreeBoardVO> getListBySearchingTitle(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingTitle",map);
+	public List<FreeBoardVO> getListBySearching(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList("freeBoard.getListBySearching",map);
 	}
 
-	/**
-	 * 
-	 */
-	@Override
-	public List<FreeBoardVO> getListBySearchingContent(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingContent",map);
-	}
-	
-	/**
-	 * 
-	 */
-	@Override
-	public List<FreeBoardVO> getListBySearchingBoth(HashMap<String, Object> map) {
-		return sqlSessionTemplate.selectList("freeBoard.getListBySearchingBoth",map);
-	}
-	
+
 	/**
 	 * 
 	 */

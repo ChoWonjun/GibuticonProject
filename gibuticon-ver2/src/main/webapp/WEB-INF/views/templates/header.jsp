@@ -270,7 +270,7 @@
                         <div class="modal-body">
                            <div class="section text-center">
                               <a href="${initParam.root}home.gibu"> <img
-                                 src="${initParam.root }img\g_cone.jpg"
+                                 src="${initParam.root }img\g_cone.png"
                                  class="center-block img-responsive img-thumbnail"
                                  height="100" width="100"></a><br>
                               <form class="form-horizontal"
