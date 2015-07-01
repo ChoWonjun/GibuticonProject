@@ -10,4 +10,5 @@ public interface FriendDAO {
 	public abstract List<MemberVO> getMemberList();
 	public void addFriend(String myId, String friendId);
 	public abstract void delFriend(String myId, String friendId);
+	public boolean checkFriend(String myId, String friendId);
 }

@@ -1,5 +1,6 @@
 package org.kosta.gibuticon.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.kosta.gibuticon.model.friend.FriendVO;
@@ -11,4 +12,5 @@ public interface FriendService {
 	public List<MemberVO> getMemberList();
 	public void addFriend(String myId, String friendId);
 	public abstract void delFriend(String myId, String friendId);
+	public abstract HashMap<String, Object> findMember(String myId, String searchId);
 }

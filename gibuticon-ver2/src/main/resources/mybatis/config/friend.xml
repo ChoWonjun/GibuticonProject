@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getMemberList" resultType="memberVO">
-		select * from member
+		select id,name,email,to_char(birth,'yyyy-mm-dd') as birth from member
 	</select>
 	
 	<insert id="addFriend" parameterType="friendVO">
@@ -30,6 +30,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delFriend" parameterType="friendVO">
 		delete from gibu_friend where my_id=#{myId} and friend_id=#{friend.id}
 	</delete>
+	
+	<select id="checkFriend" parameterType="friendVO" resultType="int">
+		select count(*) from gibu_friend where my_id=#{myId} and friend_id=#{friend.id}
+	</select>
 </mapper>
  
  
