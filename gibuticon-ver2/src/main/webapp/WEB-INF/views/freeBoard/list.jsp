@@ -8,14 +8,7 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<!-- <script type="text/javascript">
-	function getList(pageNo) {
-		var selectComp = document.getElementById("searchSelect").value;
-		location.href = "${initParam.root }freeBoard/getList.gibu?pageNo="
-				+ pageNo + "&searchSelect=" + selectComp;
-	}
-</script>
- -->
+
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
 
