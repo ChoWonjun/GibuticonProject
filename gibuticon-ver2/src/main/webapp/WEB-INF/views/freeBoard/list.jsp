@@ -30,7 +30,7 @@
 					<br>
 					<br>
 					<br>
-					<table class="type09" align="center" style="font-family: &amp; amp;" >
+					<table class="type09" style="font-family: &amp; amp;" >
 						<thead>
 							<tr>
 								<th width="100">NO</th>
@@ -73,7 +73,7 @@
 	</div>
 
 <div class="section">
-	<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
+	
 		<div class="container"></div>
 		<div class="col-md-offset-6 col-md-6">
 			<ul class="pagination">
@@ -96,6 +96,7 @@
 		<div class="col-md-offset-4">
 			<div class="col-md-2 text-right">
 				<div class="btn-group btn-group-sm">
+				<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 					<select class="selectpicker" name="searchSelect" id="searchSelect">
 						<option value="">검색조건</option>
 						<option value="0">제목만</option>
