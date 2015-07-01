@@ -72,8 +72,8 @@
 	</div>
 </div>
 <!--  Paging  -->
-<div class="section">
-	<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
+<form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
+	<div class="section">
 		<div class="container"></div>
 		<div class="col-md-offset-6 col-md-6">
 			<ul class="pagination">
@@ -85,7 +85,8 @@
 				</c:if>
 				<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 						end="${pb.endPageOfPageGroup}">
-									<a href="${initParam.root }freeBoard/getList.gibu?pageNo=${i}&searchSelect=${param.searchSelect}&input=${param.input}">${i}</a>
+						<a
+							href="${initParam.root }freeBoard/getList.gibu?pageNo=${i}&searchSelect=${param.searchSelect}&input=${param.input}">${i}</a>
 					</c:forEach></li>
 				<c:if test="${pb.nextPageGroup}">
 					<li><a
@@ -116,6 +117,7 @@
 			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
 		 -->
 		</div>
+
 	</div>
 	<div class="col-md-6 text-left">
 		<div class="form-group">
