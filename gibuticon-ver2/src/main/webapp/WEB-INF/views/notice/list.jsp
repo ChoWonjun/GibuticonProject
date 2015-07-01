@@ -14,15 +14,7 @@
 		style : 'btn-info',
 		size : 4
 	});
-
-	function getList(pageNo) {
-		var selectComp = document.getElementById("searchSelect").value;
-		location.href = "${initParam.root }notice/getList.gibu?pageNo="
-				+ pageNo + "&searchSelect=" + selectComp;
-	}
 </script>
-
-
 <br>
 <br>
 <br>
@@ -30,8 +22,6 @@
 <br>
 <br>
 <br>
-
-
 <div class="section">
 	<div class="container">
 		<div class="row">
@@ -60,7 +50,6 @@
 					</ul>
 					<img src="/gibuticon-ver2/img/g_notice_friend_guide.jpg"
 						width="150"> <br>
-
 					<ul class="left01"
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 						<li><a href="/gibuticon-ver2/friend/memberlist.gibu">콘친구란?</a></li>
@@ -68,31 +57,23 @@
 							href="/gibuticon-ver2/friend/friendlist.gibu?myId=java">친구 둥록
 								안내</a></li>
 					</ul>
-
 				</div>
 			</div>
-
 			<!-- ---------------------- -->
 
 			<div class="col-md-offset-1 col-md-6">
 				<img src="${initParam.root}img/g_notice.jpg" width="200"> <br>
 				<br>
 				<table class="type09" style="font-family: &amp; amp;">
-
 					<thead>
-
 						<tr>
-
 							<th width="100">NO</th>
 							<th width="800">제목</th>
 							<th width="300">작성일</th>
 							<th width="300">조회수</th>
 						</tr>
-
 					</thead>
-
 					<tbody>
-
 						<c:forEach items="${requestScope.nlvo.list}" var="noticeboard">
 
 							<td>${noticeboard.noticeNo}</td>
@@ -103,14 +84,8 @@
 							<td>${noticeboard.hits }</td>
 							</tr>
 						</c:forEach>
-
 					</tbody>
-
 				</table>
-
-
-
-
 			</div>
 		</div>
 	</div>
@@ -126,20 +101,19 @@
 
 							<c:if test="${pb.previousPageGroup}">
 								<li><a
-									href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
-									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${}">Prev</a> --%>
+									href="${initParam.root }notice/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&searchSelect=${param.searchSelect}&input=${param.input}">Prev</a>
+
 								</li>
 							</c:if>
 
 							<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 									end="${pb.endPageOfPageGroup}">
-									<a href="javascript:getList('${i}')">${i}</a>
-									<%-- <a href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${}">${i}</a> --%>
+									<a
+										href="${initParam.root }notice/getList.gibu?pageNo=${i}&searchSelect=${param.searchSelect}&input=${param.input}">${i}</a>
 								</c:forEach></li>
 							<c:if test="${pb.nextPageGroup}">
 								<li><a
-									href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
-									<%--<a href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${}">Next</a> --%>
+									href="${initParam.root }notice/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${param.searchSelect}&input=${param.input}">Next</a>
 								</li>
 							</c:if>
 						</ul>

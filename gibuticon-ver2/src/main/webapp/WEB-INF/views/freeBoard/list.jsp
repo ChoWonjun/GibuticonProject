@@ -9,13 +9,14 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	function getList(pageNo) {
 		var selectComp = document.getElementById("searchSelect").value;
 		location.href = "${initParam.root }freeBoard/getList.gibu?pageNo="
 				+ pageNo + "&searchSelect=" + selectComp;
 	}
 </script>
+ -->
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
 <br>
@@ -81,26 +82,27 @@
 				<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 				<c:if test="${pb.previousPageGroup}">
 					<li><a
-						href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+						href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.endPageOfPageGroup-1}&searchSelect=${param.searchSelect}&input=${param.input}">Prev</a>
 					</li>
 				</c:if>
 				<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 						end="${pb.endPageOfPageGroup}">
-						<a href="javascript:getList('${i}')">${i}</a>
+									<a href="${initParam.root }freeBoard/getList.gibu?pageNo=${i}&searchSelect=${param.searchSelect}&input=${param.input}">${i}</a>
 					</c:forEach></li>
 				<c:if test="${pb.nextPageGroup}">
-					<li><a href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
+					<li><a
+						href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${param.searchSelect}&input=${param.input}">Next</a>
 					</li>
 				</c:if>
 			</ul>
 		</div>
-		
+
 		<!--  ----------------- -->
 		<!--  검색기능
 			  검색 디자인 바꿀 때 
 			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
 		 -->
-		
+
 		<div class="col-md-3 text-right">
 			<div class="btn-group btn-group-sm">
 				<select class="selectpicker" name="searchSelect" id="searchSelect">
