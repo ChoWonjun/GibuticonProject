@@ -105,18 +105,15 @@
 					<option value="2">제목+내용</option>
 				</select>
 			</div>
-			<!-- 		 검색기능
-			  검색 디자인 바꿀 때 
-			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
-		 -->
+
 		</div>
 
 	</div>
 	<div class="col-md-6 text-left">
 		<div class="form-group">
 			<div class="input-group">
-				<input type="text" class="form-control" placeholder="검색어입력"
-					name="input" id="input"> <span class="input-group-btn">
+				<input type="text" placeholder="검색어입력"
+					name="input" id="input" size="15"> <span class="input-group-btn">
 					<input type="submit" class="btn btn-primary" value="검색">
 				</span> <span class="input-group-btn"> <a
 					href="${initParam.root }freeBoard/writeForm.gibu"

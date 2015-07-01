@@ -118,6 +118,12 @@
 							</c:if>
 						</ul>
 					</div>
+
+					<!--  ----------------- -->
+					<!--  검색기능
+						  검색 디자인 바꿀 때 
+						  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
+					 -->
 					<div class="col-md-3 text-right">
 						<div class="btn-group btn-group-sm">
 							<select class="selectpicker" name="searchSelect"

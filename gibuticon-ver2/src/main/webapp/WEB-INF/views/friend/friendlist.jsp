@@ -147,8 +147,8 @@
 				<div class="col-md-12 col-md-offset-1/2">
 					<input type="search" placeholder="아이디로 회원 검색" id="searchId"
 						name="searchId" size="14"> <input type="button" value="검색"
-						id="findBtn">&nbsp;<span id="findMemberResult"></span>
-						 <input type="hidden" id="friendIdHidden"><br>
+						id="findBtn">&nbsp;<span id="findMemberResult"></span> <input
+						type="hidden" id="friendIdHidden"><br>
 					<table class="type09" align="center">
 						<thead>
 							<tr>
