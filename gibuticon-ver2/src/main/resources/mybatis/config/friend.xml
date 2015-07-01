@@ -30,6 +30,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delFriend" parameterType="friendVO">
 		delete from gibu_friend where my_id=#{myId} and friend_id=#{friend.id}
 	</delete>
+	
+	<select id="checkFriend" parameterType="friendVO" resultType="int">
+		select count(*) from gibu_friend where my_id=#{myId} and friend_id=#{friend.id}
+	</select>
 </mapper>
  
  
