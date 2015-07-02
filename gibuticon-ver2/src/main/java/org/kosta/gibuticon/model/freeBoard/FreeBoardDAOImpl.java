@@ -146,7 +146,7 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		return sqlSessionTemplate.selectOne("freeBoard.replyView",no);
 	}
 	/**
-	 * 우선 답글 레벨을 올리고(?)
+	 * 우선 답글 레벨을 올리고
 	 * 그 후 답글을 작성하는 메서드
 	 */
 	@Override

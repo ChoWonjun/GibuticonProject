@@ -37,14 +37,13 @@
 								<c:forEach items="${requestScope.lvo.list}" var="board">
 									<tr>
 										<td>${board.boardNo}</td>
-										<td><a
+										<%-- boardvo에 relevel이 0이 아니면 답변글이므로 relevel만큼 공백으로 제목을 밀어준다  --%>
+										<td class="titleView"><c:if test="${board.relevel!=0}">
+												<c:forEach step="1" begin="0" end="${board.relevel}">&nbsp;&nbsp;</c:forEach>
+												<img src="${initParam.root }img/reply.jpg">
+											</c:if> <a
 											href="${initParam.root }freeBoard/showContent.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">
-												<c:if test="${board.relevel!=0 }">
-													<c:forEach var="i" begin="0" end="${board.relevel}">
-														&nbsp;
-													</c:forEach>
-												</c:if> ${board.title}
-										</a></td>
+												${board.title} </a></td>
 										<td>${board.writeDate}</td>
 										<td>${board.memberVO.name}</td>
 										<td>${board.hits}</td>
