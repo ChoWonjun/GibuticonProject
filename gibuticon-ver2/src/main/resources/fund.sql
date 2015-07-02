@@ -197,3 +197,12 @@ select * from(
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate,
 		content, hits, category, source from gibu_fund where fund_name like '%#{word}%' order by fund_no desc))where page=#{1}
+		
+select * from(
+	select comment_no, fund_no, text,
+	comment_time, member_id, name, ceil(rownum/5) as page from(
+		select co.comment_no, co.fund_no, co.text, co.comment_time,
+		co.member_id, mem.name from gibu_fund_comment co, member mem
+		where co.member_id=mem.id order by comment_no desc
+	)
+) where page=1 and fund_no=3

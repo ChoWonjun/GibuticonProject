@@ -10,7 +10,6 @@ import org.kosta.gibuticon.model.fund.FundDAO;
 import org.kosta.gibuticon.model.fund.FundPhotoVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.SearchOptionVO;
-import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
 import org.kosta.gibuticon.model.history.GibuHistoryVO;
@@ -93,8 +92,8 @@ public class FundServiceImpl implements FundService {
 	}
 
 	@Override
-	public List<FundCommentVO> getCommentList(CommentPageVO commentPageVO) {
-		return fundDAO.getCommentList(commentPageVO);
+	public List<FundCommentVO> getCommentList(String fundNo, String commentPage) {
+		return fundDAO.getCommentList(fundNo, commentPage);
 	}
 
 	@Override

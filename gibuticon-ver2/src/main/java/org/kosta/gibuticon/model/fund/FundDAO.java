@@ -2,7 +2,6 @@ package org.kosta.gibuticon.model.fund;
 
 import java.util.List;
 
-import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 
 public interface FundDAO {
@@ -37,8 +36,7 @@ public interface FundDAO {
 
 	public void writeComment(FundCommentVO fundCommentVO);
 
-	public abstract List<FundCommentVO> getCommentList(
-			CommentPageVO commentPageVO);
+	public abstract List<FundCommentVO> getCommentList(String fundNo, String commentPage);
 
 	public abstract int getTotalCommentCount(String fundNo);
 

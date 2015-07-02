@@ -1,10 +1,10 @@
 package org.kosta.gibuticon.model.fund;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
@@ -128,7 +128,6 @@ public class FundDAOImpl implements FundDAO {
 
 	@Override
 	public void updateHit(String no) {
-		// TODO Auto-generated method stub
 		sqlSessionTemplate.update("fund.updateHit", no);
 	}
 
@@ -143,9 +142,11 @@ public class FundDAOImpl implements FundDAO {
 	}
 
 	@Override
-	public List<FundCommentVO> getCommentList(CommentPageVO commentPageVO) {
-		return sqlSessionTemplate.selectList("fund.getCommentList",
-				commentPageVO);
+	public List<FundCommentVO> getCommentList(String fundNo, String commentPage) {
+		HashMap<String, String> map=new HashMap<String, String>();
+		map.put("fundNo", fundNo);
+		map.put("commentPage", commentPage);
+		return sqlSessionTemplate.selectList("fund.getCommentList", map);
 	}
 
 	@Override
