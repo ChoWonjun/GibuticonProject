@@ -153,7 +153,6 @@
 							<th colspan="1"><font size="3">주관기관</font></th>
 							<td colspan="3"><font size="3">${fund.proposal }</font></td>
 						</tr>
-
 						<%-- <tr>
 							<th colspan="1"><font size="3">관련링크</font></th>
 							<td colspan="3"><a href="${fund.homepage }"><font
@@ -161,6 +160,7 @@
 						</tr> --%>
 					</tbody>
 				</table>
+				${fund.content }
 			</div>
 			<div class="section">
 				<div class="container">
