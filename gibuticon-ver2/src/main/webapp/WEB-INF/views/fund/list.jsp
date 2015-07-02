@@ -117,14 +117,13 @@
 				</c:otherwise>
 			</c:choose>
 			<h4>${FundVO.fundName }</h4>
-			<div>${FundVO.startDate }~${FundVO.dueDate }</div>
+			<div>${FundVO.startDate }~${FundVO.dueDate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ${FundVO.curSum }원</div>
 			<!-- progress bar -->
-			<%-- <div class="progress" width="100%">
+			<div class="progress" width="100%">
 				<div class="progress-bar" role="progressbar" aria-valuemin="0"
 					aria-valuemax="100" aria-text=" ${FundVO.progress }%"
-					style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }
-					%&nbsp;&nbsp;${FundVO.curSum } 원</div>
-			</div> --%>
+					style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }%</div>
+			</div>
 			<div>${FundVO.proposal}</div>
 			<br>
 		</div>

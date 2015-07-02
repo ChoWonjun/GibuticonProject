@@ -18,6 +18,16 @@ public class FundVO {
 	private String curSum;
 	@NotEmpty
 	private String goalSum;
+	private int progress;
+	public int getProgress() {
+		return progress;
+	}
+
+	public void setProgress(int progress) {
+		this.progress = progress;
+	}
+
+
 	private String participant;
 	private String startDate;
 	private String dueDate;
@@ -151,11 +161,6 @@ public class FundVO {
 		this.photoList = photoList;
 	}
 
-	public int getProgress() {
-		int cur = Integer.parseInt(curSum);
-		int goal = Integer.parseInt(goalSum);
-		return (int) Math.ceil(cur / goal * 100);
-	}
 
 	@Override
 	public String toString() {
