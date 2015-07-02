@@ -106,6 +106,7 @@ public class ConeController {
 		if(!paymentType.equals("gibuticon")){
 			memberVO.setPoint(point);
 			message = "ok";
+			coneService.charge(memberVO, paymentType);
 		} else {
 			System.out.println(paymentType);
 			GiftVO giftVO = giftService.confirmPin(pinNo);
@@ -115,9 +116,11 @@ public class ConeController {
 				giftService.insertReciever(giftVO);
 				memberVO.setPoint(giftVO.getPrice());
 				message = "ok";
+				coneService.charge(memberVO, paymentType);
+			} else {
+				message = "fail";
 			}
 		}
-		coneService.charge(memberVO, paymentType);
 		mvo = memberService.findMemberById(mvo.getId());
 		session.setAttribute("mvo", mvo);
 		return message;
