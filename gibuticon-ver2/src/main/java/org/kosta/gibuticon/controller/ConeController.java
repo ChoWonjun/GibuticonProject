@@ -136,15 +136,25 @@ public class ConeController {
 	@RequestMapping("cone/gibu.gibu")
 	public ModelAndView gibu(FundVO fundVO, int point,
 			HttpServletRequest request) {
+		ModelAndView mv=new ModelAndView();
+		
 		HttpSession session = request.getSession();
 		MemberVO memberVO = (MemberVO) session.getAttribute("mvo");
 
-		coneService.gibu(memberVO, fundVO, point);
+		if(point>memberVO.getPoint()){
+			mv.addObject("gibuResult",false);
+		} else {
+			coneService.gibu(memberVO, fundVO, point);
+			mv.addObject("gibuResult",true);
+		}
 
 		session.setAttribute("mvo", memberVO);
-
-		return new ModelAndView("cone/gibu_result", "fundNo",
-				fundVO.getFundNo());
+		
+		mv.addObject("fundNo", fundVO.getFundNo());
+		
+		mv.setViewName("cone/gibu_result");
+		
+		return mv;
 	}
 	
 	
