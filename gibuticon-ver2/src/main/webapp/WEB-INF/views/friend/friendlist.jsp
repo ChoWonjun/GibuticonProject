@@ -14,7 +14,7 @@
 <script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
 <script type="text/javascript">
 	function delFriend(friendid) {
-		if(confirm(friendid+" 를 친구목록에서 삭제하시겠습니까?")){
+		if (confirm(friendid + " 를 친구목록에서 삭제하시겠습니까?")) {
 			$.ajax({
 				type : "post",
 				url : "${initParam.root}friend/delFriend.gibu",
@@ -33,42 +33,67 @@
 		$.ajax({
 			type : "post",
 			url : "${initParam.root}friend/addFriend.gibu",
-			data : "myId=${sessionScope.mvo.id}&friendId=" + $("#friendIdHidden").val(),
+			data : "myId=${sessionScope.mvo.id}&friendId="
+					+ $("#friendIdHidden").val(),
 			success : function(result) {
 				if (result)
 					location.reload();
 			}//success
 		});//ajax
 	}
-	
+
 	function chargePopup() {
 		var url = "${initParam.root }cone/chargeView.gibu";
 		window.open(url, "notice", "width=520,height=280,teop=150,left=200");
 	}
 
-	$().ready(function() {
-		$("#findBtn").click(function() {
-			$.ajax({
-				type : "post",
-				url : "${initParam.root}friend/findMember.gibu",
-				data : "id=" + $("#searchId").val().trim(),
-				dataType : "json",
-				success : function(data) {
-					var findInfo = "";
-					if(data.result == "ok"){
-						findInfo = "검색결과 : "+data.mvo.id+" "+data.mvo.name+" "+data.mvo.email
-						+' <input type="button" id="addBtn" value="친구추가" onclick="javascript:addFriend()">';
-						$("#friendIdHidden").val(data.mvo.id);
-					} else if (data.result == "fail"){
-						findInfo = "검색결과 : "+data.mvo.id+" "+data.mvo.name+" "+data.mvo.email;
-					} else if (data.result == "null"){
-						findInfo = "일치하는 회원 정보를 찾지 못했습니다.";
-					}
-					$("#findMemberResult").html(findInfo);
-				}//success
-			});//ajax
-		});
-	});
+	$()
+			.ready(
+					function() {
+						$("#findBtn")
+								.click(
+										function() {
+											$
+													.ajax({
+														type : "post",
+														url : "${initParam.root}friend/findMember.gibu",
+														data : "id="
+																+ $("#searchId")
+																		.val()
+																		.trim(),
+														dataType : "json",
+														success : function(data) {
+															var findInfo = "";
+															if (data.result == "ok") {
+																findInfo = "검색결과 : "
+																		+ data.mvo.id
+																		+ " "
+																		+ data.mvo.name
+																		+ " "
+																		+ data.mvo.email
+																		+ ' <input type="button" id="addBtn" value="친구추가" onclick="javascript:addFriend()">';
+																$(
+																		"#friendIdHidden")
+																		.val(
+																				data.mvo.id);
+															} else if (data.result == "fail") {
+																findInfo = "검색결과 : "
+																		+ data.mvo.id
+																		+ " "
+																		+ data.mvo.name
+																		+ " "
+																		+ data.mvo.email;
+															} else if (data.result == "null") {
+																findInfo = "일치하는 회원 정보를 찾지 못했습니다.";
+															}
+															$(
+																	"#findMemberResult")
+																	.html(
+																			findInfo);
+														}//success
+													});//ajax
+										});
+					});
 </script>
 
 <div class="section" align="center">
@@ -132,7 +157,6 @@
 								href="${initParam.root }friend/friendlist.gibu?myId=${sessionScope.mvo.id}">
 									친구 목록보기</a></li>
 						</ul>
-
 					</div>
 				</div>
 			</div>
@@ -159,7 +183,6 @@
 							</tr>
 						</thead>
 						<c:forEach items="${requestScope.list }" var="list">
-
 							<tbody>
 								<tr>
 									<td>${list.friend.id }</td>
@@ -169,7 +192,6 @@
 										onclick="delFriend('${list.friend.id}')"><br></td>
 								</tr>
 							</tbody>
-
 						</c:forEach>
 					</table>
 				</div>

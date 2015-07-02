@@ -70,8 +70,7 @@
 	</div>
 </div>
 <!--  Paging  -->
-<!--  페이징 검색 수정. 자바스크립트에서 바로 컨트롤러로 보내는걸로 수정됨. 
-제발 코드 읽고 푸쉬하거나 머지애즈마크드 하세요. -->
+
 <div class="section">
 	<div class="container">
 		<div class="col-md-offset-5 col-md-6">
@@ -103,30 +102,7 @@
 			  검색 디자인 바꿀 때 
 			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
 		 -->
-<%-- 
-		<div class="col-md-3 text-right">
 
-			<div class="btn-group btn-group-sm">
-				<select class="selectpicker" name="searchSelect" id="searchSelect">
-					<option value="">검색조건</option>
-					<option value="0">제목만</option>
-					<option value="1">내용만</option>
-					<option value="2">제목+내용</option>
-				</select>
-			</div>
-
-		</div>
-		<div class="col-md-6 text-left">
-			<div class="form-group">
-				<div class="col-md-offset-4">
-					<input type="text" placeholder="검색어입력" name="input" id="input"
-						size="25"> <input type="submit" class="btn btn-primary"
-						value="검색"> <a
-						href="${initParam.root }freeBoard/writeForm.gibu"
-						class="btn btn-primary" type="submit">글쓰기</a>
-						
-				</div>
-			</div> --%>
 <form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 	<div class="section">
 		<div class="container">
@@ -139,10 +115,6 @@
 						<option value="2">제목+내용</option>
 					</select>
 				</div>
-				<!-- 		 검색기능
-			  검색 디자인 바꿀 때 
-			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
-		 -->
 			</div>
 			<div class="col-md-6 text-left">
 				<div class="form-group">

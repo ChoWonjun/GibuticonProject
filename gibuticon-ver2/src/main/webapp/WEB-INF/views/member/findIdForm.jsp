@@ -31,28 +31,31 @@
 						});
 			});
 </script>
-<br><br><br><br>
-<div class="col-md-8 col-md-offset-4" >
-	<img src="${initParam.root}img\g_findId.jpg" width="500">
-	<br><br><br>
-	회원가입시 입력하신 이름과 이메일 주소를 입력하세요.
-	<br><br>
-
+<br>
+<br>
+<br>
+<br>
+<div class="col-md-8 col-md-offset-4">
+	<img src="${initParam.root}img\g_findId.jpg" width="500"> <br>
+	<br>
+	<br> 회원가입시 입력하신 이름과 이메일 주소를 입력하세요. <br>
+	<br>
 
 	<form action="member/findId.gibu" id="findIdForm" name="findIdForm">
-		 이름 <br>
-		<input style="width: 500px;" type="text" class="form-control col-md-3"
-			id="name" name="name" placeholder="Name"> <br><br><br>
-		
-		이메일<br>
-		<input style="width: 500px;" type="email" class="form-control"
-			id="email" name="email" placeholder="E-mail">
-		<br><br>
-		 <input type="button" class="btn btn-default" id="findBtn" name="findBtn" value="아이디 찾기">
+		이름 <br> <input style="width: 500px;" type="text"
+			class="form-control col-md-3" id="name" name="name"
+			placeholder="Name"> <br>
+		<br>
+		<br> 이메일<br> <input style="width: 500px;" type="email"
+			class="form-control" id="email" name="email" placeholder="E-mail">
+		<br>
+		<br> <input type="button" class="btn btn-default" id="findBtn"
+			name="findBtn" value="아이디 찾기">
 	</form>
-	<br>	
+	<br>
 	<div id="findIdResult"></div>
-	<br><br> <a href="${initParam.root }member/loginModal.gibu">로그인</a>
+	<br>
+	<br> <a href="${initParam.root }member/loginModal.gibu">로그인</a>
 </div>
 
 <%-- 

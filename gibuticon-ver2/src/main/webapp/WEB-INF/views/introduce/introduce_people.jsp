@@ -15,12 +15,7 @@
 	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 </head>
-<br>
-<br>
-<br>
-<br>
-<br>
-
+<br><br><br><br><br>
 <div class="section">
 	<div class="container">
 		<div class="col-md-12">
@@ -37,13 +32,11 @@
 				</div>
 
 			</div>
-				<div class="col-md-9 col-md-offset-1">
-					<h1 class="text-center">함께하는 사람들</h1>
-					<p class="text-center text-primary" contenteditable="true">
-						기부티콘을 함께 만든 사람들 <br>
-					</p>
-				
-
+			<div class="col-md-9 col-md-offset-1">
+				<h1 class="text-center">함께하는 사람들</h1>
+				<p class="text-center text-primary" contenteditable="true">
+					기부티콘을 함께 만든 사람들 <br>
+				</p>
 				<div class="section">
 					<div class="container">
 						<div class="col-md-11">
@@ -76,12 +69,12 @@
 
 								<div class="col-md-3">
 									<img src="${initParam.root}img\지현언니.jpg"
-										style="width:200px; height: 200px;"
+										style="width: 200px; height: 200px;"
 										class="center-block img-circle img-responsive">
 									<h3 class="text-center">이지현</h3>
 									<p class="text-center">Developer</p>
 								</div>
-			
+
 								<div class="col-md-3">
 									<img src="${initParam.root}img\임수현.png"
 										style="width: 200px; height: 200px;"
@@ -91,7 +84,7 @@
 								</div>
 								<div class="col-md-3">
 									<img src="${initParam.root}img\강사님.jpg"
-										style="width: 200px; height:200px;"
+										style="width: 200px; height: 200px;"
 										class="center-block img-circle img-responsive">
 									<h3 class="text-center">서정우</h3>
 									<p class="text-center">Teacher</p>
@@ -102,7 +95,7 @@
 				</div>
 			</div>
 		</div>
-</div>
 	</div>
+</div>
 </html>
 

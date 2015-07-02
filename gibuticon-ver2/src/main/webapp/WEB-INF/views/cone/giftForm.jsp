@@ -75,8 +75,7 @@
 	<br>
 	<form name="selectTargetForm">
 		선물대상 <input type="radio" name="target" value="friend"> 친구 <input
-			type="radio" name="target" value="nonmem"> 비회원<br>
-		<br>
+			type="radio" name="target" value="nonmem"> 비회원<br> <br>
 	</form>
 	<div id="giftToNonMemberDiv">
 		<form action="${initParam.root }cone/giftToNonMember.gibu"
@@ -92,7 +91,7 @@
 				type="button" id="giftBtn" value="선물하기">
 		</form>
 	</div>
-	
+
 	<div id="giftToMemberDiv">
 		<form action="${initParam.root }cone/giftToMember.gibu" id="giftForm">
 			선물하실 금액을 선택하세요.<br> 50콘<input type="radio" name="price"
