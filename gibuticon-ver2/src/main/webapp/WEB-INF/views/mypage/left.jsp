@@ -41,7 +41,7 @@
 						style="font-family: &amp; amp;">충전하기</span>
 				</a>
 				</li>
-				<li><a href="#"> <span style="font-family: &amp; amp;">선물하기</span></a></li>
+				<li><a href="javascript:giftPopup()"> <span style="font-family: &amp; amp;">선물하기</span></a></li>
 				<li><a href="#"> <span style="font-family: &amp; amp;">선물내역</span></a></li>
 				<li><a href="#"> <span style="font-family: &amp; amp;">기부내역</span></a></li>
 				<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->

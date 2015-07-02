@@ -20,7 +20,7 @@
 </script>
 
 </head>
-<body>6
+<body>
 <c:choose>
 <c:when test="${requestScope.gibuResult }">
 	기부해주셔서 감사합니다.

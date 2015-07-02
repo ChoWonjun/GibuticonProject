@@ -265,6 +265,11 @@ public class MemberController {
 			// 유효성 검사에 에러가 있으면 회원정보수정화면으로 다시 보낸다.
 		}
 		memberService.updateMember(memberVO);
+		
+		HttpSession session = request.getSession();
+		memberVO = memberService.findMemberById(memberVO.getId());
+		session.setAttribute("mvo", memberVO);
+		
 		return "redirect:updateMemberResult.gibu?id=" + memberVO.getId();
 	}
 
