@@ -153,7 +153,6 @@
 							<th colspan="1"><font size="3">주관기관</font></th>
 							<td colspan="3"><font size="3">${fund.proposal }</font></td>
 						</tr>
-
 						<%-- <tr>
 							<th colspan="1"><font size="3">관련링크</font></th>
 							<td colspan="3"><a href="${fund.homepage }"><font
@@ -161,6 +160,7 @@
 						</tr> --%>
 					</tbody>
 				</table>
+				${fund.content }
 			</div>
 			<div class="section">
 				<div class="container">
@@ -172,7 +172,7 @@
 							<div class="col-md-2">
 							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a></div>
 								<div class="col-md-2">
-								<a href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}" class="btn btn-default">목록보기</a></div>						
+								<a href="${initParam.root }fund/getList.gibu<%-- ?no=${requestScope.posting.fundNo} --%>" class="btn btn-default">목록보기</a></div>						
 					</div>
 				</div>
 			</div>
@@ -196,7 +196,7 @@
 												<td>${comment.commentNo }</td>
 												<td>${comment.text }</td>
 												<td>${comment.commentTime }</td>
-												<td>${comment.memberVO.id }</td>
+												<td>${comment.memberVO.name }<br>(${comment.memberVO.id })</td>
 												<td><c:if
 														test="${comment.memberVO.id==sessionScope.mvo.id }">
 														<input class="btn btn-default" value="삭제하기" type="button"

@@ -10,6 +10,8 @@ public interface MemberDAO {
 	
 	public abstract MemberVO findMemberByEmail(String email);
 
+	public abstract MemberVO findMemberByBirth(String birth);
+	
 	public abstract void updateMember(MemberVO memberVO);
 
 	public abstract void deleteMemberById(String id);

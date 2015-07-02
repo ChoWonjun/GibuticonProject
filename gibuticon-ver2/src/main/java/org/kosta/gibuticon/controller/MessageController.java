@@ -27,6 +27,14 @@ public class MessageController {
 	@Resource
 	private MemberService memberService;
 	
+	/**
+	 * 쪽지를 보내기 위한 입력폼을 제공하는 컨트롤러
+	 * 
+	 * 정효섭
+	 * @param request
+	 * @param receiverId
+	 * @return
+	 */
 	@RequestMapping("message/sendForm.gibu")
 	@LoginCheck
 	public ModelAndView sendForm(HttpServletRequest request,String receiverId){
@@ -40,6 +48,14 @@ public class MessageController {
 		return mv;
 	}
 	
+	/**
+	 * 쪽지를 데이터베이스에 연동해 저장하게 해주는 컨트롤러
+	 * 
+	 * 정효섭
+	 * @param messageVO
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("message/send.gibu")
 	@LoginCheck
 	public ModelAndView send(MessageVO messageVO, HttpServletRequest request){
@@ -47,6 +63,14 @@ public class MessageController {
 		return new ModelAndView("redirect:sendRead.gibu?no="+messageVO.getNo());
 	}
 	
+	/**
+	 * 받은 쪽지함 리스트를 불러오는 컨트롤러
+	 * 
+	 * 정효섭
+	 * @param page
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("message/getReceiveList.gibu")
 	public ModelAndView getReceiveList(String page, HttpServletRequest request){
 		HttpSession session = request.getSession();
@@ -59,6 +83,14 @@ public class MessageController {
 		return new ModelAndView("message/receive_list","list",listVO);
 	}
 	
+	/**
+	 * 받은 쪽지함 리스트를 불러오는 컨트롤러
+	 * 
+	 * 정효섭
+	 * @param page
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("message/getSendList.gibu")
 	public ModelAndView getSendList(String page, HttpServletRequest request){
 		HttpSession session = request.getSession();
@@ -71,6 +103,13 @@ public class MessageController {
 		return new ModelAndView("message/send_list","list",listVO);
 	}
 	
+	/**
+	 * 메세지를 읽을 수 있는 컨트롤러
+	 * 
+	 * 정효섭
+	 * @param no
+	 * @return
+	 */
 	@RequestMapping("message/read.gibu")
 	public ModelAndView read(String no){
 		ModelAndView mv=new ModelAndView();
@@ -85,11 +124,27 @@ public class MessageController {
 		return mv;
 	}
 	
+	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param no
+	 * @return
+	 */
 	@RequestMapping("message/sendRead.gibu")
 	public ModelAndView sendRead(String no){
 		return new ModelAndView("message/send_read","msg",messageService.getMessageByNo(no));
 	}
 	
+	/**
+	 * 메세지를 지울 수 있는 컨트롤러
+	 * 
+	 * 정효섭
+	 * @param no
+	 * @param retLocation
+	 * @return
+	 */
 	@RequestMapping("message/delete.gibu")
 	public ModelAndView delete(String no, String retLocation){
 		messageService.delMessage(no);

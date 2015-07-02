@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select fundno, fundname, proposal, homepage, cursum,
 		goalsum, participant,
 		startdate, duedate, content, hits, category,
-		source, ceil(rownum/9) as page from
+		source, progress, ceil(rownum/9) as page from
 		(select fund_no fundno, fund_name
 		fundname, proposal, homepage,
 		cur_sum cursum, goal_sum goalsum,
@@ -17,7 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		to_char(start_date,'yyyy-mm-dd') as startdate,
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate, content, hits, category,
-		source, goal_sum/nullif(cur_sum,0) as amount from gibu_fund
+		source, nullif(cur_sum,0)/goal_sum*100 as progress from gibu_fund
 		<where>
 			<if test="category != null and category != ''">
 				category = #{category}
@@ -36,10 +36,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			order by due_date desc
 		</if>
 		<if test="rank != null and rank !='' and rank == 'amountAsc'">
-			order by amount desc
+			order by progress desc
 		</if>
 		<if test="rank != null and rank !='' and rank == 'amountDesc'">
-			order by amount asc
+			order by progress asc
 		</if>
 		)) where page=#{pageNo}
 	</select>
@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				and
 			</if>
 			<if test="word != null and word != ''">
-				fund_name like '%' || #{i} || '%'
+				fund_name like '%' || #{word} || '%'
 			</if>
 		</where>
 	</select>
@@ -62,8 +62,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getPageNo" parameterType="searchOptionVO" resultType="string">
 		select page from(
 		select
-		fund_no fundno, ceil(rownum/5) as page from(
-		select fund_no, goal_sum/nullif(cur_sum,0) as amount from
+		fundno, ceil(rownum/5) as page from(
+		select fund_no as fundno,  nullif(cur_sum,0)/goal_sum*100 as progress from
 		gibu_fund
 		<where>
 			<if test="category != null and category != ''">
@@ -83,10 +83,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			order by due_date desc
 		</if>
 		<if test="rank != null and rank != '' and rank == 'amountAsc'">
-			order by amount desc
+			order by progress desc
 		</if>
 		<if test="rank != null and rank != '' and rank == 'amountDesc'">
-			order by amount asc
+			order by progress asc
 		</if>
 		)) where page=#{pageNo}
 	</select>
@@ -99,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		to_char(start_date,'yyyy-mm-dd') as startdate,
 		to_char(due_date,'yyyy-mm-dd') as
 		duedate,
-		content, hits, category,
+		content, hits, category, nullif(cur_sum,0)/goal_sum*100 as progress, 
 		source from gibu_fund where fund_no=#{value}
 	</select>
 
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<update id="increaseCurSum" parameterType="fundVO">
 		update gibu_fund set
-		cur_sum=cur_sum+#{curSum} where fund_no=#{fundNo}
+		cur_sum=cur_sum+#{curSum}*100 where fund_no=#{fundNo}
 	</update>
 
 	<insert id="savePhoto" parameterType="fundPhotoVO">
@@ -145,22 +145,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		gibu_fund_comment(comment_no,fund_no,member_id,text,comment_time)
 		values(gibu_fund_comment_seq.nextval,#{fundNo},#{memberVO.id},#{text},sysdate)
 	</insert>
+	
+	<resultMap type="fundCommentVO" id="fundCommentRM">
+		<result property="memberVO.id" column="member_id" />
+		<result property="memberVO.name" column="name" />
+		<result property="commentNo" column="comment_no" />
+		<result property="fundNo" column="fund_no" />
+		<result property="commentTime" column="comment_time" />
+   </resultMap>
 
-	<select id="getCommentList" resultType="fundCommentVO"
-		parameterType="commentPageVO">
+	<select id="getCommentList" resultMap="fundCommentRM">
 		select * from(
-		select commentno, fundno, text,
-		commenttime, id, name, ceil(rownum/5) as
-		page from
-		(select co.comment_no
-		commentno, co.fund_no fundno, co.text, co.comment_time
-		commenttime,
-		co.member_id id, mem.name name from gibu_fund_comment co, member mem
-		where
-		co.member_id=mem.id order by comment_no desc
-		))
-		where
-		page=${commentPage} and fundno=${fundNo}
+			select comment_no, fund_no, text,
+			comment_time, member_id, name, ceil(rownum/5) as page from(
+				select co.comment_no, co.fund_no, co.text, to_char(co.comment_time,'yy-mm-dd hh:mi') comment_time,
+				co.member_id, mem.name from gibu_fund_comment co, member mem
+				where co.member_id=mem.id order by comment_no desc
+			)
+		) where page=#{commentPage} and fund_no=#{fundNo}
 	</select>
 
 	<select id="getTotalCommentCount" resultType="int">

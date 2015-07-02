@@ -10,6 +10,8 @@ import org.kosta.gibuticon.model.freeBoard.FreeBoardVO;
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 @Service
 @Transactional
@@ -87,9 +89,11 @@ public class FreeBoardServiceImpl implements FreeBoardService {
 	public FreeBoardVO replyView(String no) {
 		return freeBoardDAO.replyView(no);
 	}
-
+	
 	@Override
 	public void reply(FreeBoardVO freeBoardVO) {
+
+		freeBoardDAO.replyUpdate(freeBoardVO);
 		freeBoardVO.setRestep(freeBoardVO.getRestep() + 1);
 		freeBoardVO.setRelevel(freeBoardVO.getRelevel() + 1);
 		freeBoardDAO.reply(freeBoardVO);

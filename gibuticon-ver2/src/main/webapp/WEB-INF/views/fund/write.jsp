@@ -145,7 +145,7 @@
 												<tr>
 													<th class="hope_sum"><br> <label for="formSum">목표액</label></th>
 													<td colspan="2" class="hope_sum"><br> <input
-														required="required" class="shot" type="number"
+														required="required" class="shot" type="number" min="1"
 														name="goalSum" id="goalSum" style="text-align: right"
 														maxlength="12"></td>
 												</tr>

@@ -8,13 +8,7 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<script type="text/javascript">
-	function getList(pageNo) {
-		var selectComp = document.getElementById("searchSelect").value;
-		location.href = "${initParam.root }freeBoard/getList.gibu?pageNo="
-				+ pageNo + "&searchSelect=" + selectComp;
-	}
-</script>
+
 <link href="${initParam.root}css/table.css" rel="stylesheet"
 	type="text/css">
 <br>
@@ -43,14 +37,13 @@
 								<c:forEach items="${requestScope.lvo.list}" var="board">
 									<tr>
 										<td>${board.boardNo}</td>
-										<td><a
-											href="${initParam.root }freeBoard/showContent.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">
-												<c:if test="${board.relevel!=0 }">
-													<c:forEach var="i" begin="0" end="${board.relevel}">
-														&nbsp;
-													</c:forEach>
-												</c:if> ${board.title}
-										</a></td>
+										<%-- boardvo에 relevel이 0이 아니면 답변글이므로 relevel만큼 공백으로 제목을 밀어준다  --%>
+										<td class="titleView">
+											 <a	href="${initParam.root }freeBoard/showContent.gibu?no=${board.boardNo}&id=${sessionScope.mvo.id}">
+											<c:if test="${board.relevel!=0}">
+												<c:forEach step="1" begin="0" end="${board.relevel}">&nbsp;&nbsp;</c:forEach> 
+												<img src="${initParam.root }img/reply.jpg"></c:if>
+												${board.title}</a></td>
 										<td>${board.writeDate}</td>
 										<td>${board.memberVO.name}</td>
 										<td>${board.hits}</td>
@@ -76,6 +69,7 @@
 	</div>
 </div>
 <!--  Paging  -->
+
 <div class="section">
 	<div class="container">
 		<div class="col-md-offset-5 col-md-6">
@@ -83,21 +77,31 @@
 				<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
 				<c:if test="${pb.previousPageGroup}">
 					<li><a
-						href="javascript:getList('${pb.startPageOfPageGroup-1}')">Prev</a>
+						href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.endPageOfPageGroup-1}&searchSelect=${param.searchSelect}&input=${param.input}">Prev</a>
 					</li>
 				</c:if>
 				<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
 						end="${pb.endPageOfPageGroup}">
-						<a href="javascript:getList('${i}')">${i}</a>
+						<a
+							href="${initParam.root }freeBoard/getList.gibu?pageNo=${i}&searchSelect=${param.searchSelect}&input=${param.input}">${i}</a>
+
 					</c:forEach></li>
 				<c:if test="${pb.nextPageGroup}">
-					<li><a href="javascript:getList('${pb.endPageOfPageGroup+1}')">Next</a>
+					<li><a
+						href="${initParam.root }freeBoard/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&searchSelect=${param.searchSelect}&input=${param.input}">Next</a>
+
 					</li>
 				</c:if>
 			</ul>
 		</div>
 	</div>
 </div>
+<!--  ----------------- -->
+<!--  검색기능
+			  검색 디자인 바꿀 때 
+			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
+		 -->
+
 <form id="searchForm" action="${initParam.root }freeBoard/getList.gibu">
 	<div class="section">
 		<div class="container">
@@ -110,10 +114,6 @@
 						<option value="2">제목+내용</option>
 					</select>
 				</div>
-				<!-- 		 검색기능
-			  검색 디자인 바꿀 때 
-			  검색이 되는지 안되는지 확인하고 푸쉬 하세요.
-		 -->
 			</div>
 			<div class="col-md-6 text-left">
 				<div class="form-group">
@@ -131,7 +131,3 @@
 		</div>
 	</div>
 </form>
-
-
-
-

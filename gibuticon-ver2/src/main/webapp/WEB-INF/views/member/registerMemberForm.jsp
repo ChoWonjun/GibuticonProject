@@ -4,6 +4,7 @@
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
+	
 	$(document).ready(
 			function() {
 				$("#passwordChecks").keyup(function() {
@@ -65,7 +66,21 @@
 								}
 							});
 						});
+				
+				$("#birth").keyup(
+						function() {
+							var memberBirth = $("#birth").val();
+							$("#birthCheckForm").text("");
+							$.ajax({
+								type : "post",
+								url : "birthCheck.gibu?birth=" + memberBirth,
+								success : function(data) {
+								}
+							});
+						});
 			});
+	
+	
 </script>
 <div class="section">
 	<div class="container">

@@ -17,6 +17,8 @@ public class MemberVO {
 	private String address;
 	@NotEmpty
 	private String tel;
+	
+	@NotEmpty
 	private String birth;
 	private String admin;
 	@Email

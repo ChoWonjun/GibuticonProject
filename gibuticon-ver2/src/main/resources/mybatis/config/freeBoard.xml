@@ -35,32 +35,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<select id="getFreeBoardList" parameterType="string" resultMap="freeBoardRM">
-		   select board_no, title, write_date, content, hits, id from(
-        select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
-      (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id 
+		   select board_no, title, write_date, content, hits, id,ref,restep,relevel from(
+        select board_no, title, write_date, content, hits, id,ref,restep,relevel, ceil(rownum/5) as page from
+      (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id,ref,restep,relevel 
       from free_board order by ref desc, restep asc))where page=#{value}
 	</select>
-
+	
+	 
 	<select id="getListBySearchingMyId" parameterType="hashmap" resultMap="freeBoardRM">
-		select board_no, title, write_date, content, hits, id from(
-		select board_no, title, write_date, content, hits, id, ceil(rownum/5) as
+		select board_no, title, write_date, content, hits, id,ref,restep,relevel from(
+		select board_no, title, write_date, content, hits, id,ref,restep,relevel, ceil(rownum/5) as
 		page from
 		(select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date,
-		content, hits, id
+		content, hits, id,ref,restep,relevel
 		from free_board where id=#{myId}
 		order by ref desc, restep asc))where page=#{page}
 	</select>
 
 	<select id="getListBySearching" parameterType="hashmap"
 		resultMap="freeBoardRM">
-	select board_no, title, write_date, content, hits, id from(
+	select board_no, title, write_date, content, hits, id,ref,restep,relevel from(
 	select
-	board_no, title, write_date, content, hits, id, ceil(rownum/5) as
+	board_no, title, write_date, content, hits, id,ref,restep,relevel, ceil(rownum/5) as
 	page
 	from
 	(select board_no, title, to_char(write_date,'YYYY.MM.DD') as
 	write_date,
-	content, hits, id
+	content, hits, id,ref,restep,relevel
 	from free_board
 	<if test="searchSelect == 0">
 		<where>
@@ -87,32 +88,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	order by ref desc, restep asc))where page=#{page}
 	</select>
-	
-<!-- 	<select id="getListBySearchingContent" parameterType="hashmap" resultMap="freeBoardRM">
-			   select board_no, title, write_date, content, hits, id from(
-        select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
-      (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id 
-      from free_board
-      <where>
-			<if test="input != null">
-				content like '%' || #{input} || '%'
-			</if>
-		</where>
-		order by ref desc, restep asc))where page=#{page}
-	</select>
-	
-	<select id="getListBySearchingBoth" parameterType="hashmap" resultMap="freeBoardRM">
-			   select board_no, title, write_date, content, hits, id from(
-        select board_no, title, write_date, content, hits, id, ceil(rownum/5) as page from
-      (select board_no, title, to_char(write_date,'YYYY.MM.DD') as write_date, content, hits, id 
-      from free_board
-      <where>
-			<if test="input != null">
-				content like '%' || #{input} || '%' or title like '%' || #{input} || '%'
-			</if>
-		</where>
-		order by ref desc, restep asc))where page=#{page}
-	</select> -->
 	
 	<select id="getPageNo" resultType="string">
 	select page from(
@@ -174,5 +149,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  board_no,title,write_date, content, hits,id,ref,restep,relevel	  
   )  values(#{boardNo},#{title},sysdate,#{content},0,#{id},#{ref},#{restep},#{relevel})
 	</insert>
+	
 </mapper>
 

@@ -14,13 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<select id="getChargeHistory" resultType="chargeHistoryVO">
-		select history_no historyno, member_id memberid, charge_time chargetime, payment_type paymenttype,
+		select history_no historyno, member_id memberid, to_char(charge_time,'YYYY/MM/DD HH:MI') chargetime, payment_type paymenttype,
 		amount from charge_history where member_id=#{value}	
 		order by chargetime desc
 	</select>
 	
 	<select id="getGibuHistory" resultType="gibuHistoryVO">
-		select history_no historyno, fund_no fundno, member_id memberid, donation_time donationtime,
+		select history_no historyno, fund_no fundno, member_id memberid, to_char(donation_time,'YYYY/MM/DD HH:MI') donationtime,
 		amount from donation_history where member_id=#{value}	
 		order by donationtime desc
 	</select>

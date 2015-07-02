@@ -57,12 +57,14 @@
 									$("#multiform").submit();
 								});
 
-						//MultiFile Plugin 
-						$('#multiform input[name=file]').MultiFile({
+						
+						// 사진 업로드 멀티파일 플러그인
+						//MultiFile Plugin
+						/* maxfile : 1024 * 1024 * 1024, //각 파일 최대 업로드 크기
+							maxsize : 1024 * 1024 * 1024 * 10, //전체 파일 최대 업로드 크기 */
+/* 						$('#multiform input[name=file]').MultiFile({
 							max : 3, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
 							accept : 'jpeg|jpg|gif|png|', //허용할 확장자(지정하지 않으면 모든 확장자 허용)
-							/* maxfile : 1024 * 1024 * 1024, //각 파일 최대 업로드 크기
-							maxsize : 1024 * 1024 * 1024 * 10, //전체 파일 최대 업로드 크기 */
 							STRING : { //Multi-lingual support : 메시지 수정 가능
 								remove : "(delete)", //추가한 파일 제거 문구, 이미태그를 사용하면 이미지사용가능
 								duplicate : "$file 은 이미 선택된 파일입니다.",
@@ -74,7 +76,7 @@
 							},
 							list : "#afile3-list" //파일목록을 출력할 요소 지정가능
 						});
-
+ */
 					});// document ready
 </script>
 
@@ -88,7 +90,8 @@
 							<div class="col-md-11">
 								<!-- form 시작 -->
 								<form name="multiform" id="multiform"
-									enctype="multipart/form-data" method="post" action="${initParam.root }notice/write.gibu">
+									enctype="multipart/form-data" method="post"
+									action="${initParam.root }notice/write.gibu">
 									<fieldset style="font-family: &amp; amp;">
 										<legend>공지사항 등록</legend>
 										<table class="col-md-12">
@@ -109,7 +112,7 @@
 													<th class="title"><label for="formTitle">제목</label></th>
 													<td colspan="2" class="title"><br> <input
 														type="text" name="title" id="title" maxlength="25">
-														 <br> <br class="cl_b"></td>
+														<br> <br class="cl_b"></td>
 												</tr>
 												<tr>
 													<th class="cont"><label for="formCont">본문</label></th>
@@ -118,6 +121,7 @@
 															style="width: 766px; height: 300px; display: none;"></textarea></td>
 												</tr>
 												<!-- 사진업로드 -->
+<!--
 												<tr>
 													<th class="img"><label for="formImg">관련 이미지</label></th>
 													<td colspan="2"><input type="file" class="afile3"
@@ -128,12 +132,14 @@
 													<td colspan="2" id="afile3-list"
 														style="border: 2px solid #c9c9c9; height: 20px"></td>
 												</tr>
+-->
+											
 											</tbody>
 										</table>
-										<br> 
-										<input class="btn btn-default" id="writeImg"
-											 value="글쓰기" type="button" onclick="content_submit()"> 
-											 <input class="btn btn-default"value="취소" type="button" onclick="cancel()">
+										<br> <input class="btn btn-default" id="writeImg"
+											value="글쓰기" type="button" onclick="content_submit()">
+										<input class="btn btn-default" value="취소" type="button"
+											onclick="cancel()">
 										<%-- <img class="action" id="writeImg"
 											src="${initParam.root }img/write_btn.jpg" alt="글입력"
 											onclick="content_submit()"> <img class="action"
@@ -148,4 +154,4 @@
 		</div>
 	</div>
 </div>
- 
+

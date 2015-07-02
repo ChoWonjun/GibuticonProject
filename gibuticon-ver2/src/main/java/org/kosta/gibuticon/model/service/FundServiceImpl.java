@@ -10,7 +10,6 @@ import org.kosta.gibuticon.model.fund.FundDAO;
 import org.kosta.gibuticon.model.fund.FundPhotoVO;
 import org.kosta.gibuticon.model.fund.FundVO;
 import org.kosta.gibuticon.model.fund.SearchOptionVO;
-import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
 import org.kosta.gibuticon.model.history.GibuHistoryVO;
@@ -43,7 +42,6 @@ public class FundServiceImpl implements FundService {
 
 	@Override
 	public FundVO getFundByNoNotHit(String no) {
-		// TODO Auto-generated method stub
 		FundVO vo = fundDAO.getFundByNo(no);
 		vo.setPhotoList(fundDAO.getPhotoByNo(no));
 		return vo;
@@ -83,7 +81,6 @@ public class FundServiceImpl implements FundService {
 
 	@Override
 	public int getTotalPostingCount(SearchOptionVO svo) {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalPostingCount(svo);
 	}
 
@@ -93,8 +90,8 @@ public class FundServiceImpl implements FundService {
 	}
 
 	@Override
-	public List<FundCommentVO> getCommentList(CommentPageVO commentPageVO) {
-		return fundDAO.getCommentList(commentPageVO);
+	public List<FundCommentVO> getCommentList(String fundNo, String commentPage) {
+		return fundDAO.getCommentList(fundNo, commentPage);
 	}
 
 	@Override
@@ -109,31 +106,26 @@ public class FundServiceImpl implements FundService {
 
 	@Override
 	public List<GibuHistoryVO> getGibuHistory(String memberId) {
-		// TODO Auto-generated method stub
 		return historyDAO.getGibuHistory(memberId);
 	}
 
 	@Override
 	public int getTotalGibuParticipants(String year) {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuParticipants(year);
 	}
 
 	@Override
 	public int getTotalGibuAmount(String year) {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuAmount(year);
 	}
 
 	@Override
 	public int getTotalGibuParticipants() {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuParticipants();
 	}
 
 	@Override
 	public int getTotalGibuAmount() {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuAmount();
 	}
 

@@ -48,16 +48,16 @@ public class FriendServiceImpl implements FriendService {
 
 	@Override
 	public HashMap<String, Object> findMember(String myId, String searchId) {
-		// TODO Auto-generated method stub
+
 		HashMap<String, Object> findResult = new HashMap<String, Object>();
 		MemberVO mvo = memberDAO.findMemberById(searchId);
-		if(mvo==null){
+		if (mvo == null) {
 			findResult.put("result", "null");
 		} else {
 			findResult.put("mvo", mvo);
 			findResult.put("result", "fail");
 			if (!myId.equals(searchId)) {
-				if (friendDAO.checkFriend(myId, searchId)==false) {
+				if (friendDAO.checkFriend(myId, searchId) == false) {
 					findResult.put("result", "ok");
 				}
 			}

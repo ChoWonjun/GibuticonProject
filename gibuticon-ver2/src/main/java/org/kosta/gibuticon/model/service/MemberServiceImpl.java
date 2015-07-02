@@ -42,9 +42,14 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Override
 	public MemberVO findMemberByEmail(String email) {
-		// TODO Auto-generated method stub
 		return memberDAO.findMemberByEmail(email);
 	}
+	
+	@Override
+	public MemberVO findMemberByBirth(String birth) {
+		return memberDAO.findMemberByBirth(birth);
+	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -96,28 +101,25 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberRankVO> getAmountRanks() {
-		// TODO Auto-generated method stub
 		return memberDAO.getAmountRanks();
 	}
 
 	@Override
 	public List<MemberRankVO> getFundCountRanks() {
-		// TODO Auto-generated method stub
 		return memberDAO.getFundCountRanks();
 	}
 	
 	@Override
 	public String findId(MemberVO memberVO) {
-		// TODO Auto-generated method stub
 		return memberDAO.findId(memberVO);
 	}
 	
 	@Override
 	public String findPassword(MemberVO memberVO) {
-		// TODO Auto-generated method stub
 		return memberDAO.findPassword(memberVO);
 	}
 	
+	@Override
 	public void decreasePoint(MemberVO memberVO){
 		memberDAO.decreasePoint(memberVO);
 	}

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +20,9 @@
 </script>
 
 </head>
-<body>
+<body>6
+<c:choose>
+<c:when test="${requestScope.gibuResult }">
 	기부해주셔서 감사합니다.
 	<hr>
 
@@ -31,5 +35,13 @@
 			type="submit" value="댓글달기"> <input type="button" value="닫기"
 			onclick="closeWindow()">
 	</form>
+</c:when>
+<c:otherwise>
+	보유콘이 부족합니다.<br><br>
+	
+	<input type="button" value="충전" onclick="javascript:location.href='${initParam.root}cone/chargeView.gibu'">
+	<input type="button" value="닫기" onclick="closeWindow()">
+</c:otherwise>
+</c:choose>
 </body>
 </html>

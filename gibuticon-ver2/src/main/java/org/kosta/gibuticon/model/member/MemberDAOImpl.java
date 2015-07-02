@@ -37,13 +37,28 @@ public class MemberDAOImpl implements MemberDAO {
 		return memberVO;
 	}
 	
+	/**
+	 * 
+	 * 
+	 */
 	@Override
 	public MemberVO findMemberByEmail(String email) {
-		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne(
 				"member.findMemberByEmail", email);
 	}
 
+	
+	/**
+	 * 
+	 * 
+	 */
+	@Override
+	public MemberVO findMemberByBirth(String birth) {
+		return sqlSessionTemplate.selectOne(
+				"member.findMemberByBirth", birth);
+	}
+
+	
 	/* (non-Javadoc)
 	 * @see org.kosta.gibuticon.model.member.MemberDAO#updateMember(org.kosta.gibuticon.model.member.MemberVO)
 	 */
