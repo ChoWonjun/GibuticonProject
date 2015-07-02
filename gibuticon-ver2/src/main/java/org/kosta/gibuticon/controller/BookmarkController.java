@@ -15,6 +15,15 @@ public class BookmarkController {
 	@Resource(name="bookmarkServiceImpl")
 	private BookmarkService bookmarkService;
 	
+	
+	/**
+	 * 
+	 * 
+	 * 유경희
+	 * @param myId
+	 * @param fundNo
+	 * @return
+	 */
 	@RequestMapping("bookmark/addBookmark.gibu")
 	public String addBookmark(String myId, String fundNo){
 		boolean flag=false;
@@ -31,11 +40,29 @@ public class BookmarkController {
 		}
 		return "redirect:getBookmarkList.gibu?myId="+myId;
 	}
+	
+	/**
+	 * 
+	 * 
+	 * 유경희
+	 * @param myId
+	 * @return
+	 */
 	@RequestMapping("bookmark/getBookmarkList.gibu")
 	public ModelAndView getBookmarkList(String myId){
 		List<BookmarkVO> list=bookmarkService.getBookmarkList(myId);
 		return new ModelAndView("mypage_bookmarkList","list",list);
 	}
+	
+	
+	/**
+	 * 
+	 * 
+	 * 유경희
+	 * @param myId
+	 * @param fundNo
+	 * @return
+	 */
 	@RequestMapping("bookmark/delBookmark.gibu")
 	public String delBookmark(String myId, String fundNo){
 		BookmarkVO bvo=new BookmarkVO(myId, fundNo);

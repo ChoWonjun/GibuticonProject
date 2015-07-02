@@ -26,25 +26,45 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ConeController {
+	
 	@Resource
 	private ConeService coneService;
 	@Resource
+	
 	private GiftService giftService;
 	@Resource
+	
 	private EmailService emailService;
 	@Resource
+	
 	private FriendService friendService;
 	@Resource
+	
 	private MemberService memberService;
+	
 	@Resource
 	private MessageService messageService;
 	private Logger log = LoggerFactory.getLogger(getClass());
 
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @return
+	 */
 	@RequestMapping("cone/chargeView.gibu")
 	public ModelAndView chargeView() {
 		return new ModelAndView("cone/charge");
 	}
 
+	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("cone/gibuView.gibu")
 	public String gibuView(HttpServletRequest request) {
 		HttpSession session=request.getSession(false);
@@ -52,12 +72,30 @@ public class ConeController {
 			return "redirect:../member/loginView.gibu";
 		return "cone/gibu";
 	}
-
+	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @return
+	 */
 	@RequestMapping("cone/mycone.gibu")
 	public ModelAndView mycone() {
 		return new ModelAndView("cone_mycone");
 	}
 
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param memberVO
+	 * @param point
+	 * @param session
+	 * @param paymentType
+	 * @param request
+	 * @param pinNo
+	 * @return
+	 */
 	@RequestMapping("cone/charge.gibu")
 	@ResponseBody
 	public String charge(MemberVO memberVO, int point, HttpSession session,
@@ -85,6 +123,16 @@ public class ConeController {
 		return message;
 	}
 
+	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param fundVO
+	 * @param point
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("cone/gibu.gibu")
 	public ModelAndView gibu(FundVO fundVO, int point,
 			HttpServletRequest request) {
@@ -99,6 +147,14 @@ public class ConeController {
 				fundVO.getFundNo());
 	}
 	
+	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("cone/giftForm.gibu")
 	public ModelAndView giftForm(HttpServletRequest request){
 		HttpSession session = request.getSession();
@@ -107,6 +163,16 @@ public class ConeController {
 		return new ModelAndView("cone/giftForm","friendlist",friendService.getFriendList(memberVO.getId()));
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param price
+	 * @param senderId
+	 * @param receiverId
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("cone/giftToMember")
 	public ModelAndView giftToMember(String price, String senderId, String receiverId, HttpServletRequest request){
 		System.out.println("price: "+price +", senderId: "+ senderId +", receiverID: "+ receiverId);
@@ -139,6 +205,17 @@ public class ConeController {
 		return new ModelAndView("redirect:../message/sendRead.gibu?no="+messageVO.getNo());
 	}
 
+	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param price
+	 * @param sender
+	 * @param reciever
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping(value="cone/giftToNonMember",method=RequestMethod.POST)
 	@ResponseBody
 	public String giftToNonMember(String price, String sender, String reciever , 

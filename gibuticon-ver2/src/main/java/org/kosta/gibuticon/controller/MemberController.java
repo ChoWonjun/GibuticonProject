@@ -33,6 +33,14 @@ public class MemberController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(HomeController.class);
 
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @param loginForm
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "member/loginView", method = RequestMethod.GET)
 	public String loginView(@ModelAttribute LoginForm loginForm,
 			HttpServletRequest request) {
@@ -43,17 +51,12 @@ public class MemberController {
 	 * login 화면으로 이동. loginForm.jsp에서 spring el로 validation 적용하기 위해서
 	 * loginForm이라는 이름의 빈 객체를 전달.
 	 * 
+	 * 
+	 * 조원준
 	 * @param loginForm
 	 * @param request
 	 * @return
 	 */
-	/*
-	 * @RequestMapping(value = "member/loginForm", method = RequestMethod.GET)
-	 * public String loginForm(@ModelAttribute LoginForm loginForm, String prev,
-	 * HttpServletRequest request, Model model) { model.addAttribute("prev",
-	 * prev); return "member_loginForm"; }
-	 */
-
 	@RequestMapping(value = "member/loginModal", method = RequestMethod.GET)
 	public String loginModal(Model model, String prev) {
 		model.addAttribute("prev", prev);
@@ -65,6 +68,8 @@ public class MemberController {
 	 * session에 "mvo"로 회원정보 저장. home으로 이동. vo가 null이면 member_login_fail로 이동해
 	 * alert(). home으로 이동.
 	 * 
+	 * 
+	 * 조원준
 	 * @param vo
 	 * @param request
 	 * @return
@@ -121,6 +126,7 @@ public class MemberController {
 	/**
 	 * 회원가입시 id중복체크 후 결과를 ajax 방식으로 회원가입 화면으로 전달한다.
 	 * 
+	 * 조원준
 	 * @param id
 	 * @return
 	 */
@@ -137,6 +143,13 @@ public class MemberController {
 		return message;
 	}
 
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @param email
+	 * @return
+	 */
 	@RequestMapping(value = "member/emailCheck", method = RequestMethod.POST)
 	@ResponseBody
 	public String emailCheck(String email) {
@@ -156,6 +169,7 @@ public class MemberController {
 	 * registerMember()로 DB(member table)에 등록. 새로고침시 에러를 피하기 위해 redirect로
 	 * MemberController의 registerResult 메서드에 id 전달.
 	 * 
+	 * 조원준
 	 * @param vo
 	 * @param request
 	 * @return
@@ -175,6 +189,7 @@ public class MemberController {
 	 * registerMember 메서드에서 보내준 id로 findMemberById 를 실행해서 등록한 회원정보를 반환받은 뒤
 	 * registerMember_result.jsp 로 회원정보 전달.
 	 * 
+	 * 조원준
 	 * @param request
 	 * @param model
 	 * @return
@@ -191,6 +206,7 @@ public class MemberController {
 	 * updateMemberForm에서 spring el 로 validation을 실행하기 위해서 memberVO라는 이름으로 빈
 	 * MemberVO객체를 전달.
 	 * 
+	 * 조원준
 	 * @param request
 	 * @return
 	 */
@@ -207,6 +223,7 @@ public class MemberController {
 	 * MemberVO객체로 받아와서 updateMember()로 DB(member table)에 등록. 새로고침시 에러를 피하기 위해
 	 * redirect로 MemberController의 updateResult 메서드에 id 전달.
 	 * 
+	 * 조원준
 	 * @param vo
 	 * @param request
 	 * @return
@@ -227,6 +244,7 @@ public class MemberController {
 	 * updateMember 메서드에서 보내준 id로 findMemberById 를 실행해서 등록한 회원정보를 반환받은 뒤
 	 * updateMember_result.jsp 로 회원정보 전달.
 	 * 
+	 * 조원준
 	 * @param request
 	 * @param model
 	 * @return
@@ -239,11 +257,27 @@ public class MemberController {
 		return "member_updateMember_result";
 	}
 	
+	
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @return
+	 */
 	@RequestMapping("member/findIdForm")
 	public String findIdForm(){
 		return "member_findIdForm";
 	}
 
+	
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @param name
+	 * @param email
+	 * @return
+	 */
 	@RequestMapping("member/findId")
 	@ResponseBody
 	public String findId(String name, String email) {
@@ -256,11 +290,27 @@ public class MemberController {
 		return id;
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @return
+	 */
 	@RequestMapping("member/findPasswordForm.gibu")
 	public String findPasswordForm(){
 		return "member_findPasswordForm";
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @param name
+	 * @param id
+	 * @param email
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("member/findPassword")
 	@ResponseBody
 	public String findPassword(String name, String id, String email) throws Exception {
@@ -289,6 +339,7 @@ public class MemberController {
 	/**
 	 * mypage.jsp로 이동
 	 * 
+	 * 조원준
 	 * @return
 	 */
 	@LoginCheck
@@ -301,6 +352,7 @@ public class MemberController {
 	 * memberRanksView.jsp로 이동. getAmountRanks() 메서드를 실행해서 기부액 순위를 반환받고,
 	 * getFundCountRanks() 메서드를 실행해서 모금 사연 순위를 반환받아 전달한다.
 	 * 
+	 * 조원준
 	 * @return
 	 */
 	@RequestMapping("member/memberRanksView")

@@ -32,10 +32,18 @@ public class FundController {
 
 	@Resource
 	private FundService fundService;
+	
 	@Resource
 	private MemberService memberService;
 	private Logger log = LoggerFactory.getLogger(getClass());
 
+	/**
+	 * 
+	 * @param pageNo
+	 * @param no
+	 * @param svo
+	 * @return
+	 */
 	@RequestMapping("fund/getList.gibu")
 	public ModelAndView getList(String pageNo, String no, SearchOptionVO svo) {
 		if (no != null)
@@ -44,12 +52,21 @@ public class FundController {
 			pageNo = "1";
 
 		svo.setPageNo(pageNo);
-		List<FundVO> list = fundService.getFundList(svo);		
-		ListVO vo = new ListVO(list, new PagingBean(
-				fundService.getTotalPostingCount(svo), Integer.parseInt(pageNo)),svo);
+		List<FundVO> list = fundService.getFundList(svo);
+		ListVO vo = new ListVO(list,
+				new PagingBean(fundService.getTotalPostingCount(svo),
+						Integer.parseInt(pageNo)), svo);
 		return new ModelAndView("fund_list", "vo", vo);
 	}
 
+	/**
+	 * 
+	 * @param no
+	 * @param commentPage
+	 * @param request
+	 * @param response
+	 * @return
+	 */
 	@RequestMapping("fund/showContent.gibu")
 	public ModelAndView showContent(String no, String commentPage,
 			HttpServletRequest request, HttpServletResponse response) {
@@ -86,8 +103,7 @@ public class FundController {
 		if (commentPage == null)
 			commentPage = "1";
 
-		List<FundCommentVO> list = fundService
-				.getCommentList(no, commentPage);
+		List<FundCommentVO> list = fundService.getCommentList(no, commentPage);
 		CommentListVO listVO = new CommentListVO(list, new CommentPagingBean(
 				fundService.getTotalCommentCount(no),
 				Integer.parseInt(commentPage)));
@@ -102,17 +118,31 @@ public class FundController {
 		return mv;
 	}
 
+	/**
+	 * 
+	 * @param no
+	 * @return
+	 */
 	@RequestMapping("fund/showContentNotHit.gibu")
 	public ModelAndView showContentNoHit(String no) {
 		FundVO vo = fundService.getFundByNoNotHit(no);
 		return new ModelAndView("fund_show_content", "posting", vo);
 	}
 
-	@RequestMapping(value="fund/writeForm.gibu",method=RequestMethod.GET)
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "fund/writeForm.gibu", method = RequestMethod.GET)
 	public ModelAndView fundWriteForm(HttpServletRequest request) {
 		return new ModelAndView("fund_write");
 	}
 
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping("fund/currentState.gibu")
 	public ModelAndView currentState() {
 		ModelAndView mv = new ModelAndView();
@@ -123,6 +153,11 @@ public class FundController {
 		return mv;
 	}
 
+	/**
+	 * 
+	 * @param year
+	 * @return
+	 */
 	@RequestMapping("fund/currentStateYear.gibu")
 	@ResponseBody
 	public HashMap<String, Object> currentStateYear(String year) {
@@ -132,12 +167,23 @@ public class FundController {
 		return map;
 	}
 
+	/**
+	 * 
+	 * @param no
+	 * @return
+	 */
 	@RequestMapping("fund/updateForm.gibu")
 	public ModelAndView updateForm(String no) {
 		return new ModelAndView("fund_update", "posting",
 				fundService.getFundByNoNotHit(no));
 	}
 
+	/**
+	 * 
+	 * @param fundVO
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping(value = "fund/write.gibu", method = RequestMethod.POST)
 	public ModelAndView write(FundVO fundVO, HttpServletRequest request) {
 		System.out.println(fundVO.getContent());
@@ -147,6 +193,11 @@ public class FundController {
 				fundVO.getFundNo());
 	}
 
+	/**
+	 * 
+	 * @param vo
+	 * @return
+	 */
 	@RequestMapping("fund/update.gibu")
 	public ModelAndView updateFund(FundVO vo) {
 		fundService.updateFund(vo);
@@ -154,12 +205,23 @@ public class FundController {
 				vo.getFundNo());
 	}
 
+	/**
+	 * 
+	 * @param no
+	 * @return
+	 */
 	@RequestMapping("fund/delete.gibu")
 	public ModelAndView delete(String no) {
 		fundService.deleteFundByNo(no);
 		return new ModelAndView("redirect:getList.gibu");
 	}
 
+	/**
+	 * 
+	 * @param fundCommentVO
+	 * @param memberId
+	 * @return
+	 */
 	@RequestMapping("fund/writeComment.gibu")
 	public ModelAndView writeComment(FundCommentVO fundCommentVO,
 			String memberId) {
@@ -168,6 +230,11 @@ public class FundController {
 		return new ModelAndView("fund/writeComment_result");
 	}
 
+	/**
+	 * 
+	 * @param memberId
+	 * @return
+	 */
 	@RequestMapping("history/getChargeHistory.gibu")
 	@ResponseBody
 	public List<ChargeHistoryVO> getChargeHistory(String memberId) {
@@ -176,6 +243,11 @@ public class FundController {
 		return list;
 	}
 
+	/**
+	 * ㄴ
+	 * @param memberId
+	 * @return
+	 */
 	@RequestMapping("history/getGibuHistory.gibu")
 	@ResponseBody
 	public List<GibuHistoryVO> getGibuHistory(String memberId) {

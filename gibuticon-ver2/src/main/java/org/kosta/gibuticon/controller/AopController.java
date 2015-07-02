@@ -18,6 +18,13 @@ public class AopController {
 	@Resource
 	private AopService aopService;
 	
+	
+	/**
+	 * 
+	 * 
+	 * 조원준
+	 * @return
+	 */
 	@AfterThrowing("execution(public * org.kosta.gibuticon.model.service..*ServiceImpl.*(..))")
 	public String errorView(){
 		return "error";

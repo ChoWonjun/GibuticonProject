@@ -17,16 +17,36 @@ public class FriendController {
 	@Resource
 	private FriendService friendService;
 	
+	/**
+	 * 
+	 * 정효섭
+	 * @return
+	 */
 	@RequestMapping("friend/memberlist.gibu")
 	public ModelAndView memberlist(){
 		return new ModelAndView("friend_memberlist","list",friendService.getMemberList());
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param myId
+	 * @return
+	 */
 	@RequestMapping("friend/friendlist.gibu")
 	public ModelAndView friendlist(String myId){
 		return new ModelAndView("mypage_friendlist","list",friendService.getFriendList(myId));
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param myId
+	 * @param friendId
+	 * @return
+	 */
 	@RequestMapping("friend/addFriend.gibu")
 	@ResponseBody
 	public boolean addFriend(String myId, String friendId){
@@ -35,6 +55,14 @@ public class FriendController {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param myId
+	 * @param friendId
+	 * @return
+	 */
 	@RequestMapping("friend/delFriend.gibu")
 	@ResponseBody
 	public boolean delFriend(String myId, String friendId){
@@ -43,6 +71,14 @@ public class FriendController {
 		return true;
 	}
 	
+	/**
+	 * 
+	 * 
+	 * 정효섭
+	 * @param id
+	 * @param session
+	 * @return
+	 */
 	@RequestMapping("friend/findMember.gibu")
 	@ResponseBody
 	public HashMap<String, Object> findMember(String id, HttpSession session){
