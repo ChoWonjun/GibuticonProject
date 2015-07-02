@@ -77,10 +77,10 @@
 							<div class="col-md-12">
 								<div class="contentwrap">
 									<article class="container">
-										<div class="page-header">
-											<h1>
-												<span style="font-family: &amp; amp;">회원가입</span>
-											</h1>
+										<div class="col-md-12 col-md-offset-1">	
+										<br><br>					
+											<img src="${initParam.root}img\g_member_register.jpg" width="650">
+										<br><br><br><br>
 										</div>
 										<br> <br>
 										<form:form class="form-horizontal" name="registerForm"
@@ -178,9 +178,11 @@
 											</div>
 											<br>
 											<div class="form-group">
-												<div class="col-sm-6">
+												<div class="col-sm-6 col-md-offset-1">
+												<br><br>
 													<a href="#"> <input id="registerBtn"
 														class="btn btn-default" type="button" value="회원가입 "></a>
+														<br><br><br><br>
 												</div>
 											</div>
 										</form:form>

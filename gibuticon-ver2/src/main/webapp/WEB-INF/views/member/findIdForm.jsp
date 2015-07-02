@@ -41,7 +41,7 @@
 
 	<form action="member/findId.gibu" id="findIdForm" name="findIdForm">
 		 이름 <br>
-		<input style="width: 500px;" type="text" class="form-control col-md-3"
+		<input style="width: 500px;" class="form-control col-md-3" type="text" 
 			id="name" name="name" placeholder="Name"> <br><br><br>
 		
 		이메일<br>
