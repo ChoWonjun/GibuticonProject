@@ -383,9 +383,9 @@ public class MemberController {
 			emailVO.setSubject("기부티콘 비밀번호 안내입니다.");
 			emailVO.setContent(name + "님의 기부티콘 비밀번호는 " + password + " 입니다.");
 			if (emailService.sendMail(emailVO)) {
-				message = "비밀번호 안내 메일을 전송했습니다.";
+				message = "ok";
 			} else {
-				message = "비밀번호 안내 메일 전송에 실패했습니다.";
+				message = "fail";
 			}
 		}
 		return message;
