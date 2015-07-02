@@ -24,7 +24,7 @@ public class FriendController {
 	
 	@RequestMapping("friend/friendlist.gibu")
 	public ModelAndView friendlist(String myId){
-		return new ModelAndView("friend_friendlist","list",friendService.getFriendList(myId));
+		return new ModelAndView("mypage_friendlist","list",friendService.getFriendList(myId));
 	}
 	
 	@RequestMapping("friend/addFriend.gibu")

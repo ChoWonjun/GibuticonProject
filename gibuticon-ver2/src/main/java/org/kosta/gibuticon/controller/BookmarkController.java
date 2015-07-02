@@ -34,7 +34,7 @@ public class BookmarkController {
 	@RequestMapping("bookmark/getBookmarkList.gibu")
 	public ModelAndView getBookmarkList(String myId){
 		List<BookmarkVO> list=bookmarkService.getBookmarkList(myId);
-		return new ModelAndView("bookmark_bookmarkList","list",list);
+		return new ModelAndView("mypage_bookmarkList","list",list);
 	}
 	@RequestMapping("bookmark/delBookmark.gibu")
 	public String delBookmark(String myId, String fundNo){
