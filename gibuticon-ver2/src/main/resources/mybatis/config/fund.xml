@@ -145,22 +145,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		gibu_fund_comment(comment_no,fund_no,member_id,text,comment_time)
 		values(gibu_fund_comment_seq.nextval,#{fundNo},#{memberVO.id},#{text},sysdate)
 	</insert>
+	
+	<resultMap type="fundCommentVO" id="fundCommentRM">
+		<result property="memberVO.id" column="member_id" />
+		<result property="memberVO.name" column="name" />
+		<result property="commentNo" column="comment_no" />
+		<result property="fundNo" column="fund_no" />
+		<result property="commentTime" column="comment_time" />
+   </resultMap>
 
-	<select id="getCommentList" resultType="fundCommentVO"
-		parameterType="commentPageVO">
+	<select id="getCommentList" resultMap="fundCommentRM">
 		select * from(
-		select commentno, fundno, text,
-		commenttime, id, name, ceil(rownum/5) as
-		page from
-		(select co.comment_no
-		commentno, co.fund_no fundno, co.text, co.comment_time
-		commenttime,
-		co.member_id id, mem.name name from gibu_fund_comment co, member mem
-		where
-		co.member_id=mem.id order by comment_no desc
-		))
-		where
-		page=${commentPage} and fundno=${fundNo}
+			select comment_no, fund_no, text,
+			comment_time, member_id, name, ceil(rownum/5) as page from(
+				select co.comment_no, co.fund_no, co.text, to_char(co.comment_time,'yy-mm-dd hh:mi') comment_time,
+				co.member_id, mem.name from gibu_fund_comment co, member mem
+				where co.member_id=mem.id order by comment_no desc
+			)
+		) where page=#{commentPage} and fund_no=#{fundNo}
 	</select>
 
 	<select id="getTotalCommentCount" resultType="int">

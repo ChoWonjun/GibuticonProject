@@ -20,8 +20,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 			alias="fundPhotoVO" />
 		<typeAlias type="org.kosta.gibuticon.model.fund.comment.FundCommentVO"
 			alias="fundCommentVO" />
-		<typeAlias type="org.kosta.gibuticon.model.fund.comment.CommentPageVO"
-			alias="commentPageVO" />
 		<typeAlias type="org.kosta.gibuticon.model.fund.FundPhotoVO"
 			alias="fundPhotoVO" />
 		<typeAlias type="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentVO"

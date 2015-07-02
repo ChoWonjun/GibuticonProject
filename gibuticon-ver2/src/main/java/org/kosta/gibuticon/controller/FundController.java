@@ -13,7 +13,6 @@ import org.kosta.gibuticon.model.fund.ListVO;
 import org.kosta.gibuticon.model.fund.PagingBean;
 import org.kosta.gibuticon.model.fund.SearchOptionVO;
 import org.kosta.gibuticon.model.fund.comment.CommentListVO;
-import org.kosta.gibuticon.model.fund.comment.CommentPageVO;
 import org.kosta.gibuticon.model.fund.comment.CommentPagingBean;
 import org.kosta.gibuticon.model.fund.comment.FundCommentVO;
 import org.kosta.gibuticon.model.history.ChargeHistoryVO;
@@ -88,7 +87,7 @@ public class FundController {
 			commentPage = "1";
 
 		List<FundCommentVO> list = fundService
-				.getCommentList(new CommentPageVO(no, commentPage));
+				.getCommentList(no, commentPage);
 		CommentListVO listVO = new CommentListVO(list, new CommentPagingBean(
 				fundService.getTotalCommentCount(no),
 				Integer.parseInt(commentPage)));

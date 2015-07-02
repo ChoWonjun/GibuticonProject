@@ -196,7 +196,7 @@
 												<td>${comment.commentNo }</td>
 												<td>${comment.text }</td>
 												<td>${comment.commentTime }</td>
-												<td>${comment.memberVO.id }</td>
+												<td>${comment.memberVO.name }<br>(${comment.memberVO.id })</td>
 												<td><c:if
 														test="${comment.memberVO.id==sessionScope.mvo.id }">
 														<input class="btn btn-default" value="삭제하기" type="button"
