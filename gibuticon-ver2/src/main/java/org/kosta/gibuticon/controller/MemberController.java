@@ -176,6 +176,26 @@ public class MemberController {
 		}
 		return message;
 	}
+	
+	/**
+	 * 생년월일 체크하는 컨트롤러 
+	 * 
+	 * 조원준
+	 * @param email
+	 * @return
+	 */
+	@RequestMapping(value = "member/birthCheck", method = RequestMethod.POST)
+	@ResponseBody
+	public String birthCheck(String birth) {
+		String message = null;
+		MemberVO mvo = memberService.findMemberByBirth(birth);
+		if (mvo == null) {
+			message = "true";
+		} else if (mvo != null) {
+			message = "fail";
+		}
+		return message;
+	}
 
 	/**
 	 * 

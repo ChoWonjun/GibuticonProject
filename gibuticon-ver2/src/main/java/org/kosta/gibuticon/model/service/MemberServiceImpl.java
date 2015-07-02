@@ -44,6 +44,12 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO findMemberByEmail(String email) {
 		return memberDAO.findMemberByEmail(email);
 	}
+	
+	@Override
+	public MemberVO findMemberByBirth(String birth) {
+		return memberDAO.findMemberByBirth(birth);
+	}
+	
 
 	/*
 	 * (non-Javadoc)
