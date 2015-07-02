@@ -30,34 +30,11 @@
 	});
 </script>
 
-<br>
-<br>
-<br>
-<br>
 
 <div align="center">
-	<img src="${initParam.root }img/g_gibusite_banner.jpg" width="1280">
+	<img src="${initParam.root }img/g_gibusite_banner.jpg" width="100%">
 </div>
-
-
-<br>
-<br>
-<br>
-<div class="section">
-	<div class="container">
-		<div class="col-md-offset-8">
-			<select name="site" style="height: 30px; width: 400px;">
-				<option value="">사이트별 보기</option>
-				<option value="희망제작소">희망제작소</option>
-				<option value="드림풀">드림풀</option>
-				<option value="희망해">희망해</option>
-				<option value="해피빈">헤피빈</option>
-			</select>
-		</div>
-	</div>
-</div>
-
-
+<br><br>
 <div class="col-md-offset-7">
 	<c:set value="${requestScope.vo.searchOption}" var="option"></c:set>
 	<form action="${initParam.root }fund/getList.gibu"
@@ -85,70 +62,68 @@
 
 
 <hr>
-
-<br>
-<hr>
-
-
-<div class="row">
-	<%-- <c:forEach items=""> --%>
-	<c:forEach items="${requestScope.vo.list}" var="FundVO">
-		<c:forEach items="${FundVO.photoList }" var="FundPhotoVO" begin="0"
-			end="0">
-			<c:set value="${FundPhotoVO.realName }" var="photoName" />
-		</c:forEach>
-		<!-- 1st 사연 -->
-		<div class="col-md-4" id="imgTile">
-			<c:choose>
-				<c:when test="${photoName!=null}">
-					<a
-						href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
-						src="${initParam.root}upload/${photoName}" width="100%"
-						name="imgEl"
-						onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
-						onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
-				</c:when>
-				<c:otherwise>
-					<a
-						href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
-						src="${initParam.root}img/basicImg.jpg" width="100%" id="imgEl"
-						onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
-						onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
-				</c:otherwise>
-			</c:choose>
-			<h4>${FundVO.fundName }</h4>
-			<div>${FundVO.startDate }~${FundVO.dueDate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  ${FundVO.curSum }원</div>
-			<!-- progress bar -->
-			<div class="progress" width="100%">
-				<div class="progress-bar" role="progressbar" aria-valuemin="0"
-					aria-valuemax="100" aria-text=" ${FundVO.progress }%"
-					style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }%</div>
+<div class="container">
+	<div class="row">
+		<%-- <c:forEach items=""> --%>
+		<c:forEach items="${requestScope.vo.list}" var="FundVO">
+			<c:forEach items="${FundVO.photoList }" var="FundPhotoVO" begin="0"
+				end="0">
+				<c:set value="${FundPhotoVO.realName }" var="photoName" />
+			</c:forEach>
+			<!-- 1st 사연 -->
+			<div class="col-md-4" id="imgTile">
+				<c:choose>
+					<c:when test="${photoName!=null}">
+						<a
+							href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
+							src="${initParam.root}upload/${photoName}" width="100%"
+							name="imgEl"
+							onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
+							onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+					</c:when>
+					<c:otherwise>
+						<a
+							href="${initParam.root }fund/showContent.gibu?no=${FundVO.fundNo }"><img
+							src="${initParam.root}img/basicImg.jpg" width="100%" id="imgEl"
+							onMouseOver="this.style.opacity='.6'; this.style.filter='alpha(opacity=60)'"
+							onMouseOut="this.style.opacity='1.0'; this.style.filter='alpha(opacity=100)'" /></a>
+					</c:otherwise>
+				</c:choose>
+				<h4>${FundVO.fundName }</h4>
+				<div>${FundVO.startDate }~${FundVO.dueDate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					${FundVO.curSum }원</div>
+				<!-- progress bar -->
+				<div class="progress" width="100%">
+					<div class="progress-bar" role="progressbar" aria-valuemin="0"
+						aria-valuemax="100" aria-text=" ${FundVO.progress }%"
+						style="width: ${FundVO.progress }%; text-align:left;">&nbsp;&nbsp;${FundVO.progress }%</div>
+				</div>
+				<div>${FundVO.proposal}</div>
+				<br>
 			</div>
-			<div>${FundVO.proposal}</div>
-			<br>
-		</div>
 
-	</c:forEach>
-</div>
-<div class="col-md-offset-6 col-md-6">
-	<ul class="pagination">
-		<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
-		<c:if test="${pb.previousPageGroup}">
-			<li><a
-				href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&rank=${option.rank}&category=${option.category}&word=${option.word}">Prev</a>
-			</li>
-		</c:if>
-		<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-				end="${pb.endPageOfPageGroup}">
-				<a
-					href="${initParam.root }fund/getList.gibu?pageNo=${i }&rank=${option.rank}&category=${option.category}&word=${option.word}">${i }</a>
-			</c:forEach></li>
-		<c:if test="${pb.nextPageGroup}">
-			<li><a
-				href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&rank=${option.rank}&category=${option.category}&word=${option.word}">Next</a>
-			</li>
-		</c:if>
-	</ul>
+		</c:forEach>
+	</div>
+	<div class="col-md-offset-6 col-md-6">
+		<ul class="pagination">
+			<c:set var="pb" value="${requestScope.vo.pagingBean}"></c:set>
+			<c:if test="${pb.previousPageGroup}">
+				<li><a
+					href="${initParam.root }fund/getList.gibu?pageNo=${pb.startPageOfPageGroup-1}&rank=${option.rank}&category=${option.category}&word=${option.word}">Prev</a>
+				</li>
+			</c:if>
+			<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+					end="${pb.endPageOfPageGroup}">
+					<a
+						href="${initParam.root }fund/getList.gibu?pageNo=${i }&rank=${option.rank}&category=${option.category}&word=${option.word}">${i }</a>
+				</c:forEach></li>
+			<c:if test="${pb.nextPageGroup}">
+				<li><a
+					href="${initParam.root }fund/getList.gibu?pageNo=${pb.endPageOfPageGroup+1}&rank=${option.rank}&category=${option.category}&word=${option.word}">Next</a>
+				</li>
+			</c:if>
+		</ul>
+	</div>
 </div>
 <br></br>
 <br></br>

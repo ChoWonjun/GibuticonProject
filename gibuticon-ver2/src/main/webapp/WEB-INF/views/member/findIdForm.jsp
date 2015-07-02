@@ -42,15 +42,16 @@
 	<br>
 
 	<form action="member/findId.gibu" id="findIdForm" name="findIdForm">
-		이름 <br> <input style="width: 500px;" type="text"
-			class="form-control col-md-3" id="name" name="name"
-			placeholder="Name"> <br>
-		<br>
-		<br> 이메일<br> <input style="width: 500px;" type="email"
-			class="form-control" id="email" name="email" placeholder="E-mail">
-		<br>
-		<br> <input type="button" class="btn btn-default" id="findBtn"
-			name="findBtn" value="아이디 찾기">
+
+		 이름 <br>
+		<input style="width: 500px;" class="form-control col-md-3" type="text" 
+			id="name" name="name" placeholder="Name"> <br><br><br>
+		
+		이메일<br>
+		<input style="width: 500px;" type="email" class="form-control"
+			id="email" name="email" placeholder="E-mail">
+		<br><br>
+		 <input type="button" class="btn btn-default" id="findBtn" name="findBtn" value="아이디 찾기">
 	</form>
 	<br>
 	<div id="findIdResult"></div>

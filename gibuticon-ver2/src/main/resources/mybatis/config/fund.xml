@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select fundno, fundname, proposal, homepage, cursum,
 		goalsum, participant,
 		startdate, duedate, content, hits, category,
-		source, progress, ceil(rownum/9) as page from
+		source, progress, ceil(rownum/6) as page from
 		(select fund_no fundno, fund_name
 		fundname, proposal, homepage,
 		cur_sum cursum, goal_sum goalsum,
@@ -62,7 +62,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getPageNo" parameterType="searchOptionVO" resultType="string">
 		select page from(
 		select
-		fundno, ceil(rownum/5) as page from(
+		fundno, ceil(rownum/6) as page from(
 		select fund_no as fundno,  nullif(cur_sum,0)/goal_sum*100 as progress from
 		gibu_fund
 		<where>

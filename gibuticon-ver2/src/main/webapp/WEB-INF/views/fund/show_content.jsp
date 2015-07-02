@@ -122,10 +122,35 @@
 					<!-- empty element for pager links -->
 					<div class="cycle-pager"></div>
 					<c:forEach items="${photoList}" var="photo" varStatus="i">
-						<img id="fundPhoto" src="${initParam.root }/upload/${photo.realName}">
+						<img id="fundPhoto"
+							src="${initParam.root }/upload/${photo.realName}">
 					</c:forEach>
 				</div>
 			</div>
+			${fund.content }
+			<div class="section">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-2">
+							<a href="javascript:gibuPopup()" role="button"
+								class="btn btn-default">기부하기</a>
+						</div>
+
+						<div class="col-md-2">
+							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a>
+						</div>
+						<div class="col-md-2">
+							<a
+								href="${initParam.root }fund/getList.gibu<%-- ?no=${requestScope.posting.fundNo} --%>"
+								class="btn btn-default">목록보기</a>
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+
 			<div class="col-md-6" align="center">
 				<h4>
 					<span style="font-family: &amp; amp;"><br> <strong>모금세부
@@ -160,27 +185,14 @@
 						</tr> --%>
 					</tbody>
 				</table>
-				${fund.content }
+
 			</div>
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<a href="javascript:gibuPopup()" role="button"
-								class="btn btn-default">기부하기</a></div>
-						
-							<div class="col-md-2">
-							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a></div>
-								<div class="col-md-2">
-								<a href="${initParam.root }fund/getList.gibu<%-- ?no=${requestScope.posting.fundNo} --%>" class="btn btn-default">목록보기</a></div>						
-					</div>
-				</div>
-			</div>
+
 			<div class="section">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
-							<div class="col-md-offset-2 col-md-8 col-md-offset-2">
+							<div class="col-md-12">
 								<table class="table" style="font-family: &amp; amp;">
 									<thead>
 										<tr>
@@ -196,7 +208,8 @@
 												<td>${comment.commentNo }</td>
 												<td>${comment.text }</td>
 												<td>${comment.commentTime }</td>
-												<td>${comment.memberVO.name }<br>(${comment.memberVO.id })</td>
+												<td>${comment.memberVO.name }<br>(${comment.memberVO.id })
+												</td>
 												<td><c:if
 														test="${comment.memberVO.id==sessionScope.mvo.id }">
 														<input class="btn btn-default" value="삭제하기" type="button"
