@@ -1,6 +1,5 @@
 package org.kosta.gibuticon.model.freeBoard;
 
-
 import org.kosta.gibuticon.model.member.MemberVO;
 
 public class FreeBoardVO {
@@ -18,34 +17,6 @@ public class FreeBoardVO {
 	public FreeBoardVO() {
 		super();
 	}
-
-	/*public FreeBoardVO(String title, String content, String id) {
-		super();
-		this.title = title;
-		this.content = content;
-		this.id = id;
-	}*/
-
-	/*public FreeBoardVO(String boardNo, String title, String content, String id) {
-		super();
-		this.boardNo = boardNo;
-		this.title = title;
-		this.content = content;
-		this.id = id;
-	}*/
-
-	/*public FreeBoardVO(String boardNo, String title, Date writeDate,
-			String content, int hits, String id) {
-		super();
-		this.boardNo = boardNo;
-		this.title = title;
-		this.writeDate = writeDate;
-		this.content = content;
-		this.hits = hits;
-		this.id = id;
-	}*/
-
-	
 
 	public String getBoardNo() {
 		return boardNo;

@@ -12,6 +12,8 @@ public class LoginCheckInterceptor extends HandlerInterceptorAdapter {
 
 	/**
 	 * 
+	 * 
+	 * 조원준
 	 */
 	@Override
 	public boolean preHandle(HttpServletRequest request,
