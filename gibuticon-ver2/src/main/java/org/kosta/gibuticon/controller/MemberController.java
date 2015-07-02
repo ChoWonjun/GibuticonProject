@@ -104,8 +104,11 @@ public class MemberController {
 	}
 
 	/**
+	 * 
+	 * 
 	 * logout 기능. session.invalidate() 실행 후 home으로 이동.
 	 * 
+	 * 조원준
 	 * @param request
 	 * @return
 	 */
@@ -122,6 +125,7 @@ public class MemberController {
 	 * registerForm.jsp에서 spring el 로 validation을 적용하기 위해서
 	 * memberVO라는 이름의 빈 객체를 전달.
 	 * 
+	 * 조원준
 	 * @param request
 	 * @return
 	 */
@@ -264,6 +268,7 @@ public class MemberController {
 		return "redirect:updateMemberResult.gibu?id=" + memberVO.getId();
 	}
 
+	
 	/**
 	 * 멥버정보를 업데이트 시킨 후 결과를 보여주는 뷰로 가는 컨트롤러
 	 * 
@@ -300,6 +305,7 @@ public class MemberController {
 	/**
 	 * 아이디를 찾기 위한 컨트롤러
 	 * 
+	 * 
 	 * 조원준
 	 * @param name
 	 * @param email
@@ -319,6 +325,7 @@ public class MemberController {
 	
 	/**
 	 * 비밀번호를 찾기 위해 사용하는 입력폼으로 보내주는 컨트롤러
+	 * 
 	 * 
 	 * 조원준
 	 * @return
@@ -366,6 +373,7 @@ public class MemberController {
 
 	/**
 	 * mypage.jsp로 이동하게 하는 컨트롤러
+	 * 
 	 * 
 	 * 조원준
 	 * @return

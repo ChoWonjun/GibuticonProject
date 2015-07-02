@@ -48,13 +48,14 @@
 									//폼 submit
 									$("#multiform").submit();
 								});
-
+						
+						// 사진 업로드 멀티파일 플러그인
 						//MultiFile Plugin 
-						$('#multiform input[name=file]').MultiFile({
-							max : 3, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
-							accept : 'jpeg|jpg|gif|png|', //허용할 확장자(지정하지 않으면 모든 확장자 허용)
 							/* maxfile : 1024 * 1024 * 1024, //각 파일 최대 업로드 크기
 							maxsize : 1024 * 1024 * 1024 * 10, //전체 파일 최대 업로드 크기 */
+/* 						$('#multiform input[name=file]').MultiFile({
+							max : 3, //업로드 최대 파일 갯수 (지정하지 않으면 무한대)
+							accept : 'jpeg|jpg|gif|png|', //허용할 확장자(지정하지 않으면 모든 확장자 허용)
 							STRING : { //Multi-lingual support : 메시지 수정 가능
 								remove : "(delete)", //추가한 파일 제거 문구, 이미태그를 사용하면 이미지사용가능
 								duplicate : "$file 은 이미 선택된 파일입니다.",
@@ -65,7 +66,7 @@
 								toobig : "$file 은 크기가 매우 큽니다. (max $size)"
 							},
 							list : "#afile3-list" //파일목록을 출력할 요소 지정가능
-						});
+						}); */
 
 					});// document ready
 </script>
@@ -111,7 +112,7 @@
 															style="width: 766px; height: 300px; display: none;"></textarea></td>
 												</tr>
 												<!-- 사진업로드 -->
-												<tr>
+<!-- 												<tr>
 													<th class="img"><label for="formImg">관련 이미지</label></th>
 													<td colspan="2"><input type="file" class="afile3"
 														name="file" /></td>
@@ -120,7 +121,7 @@
 													<th></th>
 													<td colspan="2" id="afile3-list"
 														style="border: 2px solid #c9c9c9; height: 20px"></td>
-												</tr>
+												</tr> -->
 											</tbody>
 										</table>
 										<br> <input class="btn btn-default" id="writeImg"
