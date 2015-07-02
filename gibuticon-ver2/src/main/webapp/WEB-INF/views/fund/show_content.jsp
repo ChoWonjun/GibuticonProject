@@ -172,7 +172,7 @@
 							<div class="col-md-2">
 							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a></div>
 								<div class="col-md-2">
-								<a href="${initParam.root }fund/getList.gibu?no=${requestScope.posting.fundNo}" class="btn btn-default">목록보기</a></div>						
+								<a href="${initParam.root }fund/getList.gibu<%-- ?no=${requestScope.posting.fundNo} --%>" class="btn btn-default">목록보기</a></div>						
 					</div>
 				</div>
 			</div>
