@@ -107,7 +107,8 @@ public class FundController {
 		if (commentPage == null)
 			commentPage = "1";
 
-		List<FundCommentVO> list = fundService.getCommentList(no, commentPage);
+		List<FundCommentVO> list = fundService
+				.getCommentList(no, commentPage);
 		CommentListVO listVO = new CommentListVO(list, new CommentPagingBean(
 				fundService.getTotalCommentCount(no),
 				Integer.parseInt(commentPage)));
