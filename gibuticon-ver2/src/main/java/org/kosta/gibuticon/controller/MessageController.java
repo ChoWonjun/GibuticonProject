@@ -28,7 +28,7 @@ public class MessageController {
 	private MemberService memberService;
 	
 	/**
-	 * 
+	 * 쪽지를 보내기 위한 입력폼을 제공하는 컨트롤러
 	 * 
 	 * 정효섭
 	 * @param request
@@ -49,7 +49,7 @@ public class MessageController {
 	}
 	
 	/**
-	 * 
+	 * 쪽지를 데이터베이스에 연동해 저장하게 해주는 컨트롤러
 	 * 
 	 * 정효섭
 	 * @param messageVO
@@ -64,7 +64,7 @@ public class MessageController {
 	}
 	
 	/**
-	 * 
+	 * 받은 쪽지함 리스트를 불러오는 컨트롤러
 	 * 
 	 * 정효섭
 	 * @param page
@@ -84,7 +84,7 @@ public class MessageController {
 	}
 	
 	/**
-	 * 
+	 * 받은 쪽지함 리스트를 불러오는 컨트롤러
 	 * 
 	 * 정효섭
 	 * @param page
@@ -104,7 +104,7 @@ public class MessageController {
 	}
 	
 	/**
-	 * 
+	 * 메세지를 읽을 수 있는 컨트롤러
 	 * 
 	 * 정효섭
 	 * @param no
@@ -138,7 +138,7 @@ public class MessageController {
 	}
 	
 	/**
-	 * 
+	 * 메세지를 지울 수 있는 컨트롤러
 	 * 
 	 * 정효섭
 	 * @param no
