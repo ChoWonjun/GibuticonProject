@@ -36,7 +36,7 @@
 <br>
 
 <div align="center">
-	<img src="${initParam.root }img/g_gibusite_banner.jpg" width="1500">
+	<img src="${initParam.root }img/g_gibusite_banner.jpg" width="1280">
 </div>
 
 

@@ -142,7 +142,7 @@ public class FreeBoardController {
 		map.put("page", pageNo);
 		map.put("myId", myId);
 		List<FreeBoardVO> list = freeBoardService.getListBySearchingMyId(map);
-		System.out.println(list);
+		// System.out.println(list);
 
 		ListVO lvo = new ListVO(list, new PagingBean(
 				freeBoardService.getTotalPostingCountByMyId(map),
@@ -200,13 +200,13 @@ public class FreeBoardController {
 
 		if (pageNo == null)
 			pageNo = "1";
-		System.out.println("getFreeBoardByNo" + fvo);
+		// System.out.println("getFreeBoardByNo" + fvo);
 		List<FreeCommentVO> list = freeBoardService.getCommentList(no, pageNo);
 		FreeCommentListVO flist = new FreeCommentListVO(list,
 				new FreeCommentPagingBean(
 						freeCommentService.getTotalPostingCount(),
 						Integer.parseInt(pageNo)));
-		System.out.println("잘나오냥" + flist);
+		// System.out.println("잘나오냥" + flist);
 		mv.addObject("fvo", fvo);
 		mv.addObject("flist", flist);
 		mv.setViewName("freeBoard_show_content");
@@ -283,5 +283,6 @@ public class FreeBoardController {
 		freeBoardService.reply(freeBoardVO);
 		return new ModelAndView("redirect:getList.gibu");
 	}
+
 
 }
