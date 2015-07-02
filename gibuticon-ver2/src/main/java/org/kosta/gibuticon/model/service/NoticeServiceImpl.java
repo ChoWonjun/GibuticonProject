@@ -13,9 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 public class NoticeServiceImpl implements NoticeService {
+	
 	@Resource
 	private NoticeDAO noticeDAO;
 
+	
+	/**
+	 * write 서비스 메서드
+	 */
 	@Override
 	public void write(NoticeVO noticeVO) {
 		noticeDAO.write(noticeVO);
@@ -26,13 +31,12 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<NoticeVO> getList(String pageNo) {
 		return noticeDAO.getList(pageNo);
 	}
-	
+
 	@Override
 	public List<NoticeVO> getListBySearching(HashMap<String, Object> map) {
 		return noticeDAO.getListBySearching(map);
 	}
-	
-	
+
 	@Override
 	public NoticeVO showContentNoHit(String noticeNo) {
 		return noticeDAO.getNoticeByNo(noticeNo);
@@ -66,7 +70,5 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeDAO.updateHit(noticeNo);
 		return noticeDAO.getNoticeByNo(noticeNo);
 	}
-
-
 
 }
