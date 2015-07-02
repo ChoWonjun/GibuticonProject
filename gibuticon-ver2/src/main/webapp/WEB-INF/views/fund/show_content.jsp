@@ -140,7 +140,7 @@
 
 						<tr>
 							<th><font size="3">현재 모금액</font></th>
-							<td><font size="3">${fund.curSum*100 } 원</font></td>
+							<td><font size="3">${fund.curSum } 원</font></td>
 						</tr>
 
 						<tr>
