@@ -27,6 +27,8 @@ public interface FreeBoardDAO {
 
 	public abstract void updateHit(String no);
 
+	public abstract void replyUpdate(FreeBoardVO freeBoardVO);
+
 	public abstract FreeBoardVO replyView(String no);
 
 	public abstract void reply(FreeBoardVO freeBoardVO);
