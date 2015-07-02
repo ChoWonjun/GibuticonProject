@@ -107,21 +107,23 @@
 			</div>
 
 		</div>
-
-	</div>
 	<div class="col-md-6 text-left">
 		<div class="form-group">
-			<div class="input-group">
+			<div class="col-md-offset-4">
 				<input type="text" placeholder="검색어입력"
-					name="input" id="input" size="15"> <span class="input-group-btn">
+					name="input" id="input" size="25"> 
+					
 					<input type="submit" class="btn btn-primary" value="검색">
-				</span> <span class="input-group-btn"> <a
+			
+				<a
 					href="${initParam.root }freeBoard/writeForm.gibu"
 					class="btn btn-primary" type="submit">글쓰기</a>
-				</span>
+				
 			</div>
 		</div>
 	</div>
+	</div>
+
 </form>
 
 
