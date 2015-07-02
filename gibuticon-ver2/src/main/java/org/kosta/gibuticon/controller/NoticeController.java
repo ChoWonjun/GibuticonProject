@@ -173,6 +173,9 @@ public class NoticeController {
 	/**
 	 * 공지사항의 글을 지우기위한 delete 컨트롤러
 	 * 
+	 * noticeNo를 받아와 
+	 * noticeService에 있는 delete메서드로 보내 준다.
+	 * 
 	 * @param noticeNo
 	 * @return
 	 */
@@ -186,6 +189,7 @@ public class NoticeController {
 	
 	/**
 	 * 업데이트 폼을 불러오기 위한 컨트롤러 
+	 * 
 	 * notice 폴더에 있는 update 폼을 불러온다
 	 * 
 	 * @param noticeNo
@@ -193,12 +197,14 @@ public class NoticeController {
 	 */
 	@RequestMapping("notice/updateForm.gibu")
 	@LoginCheck
-	public ModelAndView updateForm(String noticeNo) {
-		System.out.println("업데이트 폼 로딩" + noticeNo);
-		NoticeVO nvo = noticeService.getNoticeByNo(noticeNo);
+	public ModelAndView updateForm(String no) {
+		
+		// System.out.println("업데이트 폼 로딩할 no" + no);
+		NoticeVO nvo = noticeService.getNoticeByNo(no);
 		return new ModelAndView("notice_update", "nvo", nvo);
 	}
 
+	
 	/**
 	 * 업데이트한 내용을 실제 데이터베이스로 보내는 컨트롤러
 	 * 
@@ -208,9 +214,12 @@ public class NoticeController {
 	@RequestMapping("notice/update.gibu")
 	@LoginCheck
 	public String update(NoticeVO noticeVO) {
-		System.out.println(noticeVO + "받아온거");
+		// noticeVO 잘 들어왔는지 체크
+		// System.out.println(noticeVO + "받아온 noticeVO");
+
+		// 노티스서비스로 들어온 noticeVO를 데이터베이스로 보내는 메서드
 		noticeService.update(noticeVO);
-		System.out.println(noticeVO);
+
 		return "redirect:showContent.gibu?noticeNo=" + noticeVO.getnoticeNo();
 	}
 
