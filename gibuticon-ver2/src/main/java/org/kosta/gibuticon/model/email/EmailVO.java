@@ -1,6 +1,7 @@
 package org.kosta.gibuticon.model.email;
 
 public class EmailVO {
+	
 	private String subject;
 	private String content;
 	private String date;
@@ -8,7 +9,6 @@ public class EmailVO {
 
 	public EmailVO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getSubject() {

@@ -14,10 +14,19 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class FreeCommentController {
+	
 	@Resource(name="freeCommentServiceImpl")
 	private FreeCommentService freeCommentService;
 	private Logger log = LoggerFactory.getLogger(getClass());
 	
+	/**
+	 * 
+	 * 
+	 * 유경희
+	 * @param freeBoardCommentVO
+	 * @param pageNo
+	 * @return
+	 */
 	@RequestMapping("freeComment/write.gibu")
 	public ModelAndView write(FreeCommentVO freeBoardCommentVO, String pageNo){
 		if(pageNo==null)
@@ -26,6 +35,15 @@ public class FreeCommentController {
 		freeCommentService.writeFreeComment(freeBoardCommentVO);
 		return new ModelAndView("redirect:../freeBoard/showContent.gibu?no="+freeBoardCommentVO.getBoardNo()+"&pageNo="+pageNo);
 	}
+	
+	/**
+	 * 
+	 * 
+	 * 유경희
+	 * @param commentNo
+	 * @param no
+	 * @return
+	 */
 	@RequestMapping("freeComment/delete.gibu")
 	public String delete(String commentNo, String no){
 		freeCommentService.deleteFreeComment(commentNo);

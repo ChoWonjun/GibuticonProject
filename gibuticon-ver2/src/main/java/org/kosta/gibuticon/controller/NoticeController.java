@@ -31,6 +31,8 @@ public class NoticeController {
 	 * 글쓰기 입력폼을 불러오는 컨트롤러 
 	 * 
 	 * notice 폴더에 있는 write.jsp로 보낸다
+	 * 
+	 * 이지현
 	 * @param request
 	 * @return
 	 */
@@ -45,6 +47,8 @@ public class NoticeController {
 	 * 공지사항의 writeForm에서 쓴 데이터를 DB로 넘기는 컨트롤러
 	 * 
 	 * redirect를 써서 넘겨줌
+	 * 
+	 * 이지현
 	 * @param noticeVO
 	 * @return
 	 */
@@ -71,6 +75,7 @@ public class NoticeController {
 	 *  그 경우가 아닐 때에는 모든 목록을 받을 수 있는 noticeService의
 	 *  getList로 페이지 넘버를 보내 그 페이지에 해당하는 목록들을 넣어 준다.
 	 *  
+	 *  이지현
 	 * @param pageNo
 	 * @param no
 	 * @return
@@ -124,7 +129,7 @@ public class NoticeController {
 	 * 공지사항의 글을 클릭 할 시 글의 컨텐츠(내용)을 불러오는 컨트롤러
 	 * 
 	 * 
-	 * 
+	 * 이지현
 	 * @param noticeNo
 	 * @param request
 	 * @param response
@@ -176,6 +181,7 @@ public class NoticeController {
 	 * noticeNo를 받아와 
 	 * noticeService에 있는 delete메서드로 보내 준다.
 	 * 
+	 * 이지현
 	 * @param noticeNo
 	 * @return
 	 */
@@ -192,6 +198,7 @@ public class NoticeController {
 	 * 
 	 * notice 폴더에 있는 update 폼을 불러온다
 	 * 
+	 * 이지현
 	 * @param noticeNo
 	 * @return
 	 */
@@ -208,6 +215,7 @@ public class NoticeController {
 	/**
 	 * 업데이트한 내용을 실제 데이터베이스로 보내는 컨트롤러
 	 * 
+	 * 이지현
 	 * @param noticeVO
 	 * @return
 	 */

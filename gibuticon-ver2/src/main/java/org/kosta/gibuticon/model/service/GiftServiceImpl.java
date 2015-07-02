@@ -31,7 +31,6 @@ public class GiftServiceImpl implements GiftService {
 	
 	@Override
 	public GiftVO confirmPin(String pinNo) {
-		// TODO Auto-generated method stub
 		return giftDAO.confirmPin(pinNo);
 	}
 	

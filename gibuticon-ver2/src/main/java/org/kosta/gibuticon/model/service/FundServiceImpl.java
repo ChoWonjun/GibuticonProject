@@ -42,7 +42,6 @@ public class FundServiceImpl implements FundService {
 
 	@Override
 	public FundVO getFundByNoNotHit(String no) {
-		// TODO Auto-generated method stub
 		FundVO vo = fundDAO.getFundByNo(no);
 		vo.setPhotoList(fundDAO.getPhotoByNo(no));
 		return vo;
@@ -82,7 +81,6 @@ public class FundServiceImpl implements FundService {
 
 	@Override
 	public int getTotalPostingCount(SearchOptionVO svo) {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalPostingCount(svo);
 	}
 
@@ -108,31 +106,26 @@ public class FundServiceImpl implements FundService {
 
 	@Override
 	public List<GibuHistoryVO> getGibuHistory(String memberId) {
-		// TODO Auto-generated method stub
 		return historyDAO.getGibuHistory(memberId);
 	}
 
 	@Override
 	public int getTotalGibuParticipants(String year) {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuParticipants(year);
 	}
 
 	@Override
 	public int getTotalGibuAmount(String year) {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuAmount(year);
 	}
 
 	@Override
 	public int getTotalGibuParticipants() {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuParticipants();
 	}
 
 	@Override
 	public int getTotalGibuAmount() {
-		// TODO Auto-generated method stub
 		return fundDAO.getTotalGibuAmount();
 	}
 
