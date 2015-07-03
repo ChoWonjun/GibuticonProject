@@ -15,8 +15,10 @@
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	
 	<!-- AOP 설정 -->
-	<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+	<aop:aspectj-autoproxy/>
+	
 	<!-- MyBatis -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName">
