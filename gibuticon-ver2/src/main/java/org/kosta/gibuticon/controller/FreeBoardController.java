@@ -23,6 +23,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -39,6 +40,7 @@ public class FreeBoardController {
 	 * 자유게시판에 글을 작성할수 있는 페이지로 넘어가게 하는 컨트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param request
 	 * @return
 	 */
@@ -52,6 +54,7 @@ public class FreeBoardController {
 	 * 자유게시판에 글을 작성하는 컨트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param freeBoardVO
 	 * @param request
 	 * @return
@@ -70,18 +73,16 @@ public class FreeBoardController {
 	/**
 	 * 자유게시판에 있는 목록을 보여줌
 	 * 
-	 *  페이지 넘버와 글 넘버, 검색어, 검색메뉴를 받아와
-	 *  null인지 아닌지를 체크 후 
-	 *  맵에 그 정보들을 담아 mybatis (xml)로 보내주는 메서드
-	 *  
-	 *  검색메뉴를 사용해 검색을 했을 경우에는
-	 *  getListBySearching이라는 자유게시판 서비스를 이용해 
-	 *  목록을 리스트에 넣어주고 
-	 *  
-	 *  그 경우가 아닐 때에는 모든 목록을 받을 수 있는 FreeBoardService의
-	 *  getList로 페이지 넘버를 보내 그 페이지에 해당하는 목록들을 넣어 준다.
-	 *  
+	 * 페이지 넘버와 글 넘버, 검색어, 검색메뉴를 받아와 null인지 아닌지를 체크 후 맵에 그 정보들을 담아 mybatis (xml)로
+	 * 보내주는 메서드
+	 * 
+	 * 검색메뉴를 사용해 검색을 했을 경우에는 getListBySearching이라는 자유게시판 서비스를 이용해 목록을 리스트에 넣어주고
+	 * 
+	 * 그 경우가 아닐 때에는 모든 목록을 받을 수 있는 FreeBoardService의 getList로 페이지 넘버를 보내 그 페이지에
+	 * 해당하는 목록들을 넣어 준다.
+	 * 
 	 * 유경희 이지현
+	 * 
 	 * @param pageNo
 	 * @param no
 	 * @return
@@ -125,6 +126,7 @@ public class FreeBoardController {
 	 * 마이페이지에서 내가 쓴 글만 볼 수 있게 불러오는 컨트롤러
 	 * 
 	 * 유경희 이지현
+	 * 
 	 * @param pageNo
 	 * @param no
 	 * @param myId
@@ -132,7 +134,6 @@ public class FreeBoardController {
 	 */
 	@RequestMapping("freeBoard/myPost.gibu")
 	public ModelAndView getMyPost(String pageNo, String no, String myId) {
-		ModelAndView mv = new ModelAndView();
 		if (no != null)
 			pageNo = freeBoardService.getPageNo(no);
 		if (pageNo == null)
@@ -153,10 +154,10 @@ public class FreeBoardController {
 	/**
 	 * 자유게시판에 있는 글 상세보기 콘트롤러
 	 * 
-	 * 이떄 같이 댓글목록도 불러온다.
-	 * 쿠키를 설정해 새로고침을 해도 hit수 안올라가게 설정.
+	 * 이떄 같이 댓글목록도 불러온다. 쿠키를 설정해 새로고침을 해도 hit수 안올라가게 설정.
 	 * 
 	 * 유경희
+	 * 
 	 * @param no
 	 * @param pageNo
 	 * @param request
@@ -167,7 +168,6 @@ public class FreeBoardController {
 	@LoginCheck
 	public ModelAndView showContent(String no, String pageNo,
 			HttpServletRequest request, HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
 		Cookie cookies[] = request.getCookies();
 		String hitcookieVal = "";
 		String noStr = "|" + no + "|";
@@ -201,22 +201,23 @@ public class FreeBoardController {
 		if (pageNo == null)
 			pageNo = "1";
 		// System.out.println("getFreeBoardByNo" + fvo);
-		List<FreeCommentVO> list = freeBoardService.getCommentList(no, pageNo);
+		/*List<FreeCommentVO> list = freeBoardService.getCommentList(no, pageNo);
 		FreeCommentListVO flist = new FreeCommentListVO(list,
 				new FreeCommentPagingBean(
-						freeCommentService.getTotalPostingCount(),
-						Integer.parseInt(pageNo)));
+						freeCommentService.getTotalPostingCount(no),
+						Integer.parseInt(pageNo)));*/
 		// System.out.println("잘나오냥" + flist);
-		mv.addObject("fvo", fvo);
-		mv.addObject("flist", flist);
-		mv.setViewName("freeBoard_show_content");
-		return mv;
+		/*mv.addObject();
+		//mv.addObject("flist", flist);
+		mv.setViewName("freeBoard_show_content");*/
+		return new ModelAndView("freeBoard_show_content", "fvo", fvo);
 	}
 
 	/**
 	 * 자유게시판 업데이트 폼을 제공하는 콘트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param no
 	 * @return
 	 */
@@ -231,6 +232,7 @@ public class FreeBoardController {
 	 * 자유게시판 글을 업데이트하는 콘트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param freeBoardVO
 	 * @return
 	 */
@@ -245,6 +247,7 @@ public class FreeBoardController {
 	 * 자유게시판 글 삭제하는 콘트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param no
 	 * @return
 	 */
@@ -259,6 +262,7 @@ public class FreeBoardController {
 	 * 자유게시판 답글 폼을 제공하는 콘트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param no
 	 * @return
 	 */
@@ -273,6 +277,7 @@ public class FreeBoardController {
 	 * 자유게시판에 답글을 작성하는 콘트롤러
 	 * 
 	 * 유경희
+	 * 
 	 * @param freeBoardVO
 	 * @return
 	 */
@@ -283,6 +288,5 @@ public class FreeBoardController {
 		freeBoardService.reply(freeBoardVO);
 		return new ModelAndView("redirect:getList.gibu");
 	}
-
 
 }

@@ -146,6 +146,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(gibu_fund_comment_seq.nextval,#{fundNo},#{memberVO.id},#{text},sysdate)
 	</insert>
 	
+	<delete id="deleteComment">
+		delete from gibu_fund_comment where comment_no=#{value}
+	</delete>
+	
 	<resultMap type="fundCommentVO" id="fundCommentRM">
 		<result property="memberVO.id" column="member_id" />
 		<result property="memberVO.name" column="name" />
@@ -158,11 +162,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from(
 			select comment_no, fund_no, text,
 			comment_time, member_id, name, ceil(rownum/5) as page from(
-				select co.comment_no, co.fund_no, co.text, to_char(co.comment_time,'yy-mm-dd hh:mi') comment_time,
+				select co.comment_no, co.fund_no, co.text, co.comment_time,
 				co.member_id, mem.name from gibu_fund_comment co, member mem
-				where co.member_id=mem.id order by comment_no desc
+				where co.member_id=mem.id and fund_no=#{fundNo} order by comment_no desc
 			)
-		) where page=#{commentPage} and fund_no=#{fundNo}
+		) where page=#{commentPage}
 	</select>
 
 	<select id="getTotalCommentCount" resultType="int">

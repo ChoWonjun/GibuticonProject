@@ -27,4 +27,5 @@ public interface FundService {
 	public int getTotalGibuParticipants();
 	public int getTotalGibuAmount();
 	public void uploadPhoto(FundVO vo);
+	public abstract void deleteComment(String commentNo);
 }

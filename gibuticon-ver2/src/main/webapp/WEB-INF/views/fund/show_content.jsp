@@ -12,6 +12,60 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
+	function getCommentList(commentPage){
+		$.ajax({
+			type : "post",
+			url : "${initParam.root}fund/getCommentList.gibu",
+			data : "no=${requestScope.posting.fundNo}&commentPage="+commentPage,
+			success : function(comment) {
+				var table="";
+				for(var i=0;i<comment.list.length;i++){
+					table+="<tr>";
+					
+					table+="<td>"+comment.list[i].commentNo+"</td>";
+					table+="<td>"+comment.list[i].text+"</td>";
+					table+="<td>"+comment.list[i].commentTime+"</td>";
+					table+="<td>"+comment.list[i].memberVO.name+"<br>("+comment.list[i].memberVO.id+")</td>";
+
+					table+="<td>";
+					if("${sessionScope.mvo.id}"==comment.list[i].memberVO.id) {
+						table+="<input class='btn btn-default' value='삭제하기' type='button' "
+							+ "onclick=deleteComment("+comment.list[i].commentNo+","+commentPage+")>";
+					}
+					table+="</td>";
+					
+					table+="</tr>";
+				}
+				
+				$("#commentView").html(table);
+				
+				table="";
+				
+				if(comment.pagingBean.previousPageGroup){
+					table+="<li>";
+					table+="<a href='javascript:getCommentList("+comment.pagingBean.startPageOfPageGroup-1+")'>◀</a>";
+					table+="</li>";
+				}
+				
+				table+="<li>";
+				for(var i=comment.pagingBean.startPageOfPageGroup;i<=comment.pagingBean.endPageOfPageGroup;i++){
+					table+="<a href='javascript:getCommentList("+i+")'>"+i+"</a>";
+				}
+				table+="</li>";
+				
+				if(comment.pagingBean.nextPageGroup){
+					table+="<li>";
+					table+="<a href='javascript:getCommentList("+comment.pagingBean.endPageOfPageGroup+1+")'>▶</a>";
+					table+="</li>";
+				}
+
+				$("#commentPageView").html(table);
+			}//success
+		});//ajax
+	}
+
+
+
 	function bookmarkRegister(){
 		if(confirm("즐겨찾기를 등록하시겠습니까?")){
 			location.href="${initParam.root}bookmark/addBookmark.gibu?myId=${sessionScope.mvo.id}&fundNo=${requestScope.posting.fundNo}";
@@ -23,10 +77,23 @@
 		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
 				+ coneForm.coneCount.value;
 	}
+	
 	function gibuPopup(){
 		var url="${initParam.root }cone/gibuView.gibu?fundNo=${requestScope.posting.fundNo}";
 		window.open(url,"gibuPopup",
 	   				"width=520,height=280,teop=150,left=200");
+	}
+	function deleteComment(commentNo, commentPageNo){
+		if(confirm(commentNo+"번 댓글을 정말로 삭제하시겠습니까?")) {
+			$.ajax({
+				type : "post",
+				url : "${initParam.root}fund/deleteComment.gibu",
+				data : "commentNo="+commentNo,
+				success : function() {
+					getCommentList(commentPageNo);
+				}//success
+			});//ajax
+		}
 	}
 
 	$().ready(function(){

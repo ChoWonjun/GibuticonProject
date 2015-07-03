@@ -203,6 +203,14 @@ select * from(
 	comment_time, member_id, name, ceil(rownum/5) as page from(
 		select co.comment_no, co.fund_no, co.text, co.comment_time,
 		co.member_id, mem.name from gibu_fund_comment co, member mem
-		where co.member_id=mem.id order by comment_no desc
+		where co.member_id=mem.id and fund_no=3 order by comment_no desc
 	)
-) where page=1 and fund_no=3
+) where page=1
+
+select rankval from(
+	select member_id memberid, totalamount rankval from(
+		select member_id, sum(AMOUNT) as totalamount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+	)
+) where memberid='java';

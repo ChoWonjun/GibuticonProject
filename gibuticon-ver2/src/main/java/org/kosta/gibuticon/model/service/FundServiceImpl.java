@@ -152,4 +152,9 @@ public class FundServiceImpl implements FundService {
 		System.out.println("fileupload ok:" + nameList);
 	}
 
+	@Override
+	public void deleteComment(String commentNo) {
+		fundDAO.deleteComment(commentNo);
+	}
+
 }

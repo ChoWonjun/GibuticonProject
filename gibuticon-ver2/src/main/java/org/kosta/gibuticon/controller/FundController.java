@@ -72,7 +72,7 @@ public class FundController {
 	 * @return
 	 */
 	@RequestMapping("fund/showContent.gibu")
-	public ModelAndView showContent(String no, String commentPage,
+	public ModelAndView showContent(String no,
 			HttpServletRequest request, HttpServletResponse response) {
 		Cookie cookies[] = request.getCookies();
 		String hitcookieVal = "";
@@ -103,25 +103,33 @@ public class FundController {
 			response.addCookie(cookie);
 		} else
 			vo = fundService.getFundByNoNotHit(no);
-
-		if (commentPage == null)
-			commentPage = "1";
-
-		List<FundCommentVO> list = fundService
-				.getCommentList(no, commentPage);
-		CommentListVO listVO = new CommentListVO(list, new CommentPagingBean(
-				fundService.getTotalCommentCount(no),
-				Integer.parseInt(commentPage)));
-
+		
 		System.out.println(vo.getPhotoList());
 
 		ModelAndView mv = new ModelAndView("fund_show_content");
 		mv.addObject("posting", vo);
-		mv.addObject("comment", listVO);
-		System.out.println(listVO);
+		//mv.addObject("comment", listVO);
+		//System.out.println(listVO);
 
 		return mv;
 	}
+	
+	@RequestMapping("fund/getCommentList.gibu")
+	@ResponseBody
+	public CommentListVO getCommentList(String no, String commentPage){
+		if (commentPage == null)
+			commentPage = "1";
+		
+		List<FundCommentVO> list = fundService
+				.getCommentList(no, commentPage);
+		
+		CommentListVO listVO = new CommentListVO(list, new CommentPagingBean(
+				fundService.getTotalCommentCount(no),
+				Integer.parseInt(commentPage)));
+		
+		return listVO;
+	}
+	
 
 	/**
 	 * 
@@ -281,5 +289,11 @@ public class FundController {
 		List<GibuHistoryVO> list = fundService.getGibuHistory(memberId);
 		System.out.println(list);
 		return list;
+	}
+	
+	@RequestMapping("fund/deleteComment.gibu")
+	@ResponseBody
+	public void deleteComment(String commentNo){
+		fundService.deleteComment(commentNo);
 	}
 }

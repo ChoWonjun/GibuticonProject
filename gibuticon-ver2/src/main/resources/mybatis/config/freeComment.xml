@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select freeboard_comment_no,write_date, freeboard_comment, hits, id, board_no from(
 		select freeboard_comment_no,write_date, freeboard_comment, hits, id, board_no, ceil(rownum/3) as page from(
 		select freeboard_comment_no,to_char(write_date,'YYYY.MM.DD') as write_date, freeboard_comment, hits, id, board_no 
-		from freeBoard_comment order by freeboard_comment_no desc))where board_no=#{boardNo} and page=#{pageNo}  
+		from freeBoard_comment where board_no=#{boardNo} order by freeboard_comment_no desc))where page=#{pageNo}  
 	</select>
 	<select id="getPageNo" resultType="string">
 		select page from(
@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		) where freeboard_comment_no=#{commentNo}
 	</select>
 	<select id="getTotalPostingCount" resultType="int">
-		select count(*) from freeBoard_comment
+		select count(*) from freeBoard_comment where board_no=#{boardNo}
 	</select>
 	<delete id="deleteFreeComment" parameterType="string">
 		delete from freeBoard_comment where freeboard_comment_no=#{value}

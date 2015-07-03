@@ -2,6 +2,8 @@ package org.kosta.gibuticon.model.service;
 
 
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.kosta.gibuticon.model.freeBoard.comment.FreeCommentDAO;
@@ -28,12 +30,16 @@ public class FreeCommentServiceImpl implements FreeCommentService {
 	}
 
 	@Override
-	public int getTotalPostingCount() {
-		return freeCommentDAO.getTotalPostingCount();
+	public int getTotalPostingCount(String no) {
+		return freeCommentDAO.getTotalPostingCount(no);
 	}
 	@Override
 	public void deleteFreeComment(String no) {
 		freeCommentDAO.deleteFreeComment(no);
+	}
+	@Override
+	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
+		return freeCommentDAO.getCommentList(no, pageNo);
 	}
 
 }

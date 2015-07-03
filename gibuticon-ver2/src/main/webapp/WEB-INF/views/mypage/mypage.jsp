@@ -46,17 +46,15 @@
 														<tr>
 															<th width="100">RANK</th>
 															<th width="500">아이디</th>
-															<th width="500">총기부액</th>
+															<th width="500">총기부콘</th>
 														</tr>
 													</thead>
 													<tbody>
-														<c:forEach items="${requestScope.rank1}" var="posting">
-															<tr>
-																<td>${posting.rank }</td>
-																<td>${posting.memberId }</td>
-																<td>${posting.rankVal }</td>
-															</tr>
-														</c:forEach>
+														<tr>
+															<td>${requestScope.myrank.rank }</td>
+															<td>${requestScope.myrank.memberId }</td>
+															<td>${requestScope.myrank.rankVal }</td>
+														</tr>
 													</tbody>
 												</table>
 											</div>
@@ -102,7 +100,7 @@
 												<th><img
 													src="${initParam.root }img/g_cone_quantity.jpg" width="53"
 													height="17" alt="개인보유콘"></th>
-												<td class="bd_l"><a href="#"><strong class="gibu">${sessionScope.mvo.point }</strong></a>개</td>
+												<td class="bd_l"><a href="${initParam.root }cone/mycone.gibu"><strong class="gibu">${sessionScope.mvo.point }</strong></a>개</td>
 											</tr>
 										</tbody>
 									</table>
@@ -122,9 +120,8 @@
 										<div class="bean_num">
 											<div class="bean_number" style="font-family: &amp; amp;">
 												<div class="num_b">
-													<span class="cong">콘</span> <span class="no0">0</span> <span
-														class="unit">개</span>&nbsp;&nbsp;&nbsp;&nbsp; <span
-														class="no0">0</span> <span class="won">원</span>
+													<span class="cong">콘</span> <span class="no0">${requestScope.givenCone }</span><span
+														class="unit">개</span>
 												</div>
 											</div>
 										</div>

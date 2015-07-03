@@ -154,4 +154,16 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectOne("member.findPassword",memberVO);
 	}
+
+	@Override
+	public int getGivenCone(String id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("member.getGivenCone",id);
+	}
+
+	@Override
+	public MemberRankVO getMyRank(String id) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("member.getMyRank",id);
+	}
 }

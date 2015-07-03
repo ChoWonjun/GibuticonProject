@@ -37,6 +37,5 @@ public interface FreeBoardDAO {
 
 	public abstract String getPageNo(String no);
 
-	public abstract List<FreeCommentVO> getCommentList(String no, String pageNo);
 
 }
