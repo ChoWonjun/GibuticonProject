@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.gibuticon.model.member.LoginCheck;
 import org.kosta.gibuticon.model.member.MemberVO;
 import org.kosta.gibuticon.model.service.FriendService;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,7 @@ public class FriendController {
 	 * @return
 	 */
 	@RequestMapping("friend/memberlist.gibu")
+	@LoginCheck
 	public ModelAndView memberlist(){
 		return new ModelAndView("friend_memberlist","list",friendService.getMemberList());
 	}
@@ -35,6 +37,7 @@ public class FriendController {
 	 * @return
 	 */
 	@RequestMapping("friend/friendlist.gibu")
+	@LoginCheck
 	public ModelAndView friendlist(String myId){
 		return new ModelAndView("mypage_friendlist","list",friendService.getFriendList(myId));
 	}
