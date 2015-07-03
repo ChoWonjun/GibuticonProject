@@ -128,4 +128,16 @@ public class MemberServiceImpl implements MemberService {
 	public void increasePoint(MemberVO memberVO) {
 		memberDAO.increasePoint(memberVO);
 	}
+
+	@Override
+	public int getGivenCone(String id) {
+		// TODO Auto-generated method stub
+		return memberDAO.getGivenCone(id);
+	}
+
+	@Override
+	public MemberRankVO getMyRank(String id) {
+		// TODO Auto-generated method stub
+		return memberDAO.getMyRank(id);
+	}
 }

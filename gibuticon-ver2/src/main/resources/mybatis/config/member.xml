@@ -58,6 +58,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    <select id="findPassword" parameterType="memberVO" resultType="String">
    		select password from member where name=#{name} and id=#{id} and email=#{email}
    </select>
+   
+   <select id="getGivenCone" resultType="int">
+   		select rankval from(
+			select member_id memberid, totalamount rankval from(
+				select member_id, sum(AMOUNT) as totalamount
+				from DONATION_HISTORY
+				group by DONATION_HISTORY.MEMBER_ID
+			)
+		) where memberid=#{value}
+   </select>
+   
+   <select id="getMyRank" resultType="memberRankVO">
+      select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+         select member_id memberid, totalamount rankval from(
+            select member_id, sum(AMOUNT) as totalamount
+            from DONATION_HISTORY
+            group by DONATION_HISTORY.MEMBER_ID
+         )
+      ) where memberid=#{value}
+   </select>
 </mapper>
  
  

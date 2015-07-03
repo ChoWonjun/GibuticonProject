@@ -34,4 +34,8 @@ public interface MemberService {
 	public void decreasePoint(MemberVO memberVO);
 
 	public void increasePoint(MemberVO memberVO);
+
+	public abstract int getGivenCone(String id);
+
+	public abstract MemberRankVO getMyRank(String id);
 }

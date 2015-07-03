@@ -206,3 +206,11 @@ select * from(
 		where co.member_id=mem.id and fund_no=3 order by comment_no desc
 	)
 ) where page=1
+
+select rankval from(
+	select member_id memberid, totalamount rankval from(
+		select member_id, sum(AMOUNT) as totalamount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+	)
+) where memberid='java';

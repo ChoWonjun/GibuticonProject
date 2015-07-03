@@ -405,8 +405,15 @@ public class MemberController {
 	 */
 	@LoginCheck
 	@RequestMapping(value = "member/mypage", method = RequestMethod.GET)
-	public String mypageView() {
-		return "mypage_mypage";
+	public ModelAndView mypageView(HttpSession session) {
+		ModelAndView mv=new ModelAndView();
+		
+		MemberVO mvo = (MemberVO) session.getAttribute("mvo");
+		
+		mv.addObject("givenCone",memberService.getGivenCone(mvo.getId()));
+		mv.addObject("myrank",memberService.getMyRank(mvo.getId()));
+		mv.setViewName("mypage_mypage");
+		return mv;
 	}
 
 	/**
@@ -428,4 +435,9 @@ public class MemberController {
 		return mv;
 	}
 
+	@RequestMapping("member/getGivenCone.gibu")
+	@ResponseBody
+	public int getGivenCone(String id){
+		return memberService.getGivenCone(id);
+	}
 }

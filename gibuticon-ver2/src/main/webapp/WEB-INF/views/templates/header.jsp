@@ -14,6 +14,18 @@
 	src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <script type="text/javascript">
+	function getGivenCone() {
+		$.ajax({
+			type : "post",
+			url : "${initParam.root}member/getGivenCone.gibu",
+			data : "id=${sessionScope.mvo.id}",
+			success : function(result) {
+				$("#givenCone").text(result);
+			}//success
+		});//ajax
+		
+		
+	}
 	function sendMessagePopup(receiverId) {
 		var url = "${initParam.root}message/sendForm.gibu?receiverId="
 				+ receiverId;
@@ -25,6 +37,10 @@
 	$(document)
 			.ready(
 					function() {
+						// 로그인 되어있을 때만 기부한 콘을 불러옴
+						if("${sessionScope.mvo.id}")
+							getGivenCone();
+						
 						$("#coneInput").hide();
 						$("#charge2").hide();
 						$("input[name=payment]", "#chargeCone")
@@ -284,8 +300,8 @@
 								<li><a tabindex="-1"
 									href="${initParam.root }member/mypage.gibu"><strong>&nbsp;&nbsp;&nbsp;마이페이지</strong></a></li>
 								<li class="divider"></li>
-								<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;총기부액</strong>
-										0원</a></li>
+								<li><a tabindex="-1" href="#"><strong>&nbsp;&nbsp;&nbsp;기부한콘</strong>
+										<span id="givenCone"></span>개</a></li>
 								<li><a tabindex="-1"
 									href="${initParam.root }cone/mycone.gibu"><strong>&nbsp;&nbsp;&nbsp;보유한콘</strong>
 										${sessionScope.mvo.point }개 </a></li>

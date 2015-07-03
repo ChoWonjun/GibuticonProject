@@ -31,4 +31,8 @@ public interface MemberDAO {
 	public String findId(MemberVO memberVO);
 
 	public String findPassword(MemberVO memberVO);
+
+	public abstract int getGivenCone(String id);
+
+	public abstract MemberRankVO getMyRank(String id);
 }
