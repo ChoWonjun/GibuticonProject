@@ -36,6 +36,4 @@ public interface FreeBoardService {
 
 	public abstract void reply(FreeBoardVO freeBoardVO);
 
-	public abstract List<FreeCommentVO> getCommentList(String no, String pageNo);
-
 }

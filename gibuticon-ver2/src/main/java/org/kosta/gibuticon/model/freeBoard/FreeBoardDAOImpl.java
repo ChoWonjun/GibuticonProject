@@ -192,20 +192,6 @@ public class FreeBoardDAOImpl implements FreeBoardDAO {
 		sqlSessionTemplate.update("freeBoard.replyUpdate", freeBoardVO);
 	}
 
-	/**
-	 * 자유게시판 댓글 리스트를 불러오는 메서드
-	 */
-	@Override
-	public List<FreeCommentVO> getCommentList(String no, String pageNo) {
-		List<FreeCommentVO> list = sqlSessionTemplate.selectList(
-				"freeComment.getFreeBoardCommentList", new FreeCommentPageVO(
-						Integer.parseInt(no), pageNo));
-		for (int i = 0; i < list.size(); i++) {
-			list.get(i).setMemberVO(
-					(MemberVO) sqlSessionTemplate.selectOne(
-							"member.findMemberById", list.get(i).getId()));
-		}
-		return list;
-	}
+	
 
 }

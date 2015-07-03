@@ -5,14 +5,69 @@
 <script type="text/javascript"
 	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
-	function deleteComment(commentNo, no){
+	function getCommentList(commentPage){
+		$.ajax({
+			type : "post",
+			url : "${initParam.root}freeComment/getCommentList.gibu",
+			data : "no=${requestScope.fvo.boardNo}&commentPage="+commentPage,
+			success : function(comment) {
+				var table="";
+				for(var i=0;i<comment.list.length;i++){
+					table+="<tr>";
+					
+					table+="<td>"+comment.list[i].commentNo+"</td>";
+					table+="<td>"+comment.list[i].comment+"</td>";
+					table+="<td>"+comment.list[i].writeDate+"</td>";
+					table+="<td>"+comment.list[i].memberVO.name+"<br>("+comment.list[i].memberVO.id+")</td>";
+					if(comment.list[i].memberVO.id=="${sessionScope.mvo.id }"){
+						table+="<td><input class='btn btn-default' value='삭제하기' type='button'"+
+						"onclick='deleteComment("+comment.list[i].commentNo+","+commentPage+")'>";
+					}
+					table+="</tr>";
+				}
+				
+				$("#commentView").html(table);
+				
+				table="";
+
+				if(comment.pagingBean.previousPageGroup){
+					table+="<li>";
+					table+="<a href='javascript:getCommentList("+comment.pagingBean.startPageOfPageGroup-1+")'>◀</a>";
+					table+="</li>";
+				}
+				
+				table+="<li>";
+				for(var i=comment.pagingBean.startPageOfPageGroup;i<=comment.pagingBean.endPageOfPageGroup;i++){
+					table+="<a href='javascript:getCommentList("+i+")'>"+i+"</a>";
+				}
+				table+="</li>";
+				
+				if(comment.pagingBean.nextPageGroup){
+					table+="<li>";
+					table+="<a href='javascript:getCommentList("+comment.pagingBean.endPageOfPageGroup+1+")'>▶</a>";
+					table+="</li>";
+				}
+
+				$("#commentPageView").html(table);
+			}
+		})
+	}
+	function deleteComment(commentNo, commentPage){
 		if(confirm("삭제하시겠습니까?")){
-			location.href="${initParam.root}freeComment/delete.gibu?commentNo="+commentNo+"&no="+no;
+			$.ajax({
+				type: "post",
+				url: "${initParam.root}freeComment/delete.gibu",
+				data:"commentNo="+commentNo,
+				success : function(){
+					getCommentList(commentPage);
+				}
+			})
 		}else{
 				return false;
 		} 
 	}
 	$(document).ready(function(){
+		getCommentList(1);
 		$("#updateImg").click(function(){
 				if(confirm("수정하시겠습니까?")){
 					location.href="${initParam.root}freeBoard/updateForm.gibu?no=${requestScope.fvo.boardNo}";
@@ -124,20 +179,8 @@
 								<!-- <th width="300">추천수</th> -->
 							</tr>
 						</thead>
-						<tbody>
-							<c:forEach items="${requestScope.flist.list}" var="comment">
-								<tr>
-									<td>${comment.commentNo}</td>
-									<td>${comment.comment}</td>
-									<td>${comment.writeDate}</td>
-									<td>${comment.memberVO.name}</td>
-									<%-- <td>${comment.hits}</td> --%>
-									<td><c:if test="${comment.id==sessionScope.mvo.id }">
-											<input class="btn btn-default" value="삭제하기" type="button"
-												onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )">
-										</c:if></td>
-								</tr>
-							</c:forEach>
+						<tbody id="commentView">
+							
 						</tbody>
 					</table>
 				</div>
@@ -148,23 +191,8 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-offset-6 col-md-2 col-md-offset-4">
-					<ul class="pagination">
-						<c:set var="pb" value="${requestScope.flist.pagingBean}"></c:set>
-						<c:if test="${pb.previousPageGroup}">
-							<li><a
-								href="${initParam.root }freeBoard/showContent.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.startPageOfPageGroup-1}">Prev</a>
-							</li>
-						</c:if>
-						<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-								end="${pb.endPageOfPageGroup}">
-								<a
-									href="${initParam.root }freeBoard/showContent.gibu?no=${requestScope.fvo.boardNo}&pageNo=${i}">${i }</a>
-							</c:forEach></li>
-						<c:if test="${pb.nextPageGroup}">
-							<li><a
-								href="${initParam.root }freeBoard/showContent.gibu?no=${requestScope.fvo.boardNo}&pageNo=${pb.endPageOfPageGroup+1}">Next</a>
-							</li>
-						</c:if>
+					<ul class="pagination" id="commentPageView">
+						
 					</ul>
 				</div>
 			</div>
