@@ -7,6 +7,8 @@
 <script src="http://malsup.github.com/jquery.cycle2.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript"
+	src="${initParam.root}js/jquery-1.11.3.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
@@ -75,11 +77,7 @@
 		location.href = "${initParam.root}cone/gibu.gibu?fundNo=${requestScope.posting.fundNo}&point="
 				+ coneForm.coneCount.value;
 	}
-	$().ready(function() {
-		getCommentList(1);
-		var imgHeight = $("#imgTile").width() * 0.705;
-		$("img[name=fundPhoto]").height(imgHeight);
-	});
+	
 	function gibuPopup(){
 		var url="${initParam.root }cone/gibuView.gibu?fundNo=${requestScope.posting.fundNo}";
 		window.open(url,"gibuPopup",
@@ -97,6 +95,12 @@
 			});//ajax
 		}
 	}
+
+	$().ready(function(){
+		var imgHeight = $("#imgTile").width() * 0.705;
+		$("img[name=fundPhoto]").height(imgHeight);
+	});
+	
 </script>
 
 <style type="text/css">
@@ -174,14 +178,10 @@
 		<div class="row" align="center" style="font-family: &amp; amp;">
 			<h1>${fund.fundName}</h1>
 		</div>
-	</div>
-</div>
 
-<div class="section">
-	<div class="container">
 		<div class="row">
 			<br>
-			<div class="col-md-6">
+			<div class="col-md-6" align="left">
 				<div class="cycle-slideshow" data-cycle-fx="scrollHorz"
 					data-cycle-pause-on-hover="true" data-cycle-speed="500"
 					data-cycle-loader="wait" data-cycle-timeout="5000"
@@ -189,36 +189,12 @@
 					<!-- empty element for pager links -->
 					<div class="cycle-pager"></div>
 					<c:forEach items="${photoList}" var="photo" varStatus="i">
-						<img id="fundPhoto"
-							src="${initParam.root }/upload/${photo.realName}">
+						<img id="fundPhoto" src="${initParam.root }/upload/${photo.realName}">
 					</c:forEach>
 				</div>
 			</div>
-			${fund.content }
-			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-2">
-							<a href="javascript:gibuPopup()" role="button"
-								class="btn btn-default">기부하기</a>
-						</div>
-
-						<div class="col-md-2">
-							<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a>
-						</div>
-						<div class="col-md-2">
-							<a
-								href="${initParam.root }fund/getList.gibu<%-- ?no=${requestScope.posting.fundNo} --%>"
-								class="btn btn-default">목록보기</a>
-
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-md-6" align="center">
+			<br>
+			<div class="col-md-6" align="left">
 				<h4>
 					<span style="font-family: &amp; amp;"><br> <strong>모금세부
 							정보</strong></span>
@@ -252,44 +228,83 @@
 						</tr> --%>
 					</tbody>
 				</table>
-
+				<br>
+				<div class="col-md-2">
+					<a href="javascript:gibuPopup()" role="button"
+						class="btn btn-default">기부하기</a>
+				</div>
+				<div class="col-md-2">
+					<a href="javascript:bookmarkRegister()" class="btn btn-default">즐겨찾기</a>
+				</div>
+				<div class="col-md-2">
+					<a
+						href="${initParam.root }fund/getList.gibu<%-- ?no=${requestScope.posting.fundNo} --%>"
+						class="btn btn-default">목록보기</a>
+				</div>
 			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-8" align="center">${fund.content }</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="col-md-12">
+					<table class="table" style="font-family: &amp; amp;">
+						<thead>
+							<tr>
+								<th width="100">NO</th>
+								<th width="1000">comment</th>
+								<th width="200">작성일</th>
+								<th width="200">작성자</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="comment" items="${requestScope.comment.list}">
+								<tr>
+									<td>${comment.commentNo }</td>
+									<td>${comment.text }</td>
+									<td>${comment.commentTime }</td>
+									<td>${comment.memberVO.name }<br>(${comment.memberVO.id })
+									</td>
+									<td><c:if
+											test="${comment.memberVO.id==sessionScope.mvo.id }">
+											<input class="btn btn-default" value="삭제하기" type="button"
+												onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )">
+										</c:if></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 
- 			<div class="section">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="col-md-12">
-								<table class="table" style="font-family: &amp; amp;">
-									<thead>
-										<tr>
-											<th width="100">NO</th>
-											<th width="1000">comment</th>
-											<th width="200">작성일</th>
-											<th width="200">작성자</th>
-										</tr>
-									</thead>
-									<tbody id="commentView">
-										<!-- 코멘트 출력부분 -->
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
-				
-				<div class="section">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-offset-6 col-md-2 col-md-offset-4">
-								<ul class="pagination" id="commentPageView">
-									<!-- 코멘트 페이지 출력부분 -->
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div> 
+		<div class="row">
+			<div class="col-md-offset-6 col-md-2 col-md-offset-4">
+				<ul class="pagination">
+					<c:set var="pb" value="${requestScope.comment.pagingBean}"></c:set>
+					<c:if test="${pb.previousPageGroup}">
+						<li><a
+							href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.startPageOfPageGroup-1}">◀</a>
+						</li>
+					</c:if>
+					<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+							end="${pb.endPageOfPageGroup}">
+							<a
+								href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${i }">${i }</a>
+						</c:forEach></li>
+					<c:if test="${pb.nextPageGroup}">
+						<li><a
+							href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.endPageOfPageGroup+1}">▶</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
+
+
+
