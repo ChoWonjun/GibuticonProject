@@ -10,6 +10,59 @@
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
+	function getCommentList(commentPage){
+		$.ajax({
+			type : "post",
+			url : "${initParam.root}fund/getCommentList.gibu",
+			data : "no=${requestScope.posting.fundNo}&commentPage="+commentPage,
+			success : function(comment) {
+				var table="";
+				for(var i=0;i<comment.list.length;i++){
+					table+="<tr>";
+					
+					table+="<td>"+comment.list[i].commentNo+"</td>";
+					table+="<td>"+comment.list[i].text+"</td>";
+					table+="<td>"+comment.list[i].commentTime+"</td>";
+					table+="<td>"+comment.list[i].memberVO.name+"<br>("+comment.list[i].memberVO.id+")</td>";
+
+/* 					<td>
+						<c:if test="${comment.memberVO.id==sessionScope.mvo.id }">
+							<input class="btn btn-default" value="삭제하기" type="button"
+								onclick="deleteComment('${comment.commentNo}')">
+						</c:if>
+					</td> */
+					table+="</tr>";
+				}
+				
+				$("#commentView").html(table);
+				
+				table="";
+				
+				if(comment.pagingBean.previousPageGroup){
+					table+="<li>";
+					table+="<a href='javascript:getCommentList("+comment.pagingBean.startPageOfPageGroup-1+")'>◀</a>";
+					table+="</li>";
+				}
+				
+				table+="<li>";
+				for(var i=comment.pagingBean.startPageOfPageGroup;i<=comment.pagingBean.endPageOfPageGroup;i++){
+					table+="<a href='javascript:getCommentList("+i+")'>"+i+"</a>";
+				}
+				table+="</li>";
+				
+				if(comment.pagingBean.nextPageGroup){
+					table+="<li>";
+					table+="<a href='javascript:getCommentList("+comment.pagingBean.endPageOfPageGroup+1+")'>▶</a>";
+					table+="</li>";
+				}
+
+				$("#commentPageView").html(table);
+			}//success
+		});//ajax
+	}
+
+
+
 	function bookmarkRegister(){
 		if(confirm("즐겨찾기를 등록하시겠습니까?")){
 			location.href="${initParam.root}bookmark/addBookmark.gibu?myId=${sessionScope.mvo.id}&fundNo=${requestScope.posting.fundNo}";
@@ -22,6 +75,7 @@
 				+ coneForm.coneCount.value;
 	}
 	$().ready(function() {
+		getCommentList(1);
 		var imgHeight = $("#imgTile").width() * 0.705;
 		$("img[name=fundPhoto]").height(imgHeight);
 	});
@@ -29,6 +83,9 @@
 		var url="${initParam.root }cone/gibuView.gibu?fundNo=${requestScope.posting.fundNo}";
 		window.open(url,"gibuPopup",
 	   				"width=520,height=280,teop=150,left=200");
+	}
+	function deleteComment(commentNo){
+		alert(commentNo+" 삭제");
 	}
 </script>
 
@@ -188,7 +245,7 @@
 
 			</div>
 
-			<div class="section">
+ 			<div class="section">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12">
@@ -202,54 +259,27 @@
 											<th width="200">작성자</th>
 										</tr>
 									</thead>
-									<tbody>
-										<c:forEach var="comment" items="${requestScope.comment.list}">
-											<tr>
-												<td>${comment.commentNo }</td>
-												<td>${comment.text }</td>
-												<td>${comment.commentTime }</td>
-												<td>${comment.memberVO.name }<br>(${comment.memberVO.id })
-												</td>
-												<td><c:if
-														test="${comment.memberVO.id==sessionScope.mvo.id }">
-														<input class="btn btn-default" value="삭제하기" type="button"
-															onclick="deleteComment(${comment.commentNo}, ${requestScope.fvo.boardNo} )">
-													</c:if></td>
-											</tr>
-										</c:forEach>
+									<tbody id="commentView">
+										<!-- 코멘트 출력부분 -->
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
 				</div>
+				
 				<div class="section">
 					<div class="container">
 						<div class="row">
 							<div class="col-md-offset-6 col-md-2 col-md-offset-4">
-								<ul class="pagination">
-									<c:set var="pb" value="${requestScope.comment.pagingBean}"></c:set>
-									<c:if test="${pb.previousPageGroup}">
-										<li><a
-											href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.startPageOfPageGroup-1}">◀</a>
-										</li>
-									</c:if>
-									<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-											end="${pb.endPageOfPageGroup}">
-											<a
-												href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${i }">${i }</a>
-										</c:forEach></li>
-									<c:if test="${pb.nextPageGroup}">
-										<li><a
-											href="${initParam.root }fund/showContent.gibu?no=${requestScope.posting.fundNo }&commentPage=${pb.endPageOfPageGroup+1}">▶</a>
-										</li>
-									</c:if>
+								<ul class="pagination" id="commentPageView">
+									<!-- 코멘트 페이지 출력부분 -->
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 
 		</div>
 	</div>
 </div>
