@@ -3,19 +3,19 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<!-- bootstrap -->
-<script type="text/javascript"
-	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <!-- smart editor -->
 <script type="text/javascript"
 	src="${initParam.root }resource/editor/js/HuskyEZCreator.js"
 	charset="utf-8"></script>
 <!-- jQuery import -->
-<script src="${initParam.root }js/jquery-1.11.3.min.js"></script>
+<script
+   src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <!-- jQuery Form Plugin import -->
 <script src="${initParam.root }js/jquery.form.js"></script>
 <!-- jQuery MultiFile Plugin import -->
 <script src="${initParam.root }js/jQuery.MultiFile.min.js"></script>
+<!-- bootstrap -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <script type="text/javascript">
 	function cancel() {
 		history.back(-1);
