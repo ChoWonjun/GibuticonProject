@@ -290,4 +290,10 @@ public class FundController {
 		System.out.println(list);
 		return list;
 	}
+	
+	@RequestMapping("fund/deleteComment.gibu")
+	@ResponseBody
+	public void deleteComment(String commentNo){
+		fundService.deleteComment(commentNo);
+	}
 }

@@ -192,4 +192,9 @@ public class FundDAOImpl implements FundDAO {
 		return sqlSessionTemplate.selectOne(
 				"fund.getTotalGibuParticipantsYear", year);
 	}
+
+	@Override
+	public void deleteComment(String commentNo) {
+		sqlSessionTemplate.delete("fund.deleteComment",commentNo);
+	}
 }

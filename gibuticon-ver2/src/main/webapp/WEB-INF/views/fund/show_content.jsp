@@ -25,12 +25,13 @@
 					table+="<td>"+comment.list[i].commentTime+"</td>";
 					table+="<td>"+comment.list[i].memberVO.name+"<br>("+comment.list[i].memberVO.id+")</td>";
 
-/* 					<td>
-						<c:if test="${comment.memberVO.id==sessionScope.mvo.id }">
-							<input class="btn btn-default" value="삭제하기" type="button"
-								onclick="deleteComment('${comment.commentNo}')">
-						</c:if>
-					</td> */
+					table+="<td>";
+					if("${sessionScope.mvo.id}"==comment.list[i].memberVO.id) {
+						table+="<input class='btn btn-default' value='삭제하기' type='button' "
+							+ "onclick=deleteComment("+comment.list[i].commentNo+","+commentPage+")>";
+					}
+					table+="</td>";
+					
 					table+="</tr>";
 				}
 				
@@ -84,8 +85,17 @@
 		window.open(url,"gibuPopup",
 	   				"width=520,height=280,teop=150,left=200");
 	}
-	function deleteComment(commentNo){
-		alert(commentNo+" 삭제");
+	function deleteComment(commentNo, commentPageNo){
+		if(confirm(commentNo+"번 댓글을 정말로 삭제하시겠습니까?")) {
+			$.ajax({
+				type : "post",
+				url : "${initParam.root}fund/deleteComment.gibu",
+				data : "commentNo="+commentNo,
+				success : function() {
+					getCommentList(commentPageNo);
+				}//success
+			});//ajax
+		}
 	}
 </script>
 

@@ -70,13 +70,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <select id="getMyRank" resultType="memberRankVO">
+   	  select rank, memberid, rankval from(
       select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
          select member_id memberid, totalamount rankval from(
             select member_id, sum(AMOUNT) as totalamount
             from DONATION_HISTORY
             group by DONATION_HISTORY.MEMBER_ID
          )
-      ) where memberid=#{value}
+      )) where memberid=#{value}
    </select>
 </mapper>
  

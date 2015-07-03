@@ -54,4 +54,6 @@ public interface FundDAO {
 
 	public abstract List<FundPhotoVO> getPhotoByNo(String no);
 
+	public abstract void deleteComment(String commentNo);
+
 }

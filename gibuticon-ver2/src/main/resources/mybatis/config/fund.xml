@@ -146,6 +146,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(gibu_fund_comment_seq.nextval,#{fundNo},#{memberVO.id},#{text},sysdate)
 	</insert>
 	
+	<delete id="deleteComment">
+		delete from gibu_fund_comment where comment_no=#{value}
+	</delete>
+	
 	<resultMap type="fundCommentVO" id="fundCommentRM">
 		<result property="memberVO.id" column="member_id" />
 		<result property="memberVO.name" column="name" />
