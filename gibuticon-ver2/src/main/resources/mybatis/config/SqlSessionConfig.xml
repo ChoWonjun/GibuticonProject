@@ -6,10 +6,10 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
    <!-- 사용할 클래스에 대한 별칭을 명시한다. -->
 	<typeAliases>
-		<typeAlias type="org.kosta.gibuticon.model.member.MemberVO"
-			alias="memberVO" />
 		<typeAlias type="org.kosta.gibuticon.model.freeBoard.FreeBoardVO"
 			alias="freeBoardVO" />
+		<typeAlias type="org.kosta.gibuticon.model.member.MemberVO"
+			alias="memberVO" />
 		<typeAlias type="org.kosta.gibuticon.model.notice.NoticeVO"
 			alias="noticeVO" />
 		<typeAlias type="org.kosta.gibuticon.model.fund.FundVO"
