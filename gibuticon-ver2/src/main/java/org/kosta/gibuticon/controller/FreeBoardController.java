@@ -200,16 +200,6 @@ public class FreeBoardController {
 
 		if (pageNo == null)
 			pageNo = "1";
-		// System.out.println("getFreeBoardByNo" + fvo);
-		/*List<FreeCommentVO> list = freeBoardService.getCommentList(no, pageNo);
-		FreeCommentListVO flist = new FreeCommentListVO(list,
-				new FreeCommentPagingBean(
-						freeCommentService.getTotalPostingCount(no),
-						Integer.parseInt(pageNo)));*/
-		// System.out.println("잘나오냥" + flist);
-		/*mv.addObject();
-		//mv.addObject("flist", flist);
-		mv.setViewName("freeBoard_show_content");*/
 		return new ModelAndView("freeBoard_show_content", "fvo", fvo);
 	}
 
