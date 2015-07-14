@@ -228,30 +228,25 @@
 			</tbody>
 		</table>
 		<div class="col-md-offset-3 col-md-6 col-md-offset-3" align="center">
-			<div class="section">
-				<div class="container"></div>
-				<div class="col-md-offset-6 col-md-6">
-					<ul class="pagination">
-						<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
-						<c:if test="${pb.previousPageGroup}">
+			<ul class="pagination">
+				<c:set var="pb" value="${requestScope.lvo.pagingBean}"></c:set>
+				<c:if test="${pb.previousPageGroup}">
 
-							<li><a
-								href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.startPageOfPageGroup-1}&myId=${sessionScope.mvo.id}">Prev</a>
-							</li>
-						</c:if>
-						<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
-								end="${pb.endPageOfPageGroup}">
-								<a
-									href="${initParam.root }freeBoard/myPost.gibu?pageNo=${i}&myId=${sessionScope.mvo.id}">${i}</a>
-							</c:forEach></li>
-						<c:if test="${pb.nextPageGroup}">
-							<li><a
-								href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.endPageOfPageGroup+1}&myId=${sessionScope.mvo.id}">Next</a>
-							</li>
-						</c:if>
-					</ul>
-				</div>
-			</div>
+					<li><a
+						href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.startPageOfPageGroup-1}&myId=${sessionScope.mvo.id}">Prev</a>
+					</li>
+				</c:if>
+				<li><c:forEach var="i" begin="${pb.startPageOfPageGroup}"
+						end="${pb.endPageOfPageGroup}">
+						<a
+							href="${initParam.root }freeBoard/myPost.gibu?pageNo=${i}&myId=${sessionScope.mvo.id}">${i}</a>
+					</c:forEach></li>
+				<c:if test="${pb.nextPageGroup}">
+					<li><a
+						href="${initParam.root }freeBoard/myPost.gibu?pageNo=${pb.endPageOfPageGroup+1}&myId=${sessionScope.mvo.id}">Next</a>
+					</li>
+				</c:if>
+			</ul>
 		</div>
 	</div>
 </div>
