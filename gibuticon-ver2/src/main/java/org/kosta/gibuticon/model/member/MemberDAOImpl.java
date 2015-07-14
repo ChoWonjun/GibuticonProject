@@ -158,7 +158,11 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public int getGivenCone(String id) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectOne("member.getGivenCone",id);
+		int result = 0;
+		if(sqlSessionTemplate.selectOne("member.getGivenCone",id)!=null){
+			result = sqlSessionTemplate.selectOne("member.getGivenCone",id);
+		}
+		return result;
 	}
 
 	@Override

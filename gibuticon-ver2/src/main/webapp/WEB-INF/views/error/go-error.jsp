@@ -2,5 +2,5 @@
     pageEncoding="UTF-8"%>
 
     <script>
-    	location.href="error_error.gibu";
+    	location.href="${initParam.root }error_error.gibu";
     </script>

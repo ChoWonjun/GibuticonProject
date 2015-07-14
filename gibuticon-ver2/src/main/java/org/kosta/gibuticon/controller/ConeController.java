@@ -110,7 +110,6 @@ public class ConeController {
 		} else {
 			System.out.println(paymentType);
 			GiftVO giftVO = giftService.confirmPin(pinNo);
-			System.out.println("giftVO : "+giftVO);
 			if(giftVO != null){
 				giftVO.setReciever(mvo.getId());
 				giftService.insertReciever(giftVO);

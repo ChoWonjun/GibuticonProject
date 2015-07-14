@@ -5,8 +5,8 @@ drop sequence free_board_sequence;
 --3.
 create sequence free_board_sequence;
 
-alter table free_board add(ref number not null);
 --2.
+alter table free_board add(ref number not null);
 alter table free_board add(restep number not null);
 alter table free_board add(relevel number not null);
 alter table free_board modify(hits number default 0);

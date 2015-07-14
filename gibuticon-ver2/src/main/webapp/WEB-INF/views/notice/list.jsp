@@ -38,14 +38,14 @@
 						width="150"> <br>
 					<ul class="left01"
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
-						<li><a href="javascript:chargePopup()" class="sr_txt5"> 콘
-								안내 </a></li>
+						<!-- <li><a href="javascript:chargePopup()" class="sr_txt5"> 콘
+								안내 </a></li> -->
 						<li><a href="/gibuticon-ver2/introduce_what_is_cone.gibu">
 								콘 받기 안내</a></li>
 						<li><a href="/gibuticon-ver2/introduce_howtogibu.gibu">기부방법
 								안내</a></li>
-						<li><a href="#"> <span style="font-family: &amp; amp;">사용
-									내역</span></a></li>
+						<!-- <li><a href="#"> <span style="font-family: &amp; amp;">사용
+									내역</span></a></li> -->
 						<!--윗부분에 받은선물 내역 아랫부분에 보낸선물 내역-->
 					</ul>
 					<img src="/gibuticon-ver2/img/g_notice_friend_guide.jpg"
@@ -53,9 +53,9 @@
 					<ul class="left01"
 						font-family=" &quot;나눔바른고딕&quot;,NanumGothic,Sans-serif;">
 						<li><a href="/gibuticon-ver2/friend/memberlist.gibu">콘친구란?</a></li>
-						<li><a
+						<!-- <li><a
 							href="/gibuticon-ver2/friend/friendlist.gibu?myId=java">친구 둥록
-								안내</a></li>
+								안내</a></li> -->
 					</ul>
 				</div>
 			</div>

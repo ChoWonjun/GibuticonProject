@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="org.kosta.gibuticon.controller.FreeBoardController" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/controller/FreeBoardController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="661" y="265"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="2" language="java" name="org.kosta.gibuticon.model.service.FreeBoardService" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/service/FreeBoardService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1346" y="261"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="3" language="java" name="org.kosta.gibuticon.model.service.FreeBoardServiceImpl" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/service/FreeBoardServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1992" y="269"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="org.kosta.gibuticon.model.freeBoard.FreeBoardDAOImpl" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/FreeBoardDAOImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1994" y="721"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="5" language="java" name="org.kosta.gibuticon.model.freeBoard.FreeBoardDAO" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/FreeBoardDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1344" y="703"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="6" language="java" name="org.kosta.gibuticon.model.freeBoard.PagingBean" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/PagingBean.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="842" y="713"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="org.kosta.gibuticon.model.freeBoard.FreeBoardVO" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/FreeBoardVO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="479" y="878"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="8" language="java" name="org.kosta.gibuticon.model.freeBoard.CommonConstants" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/CommonConstants.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="875" y="1046"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="9" language="java" name="org.kosta.gibuticon.controller.FreeCommentController" project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/controller/FreeCommentController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="553" y="1535"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="10" language="java" name="org.kosta.gibuticon.model.service.FreeCommentService" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/service/FreeCommentService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1061" y="1533"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="11" language="java" name="org.kosta.gibuticon.model.service.FreeCommentServiceImpl" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/service/FreeCommentServiceImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1574" y="1545"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentListVO" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/comment/FreeCommentListVO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="612" y="1854"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="13" language="java" name="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentDAO" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/comment/FreeCommentDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1197" y="1825"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="14" language="java" name="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentDAOImpl" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/comment/FreeCommentDAOImpl.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1738" y="1835"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPagingBean" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/comment/FreeCommentPagingBean.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="486" y="2271"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="org.kosta.gibuticon.model.freeBoard.comment.FreeCommentPageVO" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/comment/FreeCommentPageVO.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="898" y="2200"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="17" language="java" name="org.kosta.gibuticon.model.freeBoard.comment.CommonConstants" 
+    project="gibuticon-ver2" 
+    file="/gibuticon-ver2/src/main/java/org/kosta/gibuticon/model/freeBoard/comment/CommonConstants.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="1294" y="2150"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="18">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="19" name="freeCommentService">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="22" name="freeBoardDAO">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </attribute>      
+      <multiplicity id="23" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="24">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="25" name="freeBoardService">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </attribute>      
+      <multiplicity id="26" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="27">    
+    <end type="SOURCE" refId="11" navigable="false">      
+      <attribute id="28" name="freeCommentDAO">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </attribute>      
+      <multiplicity id="29" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="30">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </realization>  
+  <realization id="31">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="5"/>  
+  </realization>  
+  <realization id="32">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="10"/>  
+  </realization>  
+  <realization id="33">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
+  </realization>  
+  <association id="34">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="35" name="pagingBean">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </attribute>      
+      <multiplicity id="36" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-3407" y="133"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

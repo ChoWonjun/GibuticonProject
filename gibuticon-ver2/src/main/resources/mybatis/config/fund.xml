@@ -4,45 +4,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="fund">
 	<select id="getFundList" parameterType="searchOptionVO"
-		resultType="fundVO">
-		select * from(
-		select fundno, fundname, proposal, homepage, cursum,
-		goalsum, participant,
-		startdate, duedate, content, hits, category,
-		source, progress, ceil(rownum/6) as page from
-		(select fund_no fundno, fund_name
-		fundname, proposal, homepage,
-		cur_sum cursum, goal_sum goalsum,
-		participant,
-		to_char(start_date,'yyyy-mm-dd') as startdate,
-		to_char(due_date,'yyyy-mm-dd') as
-		duedate, content, hits, category,
-		source, nullif(cur_sum,0)/goal_sum*100 as progress from gibu_fund
-		<where>
-			<if test="category != null and category != ''">
-				category = #{category}
-			</if>
-			<if test="category != null and category != '' and word!= null and word != ''">
-				and
-			</if>
-			<if test="word != null and word != ''">
-				fund_name like '%' || #{word} || '%'
-			</if>
-		</where>
-		<if test="rank != null and rank != '' and rank == 'fundNo'">
-			order by fund_no desc
+	resultType="fundVO">
+	select * from(
+	select fundno, fundname, proposal, homepage, cursum, goalsum, participant,
+	startdate, duedate, content, hits, category,
+	source, progress, ceil(rownum/6) as page from
+	(select fund_no fundno, fund_name fundname, proposal, homepage, cur_sum
+	cursum, goal_sum goalsum, participant,
+	to_char(start_date,'yyyy-mm-dd') as startdate, to_char(due_date,'yyyy-mm-dd') as duedate, content,
+	hits, category,
+	source, nullif(cur_sum,0)/goal_sum*100 as progress from gibu_fund
+	<where>
+		<if test="category != null and category != ''">
+			category = #{category}
 		</if>
-		<if test="rank != null and rank !='' and rank == 'dueDate'">
-			order by due_date desc
+		<if
+			test="category != null and category != '' and word!= null and word != ''">
+			and
 		</if>
-		<if test="rank != null and rank !='' and rank == 'amountAsc'">
-			order by progress desc
+		<if test="word != null and word != ''">
+			fund_name like '%' || #{word} || '%'
 		</if>
-		<if test="rank != null and rank !='' and rank == 'amountDesc'">
-			order by progress asc
-		</if>
-		)) where page=#{pageNo}
-	</select>
+	</where>
+	<if test="rank != null and rank != '' and rank == 'fundNo'">
+		order by fund_no desc
+	</if>
+	<if test="rank != null and rank !='' and rank == 'dueDate'">
+		order by due_date desc
+	</if>
+	<if test="rank != null and rank !='' and rank == 'amountAsc'">
+		order by progress desc
+	</if>
+	<if test="rank != null and rank !='' and rank == 'amountDesc'">
+		order by progress asc
+	</if>
+	)) where page=#{pageNo}
+</select>
 
 	<select id="getTotalPostingCount" parameterType="searchOptionVO" resultType="int">
 		select count(*) from gibu_fund
