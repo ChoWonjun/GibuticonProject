@@ -176,9 +176,10 @@
 													<td colspan="2" id="afile3-list"
 														style="border: 2px solid #c9c9c9; height: 20px"></td>
 												</tr>
+												<tr></tr>
 											</tbody>
 										</table>
-										<br> <br> <br> <input class="btn btn-default"
+										<br> <br> <br><br> <input class="btn btn-default"
 											style="font-family: &amp; amp;" type="submit" value="글쓰기"
 											onclick="return checkContent()" id="writeImg"> <input
 											class="btn btn-default" style="font-family: &amp; amp;"

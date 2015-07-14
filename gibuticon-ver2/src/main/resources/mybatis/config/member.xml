@@ -4,16 +4,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="member">
 	<insert id="registerMember" parameterType="memberVO">
-		insert into member(id,password,name,address,tel,birth,admin,email,point) values (#{id},#{password},#{name},#{address},#{tel},to_date(#{birth},'yyyy-mm-dd'),'no',#{email}, 0)
+		insert into
+		member(id,password,name,address,tel,birth,admin,email,point) values
+		(#{id},#{password},#{name},#{address},#{tel},to_date(#{birth},'yyyy-mm-dd'),'no',#{email},
+		0)
 	</insert>
 	<select id="findMemberById" resultType="memberVO">
-		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where id=#{value}
+		select
+		id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as
+		birth,admin,email,point from member where id=#{value}
 	</select>
 	<select id="findMemberByEmail" resultType="memberVO">
-		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where email=#{value}
+		select
+		id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as
+		birth,admin,email,point from member where email=#{value}
 	</select>
 	<update id="updateMember" parameterType="memberVO">
-		update member set password=#{password},address=#{address},tel=#{tel},birth=#{birth},
+		update member set
+		password=#{password},address=#{address},tel=#{tel},birth=#{birth},
 		email=#{email} where id=#{id}
 	</update>
 	<delete id="deleteMemberById">
@@ -22,63 +30,70 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="giveAdminRight">
 		update member set admin='yes' where id=#{value}
 	</update>
+	
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-		select id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as birth,admin,email,point from member where id=#{id} and password=#{password}
+		select
+		id,password,name,address,tel,to_char(birth,'yyyy-mm-dd') as
+		birth,admin,email,point from member where id=#{id} and
+		password=#{password}
 	</select>
-	
+
 	<update id="increasePoint" parameterType="memberVO">
-		update member set point=point+#{point} where id=#{id}
+		update member set
+		point=point+#{point} where id=#{id}
 	</update>
-	
+
 	<update id="decreasePoint" parameterType="memberVO">
-		update member set point=point-#{point} where id=#{id}
+		update member set
+		point=point-#{point} where id=#{id}
 	</update>
-	<select id="getAmountRanks" resultType="memberRankVO">
-      select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
-         select member_id memberid, totalamount rankval from(
-            select member_id, sum(AMOUNT) as totalamount
-            from DONATION_HISTORY
-            group by DONATION_HISTORY.MEMBER_ID
-         )
-      )
-   </select>
-   
-   <select id="getFundCountRanks" resultType="memberRankVO">
-      select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
-         select member_id memberid, fundcount rankval from(
-            select member_id, count(distinct(fund_no)) fundcount
-            from DONATION_HISTORY
-            group by DONATION_HISTORY.MEMBER_ID
-         )
-      )
-   </select>
-   <select id="findId" parameterType="memberVO" resultType="String">
-   		select id from member where name=#{name} and email=#{email}
-   </select>
-   <select id="findPassword" parameterType="memberVO" resultType="String">
-   		select password from member where name=#{name} and id=#{id} and email=#{email}
-   </select>
-   
-   <select id="getGivenCone" resultType="int">
-   		select rankval from(
-			select member_id memberid, totalamount rankval from(
-				select member_id, sum(AMOUNT) as totalamount
-				from DONATION_HISTORY
-				group by DONATION_HISTORY.MEMBER_ID
-			)
+	<select id="getAmountRanks" resultType="memberRankVO"> select RANK() OVER
+		(ORDER BY rankval desc) as rank, memberid, rankval from(
+		select member_id memberid, totalamount rankval from(
+		select member_id, sum(AMOUNT) as totalamount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+		)
+		)
+	</select>
+
+	<select id="getFundCountRanks" resultType="memberRankVO">
+		select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+		select member_id memberid, fundcount rankval from(
+		select member_id, count(distinct(fund_no)) fundcount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+		)
+		)
+	</select>
+	<select id="findId" parameterType="memberVO" resultType="String">
+		select id from member where name=#{name} and email=#{email}
+	</select>
+	<select id="findPassword" parameterType="memberVO" resultType="String">
+		select password from member where name=#{name} and id=#{id} and
+		email=#{email}
+	</select>
+
+	<select id="getGivenCone" resultType="int">
+		select rankval from(
+		select member_id memberid, totalamount rankval from(
+		select member_id, sum(AMOUNT) as totalamount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+		)
 		) where memberid=#{value}
-   </select>
-   
-   <select id="getMyRank" resultType="memberRankVO">
-   	  select rank, memberid, rankval from(
-      select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
-         select member_id memberid, totalamount rankval from(
-            select member_id, sum(AMOUNT) as totalamount
-            from DONATION_HISTORY
-            group by DONATION_HISTORY.MEMBER_ID
-         )
-      )) where memberid=#{value}
-   </select>
+	</select>
+
+	<select id="getMyRank" resultType="memberRankVO">
+		select rank, memberid, rankval from(
+		select RANK() OVER (ORDER BY rankval desc) as rank, memberid, rankval from(
+		select member_id memberid, totalamount rankval from(
+		select member_id, sum(AMOUNT) as totalamount
+		from DONATION_HISTORY
+		group by DONATION_HISTORY.MEMBER_ID
+		)
+		)) where memberid=#{value}
+	</select>
 </mapper>
  
  
